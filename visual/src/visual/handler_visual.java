@@ -16,9 +16,11 @@ public class handler_visual {
 
     ArrayList<JFrame> container_handler;
  
-    busqueda b;
-    busqueda_real br;
-    path p;
+   /*1*/ busqueda b;
+   /*2*/ busqueda_real br;
+   /*3*/ path p;
+   /*4*/ wait_busqueda wb;
+   /*5*/ result r;
     
 
     public handler_visual() {
@@ -31,6 +33,9 @@ public class handler_visual {
         b = new busqueda();
         br = new busqueda_real();
         p = new path();
+        wb = new wait_busqueda();
+        r= new result();
+        
         
         this.container_handler = new ArrayList();
       
@@ -44,10 +49,18 @@ public class handler_visual {
         
         this.container_handler.add(br);
          br.setBefore(b);
-         br.setNext(p);
+         br.setNext(wb);
+         br.setPathOption(p);
 
          this.container_handler.add(p);
          p.setBefore(br);
+         
+         
+          this.container_handler.add(wb);
+          
+           this.container_handler.add(r);
+           r.setBusquedaJFrame(this.b);
+         
 
     }
     

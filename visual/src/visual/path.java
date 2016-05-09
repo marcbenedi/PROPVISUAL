@@ -21,8 +21,13 @@ public class path extends javax.swing.JFrame {
 
     public path() {
         initComponents();
+        
     }
-
+    public void SetItemCombo(){ //par arraylist norma rule ecc
+        // for each rule addItem
+        
+    }
+    
     public void setBefore(JFrame a) {
         this.before = a;
     }
