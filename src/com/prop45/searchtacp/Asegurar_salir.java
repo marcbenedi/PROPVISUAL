@@ -45,6 +45,7 @@ public class Asegurar_salir extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Esta seguro que quiere hacer Logout?");
 
+        jButton1.setMnemonic('y');
         jButton1.setText("Si");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -52,6 +53,7 @@ public class Asegurar_salir extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setMnemonic('n');
         jButton2.setText("No");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

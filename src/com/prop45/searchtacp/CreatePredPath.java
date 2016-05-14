@@ -118,6 +118,7 @@ public class CreatePredPath extends javax.swing.JPanel {
 
         jLabel1.setText("Path:");
 
+        jButton1.setMnemonic('S');
         jButton1.setText("Submit");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -125,6 +126,7 @@ public class CreatePredPath extends javax.swing.JPanel {
             }
         });
 
+        Instructionsbutton1.setMnemonic('H');
         Instructionsbutton1.setText("Help");
         Instructionsbutton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -133,6 +135,7 @@ public class CreatePredPath extends javax.swing.JPanel {
         });
 
         term.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        term.setMnemonic('T');
         term.setText("Term");
         term.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,6 +144,7 @@ public class CreatePredPath extends javax.swing.JPanel {
         });
 
         Confbutton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Confbutton.setMnemonic('C');
         Confbutton.setText("Conference");
         Confbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -149,6 +153,7 @@ public class CreatePredPath extends javax.swing.JPanel {
         });
 
         Authorbutton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Authorbutton.setMnemonic('A');
         Authorbutton.setText("Author");
         Authorbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -157,6 +162,7 @@ public class CreatePredPath extends javax.swing.JPanel {
         });
 
         Paperbutton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Paperbutton.setMnemonic('P');
         Paperbutton.setText("Paper");
         Paperbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -166,6 +172,7 @@ public class CreatePredPath extends javax.swing.JPanel {
 
         jLabel2.setText("Predefined Paths:");
 
+        jButton3.setMnemonic('R');
         jButton3.setText("Return");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -173,6 +180,7 @@ public class CreatePredPath extends javax.swing.JPanel {
             }
         });
 
+        jButton4.setMnemonic('E');
         jButton4.setText("Exit");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -184,6 +192,7 @@ public class CreatePredPath extends javax.swing.JPanel {
         text.setRows(5);
         jScrollPane1.setViewportView(text);
 
+        jButton2.setMnemonic('D');
         jButton2.setText("Eliminar Pred Path");
 
         jTextField1.setForeground(new java.awt.Color(153, 153, 153));

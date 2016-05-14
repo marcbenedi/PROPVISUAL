@@ -7,10 +7,10 @@ import java.util.Map;
 public class Graph {
     private ArrayList<ArrayList<Node>> adj = new ArrayList<>();
 
-    private ArrayList<Node> datPaper;
-    private ArrayList<Node> datAuthor;
-    private ArrayList<Node> datTerm;
-    private ArrayList<Node> datConference;
+    private static ArrayList<Node> datPaper;
+    private static ArrayList<Node> datAuthor;
+    private static ArrayList<Node> datTerm;
+    private static ArrayList<Node> datConference;
 
     private ArrayList<Aresta> datPaperConference;
     private ArrayList<Aresta> datPaperAuthor;
@@ -54,8 +54,12 @@ public class Graph {
     public Node getNode(String name, String tipo){
         return buscarNodo(name,tipo);
     }
+    
+    public static boolean existsNode(String name, String tipo) {
+        return buscarNodo(name,tipo) != null;
+    }
 
-    private Node buscarNodo(String name,String tipo){
+    private static Node buscarNodo(String name,String tipo){
         switch(tipo){
             case "Paper":
                 for (Node n:datPaper

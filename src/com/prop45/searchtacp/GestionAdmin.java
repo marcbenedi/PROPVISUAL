@@ -5,6 +5,12 @@
  */
 package com.prop45.searchtacp;
 
+import static com.prop45.Graph.Graph.existsNode;
+import static com.prop45.User.Persistencia.DadesUsuari.ExisteixUsuari;
+import static com.prop45.User.Persistencia.DadesUsuari.GuardarUsuari;
+import static com.prop45.User.Persistencia.DadesUsuari.borrarlinea;
+import static com.prop45.User.Persistencia.DadesUsuari.consultar_password;
+import static com.prop45.User.Persistencia.DadesUsuari.modificar_password;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Image;
@@ -32,22 +38,11 @@ public class GestionAdmin extends javax.swing.JFrame {
      */
     public GestionAdmin() throws FileNotFoundException, IOException {
         initComponents(); 
+        error.setVisible(false);
         Cambios.setEditable(false);
         this.setLocationRelativeTo(null);
         this.getContentPane().setBackground(Color.white);
-        jLabel4.setVisible(false);
-        wchmod.setVisible(false);
-        wdeleteuser.setVisible(false);
-        jLabel10.setVisible(false);   
-        jLabel12.setVisible(false); 
-        jLabel14.setVisible(false); 
-        jLabel17.setVisible(false); 
-        jLabel19.setVisible(false); 
-        jLabel21.setVisible(false); 
-        wapa.setVisible(false); 
-        wapt.setVisible(false); 
-        wapc.setVisible(false); 
-        FileReader file = new FileReader("src/com/prop45/ficheros/actualuser.txt");
+        /*FileReader file = new FileReader("src/com/prop45/ficheros/actualuser.txt");
         BufferedReader reader = new BufferedReader(file);
         String usuario;
         String line =  reader.readLine();
@@ -56,24 +51,18 @@ public class GestionAdmin extends javax.swing.JFrame {
             while (line.charAt(i) != ' ') i++;
             usuario = line.substring(0,i);
             userlabel.setText(usuario);
-        }
-        ImageIcon Logo_image = new ImageIcon("src/com/prop45/Images/descarga.png");
-        Icon icono_logo = new ImageIcon(Logo_image.getImage().getScaledInstance(191, 129, Image.SCALE_DEFAULT));
-        Logo.setIcon(icono_logo); 
+        }*/
         añadeuser.setText(null);
         ImageIcon guardarimage = new ImageIcon("src/com/prop45/Images/guardar.jpg");
-        Icon icono_guardar = new ImageIcon(guardarimage.getImage().getScaledInstance(43, 42, Image.SCALE_DEFAULT));
+        Icon icono_guardar = new ImageIcon(guardarimage.getImage().getScaledInstance(52, 52, Image.SCALE_DEFAULT));
         añadeuser.setIcon(icono_guardar);
         cambiapass.setIcon(icono_guardar);
         eliminaruser.setIcon(icono_guardar);
         chmod.setIcon(icono_guardar);
-        añadeterm.setIcon(icono_guardar);
-        añadeauthor.setIcon(icono_guardar);
-        añadeconf.setIcon(icono_guardar);
-        añaedpaper.setIcon(icono_guardar);
-        apt.setIcon(icono_guardar);
-        apa.setIcon(icono_guardar);
-        apc.setIcon(icono_guardar);
+        deletenode.setIcon(icono_guardar);
+        añadenode.setIcon(icono_guardar);
+        añadirrelacion.setIcon(icono_guardar);
+        eliminarrelacion.setIcon(icono_guardar);
     }
 
     /**
@@ -85,7 +74,6 @@ public class GestionAdmin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Logo = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         Exitbutton = new javax.swing.JButton();
@@ -93,59 +81,45 @@ public class GestionAdmin extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         addusername = new javax.swing.JTextField();
         añadeuser = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         chmodusername = new javax.swing.JTextField();
         cambiapass = new javax.swing.JLabel();
-        wchmod = new javax.swing.JLabel();
         chmodpassword = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         deleteuser = new javax.swing.JTextField();
         eliminaruser = new javax.swing.JLabel();
-        wdeleteuser = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         chuser = new javax.swing.JTextField();
         chmod = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jComboBox = new javax.swing.JComboBox<>();
-        jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         a1 = new javax.swing.JTextField();
-        añadeterm = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        añadeauthor = new javax.swing.JLabel();
-        a3 = new javax.swing.JTextField();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        añadeconf = new javax.swing.JLabel();
-        a2 = new javax.swing.JTextField();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        añaedpaper = new javax.swing.JLabel();
-        a4 = new javax.swing.JTextField();
-        jLabel21 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
-        apt1 = new javax.swing.JTextField();
-        apt2 = new javax.swing.JTextField();
-        jLabel23 = new javax.swing.JLabel();
-        apa1 = new javax.swing.JTextField();
-        apa2 = new javax.swing.JTextField();
-        jLabel24 = new javax.swing.JLabel();
-        apc1 = new javax.swing.JTextField();
-        apc2 = new javax.swing.JTextField();
-        apt = new javax.swing.JLabel();
-        apa = new javax.swing.JLabel();
-        apc = new javax.swing.JLabel();
-        wapt = new javax.swing.JLabel();
-        wapc = new javax.swing.JLabel();
-        wapa = new javax.swing.JLabel();
+        añadenode = new javax.swing.JLabel();
+        anp = new javax.swing.JTextField();
+        an2 = new javax.swing.JTextField();
+        añadirrelacion = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         Cambios = new javax.swing.JTextArea();
         jLabel28 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        addpassword = new javax.swing.JTextField();
+        addusercombox = new javax.swing.JComboBox<>();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jButton2 = new javax.swing.JButton();
+        error = new javax.swing.JLabel();
+        selanode = new javax.swing.JComboBox<>();
+        seldnode = new javax.swing.JComboBox<>();
+        jLabel16 = new javax.swing.JLabel();
+        a3 = new javax.swing.JTextField();
+        deletenode = new javax.swing.JLabel();
+        selare = new javax.swing.JComboBox<>();
+        seldre = new javax.swing.JComboBox<>();
+        dnp = new javax.swing.JTextField();
+        d2n = new javax.swing.JTextField();
+        eliminarrelacion = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
 
         setTitle("Gestion de Administrador");
 
@@ -155,6 +129,7 @@ public class GestionAdmin extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel2.setText("Gestion usuarios:");
 
+        Exitbutton.setMnemonic('X');
         Exitbutton.setText("Exit");
         Exitbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -165,10 +140,10 @@ public class GestionAdmin extends javax.swing.JFrame {
         userlabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         userlabel.setText("username");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Añadir user:");
 
-        addusername.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        addusername.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         addusername.setForeground(new java.awt.Color(153, 153, 153));
         addusername.setText("username");
         addusername.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -183,19 +158,17 @@ public class GestionAdmin extends javax.swing.JFrame {
         });
 
         añadeuser.setText("jLabel4");
+        añadeuser.setToolTipText("");
         añadeuser.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 añadeuserMouseClicked(evt);
             }
         });
 
-        jLabel4.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel4.setText("Wrong Username");
-
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setText("Cambiar contraseña:");
 
-        chmodusername.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        chmodusername.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         chmodusername.setForeground(new java.awt.Color(153, 153, 153));
         chmodusername.setText("username");
         chmodusername.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -210,18 +183,16 @@ public class GestionAdmin extends javax.swing.JFrame {
         });
 
         cambiapass.setText("jLabel4");
+        cambiapass.setToolTipText("");
         cambiapass.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 cambiapassMouseClicked(evt);
             }
         });
 
-        wchmod.setForeground(new java.awt.Color(255, 0, 0));
-        wchmod.setText("Wrong Username or Password");
-
-        chmodpassword.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        chmodpassword.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         chmodpassword.setForeground(new java.awt.Color(153, 153, 153));
-        chmodpassword.setText("password");
+        chmodpassword.setText("password(new)");
         chmodpassword.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 chmodpasswordMouseClicked(evt);
@@ -233,12 +204,12 @@ public class GestionAdmin extends javax.swing.JFrame {
             }
         });
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setText("Eliminar user:");
 
-        deleteuser.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        deleteuser.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         deleteuser.setForeground(new java.awt.Color(153, 153, 153));
-        deleteuser.setText("password");
+        deleteuser.setText("username");
         deleteuser.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 deleteuserMouseClicked(evt);
@@ -257,13 +228,10 @@ public class GestionAdmin extends javax.swing.JFrame {
             }
         });
 
-        wdeleteuser.setForeground(new java.awt.Color(255, 0, 0));
-        wdeleteuser.setText("Wrong Username");
-
-        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel9.setText("Cambiar permisos:");
 
-        chuser.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        chuser.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         chuser.setForeground(new java.awt.Color(153, 153, 153));
         chuser.setText("username");
         chuser.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -284,30 +252,18 @@ public class GestionAdmin extends javax.swing.JFrame {
             }
         });
 
-        jLabel10.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel10.setText("Wrong Username");
-
-        jComboBox.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "normal", "admin" }));
-
-        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
-        jLabel11.setText("Gestion Graph:");
-
-        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel12.setText("Gestión node:");
 
-        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel13.setText("Gestión relación:");
 
-        jLabel14.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel14.setText("Wrong Username");
+        jLabel15.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel15.setText("Añadir nodo:");
 
-        jLabel15.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel15.setText("Añadir term:");
-
-        a1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        a1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         a1.setForeground(new java.awt.Color(153, 153, 153));
-        a1.setText("name");
+        a1.setText("Node name");
         a1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 a1MouseClicked(evt);
@@ -319,26 +275,105 @@ public class GestionAdmin extends javax.swing.JFrame {
             }
         });
 
-        añadeterm.setText("jLabel4");
-        añadeterm.addMouseListener(new java.awt.event.MouseAdapter() {
+        añadenode.setText("jLabel4");
+        añadenode.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                añadetermMouseClicked(evt);
+                añadenodeMouseClicked(evt);
             }
         });
 
-        jLabel16.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel16.setText("Añadir Author:");
-
-        añadeauthor.setText("jLabel4");
-        añadeauthor.addMouseListener(new java.awt.event.MouseAdapter() {
+        anp.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        anp.setForeground(new java.awt.Color(153, 153, 153));
+        anp.setText("Paper name");
+        anp.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                añadeauthorMouseClicked(evt);
+                anpMouseClicked(evt);
+            }
+        });
+        anp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                anpActionPerformed(evt);
             }
         });
 
-        a3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        an2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        an2.setForeground(new java.awt.Color(153, 153, 153));
+        an2.setText("Node 2 name");
+        an2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                an2MouseClicked(evt);
+            }
+        });
+        an2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                an2ActionPerformed(evt);
+            }
+        });
+
+        añadirrelacion.setText("jLabel4");
+        añadirrelacion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                añadirrelacionMouseClicked(evt);
+            }
+        });
+
+        Cambios.setColumns(20);
+        Cambios.setRows(5);
+        jScrollPane1.setViewportView(Cambios);
+
+        jLabel28.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel28.setText("Cambios realizados:");
+
+        jButton1.setMnemonic('B');
+        jButton1.setText("Borrar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        addpassword.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        addpassword.setForeground(new java.awt.Color(153, 153, 153));
+        addpassword.setText("password");
+        addpassword.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                addpasswordMouseClicked(evt);
+            }
+        });
+        addpassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addpasswordActionPerformed(evt);
+            }
+        });
+
+        addusercombox.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        addusercombox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione tipo", "normal", "admin" }));
+
+        jComboBox2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione tipo", "normal", "admin" }));
+
+        jButton2.setMnemonic('H');
+        jButton2.setText("Help");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        error.setText("Posibles errores! Cosas buenas!");
+
+        selanode.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        selanode.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione el tipo", "Term", "Author", "Conference", "Paper" }));
+
+        seldnode.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        seldnode.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione el tipo", "Term", "Author", "Conference", "Paper" }));
+
+        jLabel16.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel16.setText("Eliminar nodo:");
+
+        a3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         a3.setForeground(new java.awt.Color(153, 153, 153));
-        a3.setText("name");
+        a3.setText("Node name");
         a3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 a3MouseClicked(evt);
@@ -350,504 +385,307 @@ public class GestionAdmin extends javax.swing.JFrame {
             }
         });
 
-        jLabel17.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel17.setText("Wrong Username");
-
-        jLabel18.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel18.setText("Añadir Conference:");
-
-        añadeconf.setText("jLabel4");
-        añadeconf.addMouseListener(new java.awt.event.MouseAdapter() {
+        deletenode.setText("jLabel4");
+        deletenode.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                añadeconfMouseClicked(evt);
+                deletenodeMouseClicked(evt);
             }
         });
 
-        a2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        a2.setForeground(new java.awt.Color(153, 153, 153));
-        a2.setText("name");
-        a2.addMouseListener(new java.awt.event.MouseAdapter() {
+        selare.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        selare.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione el tipo", "Paper-Term", "Paper-Author", "Paper-Conference" }));
+
+        seldre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        seldre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione el tipo", "Paper-Term", "Paper-Author", "Paper-Conference" }));
+
+        dnp.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        dnp.setForeground(new java.awt.Color(153, 153, 153));
+        dnp.setText("Paper name");
+        dnp.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                a2MouseClicked(evt);
+                dnpMouseClicked(evt);
             }
         });
-        a2.addActionListener(new java.awt.event.ActionListener() {
+        dnp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                a2ActionPerformed(evt);
+                dnpActionPerformed(evt);
             }
         });
 
-        jLabel19.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel19.setText("Wrong Username");
-
-        jLabel20.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel20.setText("Añadir Paper:");
-
-        añaedpaper.setText("jLabel4");
-        añaedpaper.addMouseListener(new java.awt.event.MouseAdapter() {
+        d2n.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        d2n.setForeground(new java.awt.Color(153, 153, 153));
+        d2n.setText("Node 2 name");
+        d2n.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                añaedpaperMouseClicked(evt);
+                d2nMouseClicked(evt);
             }
         });
-
-        a4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        a4.setForeground(new java.awt.Color(153, 153, 153));
-        a4.setText("name");
-        a4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                a4MouseClicked(evt);
-            }
-        });
-        a4.addActionListener(new java.awt.event.ActionListener() {
+        d2n.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                a4ActionPerformed(evt);
+                d2nActionPerformed(evt);
             }
         });
 
-        jLabel21.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel21.setText("Wrong Username");
-
-        jLabel22.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel22.setText("Añadir Paper-Term:");
-
-        apt1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        apt1.setForeground(new java.awt.Color(153, 153, 153));
-        apt1.setText("name1");
-        apt1.addMouseListener(new java.awt.event.MouseAdapter() {
+        eliminarrelacion.setText("jLabel4");
+        eliminarrelacion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                apt1MouseClicked(evt);
-            }
-        });
-        apt1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                apt1ActionPerformed(evt);
+                eliminarrelacionMouseClicked(evt);
             }
         });
 
-        apt2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        apt2.setForeground(new java.awt.Color(153, 153, 153));
-        apt2.setText("name2");
-        apt2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                apt2MouseClicked(evt);
-            }
-        });
-        apt2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                apt2ActionPerformed(evt);
-            }
-        });
+        jLabel17.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel17.setText("Añadir relación:");
 
-        jLabel23.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel23.setText("Añadir Paper-Author:");
-
-        apa1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        apa1.setForeground(new java.awt.Color(153, 153, 153));
-        apa1.setText("name1");
-        apa1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                apa1MouseClicked(evt);
-            }
-        });
-        apa1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                apa1ActionPerformed(evt);
-            }
-        });
-
-        apa2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        apa2.setForeground(new java.awt.Color(153, 153, 153));
-        apa2.setText("name2");
-        apa2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                apa2MouseClicked(evt);
-            }
-        });
-        apa2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                apa2ActionPerformed(evt);
-            }
-        });
-
-        jLabel24.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel24.setText("Añadir Paper-Conf:");
-
-        apc1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        apc1.setForeground(new java.awt.Color(153, 153, 153));
-        apc1.setText("name1");
-        apc1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                apc1MouseClicked(evt);
-            }
-        });
-        apc1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                apc1ActionPerformed(evt);
-            }
-        });
-
-        apc2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        apc2.setForeground(new java.awt.Color(153, 153, 153));
-        apc2.setText("name2");
-        apc2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                apc2MouseClicked(evt);
-            }
-        });
-        apc2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                apc2ActionPerformed(evt);
-            }
-        });
-
-        apt.setText("jLabel4");
-        apt.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                aptMouseClicked(evt);
-            }
-        });
-
-        apa.setText("jLabel4");
-        apa.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                apaMouseClicked(evt);
-            }
-        });
-
-        apc.setText("jLabel4");
-        apc.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                apcMouseClicked(evt);
-            }
-        });
-
-        wapt.setForeground(new java.awt.Color(255, 0, 0));
-        wapt.setText("Wrong Username");
-
-        wapc.setForeground(new java.awt.Color(255, 0, 0));
-        wapc.setText("Wrong Username");
-
-        wapa.setForeground(new java.awt.Color(255, 0, 0));
-        wapa.setText("Wrong Username");
-
-        Cambios.setColumns(20);
-        Cambios.setRows(5);
-        jScrollPane1.setViewportView(Cambios);
-
-        jLabel28.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel28.setText("Cambios realizados:");
-
-        jButton1.setText("Borrar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
+        jLabel18.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel18.setText("Eliminar relación:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Exitbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(45, 45, 45)
+                .addGap(43, 43, 43)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(109, 109, 109)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Logo, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(105, 105, 105)
+                        .addGap(378, 378, 378)
                         .addComponent(jLabel1)
-                        .addGap(99, 99, 99))
+                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(12, 12, 12)
-                                        .addComponent(jLabel15))
-                                    .addComponent(jLabel14)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(109, 109, 109)
+                                    .addComponent(jLabel2))
+                                .addComponent(userlabel)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                            .addComponent(jLabel7)
+                                            .addGap(102, 102, 102))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(deleteuser, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(eliminaruser, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel3)
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                        .addComponent(addusercombox, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(addpassword, javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(addusername, javax.swing.GroupLayout.Alignment.LEADING))
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(añadeuser, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addGap(28, 28, 28)))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel9)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(chmodusername)
+                                                .addComponent(chmodpassword, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(cambiapass, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(chuser)
+                                                .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(chmod, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jLabel5))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGap(8, 8, 8)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(a1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(añadeterm, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGap(23, 23, 23)
+                                        .addComponent(selanode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addGap(112, 112, 112)
+                                        .addComponent(jLabel15))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(a3, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(23, 23, 23)
+                                            .addComponent(seldnode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                            .addGap(112, 112, 112)
+                                            .addComponent(jLabel16))))
+                                .addGap(33, 33, 33)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel16)
-                                            .addComponent(a3, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(añadeauthor, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabel17)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel19)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(a2, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(añadeconf, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabel18))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(12, 12, 12)
-                                        .addComponent(jLabel20))
-                                    .addComponent(jLabel21)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(a4, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(añaedpaper, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(deletenode, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(añadenode, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGap(96, 96, 96)
+                                .addComponent(jLabel12)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(79, 79, 79)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel23)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(apa1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(apa2, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(apa, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel22)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(apt1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(apt2, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(apt, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(wapt)
-                                            .addComponent(wapa)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(12, 12, 12)
-                                        .addComponent(jLabel24)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(apc1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(apc2, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(apc, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(wapc)))
-                                .addGap(0, 18, Short.MAX_VALUE))
+                                .addGap(120, 120, 120)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 456, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(jLabel28)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jButton1)))
+                                .addContainerGap())
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel13)
-                                .addGap(225, 225, 225))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(userlabel)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addComponent(jLabel3))
-                            .addComponent(jLabel4)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(addusername, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(añadeuser, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(12, 12, 12)
-                                    .addComponent(jLabel7))
-                                .addComponent(wdeleteuser)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(deleteuser, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(eliminaruser, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel10)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(chuser, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(chmod, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(40, 40, 40)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(wchmod)
-                                    .addComponent(jLabel9)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel5))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(chmodusername)
-                                            .addComponent(chmodpassword, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(cambiapass, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel28)
-                                .addGap(143, 143, 143)
-                                .addComponent(jButton1))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(24, 24, 24))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(135, 135, 135)
-                .addComponent(jLabel12)
-                .addGap(160, 160, 160)
-                .addComponent(jLabel11)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                    .addComponent(dnp, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                    .addComponent(d2n, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGap(18, 18, 18)
+                                                    .addComponent(seldre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGap(18, 18, 18)
+                                                    .addComponent(eliminarrelacion, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                    .addComponent(anp, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                    .addComponent(an2, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGap(18, 18, 18)
+                                                    .addComponent(selare, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGap(18, 18, 18)
+                                                    .addComponent(añadirrelacion, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(layout.createSequentialGroup()
+                                                            .addGap(188, 188, 188)
+                                                            .addComponent(jLabel13))
+                                                        .addGroup(layout.createSequentialGroup()
+                                                            .addGap(205, 205, 205)
+                                                            .addComponent(jLabel18)))
+                                                    .addGap(122, 122, 122)))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addComponent(jLabel17)
+                                                .addGap(170, 170, 170)))
+                                        .addGap(88, 88, 88))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addContainerGap())))))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(error, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(226, 226, 226)
+                .addComponent(Exitbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(userlabel)
-                        .addGap(14, 14, 14)
-                        .addComponent(jLabel1)
-                        .addGap(5, 5, 5)
-                        .addComponent(jLabel2)
-                        .addGap(41, 41, 41)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(añadeuser, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(101, 101, 101)
+                                .addComponent(jLabel2)
+                                .addGap(27, 27, 27)
                                 .addComponent(jLabel3)
-                                .addGap(18, 18, 18)
-                                .addComponent(addusername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel4)
-                        .addGap(5, 5, 5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(addusername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(addpassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(añadeuser, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(addusercombox, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(158, 158, 158)
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(chmodusername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(chmodpassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(cambiapass, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(38, 38, 38)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(eliminaruser, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel7)
-                                .addGap(18, 18, 18)
-                                .addComponent(deleteuser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(wdeleteuser))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(Logo, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(9, 9, 9)
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(chmodusername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(chmodpassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(cambiapass, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(wchmod)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel9)
-                        .addGap(5, 5, 5)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(chmod, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(chuser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel10))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(168, 168, 168)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel28)
-                            .addComponent(jButton1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel11)
-                                .addGap(33, 33, 33))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel12)
-                                .addGap(18, 18, 18)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(añadeterm, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
+                                .addGap(5, 5, 5)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel15)
-                                    .addComponent(jLabel16))
-                                .addGap(18, 18, 18)
-                                .addComponent(a1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel14)
+                                    .addComponent(deleteuser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(eliminaruser, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(chuser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(chmod, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel18)
-                                .addGap(5, 5, 5)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(añadeconf, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(a2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel19))
+                                .addGap(37, 37, 37)
+                                .addComponent(jLabel1))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel20)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(a4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(añaedpaper, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(userlabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(61, 61, 61)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel28)
+                                    .addComponent(jButton1))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel21)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE))
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel13)
-                        .addGap(16, 16, 16)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel15)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(apt, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(wapt))
                                 .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(apa, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(wapa)))
+                                .addComponent(a1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(añadeauthor, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(a3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel22)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(apt1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(apt2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel17))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(72, 72, 72)
+                                .addGap(4, 4, 4)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(apa1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(apa2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel23))))
-                        .addGap(26, 26, 26)
+                                    .addComponent(añadenode, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(selanode, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(30, 30, 30)
+                        .addComponent(jLabel16)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(apc, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(wapc))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(a3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(4, 4, 4)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(apc1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(apc2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel24))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(25, 25, 25)))
-                .addComponent(Exitbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(deletenode, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(seldnode, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel13)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel17)
+                            .addComponent(jLabel12))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(anp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(an2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(añadirrelacion, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(selare, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                        .addComponent(jLabel18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(dnp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(d2n, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(eliminarrelacion, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(seldre, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(48, 48, 48)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Exitbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(error))
                 .addContainerGap())
         );
 
@@ -872,80 +710,54 @@ public class GestionAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_addusernameMouseClicked
 
     private void añadeuserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_añadeuserMouseClicked
-        if (addusername.getText().equals("username")){
-            jLabel4.setForeground(Color.red);
-            jLabel4.setText("Wrong username");
-            jLabel4.setVisible(true);
+        // TODO add your handling code here:
+        String usuario = addusername.getText();
+        String password = addpassword.getText();
+        String selected = (String) addusercombox.getSelectedItem();
+        if (ExisteixUsuari(usuario)){
+            error.setVisible(true);
+            error.setForeground(Color.red);
+            String texterror = "";
+            texterror += "Error: El usuari con username: ";
+            texterror += usuario;
+            texterror += " ya existe";
+            error.setText(texterror);
         }
-        else if (addusername.getText().equals("")){
-            jLabel4.setForeground(Color.red);
-            jLabel4.setText("Wrong username");
-            jLabel4.setVisible(true);
+        else if (("".equals(password)) || ("password".equals(password))) {
+            error.setVisible(true);
+            error.setForeground(Color.red);
+            error.setText("Error: Escriba un password correcto");            
+        }
+        else if (selected.equals("Seleccione tipo")) {
+            error.setVisible(true);
+            error.setForeground(Color.red);
+            error.setText("Error: Seleccione un tipo de usuario correcto");            
         }
         else {
-            FileReader file = null;
-            try {
-                file = new FileReader("src/com/prop45/ficheros/users&passwords.txt");
-                BufferedReader reader = new BufferedReader(file);
-                String usuario= "";
-                String line =  reader.readLine();
-                boolean found = false;
-                while (line != null && found == false) {
-                    if (line != null) {
-                        int i = 0;
-                        while (line.charAt(i) != ' ') i++;
-                        usuario = line.substring(0,i);
-                        if (addusername.getText().equals(usuario)) {
-                            found = true;
-                        }
-                    }
-                    line = reader.readLine();
-                }   
-                if (found) {
-                    jLabel4.setForeground(Color.red);
-                    jLabel4.setText("Wrong username");
-                    jLabel4.setVisible(true);
-                }
-                else {
-                    FileWriter TextOut = null;
-                    try {
-                        jLabel4.setForeground(Color.green);
-                        jLabel4.setText("The user has been add successfully");
-                        jLabel4.setVisible(true);
-                        File TextFile = new File("src/com/prop45/ficheros/users&passwords.txt");
-                        TextOut = new FileWriter(TextFile, true);
-                        TextOut.write("\n");
-                        TextOut.write(addusername.getText());
-                        TextOut.write(" ");
-                        TextOut.write("contraseña N");
-                        TextOut.close();
-                        String cambiosrealizados;
-                        cambiosrealizados = Cambios.getText();
-                        cambiosrealizados += "Añadio el usuario ";
-                        cambiosrealizados += addusername.getText();
-                        cambiosrealizados += "\n";
-                        Cambios.setText(cambiosrealizados);
-                        
-                    } catch (IOException ex) {
-                        Logger.getLogger(GestionAdmin.class.getName()).log(Level.SEVERE, null, ex);
-                    } finally {
-                        try {
-                            TextOut.close();
-                        } catch (IOException ex) {
-                            Logger.getLogger(GestionAdmin.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                    }
-                }   } catch (FileNotFoundException ex) {
-                Logger.getLogger(GestionAdmin.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IOException ex) {
-                Logger.getLogger(GestionAdmin.class.getName()).log(Level.SEVERE, null, ex);
-            } finally {
-                try {
-                    file.close();
-                } catch (IOException ex) {
-                    Logger.getLogger(GestionAdmin.class.getName()).log(Level.SEVERE, null, ex);
-                }
+            GuardarUsuari(usuario,password);
+            addusername.setForeground(Color.gray);
+            addpassword.setForeground(Color.gray);
+            addusername.setText("username");
+            addpassword.setText("password");
+            String cambiosrealizados;
+            cambiosrealizados = Cambios.getText();
+            cambiosrealizados += "Añadio el usuario ";
+            if (selected.equals("Normal")) {
+                cambiosrealizados += "NORMAL ";
             }
+            else {
+                cambiosrealizados += "ADMINISTRADOR ";
+            }
+            cambiosrealizados += "con username: ";
+            cambiosrealizados += usuario;
+            cambiosrealizados += " y password: ";
+            cambiosrealizados += password;
+            cambiosrealizados += "\n";
+            Cambios.setText(cambiosrealizados);
+            error.setVisible(true);
+            error.setForeground(Color.green);
+            error.setText("Usuario añadido correctamente");
+            addusercombox.setSelectedIndex(0);
         }
     }//GEN-LAST:event_añadeuserMouseClicked
 
@@ -963,78 +775,51 @@ public class GestionAdmin extends javax.swing.JFrame {
 
     private void cambiapassMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cambiapassMouseClicked
         // TODO add your handling code here:
-        if (chmodusername.getText().equals("username")){
-            wchmod.setForeground(Color.red);
-            wchmod.setText("Wrong username");
-            wchmod.setVisible(true);
+        String usuario = chmodusername.getText();
+        String new_password = chmodpassword.getText();
+        String old_password = consultar_password(usuario);
+        if (!ExisteixUsuari(usuario)){
+            error.setVisible(true);
+            error.setForeground(Color.red);
+            String texterror = "";
+            texterror += "Error: El usuari con username: ";
+            texterror += usuario;
+            texterror += " no existe";
+            error.setText(texterror);
         }
-        else if (chmodusername.getText().equals("")){
-            wchmod.setForeground(Color.red);
-            wchmod.setText("Wrong username");
-            wchmod.setVisible(true);
+        else if (("".equals(new_password)) || ("password".equals(new_password))) {
+            error.setVisible(true);
+            error.setForeground(Color.red);
+            error.setText("Error: Escriba un password correcto");            
         }
-        else if (chmodpassword.getText().equals("password")){
-            wchmod.setForeground(Color.red);
-            wchmod.setText("Wrong password");
-            wchmod.setVisible(true);
-        }
-        else if (chmodpassword.getText().equals("")){
-            wchmod.setForeground(Color.red);
-            wchmod.setText("Wrong password");
-            wchmod.setVisible(true);
-        }
+        else if (new_password.equals(old_password)) {
+            error.setVisible(true);
+            error.setForeground(Color.red);
+            error.setText("Error: El password escrito es el mismo que el antiguo");            
+        }        
         else {
-            FileReader file = null;
-            try {
-                file = new FileReader("src/com/prop45/ficheros/users&passwords.txt");
-                BufferedReader reader = new BufferedReader(file);
-                String usuario= "";
-                String line =  reader.readLine();
-                boolean found = false;
-                while (line != null && found == false) {
-                    if (line != null) {
-                        int i = 0;
-                        while (line.charAt(i) != ' ') i++;
-                        usuario = line.substring(0,i);
-                        if (chmodusername.getText().equals(usuario)) {
-                            found = true;
-                        }
-                    }
-                    line = reader.readLine();
-                }   
-                if (found=false) {
-                    wchmod.setForeground(Color.red);
-                    wchmod.setText("Wrong username");
-                    wchmod.setVisible(true);
-                }
-                else {
-                    FileWriter TextOut = null;
-                    wchmod.setForeground(Color.green);
-                    wchmod.setText("The password had been changed successfully");
-                    wchmod.setVisible(true);
-                    String cambiosrealizados;
-                    cambiosrealizados = Cambios.getText();
-                    cambiosrealizados += "Cambio la contraseña del usuario ";
-                    cambiosrealizados += chmodusername.getText();
-                    cambiosrealizados += "\n";
-                    Cambios.setText(cambiosrealizados);
-                   }   } catch (FileNotFoundException ex) {
-                Logger.getLogger(GestionAdmin.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IOException ex) {
-                Logger.getLogger(GestionAdmin.class.getName()).log(Level.SEVERE, null, ex);
-            } finally {
-                try {
-                    file.close();
-                } catch (IOException ex) {
-                    Logger.getLogger(GestionAdmin.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
+            modificar_password(usuario,old_password,new_password);
+            chmodusername.setForeground(Color.gray);
+            chmodpassword.setForeground(Color.gray);
+            chmodusername.setText("username");
+            chmodpassword.setText("password(new)");
+            String cambiosrealizados;
+            cambiosrealizados = Cambios.getText();
+            cambiosrealizados += "El nuevo password del usuario con username: ";
+            cambiosrealizados += usuario;
+            cambiosrealizados += " es: ";
+            cambiosrealizados += new_password;
+            cambiosrealizados += "\n";
+            Cambios.setText(cambiosrealizados);
+            error.setVisible(true);
+            error.setForeground(Color.green);
+            error.setText("Password cambiado correctamente");
         }
     }//GEN-LAST:event_cambiapassMouseClicked
 
     private void chmodpasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chmodpasswordMouseClicked
         // TODO add your handling code here:
-        if (chmodpassword.getText().equals("password")){
+        if (chmodpassword.getText().equals("password(new)")){
             chmodpassword.setText(null);
             chmodpassword.setForeground(Color.black);
         }
@@ -1046,7 +831,7 @@ public class GestionAdmin extends javax.swing.JFrame {
 
     private void deleteuserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteuserMouseClicked
         // TODO add your handling code here:
-        if (deleteuser.getText().equals("password")){
+        if (deleteuser.getText().equals("username")){
             deleteuser.setText(null);
             deleteuser.setForeground(Color.black);
         }
@@ -1058,12 +843,32 @@ public class GestionAdmin extends javax.swing.JFrame {
 
     private void eliminaruserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminaruserMouseClicked
         // TODO add your handling code here:
-        String cambiosrealizados;
-        cambiosrealizados = Cambios.getText();
-        cambiosrealizados += "Eliminó el usuario ";
-        cambiosrealizados += deleteuser.getText();
-        cambiosrealizados += "\n";
-        Cambios.setText(cambiosrealizados);
+        String usuario = deleteuser.getText();
+        if (!ExisteixUsuari(usuario)) {
+            error.setVisible(true);
+            error.setForeground(Color.red);
+            String texterror = "";
+            texterror += "Error: El usuario con username: ";
+            texterror += usuario;
+            texterror += " no existe";
+            error.setText(texterror);
+        }
+        else {
+            String password = consultar_password(usuario);
+            borrarlinea(usuario,password);
+            deleteuser.setForeground(Color.gray);
+            deleteuser.setText("username");
+            String cambiosrealizados;
+            cambiosrealizados = Cambios.getText();
+            cambiosrealizados += "Añadio el usuario con username: ";
+            cambiosrealizados += usuario;
+            cambiosrealizados += "\n";
+            Cambios.setText(cambiosrealizados);
+            error.setVisible(true);
+            error.setForeground(Color.green);
+            error.setText("Usuario eliminado correctamente");
+        }
+        
     }//GEN-LAST:event_eliminaruserMouseClicked
 
     private void chuserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chuserMouseClicked
@@ -1080,17 +885,35 @@ public class GestionAdmin extends javax.swing.JFrame {
 
     private void chmodMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chmodMouseClicked
         // TODO add your handling code here:
-        String cambiosrealizados;
-        cambiosrealizados = Cambios.getText();
-        cambiosrealizados += "Cambio los permisos del usuario ";
-        cambiosrealizados += chuser.getText();
-        cambiosrealizados += "\n";
-        Cambios.setText(cambiosrealizados);
+        String username = chuser.getText();
+        String selected = (String) jComboBox2.getSelectedItem();
+        if (username.equals("") || username.equals("username")) {
+            error.setVisible(true);
+            error.setForeground(Color.red);
+            error.setText("Error: El username del usuario es incorrecto");
+        }
+        else if (selected.equals("Seleccione tipo")) {
+            error.setVisible(true);
+            error.setForeground(Color.red);
+            error.setText("Error: Seleccione un tipo de usuario correcto");
+        }
+        else {
+            chuser.setForeground(Color.gray);
+            chuser.setText("username");
+            String cambiosrealizados;
+            cambiosrealizados = Cambios.getText();
+            cambiosrealizados += "Cambio los permisos del usuario " + chuser.getText() + " a " + selected + "\n";
+            Cambios.setText(cambiosrealizados);
+            jComboBox2.setSelectedIndex(0);
+            error.setVisible(true);
+            error.setForeground(Color.green);
+            error.setText("Ha cambiado el tipo usuario con exito");
+        }
     }//GEN-LAST:event_chmodMouseClicked
 
     private void a1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_a1MouseClicked
         // TODO add your handling code here:
-        if (a1.getText().equals("name")){
+        if (a1.getText().equals("Node name")){
             a1.setText(null);
             a1.setForeground(Color.black);
         }
@@ -1100,29 +923,108 @@ public class GestionAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_a1ActionPerformed
 
-    private void añadetermMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_añadetermMouseClicked
+    private void añadenodeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_añadenodeMouseClicked
         // TODO add your handling code here:
-        String cambiosrealizados;
-        cambiosrealizados = Cambios.getText();
-        cambiosrealizados += "Añadio el Term ";
-        cambiosrealizados += a1.getText();
-        cambiosrealizados += "\n";
-        Cambios.setText(cambiosrealizados);
-    }//GEN-LAST:event_añadetermMouseClicked
+        String tipo = (String) selanode.getSelectedItem();
+        String username = a1.getText();
+        if (tipo.equals("Seleccione el tipo")) {
+            error.setVisible(true);
+            error.setForeground(Color.red);
+            error.setText("Error: Seleccione un tipo de nodo correcto"); 
+        }
+        else {
+            String cambiosrealizados;
+            cambiosrealizados = Cambios.getText();
+            cambiosrealizados += "Añadio el/la " + tipo + " con nombre: " + username + "\n";
+            Cambios.setText(cambiosrealizados);
+            a1.setForeground(Color.gray);
+            a1.setText("Node name");
+            error.setForeground(Color.green);
+            error.setText("Añadió el nodo correctamente");
+            selanode.setSelectedIndex(0);
+        }
+    }//GEN-LAST:event_añadenodeMouseClicked
 
-    private void añadeauthorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_añadeauthorMouseClicked
+    private void anpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_anpMouseClicked
         // TODO add your handling code here:
-        String cambiosrealizados;
-        cambiosrealizados = Cambios.getText();
-        cambiosrealizados += "Añadio el Author ";
-        cambiosrealizados += a3.getText();
-        cambiosrealizados += "\n";
-        Cambios.setText(cambiosrealizados);
-    }//GEN-LAST:event_añadeauthorMouseClicked
+        if (anp.getText().equals("Paper name")){
+            anp.setText(null);
+            anp.setForeground(Color.black);
+        }
+    }//GEN-LAST:event_anpMouseClicked
+
+    private void anpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anpActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_anpActionPerformed
+
+    private void an2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_an2MouseClicked
+        // TODO add your handling code here:
+        if (an2.getText().equals("Node 2 name")){
+            an2.setText(null);
+            an2.setForeground(Color.black);
+        }
+    }//GEN-LAST:event_an2MouseClicked
+
+    private void an2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_an2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_an2ActionPerformed
+
+    private void añadirrelacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_añadirrelacionMouseClicked
+        // TODO add your handling code here:
+        String paper = anp.getText();
+        String node2 = an2.getText();
+        String selected = (String) selare.getSelectedItem();
+        if (paper.equals("") || paper.equals("Paper name")) {
+            error.setVisible(true);
+            error.setForeground(Color.red);
+            error.setText("Error: Seleccione un nombe de Paper correcto");
+        }
+        else if (selected.equals("Seleccione el tipo")) {
+            error.setVisible(true);
+            error.setForeground(Color.red);
+            error.setText("Error: Seleccione un tipo de relación correcto");
+        }
+        else if (node2.equals("") || node2.equals("Node 2 name")) {
+            error.setVisible(true);
+            error.setForeground(Color.red);
+            error.setText("Error: Seleccione un nombe para el segundo nodo correcto");
+        }
+        else {
+            String cambiosrealizados;
+            cambiosrealizados = Cambios.getText();
+            cambiosrealizados += "Añadio la relacion " + selected + ": " + paper + "-" + node2 + "\n";
+            Cambios.setText(cambiosrealizados);
+            an2.setForeground(Color.gray);
+            an2.setText("Node 2 name");
+            anp.setForeground(Color.gray);
+            anp.setText("Paper name");
+            error.setForeground(Color.green);
+            error.setText("Añadió la relación correctamente");
+            selare.setSelectedIndex(0);
+        }
+    }//GEN-LAST:event_añadirrelacionMouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        Cambios.setText(null);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void addpasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addpasswordMouseClicked
+        // TODO add your handling code here:
+        if (addpassword.getText().equals("password")) {
+            addpassword.setText(null);
+            addpassword.setForeground(Color.black);
+        }
+    }//GEN-LAST:event_addpasswordMouseClicked
+
+    private void addpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addpasswordActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_addpasswordActionPerformed
 
     private void a3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_a3MouseClicked
         // TODO add your handling code here:
-        if (a3.getText().equals("name")){
+        if (a3.getText().equals("Node name")){
             a3.setText(null);
             a3.setForeground(Color.black);
         }
@@ -1132,162 +1034,91 @@ public class GestionAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_a3ActionPerformed
 
-    private void añadeconfMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_añadeconfMouseClicked
+    private void deletenodeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deletenodeMouseClicked
         // TODO add your handling code here:
-        String cambiosrealizados;
-        cambiosrealizados = Cambios.getText();
-        cambiosrealizados += "Añadio la Conferencia ";
-        cambiosrealizados += a2.getText();
-        cambiosrealizados += "\n";
-        Cambios.setText(cambiosrealizados);
-    }//GEN-LAST:event_añadeconfMouseClicked
-
-    private void a2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_a2MouseClicked
-        // TODO add your handling code here:
-        if (a2.getText().equals("name")){
-            a2.setText(null);
-            a2.setForeground(Color.black);
+        String tipo = (String) seldnode.getSelectedItem();
+        if (!tipo.equals("Seleccione el tipo")) { 
+            String cambiosrealizados;
+            cambiosrealizados = Cambios.getText();
+            cambiosrealizados += "Eliminó el/la " + tipo + "con nombre: " + a3.getText() + "\n";
+            Cambios.setText(cambiosrealizados);
+            a3.setForeground(Color.gray);
+            a3.setText("Node name");
+            error.setForeground(Color.green);
+            error.setText("Eliminó el nodo correctamente");
+            seldnode.setSelectedIndex(0);
         }
-    }//GEN-LAST:event_a2MouseClicked
-
-    private void a2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_a2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_a2ActionPerformed
-
-    private void añaedpaperMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_añaedpaperMouseClicked
-        // TODO add your handling code here:
-        String cambiosrealizados;
-        cambiosrealizados = Cambios.getText();
-        cambiosrealizados += "Añadie el Paper ";
-        cambiosrealizados += a4.getText();
-        cambiosrealizados += "\n";
-        Cambios.setText(cambiosrealizados);
-    }//GEN-LAST:event_añaedpaperMouseClicked
-
-    private void a4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_a4MouseClicked
-        // TODO add your handling code here:
-        if (a4.getText().equals("name")){
-            a4.setText(null);
-            a4.setForeground(Color.black);
+        else {
+            error.setVisible(true);
+            error.setForeground(Color.red);
+            error.setText("Error: Seleccione un tipo de nodo correcto");
         }
-    }//GEN-LAST:event_a4MouseClicked
+    }//GEN-LAST:event_deletenodeMouseClicked
 
-    private void a4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_a4ActionPerformed
+    private void dnpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dnpMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_a4ActionPerformed
-
-    private void apt1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_apt1MouseClicked
-        // TODO add your handling code here:
-        if (apt1.getText().equals("name1")){
-            apt1.setText(null);
-            apt1.setForeground(Color.black);
+        if (dnp.getText().equals("Paper name")){
+            dnp.setText(null);
+            dnp.setForeground(Color.black);
         }
-    }//GEN-LAST:event_apt1MouseClicked
+    }//GEN-LAST:event_dnpMouseClicked
 
-    private void apt1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apt1ActionPerformed
+    private void dnpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dnpActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_apt1ActionPerformed
+    }//GEN-LAST:event_dnpActionPerformed
 
-    private void apt2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_apt2MouseClicked
+    private void d2nMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_d2nMouseClicked
         // TODO add your handling code here:
-        if (apt2.getText().equals("name2")){
-            apt2.setText(null);
-            apt2.setForeground(Color.black);
+        if (d2n.getText().equals("Node 2 name")){
+            d2n.setText(null);
+            d2n.setForeground(Color.black);
         }
-    }//GEN-LAST:event_apt2MouseClicked
+    }//GEN-LAST:event_d2nMouseClicked
 
-    private void apt2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apt2ActionPerformed
+    private void d2nActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_d2nActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_apt2ActionPerformed
+    }//GEN-LAST:event_d2nActionPerformed
 
-    private void apa1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_apa1MouseClicked
+    private void eliminarrelacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminarrelacionMouseClicked
         // TODO add your handling code here:
-        if (apa1.getText().equals("name1")){
-            apa1.setText(null);
-            apa1.setForeground(Color.black);
+        String paper = dnp.getText();
+        String node2 = d2n.getText();
+        String selected = (String) seldre.getSelectedItem();
+        if (paper.equals("") || paper.equals("Paper name")) {
+            error.setVisible(true);
+            error.setForeground(Color.red);
+            error.setText("Error: Seleccione un nombe de Paper correcto");
         }
-    }//GEN-LAST:event_apa1MouseClicked
-
-    private void apa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apa1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_apa1ActionPerformed
-
-    private void apa2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_apa2MouseClicked
-        // TODO add your handling code here:
-        if (apa2.getText().equals("name2")){
-            apa2.setText(null);
-            apa2.setForeground(Color.black);
+        else if (selected.equals("Seleccione el tipo")) {
+            error.setVisible(true);
+            error.setForeground(Color.red);
+            error.setText("Error: Seleccione un tipo de relación correcto");
         }
-    }//GEN-LAST:event_apa2MouseClicked
-
-    private void apa2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apa2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_apa2ActionPerformed
-
-    private void apc1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_apc1MouseClicked
-        // TODO add your handling code here:
-        if (apc1.getText().equals("name1")){
-            apc1.setText(null);
-            apc1.setForeground(Color.black);
+        else if (node2.equals("") || node2.equals("Node 2 name")) {
+            error.setVisible(true);
+            error.setForeground(Color.red);
+            error.setText("Error: Seleccione un nombe para el segundo nodo correcto");
         }
-    }//GEN-LAST:event_apc1MouseClicked
-
-    private void apc1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apc1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_apc1ActionPerformed
-
-    private void apc2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_apc2MouseClicked
-        // TODO add your handling code here:
-        if (apc2.getText().equals("name2")){
-            apc2.setText(null);
-            apc2.setForeground(Color.black);
+        else {
+            String cambiosrealizados;
+            cambiosrealizados = Cambios.getText();
+            cambiosrealizados += "Eliminó la relacion " + selected + ": " + paper + "-" + node2 + "\n";
+            Cambios.setText(cambiosrealizados);
+            d2n.setForeground(Color.gray);
+            d2n.setText("Node 2 name");
+            dnp.setForeground(Color.gray);
+            dnp.setText("Paper name");
+            error.setForeground(Color.green);
+            error.setText("Eliminó la relación correctamente");
+            seldre.setSelectedIndex(0);
         }
-    }//GEN-LAST:event_apc2MouseClicked
+    }//GEN-LAST:event_eliminarrelacionMouseClicked
 
-    private void apc2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apc2ActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_apc2ActionPerformed
-
-    private void aptMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aptMouseClicked
-        // TODO add your handling code here:
-        String cambiosrealizados;
-        cambiosrealizados = Cambios.getText();
-        cambiosrealizados += "Añadio la relacion Paper: ";
-        cambiosrealizados += apt1.getText();
-        cambiosrealizados += " y Term: ";
-        cambiosrealizados += apt2.getText();
-        cambiosrealizados += "\n";
-        Cambios.setText(cambiosrealizados);
-    }//GEN-LAST:event_aptMouseClicked
-
-    private void apaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_apaMouseClicked
-        // TODO add your handling code here:
-        String cambiosrealizados;
-        cambiosrealizados = Cambios.getText();
-        cambiosrealizados += "Añadio la relacion Paper: ";
-        cambiosrealizados += apa1.getText();
-        cambiosrealizados += " y Author: ";
-        cambiosrealizados += apa2.getText();
-        cambiosrealizados += "\n";
-        Cambios.setText(cambiosrealizados);
-    }//GEN-LAST:event_apaMouseClicked
-
-    private void apcMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_apcMouseClicked
-        // TODO add your handling code here:
-        String cambiosrealizados;
-        cambiosrealizados = Cambios.getText();
-        cambiosrealizados += "Añadio la relacion Paper: ";
-        cambiosrealizados += apc1.getText();
-        cambiosrealizados += " y Conference: ";
-        cambiosrealizados += apc2.getText();
-        cambiosrealizados += "\n";
-        Cambios.setText(cambiosrealizados);
-    }//GEN-LAST:event_apcMouseClicked
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        Cambios.setText(null);
-    }//GEN-LAST:event_jButton1ActionPerformed
+        Instrucciones i = new Instrucciones();
+        i.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1331,64 +1162,49 @@ public class GestionAdmin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea Cambios;
     private javax.swing.JButton Exitbutton;
-    private javax.swing.JLabel Logo;
     private javax.swing.JTextField a1;
-    private javax.swing.JTextField a2;
     private javax.swing.JTextField a3;
-    private javax.swing.JTextField a4;
+    private javax.swing.JTextField addpassword;
+    private javax.swing.JComboBox<String> addusercombox;
     private javax.swing.JTextField addusername;
-    private javax.swing.JLabel apa;
-    private javax.swing.JTextField apa1;
-    private javax.swing.JTextField apa2;
-    private javax.swing.JLabel apc;
-    private javax.swing.JTextField apc1;
-    private javax.swing.JTextField apc2;
-    private javax.swing.JLabel apt;
-    private javax.swing.JTextField apt1;
-    private javax.swing.JTextField apt2;
-    private javax.swing.JLabel añadeauthor;
-    private javax.swing.JLabel añadeconf;
-    private javax.swing.JLabel añadeterm;
+    private javax.swing.JTextField an2;
+    private javax.swing.JTextField anp;
+    private javax.swing.JLabel añadenode;
     private javax.swing.JLabel añadeuser;
-    private javax.swing.JLabel añaedpaper;
+    private javax.swing.JLabel añadirrelacion;
     private javax.swing.JLabel cambiapass;
     private javax.swing.JLabel chmod;
     private javax.swing.JTextField chmodpassword;
     private javax.swing.JTextField chmodusername;
     private javax.swing.JTextField chuser;
+    private javax.swing.JTextField d2n;
+    private javax.swing.JLabel deletenode;
     private javax.swing.JTextField deleteuser;
+    private javax.swing.JTextField dnp;
+    private javax.swing.JLabel eliminarrelacion;
     private javax.swing.JLabel eliminaruser;
+    private javax.swing.JLabel error;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JComboBox<String> selanode;
+    private javax.swing.JComboBox<String> selare;
+    private javax.swing.JComboBox<String> seldnode;
+    private javax.swing.JComboBox<String> seldre;
     private javax.swing.JLabel userlabel;
-    private javax.swing.JLabel wapa;
-    private javax.swing.JLabel wapc;
-    private javax.swing.JLabel wapt;
-    private javax.swing.JLabel wchmod;
-    private javax.swing.JLabel wdeleteuser;
     // End of variables declaration//GEN-END:variables
 }

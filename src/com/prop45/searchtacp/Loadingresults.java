@@ -50,6 +50,7 @@ public class Loadingresults extends javax.swing.JPanel {
         titulo.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         titulo.setText("Loading results");
 
+        exitbutton.setMnemonic('E');
         exitbutton.setText("Exit");
         exitbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -57,6 +58,7 @@ public class Loadingresults extends javax.swing.JPanel {
             }
         });
 
+        jButton1.setMnemonic('A');
         jButton1.setText("Abandonar busqueda");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

@@ -102,6 +102,7 @@ public class Busquedauser extends javax.swing.JPanel {
             }
         });
 
+        Instructionsbutton1.setMnemonic('H');
         Instructionsbutton1.setText("Help");
         Instructionsbutton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,6 +110,7 @@ public class Busquedauser extends javax.swing.JPanel {
             }
         });
 
+        pathbutton.setMnemonic('P');
         pathbutton.setText("Predefined Paths");
         pathbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,6 +128,7 @@ public class Busquedauser extends javax.swing.JPanel {
         c3.setForeground(new java.awt.Color(153, 153, 153));
 
         Authorbutton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Authorbutton.setMnemonic('A');
         Authorbutton.setText("Author");
         Authorbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,6 +137,7 @@ public class Busquedauser extends javax.swing.JPanel {
         });
 
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton1.setMnemonic('T');
         jButton1.setText("Term");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -142,6 +146,7 @@ public class Busquedauser extends javax.swing.JPanel {
         });
 
         Confbutton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Confbutton.setMnemonic('C');
         Confbutton.setText("Conference");
         Confbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -150,6 +155,7 @@ public class Busquedauser extends javax.swing.JPanel {
         });
 
         Paperbutton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Paperbutton.setMnemonic('P');
         Paperbutton.setText("Paper");
         Paperbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -157,6 +163,7 @@ public class Busquedauser extends javax.swing.JPanel {
             }
         });
 
+        Returnbutton.setMnemonic('R');
         Returnbutton.setText("Return");
         Returnbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -164,6 +171,7 @@ public class Busquedauser extends javax.swing.JPanel {
             }
         });
 
+        jButton3.setMnemonic('B');
         jButton3.setText("Realiza búsqueda");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -171,6 +179,7 @@ public class Busquedauser extends javax.swing.JPanel {
             }
         });
 
+        Exitbutton.setMnemonic('E');
         Exitbutton.setText("Exit");
         Exitbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -189,6 +198,7 @@ public class Busquedauser extends javax.swing.JPanel {
         clausulas.setRows(5);
         jScrollPane1.setViewportView(clausulas);
 
+        jButton4.setMnemonic('D');
         jButton4.setText("Elimnar Clausula");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

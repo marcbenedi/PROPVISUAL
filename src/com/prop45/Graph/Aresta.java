@@ -1,6 +1,5 @@
 package com.prop45.Graph;
 
-import jdk.internal.util.xml.impl.Pair;
 
 public class Aresta {
     

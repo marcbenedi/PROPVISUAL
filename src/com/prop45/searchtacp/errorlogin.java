@@ -39,6 +39,7 @@ public class errorlogin extends javax.swing.JPanel {
         jLabel1.setForeground(new java.awt.Color(255, 0, 0));
         jLabel1.setText("Wrong user or password");
 
+        Exitbutton.setMnemonic('E');
         Exitbutton.setText("Exit");
         Exitbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -46,6 +47,7 @@ public class errorlogin extends javax.swing.JPanel {
             }
         });
 
+        loginbutton.setMnemonic('R');
         loginbutton.setText("Return to login");
         loginbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

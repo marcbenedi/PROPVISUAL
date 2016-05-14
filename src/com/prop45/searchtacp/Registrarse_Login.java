@@ -8,7 +8,9 @@ package com.prop45.searchtacp;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import static com.prop45.searchtacp.Cargando.panelmegadinamico;
+import static com.prop45.searchtacp.Cargando_database.bienvenidohoracio;
 import static com.prop45.searchtacp.Portadaylogins.paneldinamico;
+import static com.prop45.searchtacp.SearchTACP.pausa;
 
 /**
  *
@@ -39,6 +41,7 @@ public class Registrarse_Login extends javax.swing.JPanel {
 
         setPreferredSize(new java.awt.Dimension(530, 243));
 
+        busquedabutton.setMnemonic('B');
         busquedabutton.setText("Realiza búsqueda sin iniciar sesión");
         busquedabutton.setBorder(null);
         busquedabutton.addActionListener(new java.awt.event.ActionListener() {
@@ -47,6 +50,7 @@ public class Registrarse_Login extends javax.swing.JPanel {
             }
         });
 
+        loginbutton.setMnemonic('L');
         loginbutton.setText("Iniciar sesión");
         loginbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -54,6 +58,7 @@ public class Registrarse_Login extends javax.swing.JPanel {
             }
         });
 
+        Exitbutton.setMnemonic('E');
         Exitbutton.setText("Exit");
         Exitbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,7 +79,7 @@ public class Registrarse_Login extends javax.swing.JPanel {
                 .addComponent(busquedabutton, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42)
                 .addComponent(loginbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(150, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

@@ -68,6 +68,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="Exitbutton">
       <Properties>
+        <Property name="mnemonic" type="int" value="69"/>
         <Property name="text" type="java.lang.String" value="Exit"/>
       </Properties>
       <Events>
@@ -76,6 +77,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="loginbutton">
       <Properties>
+        <Property name="mnemonic" type="int" value="82"/>
         <Property name="text" type="java.lang.String" value="Return to login"/>
       </Properties>
       <Events>

@@ -12,6 +12,7 @@ package com.prop45.searchtacp;
 public class variables {
     private static boolean admin = false;
     private static boolean user = false;
+    private static boolean surt = false;
     
     public static void setAdmin() {
         admin = true;
@@ -27,5 +28,11 @@ public class variables {
     }
     public static boolean isUser() {
         return user;
+    }
+    public static void setSurt() {
+        surt = true;
+    }
+    public static boolean isSurt() {
+        return surt;
     }
 }

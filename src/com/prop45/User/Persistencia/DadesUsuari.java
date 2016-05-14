@@ -204,7 +204,6 @@ public class DadesUsuari {
 
             //Delete the original file
             if (!inFile.delete()) return false;
-
             //Rename the new file to the filename the original file had.
             if (!tempFile.renameTo(inFile)) return false;
           }

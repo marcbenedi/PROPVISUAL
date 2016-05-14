@@ -93,6 +93,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="modeadmin">
       <Properties>
+        <Property name="mnemonic" type="int" value="65"/>
         <Property name="text" type="java.lang.String" value="Modo Administrador"/>
       </Properties>
       <Events>
@@ -101,6 +102,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton2">
       <Properties>
+        <Property name="mnemonic" type="int" value="66"/>
         <Property name="text" type="java.lang.String" value="Realizar Busqueda"/>
       </Properties>
       <Events>
@@ -109,6 +111,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton3">
       <Properties>
+        <Property name="mnemonic" type="int" value="80"/>
         <Property name="text" type="java.lang.String" value="Crear Predefined Path"/>
       </Properties>
       <Events>
@@ -117,6 +120,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton4">
       <Properties>
+        <Property name="mnemonic" type="int" value="72"/>
         <Property name="text" type="java.lang.String" value="Revisar Historial"/>
       </Properties>
       <Events>
@@ -125,6 +129,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="Returnbutton">
       <Properties>
+        <Property name="mnemonic" type="int" value="76"/>
         <Property name="text" type="java.lang.String" value="Log out"/>
       </Properties>
       <Events>
@@ -133,6 +138,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="Exitbutton">
       <Properties>
+        <Property name="mnemonic" type="int" value="69"/>
         <Property name="text" type="java.lang.String" value="Exit"/>
       </Properties>
       <Events>

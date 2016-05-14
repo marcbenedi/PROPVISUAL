@@ -54,8 +54,12 @@ public class Login extends javax.swing.JPanel {
 
         setPreferredSize(new java.awt.Dimension(737, 323));
 
+        jLabel2.setDisplayedMnemonic('U');
+        jLabel2.setLabelFor(userfield);
         jLabel2.setText("Username:");
 
+        jLabel3.setDisplayedMnemonic('P');
+        jLabel3.setLabelFor(passwordfield);
         jLabel3.setText("Password:");
 
         userfield.setForeground(new java.awt.Color(153, 153, 153));
@@ -77,6 +81,7 @@ public class Login extends javax.swing.JPanel {
             }
         });
 
+        Loginbutton.setMnemonic('L');
         Loginbutton.setText("Login");
         Loginbutton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -89,6 +94,7 @@ public class Login extends javax.swing.JPanel {
             }
         });
 
+        Returnbutton.setMnemonic('R');
         Returnbutton.setText("Return");
         Returnbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,6 +102,7 @@ public class Login extends javax.swing.JPanel {
             }
         });
 
+        Exitbutton.setMnemonic('E');
         Exitbutton.setText("Exit");
         Exitbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -173,33 +180,12 @@ public class Login extends javax.swing.JPanel {
 
     private void LoginbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginbuttonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_LoginbuttonActionPerformed
-
-    private void ReturnbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReturnbuttonActionPerformed
-        // TODO add your handling code here:
-        Registrarse_Login p2 = new Registrarse_Login();
-        p2.setSize(737,323);
-        p2.setLocation(0,0);
-        p2.setBackground(Color.WHITE);
-        paneldinamico.removeAll();
-        paneldinamico.add(p2, BorderLayout.CENTER);
-        paneldinamico.revalidate();
-        paneldinamico.repaint();
-    }//GEN-LAST:event_ReturnbuttonActionPerformed
-
-    private void ExitbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitbuttonActionPerformed
-        // TODO add your handling code here:
-        Asegurar_exit ae = new Asegurar_exit();
-        ae.setVisible(true);
-    }//GEN-LAST:event_ExitbuttonActionPerformed
-
-    private void LoginbuttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LoginbuttonMouseClicked
-        // TODO add your handling code here:
+        
         String pass=new String(passwordfield.getPassword());
         try {
             FileReader file = new FileReader("src/com/prop45/ficheros/users&passwords.txt");
             BufferedReader reader = new BufferedReader(file);
-            
+            setAdmin();
             String usuario= "";
             String contraseña= "";
             String line =  reader.readLine();
@@ -259,6 +245,28 @@ public class Login extends javax.swing.JPanel {
         } catch (IOException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }     
+    }//GEN-LAST:event_LoginbuttonActionPerformed
+
+    private void ReturnbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReturnbuttonActionPerformed
+        // TODO add your handling code here:
+        Registrarse_Login p2 = new Registrarse_Login();
+        p2.setSize(737,323);
+        p2.setLocation(0,0);
+        p2.setBackground(Color.WHITE);
+        paneldinamico.removeAll();
+        paneldinamico.add(p2, BorderLayout.CENTER);
+        paneldinamico.revalidate();
+        paneldinamico.repaint();
+    }//GEN-LAST:event_ReturnbuttonActionPerformed
+
+    private void ExitbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitbuttonActionPerformed
+        // TODO add your handling code here:
+        Asegurar_exit ae = new Asegurar_exit();
+        ae.setVisible(true);
+    }//GEN-LAST:event_ExitbuttonActionPerformed
+
+    private void LoginbuttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LoginbuttonMouseClicked
+        // TODO add your handling code here:
     }//GEN-LAST:event_LoginbuttonMouseClicked
 
     private void passwordfieldMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passwordfieldMouseEntered

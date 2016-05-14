@@ -79,6 +79,7 @@ public class Prebusquedauser extends javax.swing.JPanel {
 
         Logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
+        modeadmin.setMnemonic('A');
         modeadmin.setText("Modo Administrador");
         modeadmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -86,6 +87,7 @@ public class Prebusquedauser extends javax.swing.JPanel {
             }
         });
 
+        jButton2.setMnemonic('B');
         jButton2.setText("Realizar Busqueda");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,6 +95,7 @@ public class Prebusquedauser extends javax.swing.JPanel {
             }
         });
 
+        jButton3.setMnemonic('P');
         jButton3.setText("Crear Predefined Path");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,6 +103,7 @@ public class Prebusquedauser extends javax.swing.JPanel {
             }
         });
 
+        jButton4.setMnemonic('H');
         jButton4.setText("Revisar Historial");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -107,6 +111,7 @@ public class Prebusquedauser extends javax.swing.JPanel {
             }
         });
 
+        Returnbutton.setMnemonic('L');
         Returnbutton.setText("Log out");
         Returnbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -114,6 +119,7 @@ public class Prebusquedauser extends javax.swing.JPanel {
             }
         });
 
+        Exitbutton.setMnemonic('E');
         Exitbutton.setText("Exit");
         Exitbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

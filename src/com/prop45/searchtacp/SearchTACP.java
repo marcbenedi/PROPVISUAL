@@ -9,7 +9,11 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.io.File;
 import static com.prop45.searchtacp.Cargando_database.bienvenidohoracio;
+import static com.prop45.searchtacp.Cargando_database.exitbutton0;
+import static com.prop45.searchtacp.Cargando_database.gift;
+import static com.prop45.searchtacp.Cargando_database.titulo;
 import static com.prop45.searchtacp.Portadaylogins.paneldinamico;
+import static com.prop45.searchtacp.variables.isSurt;
 
 /**
  *
@@ -20,6 +24,9 @@ public class SearchTACP {
     /**
      * @param args the command line arguments
      */
+    
+    public static boolean surt = false;
+    
     public static void pausa(int segons){ 
             try { 
                 segons *= 1000;
@@ -30,21 +37,16 @@ public class SearchTACP {
     public static void main(String[] args) {
         // TODO code application logic hereç
         File doc = new File("src/com/prop45/ficheros/actualuser.txt");
-        doc.delete();        
+        doc.delete();  
         Cargando cg = new Cargando();
         cg.setVisible(true);
-        bienvenidohoracio.setText("Leyendo base de datos");
-        pausa(6);
-        bienvenidohoracio.setText("Calculando page rank");
-        pausa(6);
-        Registrarse_Login p2 = new Registrarse_Login();
-        p2.setSize(737,323);
-        p2.setLocation(0,0);
-        p2.setBackground(Color.WHITE);
-        paneldinamico.removeAll();
-        paneldinamico.add(p2, BorderLayout.CENTER);
-        paneldinamico.revalidate();
-        paneldinamico.repaint();        
+        bienvenidohoracio.setVisible(false);
+        titulo.setVisible(false);
+        gift.setVisible(false);
+        exitbutton0.setVisible(false);
+        pausa(1);
+        Setroute sr = new Setroute();
+        sr.setVisible(true); 
     }
     
 }

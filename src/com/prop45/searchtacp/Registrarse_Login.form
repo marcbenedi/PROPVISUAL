@@ -53,6 +53,7 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="busquedabutton">
       <Properties>
+        <Property name="mnemonic" type="int" value="66"/>
         <Property name="text" type="java.lang.String" value="Realiza b&#xfa;squeda sin iniciar sesi&#xf3;n"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="null"/>
@@ -64,6 +65,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="loginbutton">
       <Properties>
+        <Property name="mnemonic" type="int" value="76"/>
         <Property name="text" type="java.lang.String" value="Iniciar sesi&#xf3;n"/>
       </Properties>
       <Events>
@@ -72,6 +74,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="Exitbutton">
       <Properties>
+        <Property name="mnemonic" type="int" value="69"/>
         <Property name="text" type="java.lang.String" value="Exit"/>
       </Properties>
       <Events>

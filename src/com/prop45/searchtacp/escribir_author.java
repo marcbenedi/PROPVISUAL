@@ -45,6 +45,7 @@ public class escribir_author extends javax.swing.JFrame {
 
         escoge.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Definir", "No Definir" }));
 
+        jButton1.setMnemonic('A');
         jButton1.setText("Añadir");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -55,6 +56,7 @@ public class escribir_author extends javax.swing.JFrame {
         wa.setForeground(new java.awt.Color(255, 0, 0));
         wa.setText("Wrong Argument!");
 
+        jButton2.setMnemonic('C');
         jButton2.setText("Cancel");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
