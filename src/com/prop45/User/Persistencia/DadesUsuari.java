@@ -201,7 +201,8 @@ public class DadesUsuari {
                 pw.flush();
               }
             }
-
+            pw.close();
+            br.close();
             //Delete the original file
             if (!inFile.delete()) return false;
             //Rename the new file to the filename the original file had.
@@ -209,19 +210,10 @@ public class DadesUsuari {
           }
           catch (FileNotFoundException ex) {}
           catch (IOException ex) {}
-          finally{
             // En el finally cerramos el fichero, para asegurarnos
             // que se cierra tanto si todo va bien como si salta 
             // una excepcion.
-            try{                  
-                if( null != pw ){   
-                    pw.close();     
-                  } 
-                if (null != br) {
-                    br.close();
-                }
-            }catch (Exception e2){}
-          }
+            
           return true;
     } 
     

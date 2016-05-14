@@ -51,7 +51,7 @@ public class Setroute extends javax.swing.JFrame {
 
         jLabel1.setText("Escriba la ruta de la carpet Resources:");
 
-        ruta.setText("C:\\Usuario\\nombreusuario\\...\\ficheros");
+        ruta.setText("C:\\Users\\Miquel Baena\\Documents\\NetBeansProjects\\SearchTACP\\src\\com\\prop45\\ficheros");
         ruta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rutaActionPerformed(evt);

@@ -36,27 +36,6 @@ public class Prebusquedauser extends javax.swing.JPanel {
         Icon icono_logo = new ImageIcon(Logo_image.getImage().getScaledInstance(266, 157, Image.SCALE_DEFAULT));
         Logo.setIcon(icono_logo);
         this.setBackground(Color.WHITE);
-        FileReader file = new FileReader("src/com/prop45/ficheros/actualuser.txt");
-        BufferedReader reader = new BufferedReader(file);
-        String usuario;
-        String line =  reader.readLine();
-        int i = 0;
-        while (line != null) {
-            if (line != null) {
-                if (line != "") { 
-                    while (line.charAt(i) != ' ') i++;
-                    usuario = line.substring(0,i);
-                    userlabel.setText(usuario);
-                }
-            }
-            line = reader.readLine();
-        }
-        if (isAdmin()) {
-            modeadmin.setVisible(true);
-        }
-        else {
-            modeadmin.setVisible(false);
-        }
     }
 
     /**
@@ -142,13 +121,8 @@ public class Prebusquedauser extends javax.swing.JPanel {
                 .addGap(52, 52, 52)
                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(82, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(Returnbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Exitbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -158,8 +132,13 @@ public class Prebusquedauser extends javax.swing.JPanel {
                                 .addGap(25, 25, 25)
                                 .addComponent(userlabel)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(modeadmin, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                        .addComponent(modeadmin, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(Returnbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Exitbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(27, 27, 27))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

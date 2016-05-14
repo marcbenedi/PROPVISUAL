@@ -5,6 +5,7 @@
  */
 package com.prop45.searchtacp;
 
+import static com.prop45.User.Persistencia.DadesUsuari.ExisteixUsuari_contrasenya;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.io.BufferedReader;
@@ -20,6 +21,7 @@ import static com.prop45.searchtacp.Cargando.panelmegadinamico;
 import static com.prop45.searchtacp.Portadaylogins.paneldinamico;
 import static com.prop45.searchtacp.variables.setAdmin;
 import static com.prop45.searchtacp.variables.setUser;
+import static com.prop45.searchtacp.variables.setUsuario;
 import static com.prop45.searchtacp.variables.setfalseAdmin;
 
 /**
@@ -182,69 +184,33 @@ public class Login extends javax.swing.JPanel {
         // TODO add your handling code here:
         
         String pass=new String(passwordfield.getPassword());
-        try {
-            FileReader file = new FileReader("src/com/prop45/ficheros/users&passwords.txt");
-            BufferedReader reader = new BufferedReader(file);
-            setAdmin();
-            String usuario= "";
-            String contraseña= "";
-            String line =  reader.readLine();
-            String admin="";
-            boolean found = false;
-            
-            while (line != null) {
-                if (line != null) {
-                    int i = 0;
-                    while (line.charAt(i) != ' ') i++;
-                    usuario = line.substring(0,i);
-                    contraseña = line.substring(i+1, (line.length()-2));
-                    admin = line.substring(((line.length())-1), line.length());
-                    if (userfield.getText().equals(usuario) && pass.equals(contraseña)) {
-                        if (admin.equals("A")) {
-                            setAdmin();
-                        }
-                        else {
-                            setfalseAdmin();
-                        } 
-                        setUser();
-                        File archivo;
-                        archivo = new File("src/com/prop45/ficheros/actualuser.txt");
-                        archivo.createNewFile();
-                        File TextFile = new File("src/com/prop45/ficheros/actualuser.txt"); 
-                        FileWriter TextOut = new FileWriter(TextFile, true);
-                        TextOut.write(usuario);
-                        TextOut.write(" ");
-                        TextOut.write(admin);
-                        TextOut.write("\n");
-                        TextOut.close();
-                        found = true;
-                        Prebusquedauser p = new Prebusquedauser();
-                        p.setSize(738,513);
-                        p.setLocation(0,0);
-                        p.setBackground(Color.WHITE);
-                        panelmegadinamico.removeAll();
-                        panelmegadinamico.add(p, BorderLayout.CENTER);
-                        panelmegadinamico.revalidate();
-                        panelmegadinamico.repaint();
-                    }
-                }
-                line = reader.readLine();
+        String user=userfield.getText();
+        
+        if (ExisteixUsuari_contrasenya(user,pass)) {
+            try {
+                setUsuario(user);
+                Prebusquedauser p = new Prebusquedauser();
+                p.setSize(738,513);
+                p.setLocation(0,0);
+                p.setBackground(Color.WHITE);
+                panelmegadinamico.removeAll();
+                panelmegadinamico.add(p, BorderLayout.CENTER);
+                panelmegadinamico.revalidate();            
+                panelmegadinamico.repaint();
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
             }
-            if (found != true) {
-                errorlogin p3 = new errorlogin();
-                p3.setSize(737,323);
-                p3.setLocation(0,0);
-                p3.setBackground(Color.WHITE);
-                paneldinamico.removeAll();
-                paneldinamico.add(p3, BorderLayout.CENTER);
-                paneldinamico.revalidate();
-                paneldinamico.repaint();
-            }
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-        }     
+        }
+        else {
+            errorlogin p3 = new errorlogin();
+            p3.setSize(737,323);
+            p3.setLocation(0,0);
+            p3.setBackground(Color.WHITE);
+            paneldinamico.removeAll();
+            paneldinamico.add(p3, BorderLayout.CENTER);
+            paneldinamico.revalidate();
+            paneldinamico.repaint();
+        }  
     }//GEN-LAST:event_LoginbuttonActionPerformed
 
     private void ReturnbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReturnbuttonActionPerformed

@@ -10,7 +10,8 @@ package com.prop45.searchtacp;
  * @author Miquel Baena
  */
 public class variables {
-    private static boolean admin = false;
+    private static boolean admin = true;
+    private static String usuario = "";
     private static boolean user = false;
     private static boolean surt = false;
     
@@ -18,7 +19,7 @@ public class variables {
         admin = true;
     }
     public static void setfalseAdmin() {
-        admin = false;
+        admin = true;
     }
     public static boolean isAdmin() {
         return admin;
@@ -28,6 +29,12 @@ public class variables {
     }
     public static boolean isUser() {
         return user;
+    }
+    public static void setUsuario(String a) {
+        usuario= a;
+    }
+    public static String getUsurio() {
+        return usuario;
     }
     public static void setSurt() {
         surt = true;
