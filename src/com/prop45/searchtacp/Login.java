@@ -8,21 +8,21 @@ package com.prop45.searchtacp;
 import static com.prop45.User.Persistencia.DadesUsuari.ExisteixUsuari_contrasenya;
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import static javafx.application.Platform.exit;
 import static com.prop45.searchtacp.Cargando.panelmegadinamico;
+import static com.prop45.searchtacp.Portadaylogins.Logo;
 import static com.prop45.searchtacp.Portadaylogins.paneldinamico;
+import static com.prop45.searchtacp.variables.getPath;
+import static com.prop45.searchtacp.variables.getUsuario;
 import static com.prop45.searchtacp.variables.setAdmin;
 import static com.prop45.searchtacp.variables.setUser;
 import static com.prop45.searchtacp.variables.setUsuario;
-import static com.prop45.searchtacp.variables.setfalseAdmin;
+import java.awt.Image;
+import java.io.File;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -35,6 +35,9 @@ public class Login extends javax.swing.JPanel {
      */
     public Login() {
         initComponents();
+        ImageIcon Logo_image = new ImageIcon(getPath() + "\\recursos\\Images\\descarga.png");
+            Icon icono_logo = new ImageIcon(Logo_image.getImage().getScaledInstance(266, 157, Image.SCALE_DEFAULT));
+            Logo.setIcon(icono_logo);
     }
 
     /**
@@ -189,6 +192,11 @@ public class Login extends javax.swing.JPanel {
         if (ExisteixUsuari_contrasenya(user,pass)) {
             try {
                 setUsuario(user);
+                setUser();
+                File faux = new File(getPath() + "\\recursos\\ficheros\\historial_" + getUsuario() + ".txt");
+                if (!faux.exists()) {
+                    faux.createNewFile();
+                }               
                 Prebusquedauser p = new Prebusquedauser();
                 p.setSize(738,513);
                 p.setLocation(0,0);

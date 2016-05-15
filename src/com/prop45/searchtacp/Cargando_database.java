@@ -5,6 +5,12 @@
  */
 package com.prop45.searchtacp;
 
+import com.prop45.Consulta.Consulta;
+import com.prop45.DataBase.GraphDataBase;
+import com.prop45.DataBase.RelacionDataBase;
+import com.prop45.Graph.Graph;
+import com.prop45.Paths.Relacion;
+import static com.prop45.searchtacp.Historial.text;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Image;
@@ -12,7 +18,22 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import static com.prop45.searchtacp.Portadaylogins.paneldinamico;
 import static com.prop45.searchtacp.SearchTACP.pausa;
+import static com.prop45.searchtacp.variables.gdb;
+import static com.prop45.searchtacp.variables.getNextid;
+import static com.prop45.searchtacp.variables.getPath;
+import static com.prop45.searchtacp.variables.grafo;
+import static com.prop45.searchtacp.variables.rdb;
+import static com.prop45.searchtacp.variables.setNextid;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.SwingUtilities;
 
 /**
@@ -25,10 +46,7 @@ public class Cargando_database extends javax.swing.JPanel {
      * Creates new form Cargando_database
      */
     public Cargando_database() {
-        initComponents();
-        ImageIcon Loading_image = new ImageIcon("src/com/prop45/Images/loading.gif");
-        Icon icono_loading = new ImageIcon(Loading_image.getImage().getScaledInstance(61 ,61, Image.SCALE_DEFAULT));
-        gift.setIcon(icono_loading);        
+        initComponents();       
     }
 
     /**
@@ -40,29 +58,12 @@ public class Cargando_database extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        titulo = new javax.swing.JLabel();
-        gift = new javax.swing.JLabel();
         exitbutton0 = new javax.swing.JButton();
         bienvenidohoracio = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-
-        titulo.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        titulo.setText("Cargando...");
-        titulo.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
-                tituloInputMethodTextChanged(evt);
-            }
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-            }
-        });
-        titulo.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                tituloPropertyChange(evt);
-            }
-        });
 
         exitbutton0.setMnemonic('E');
         exitbutton0.setText("Exit");
@@ -131,15 +132,8 @@ public class Cargando_database extends javax.swing.JPanel {
                         .addComponent(exitbutton0, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(254, 254, 254)
-                        .addComponent(bienvenidohoracio))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(228, 228, 228)
-                        .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
-                        .addComponent(gift, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(248, 248, 248)
+                .addComponent(bienvenidohoracio)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -151,13 +145,9 @@ public class Cargando_database extends javax.swing.JPanel {
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(74, 74, 74)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(gift, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
                 .addComponent(bienvenidohoracio, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addGap(96, 96, 96)
                 .addComponent(exitbutton0, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -169,17 +159,9 @@ public class Cargando_database extends javax.swing.JPanel {
         ae.setVisible(true);
     }//GEN-LAST:event_exitbutton0ActionPerformed
 
-    private void tituloPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tituloPropertyChange
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tituloPropertyChange
-
     private void bienvenidohoracioInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_bienvenidohoracioInputMethodTextChanged
         // TODO add your handling code here:
     }//GEN-LAST:event_bienvenidohoracioInputMethodTextChanged
-
-    private void tituloInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_tituloInputMethodTextChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tituloInputMethodTextChanged
 
     private void bienvenidohoracioPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_bienvenidohoracioPropertyChange
         // TODO add your handling code here:
@@ -194,34 +176,64 @@ public class Cargando_database extends javax.swing.JPanel {
     }//GEN-LAST:event_jLabel5PropertyChange
 
     private void jLabel4ComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jLabel4ComponentHidden
-        // TODO add your handling code here:
-        pausa(5);
-        jLabel5.setVisible(false);
-        bienvenidohoracio.setText("Calculando Base Rank...");
+        FileReader file = null;
+        try {
+            // TODO add your handling code here:
+            file = new FileReader(getPath() + "\\recursos\\ficheros\\seg_id.txt");
+            BufferedReader reader = new BufferedReader(file);
+            String line =  reader.readLine();
+            String num_id = "";
+            int numero;
+            if (line != null) {
+                num_id = line.substring(0, line.length());
+            }   
+            file.close();
+            numero = Integer.parseInt(num_id);
+            setNextid(numero);
+            File f = new File(getPath() + "\\recursos\\ficheros\\seg_id.txt");
+            f = new File(getPath() + "\\recursos\\ficheros");
+            gdb = new GraphDataBase();
+            rdb = new RelacionDataBase();
+            grafo = new Graph();
+            gdb.setRoute(f);
+            rdb.setRoute(f);
+            grafo = gdb.load();
+            rdb.load();
+            jLabel5.setVisible(false);
+            bienvenidohoracio.setText("Calculando Base Rank...");
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Cargando_database.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Cargando_database.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                file.close();
+            } catch (IOException ex) {
+                Logger.getLogger(Cargando_database.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_jLabel4ComponentHidden
 
     private void jLabel5ComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jLabel5ComponentHidden
         // TODO add your handling code here:
-        pausa(5);
-        Login p1 = new Login();
-            p1.setSize(737,323);
-            p1.setLocation(0,0);
-            p1.setBackground(Color.WHITE);
-            paneldinamico.removeAll();
-            paneldinamico.add(p1, BorderLayout.CENTER);
-            paneldinamico.revalidate();
-            paneldinamico.repaint();
+        grafo.actualitzarRelevanciaGraph();
+        Registrarse_Login p1 = new Registrarse_Login();
+        p1.setSize(737,323);
+        p1.setLocation(0,0);
+        p1.setBackground(Color.WHITE);
+        paneldinamico.removeAll();
+        paneldinamico.add(p1, BorderLayout.CENTER);
+        paneldinamico.revalidate();
+        paneldinamico.repaint();
     }//GEN-LAST:event_jLabel5ComponentHidden
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JLabel bienvenidohoracio;
     public static javax.swing.JButton exitbutton0;
-    public static javax.swing.JLabel gift;
     public static javax.swing.JLabel jLabel4;
     public static javax.swing.JLabel jLabel5;
     public static javax.swing.JLabel jLabel6;
     public static javax.swing.JLabel jLabel7;
-    public static javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables
 }

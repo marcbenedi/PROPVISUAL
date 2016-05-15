@@ -5,6 +5,7 @@
  */
 package com.prop45.searchtacp;
 
+import static com.prop45.searchtacp.variables.getPath;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Image;
@@ -22,7 +23,7 @@ public class Portadaylogins extends javax.swing.JPanel {
      */
     public Portadaylogins() {
         initComponents();
-        ImageIcon Logo_image = new ImageIcon("src/com/prop45/Images/descarga.png");
+        ImageIcon Logo_image = new ImageIcon(getPath() + "\\recursos\\Images\\descarga.png");
             Icon icono_logo = new ImageIcon(Logo_image.getImage().getScaledInstance(266, 157, Image.SCALE_DEFAULT));
             Logo.setIcon(icono_logo);
             this.setBackground(Color.WHITE);            
@@ -83,7 +84,7 @@ public class Portadaylogins extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Logo;
+    public static javax.swing.JLabel Logo;
     public static javax.swing.JPanel paneldinamico;
     // End of variables declaration//GEN-END:variables
 }

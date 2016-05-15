@@ -18,7 +18,10 @@ import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import static com.prop45.searchtacp.Cargando.panelmegadinamico;
+import static com.prop45.searchtacp.Portadaylogins.Logo;
 import static com.prop45.searchtacp.Portadaylogins.paneldinamico;
+import static com.prop45.searchtacp.variables.getPath;
+import static com.prop45.searchtacp.variables.getUsuario;
 import static com.prop45.searchtacp.variables.isAdmin;
 
 /**
@@ -32,7 +35,8 @@ public class Prebusquedauser extends javax.swing.JPanel {
      */
     public Prebusquedauser() throws FileNotFoundException, IOException {
         initComponents();
-        ImageIcon Logo_image = new ImageIcon("src/com/prop45/Images/descarga.png");
+        userlabel.setText(getUsuario());
+        ImageIcon Logo_image = new ImageIcon(getPath() + "\\recursos\\Images\\descarga.png");
         Icon icono_logo = new ImageIcon(Logo_image.getImage().getScaledInstance(266, 157, Image.SCALE_DEFAULT));
         Logo.setIcon(icono_logo);
         this.setBackground(Color.WHITE);

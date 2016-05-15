@@ -29,16 +29,16 @@
                       <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="ruta" min="-2" pref="486" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="ruta" min="-2" pref="517" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButton1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="369" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="368" max="-2" attributes="0"/>
                       <Component id="wrong" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="54" max="32767" attributes="0"/>
+              <EmptySpace pref="70" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -51,9 +51,9 @@
                   <Component id="ruta" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="wrong" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="38" max="32767" attributes="0"/>
+              <EmptySpace pref="43" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -61,12 +61,12 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Escriba la ruta de la carpet Resources:"/>
+        <Property name="text" type="java.lang.String" value="Escriba la ruta del ejecutable:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="ruta">
       <Properties>
-        <Property name="text" type="java.lang.String" value="C:\u005cUsers\u005cMiquel Baena\u005cDocuments\u005cNetBeansProjects\u005cSearchTACP\u005csrc\u005ccom\u005cprop45\u005cficheros" containsInvalidXMLChars="true"/>
+        <Property name="text" type="java.lang.String" value="C:\u005cUsers\u005cMiquel Baena\u005cDocuments\u005cNetBeansProjects\u005cSearchTACP\u005cdist" containsInvalidXMLChars="true"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rutaActionPerformed"/>

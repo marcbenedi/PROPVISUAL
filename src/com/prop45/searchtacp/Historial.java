@@ -5,6 +5,8 @@
  */
 package com.prop45.searchtacp;
 
+import static com.prop45.searchtacp.variables.getPath;
+import static com.prop45.searchtacp.variables.getUsuario;
 import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -30,15 +32,15 @@ public class Historial extends javax.swing.JFrame {
         this.getContentPane().setBackground(Color.BLACK);
         this.setLocationRelativeTo(null);
         text.setEditable(false);
-        FileReader file = new FileReader("src/com/prop45/ficheros/historial.txt");
+        FileReader file = new FileReader(getPath() + "\\recursos\\ficheros\\historial_" + getUsuario() + ".txt");
+        
         BufferedReader reader = new BufferedReader(file);
         String line =  reader.readLine();
-        line =  reader.readLine();
         String frase;
         String textoaux = "";
         while (line != null) {
             if (line != null) {
-                frase = line.substring(0, line.length());
+                frase = line.trim();
                 textoaux += frase;
                 textoaux += "\n";
             }
@@ -133,7 +135,7 @@ public class Historial extends javax.swing.JFrame {
         try {
             // TODO add your handling code here:
             text.setText(null);
-            bw = new BufferedWriter(new FileWriter("src/com/prop45/ficheros/historial.txt"));
+            bw = new BufferedWriter(new FileWriter(getPath() + "\\recursos\\ficheros\\historial_" + getUsuario() + ".txt"));
             bw.write("");
             bw.close();
         } catch (IOException ex) {

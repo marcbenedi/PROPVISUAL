@@ -149,7 +149,7 @@ public class escribir_conference extends javax.swing.JFrame {
                 this.setVisible(false);
             }
         }
-        else if (seleccion == 1) {
+        else {
             if (nombreconference.getText().equals("")) {
                 if (isUser()) {
                     pathuser.setForeground(Color.BLACK);
@@ -176,9 +176,6 @@ public class escribir_conference extends javax.swing.JFrame {
                     }
                 }
                 this.setVisible(false);
-            }
-            else {
-                wa.setVisible(true);
             }
         }
     }//GEN-LAST:event_jButton1ActionPerformed

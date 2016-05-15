@@ -20,8 +20,12 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import static com.prop45.searchtacp.Cargando.panelmegadinamico;
 import static com.prop45.searchtacp.CreatePredPath.pathpred;
+import static com.prop45.searchtacp.Portadaylogins.Logo;
 import static com.prop45.searchtacp.Portadaylogins.paneldinamico;
+import static com.prop45.searchtacp.variables.getPath;
+import static com.prop45.searchtacp.variables.getUsuario;
 import static com.prop45.searchtacp.variables.isAdmin;
+import java.io.BufferedWriter;
 
 /**
  *
@@ -36,25 +40,15 @@ public class Busquedauser extends javax.swing.JPanel {
     public Busquedauser() throws FileNotFoundException, IOException {
         i = 1;
         initComponents();
+        userlabel.setText(getUsuario());
         clausulas.setEditable(false);
         justi.setVisible(false);
         c1.setForeground(Color.black);
         c3.setForeground(Color.black);
         c2.setForeground(Color.black);
-        FileReader file = new FileReader("src/com/prop45/ficheros/actualuser.txt");
-        BufferedReader reader = new BufferedReader(file);
-        String usuario;
-        String line =  reader.readLine();
-        int i = 0;
-        if (line != null) {
-            while (line.charAt(i) != ' ') i++;
-            usuario = line.substring(0,i);
-            userlabel.setText(usuario);
-        }
-        ImageIcon Logo_image = new ImageIcon("src/com/prop45/Images/descarga.png");
+        ImageIcon Logo_image = new ImageIcon(getPath() + "\\recursos\\Images\\descarga.png");
         Icon icono_logo = new ImageIcon(Logo_image.getImage().getScaledInstance(191, 129, Image.SCALE_DEFAULT));
-        Logo.setIcon(icono_logo);
-        
+        Logo.setIcon(icono_logo);        
     }
 
     /**
@@ -388,15 +382,11 @@ public class Busquedauser extends javax.swing.JPanel {
     }//GEN-LAST:event_ReturnbuttonActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        BufferedWriter bw =  null;
         try {
-            // TODO add your handling code here:
-            FileWriter TextOut = null;
-            File TextFile = new File("src/com/prop45/ficheros/historial.txt");
-            TextOut = new FileWriter(TextFile, true);
-            TextOut.write(pathuser.getText());
-            TextOut.write("\n");
-            TextOut.close();
-            
+            bw = new BufferedWriter(new FileWriter(getPath() + "\\recursos\\ficheros\\historial_" + getUsuario() + ".txt",true));
+            bw.write(pathuser.getText());
+            bw.close();
             Portadaylogins panel1 = new Portadaylogins();
             panel1.setSize(738,513);
             panel1.setLocation(0,0);
@@ -415,6 +405,12 @@ public class Busquedauser extends javax.swing.JPanel {
             paneldinamico.repaint();
         } catch (IOException ex) {
             Logger.getLogger(Busquedauser.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                bw.close();
+            } catch (IOException ex) {
+                Logger.getLogger(Busquedauser.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 

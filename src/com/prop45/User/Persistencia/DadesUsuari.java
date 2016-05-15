@@ -1,5 +1,6 @@
 package com.prop45.User.Persistencia;
 
+import static com.prop45.searchtacp.variables.getPath;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -14,7 +15,7 @@ import java.io.PrintWriter;
  */
 public class DadesUsuari {
     
-    private final static String nom_BD = "BD_users.txt";
+    private final static String nom_BD = "\\recursos\\ficheros\\BD_users.txt";
     
     public DadesUsuari() {
         
@@ -25,7 +26,7 @@ public class DadesUsuari {
         PrintWriter pw = null;
         try
         {
-            fichero = new FileWriter(nom_BD,true);
+            fichero = new FileWriter(getPath() + nom_BD,true);
             pw = new PrintWriter(fichero);
             pw.println(username+"  "+password);
         } catch (Exception e){} 
@@ -47,7 +48,7 @@ public class DadesUsuari {
         try {
            // Apertura del fichero y creacion de BufferedReader para poder
            // hacer una lectura comoda (disponer del metodo readLine()).
-           archivo = new File (nom_BD);
+           archivo = new File (getPath() + nom_BD);
            fr = new FileReader (archivo);
            br = new BufferedReader(fr);
 
@@ -86,7 +87,7 @@ public class DadesUsuari {
         try {
             // Apertura del fichero y creacion de BufferedReader para poder
             // hacer una lectura comoda (disponer del metodo readLine()).
-            archivo = new File (nom_BD);
+            archivo = new File (getPath() + nom_BD);
             fr = new FileReader (archivo);
             br = new BufferedReader(fr);
 
@@ -126,7 +127,7 @@ public class DadesUsuari {
         try {
            // Apertura del fichero y creacion de BufferedReader para poder
            // hacer una lectura comoda (disponer del metodo readLine()).
-           archivo = new File (nom_BD);
+           archivo = new File (getPath() + nom_BD);
            fr = new FileReader (archivo);
            br = new BufferedReader(fr);
 
@@ -177,7 +178,7 @@ public class DadesUsuari {
           BufferedReader br = null;
           PrintWriter pw = null;
           try {
-              File inFile = new File(nom_BD);
+              File inFile = new File(getPath() + nom_BD);
 
               if (!inFile.isFile()) {
                 System.out.println("Parameter is not an existing file");
@@ -224,7 +225,7 @@ public class DadesUsuari {
         try {
            // Apertura del fichero y creacion de BufferedReader para poder
            // hacer una lectura comoda (disponer del metodo readLine()).
-           archivo = new File (nom_BD);
+           archivo = new File (getPath() + nom_BD);
            fr = new FileReader (archivo);
            br = new BufferedReader(fr);
 

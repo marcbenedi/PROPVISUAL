@@ -19,6 +19,8 @@ import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import static com.prop45.searchtacp.Cargando.panelmegadinamico;
+import static com.prop45.searchtacp.variables.getPath;
+import static com.prop45.searchtacp.variables.getUsuario;
 import static com.prop45.searchtacp.variables.setAdmin;
 import static com.prop45.searchtacp.variables.setUser;
 
@@ -35,26 +37,17 @@ public class CreatePredPath extends javax.swing.JPanel {
     public int i;
     public CreatePredPath() throws FileNotFoundException, IOException {
         initComponents();
+        userlabel.setText(getUsuario());
         id_i = 1;
         String textoaux ="";
         this.setBackground(Color.white);
         text.setEditable(false);
-        FileReader file = new FileReader("src/com/prop45/ficheros/actualuser.txt");
+        ImageIcon Logo_image = new ImageIcon(getPath() + "\\recursos\\Images\\descarga.png");
+        Icon icono_logo = new ImageIcon(Logo_image.getImage().getScaledInstance(191,129, Image.SCALE_DEFAULT));
+        Logo.setIcon(icono_logo);
+        FileReader file = new FileReader(getPath() + "\\recursos\\ficheros\\predpath.txt");
         BufferedReader reader = new BufferedReader(file);
-        String usuario;
         String line =  reader.readLine();
-        int i = 0;
-        if (line != null) {
-            while (line.charAt(i) != ' ') i++;
-            usuario = line.substring(0,i);
-            userlabel.setText(usuario);
-        }
-        ImageIcon Logo_image = new ImageIcon("src/com/prop45/Images/descarga.png");
-        Icon icono_logo = new ImageIcon(Logo_image.getImage().getScaledInstance(191, 129, Image.SCALE_DEFAULT));
-        Logo.setIcon(icono_logo); 
-        file = new FileReader("src/com/prop45/ficheros/predpath.txt");
-        reader = new BufferedReader(file);
-        line =  reader.readLine();
         String frase;
         while (line != null) {
             if (line != null) {

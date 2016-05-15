@@ -7,15 +7,19 @@ package com.prop45.searchtacp;
 
 import static com.prop45.searchtacp.Cargando_database.bienvenidohoracio;
 import static com.prop45.searchtacp.Cargando_database.exitbutton0;
-import static com.prop45.searchtacp.Cargando_database.gift;
 import static com.prop45.searchtacp.Cargando_database.jLabel4;
-import static com.prop45.searchtacp.Cargando_database.titulo;
+import static com.prop45.searchtacp.Portadaylogins.Logo;
 import static com.prop45.searchtacp.Portadaylogins.paneldinamico;
 import static com.prop45.searchtacp.SearchTACP.pausa;
+import static com.prop45.searchtacp.variables.getPath;
+import static com.prop45.searchtacp.variables.setPath;
 import static com.prop45.searchtacp.variables.setSurt;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Image;
 import java.io.File;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -29,7 +33,7 @@ public class Setroute extends javax.swing.JFrame {
     public Setroute() {
         initComponents();
         this.setLocationRelativeTo(null);
-        this.getContentPane().setBackground(Color.gray);
+        this.getContentPane().setBackground(Color.lightGray);
         wrong.setVisible(false);
     }
 
@@ -49,9 +53,9 @@ public class Setroute extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Escriba la ruta de la carpet Resources:");
+        jLabel1.setText("Escriba la ruta del ejecutable:");
 
-        ruta.setText("C:\\Users\\Miquel Baena\\Documents\\NetBeansProjects\\SearchTACP\\src\\com\\prop45\\ficheros");
+        ruta.setText("C:\\Users\\Miquel Baena\\Documents\\NetBeansProjects\\SearchTACP\\dist");
         ruta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rutaActionPerformed(evt);
@@ -78,13 +82,13 @@ public class Setroute extends javax.swing.JFrame {
                         .addGap(47, 47, 47)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ruta, javax.swing.GroupLayout.PREFERRED_SIZE, 486, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(ruta, javax.swing.GroupLayout.PREFERRED_SIZE, 517, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(369, 369, 369)
+                        .addGap(368, 368, 368)
                         .addComponent(wrong)))
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -94,9 +98,9 @@ public class Setroute extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(ruta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(wrong)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         pack();
@@ -109,8 +113,12 @@ public class Setroute extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         String route = ruta.getText();
-        File f = new File(route);
+        File f = new File(route);    
         if (f.exists() && f.isDirectory()) {
+            setPath(route);
+            ImageIcon Logo_image = new ImageIcon(route + "\\recursos\\Images\\descarga.png");
+            Icon icono_logo = new ImageIcon(Logo_image.getImage().getScaledInstance(266, 157, Image.SCALE_DEFAULT));
+            Logo.setIcon(icono_logo);
             this.setVisible(false);
             bienvenidohoracio.setVisible(true);
             exitbutton0.setVisible(true);

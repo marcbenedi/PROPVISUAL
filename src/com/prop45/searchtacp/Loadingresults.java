@@ -14,6 +14,7 @@ import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import static com.prop45.searchtacp.Cargando.panelmegadinamico;
+import static com.prop45.searchtacp.variables.getPath;
 import static com.prop45.searchtacp.variables.isUser;
 
 /**
@@ -28,7 +29,7 @@ public class Loadingresults extends javax.swing.JPanel {
     public Loadingresults() {
         initComponents();
         
-        ImageIcon Loading_image = new ImageIcon("src/com/prop45/Images/loading.gif");
+        ImageIcon Loading_image = new ImageIcon(getPath() + "\\recursos\\Images\\loading.gif");
         Icon icono_loading = new ImageIcon(Loading_image.getImage().getScaledInstance(61 ,61, Image.SCALE_DEFAULT));
         gift.setIcon(icono_loading);
     }

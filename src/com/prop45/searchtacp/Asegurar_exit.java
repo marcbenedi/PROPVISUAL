@@ -5,6 +5,7 @@
  */
 package com.prop45.searchtacp;
 
+import static com.prop45.searchtacp.variables.getUsuario;
 import java.awt.Color;
 
 /**
@@ -20,6 +21,7 @@ public class Asegurar_exit extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.getContentPane().setBackground(Color.BLACK);
+        jLabel1.setText("Esta seguro que quiere hacer EXIT " + getUsuario() + "?");
     }
 
     /**

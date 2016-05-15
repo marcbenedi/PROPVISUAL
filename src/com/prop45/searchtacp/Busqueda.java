@@ -11,7 +11,9 @@ import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import static com.prop45.searchtacp.Cargando.panelmegadinamico;
+import static com.prop45.searchtacp.Portadaylogins.Logo;
 import static com.prop45.searchtacp.Portadaylogins.paneldinamico;
+import static com.prop45.searchtacp.variables.getPath;
 
 /**
  *
@@ -30,9 +32,9 @@ public class Busqueda extends javax.swing.JPanel {
         c1.setForeground(Color.black);
         c3.setForeground(Color.black);
         c2.setForeground(Color.black);
-        ImageIcon Logo_image = new ImageIcon("src/com/prop45/Images/descarga.png");
+        ImageIcon Logo_image = new ImageIcon(getPath() + "\\recursos\\Images\\descarga.png");
         Icon icono_logo = new ImageIcon(Logo_image.getImage().getScaledInstance(191, 129, Image.SCALE_DEFAULT));
-        Logo.setIcon(icono_logo);      
+        Logo.setIcon(icono_logo);
     }
 
     /**

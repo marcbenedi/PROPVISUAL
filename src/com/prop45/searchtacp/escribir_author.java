@@ -108,7 +108,7 @@ public class escribir_author extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-                int seleccion = escoge.getSelectedIndex();        
+        int seleccion = escoge.getSelectedIndex();        
         if (seleccion == 0) {
             if (nombreauthor.getText().equals("")) {
                 wa.setVisible(true);
@@ -149,7 +149,7 @@ public class escribir_author extends javax.swing.JFrame {
                 this.setVisible(false);
             }
         }
-        else if (seleccion == 1) {
+        else {
             if (nombreauthor.getText().equals("")) {
                 if (isUser()) {
                     pathuser.setForeground(Color.BLACK);
@@ -176,9 +176,6 @@ public class escribir_author extends javax.swing.JFrame {
                     }
                 }
                 this.setVisible(false);
-            }
-            else {
-                wa.setVisible(true);
             }
         }
     }//GEN-LAST:event_jButton1ActionPerformed

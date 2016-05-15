@@ -10,8 +10,6 @@ import java.awt.Color;
 import java.io.File;
 import static com.prop45.searchtacp.Cargando_database.bienvenidohoracio;
 import static com.prop45.searchtacp.Cargando_database.exitbutton0;
-import static com.prop45.searchtacp.Cargando_database.gift;
-import static com.prop45.searchtacp.Cargando_database.titulo;
 import static com.prop45.searchtacp.Portadaylogins.paneldinamico;
 import static com.prop45.searchtacp.variables.isSurt;
 
@@ -35,14 +33,10 @@ public class SearchTACP {
     }
     
     public static void main(String[] args) {
-        // TODO code application logic hereç
-        File doc = new File("src/com/prop45/ficheros/actualuser.txt");
-        doc.delete();  
+        // TODO code application logic here
         Cargando cg = new Cargando();
         cg.setVisible(true);
         bienvenidohoracio.setVisible(false);
-        titulo.setVisible(false);
-        gift.setVisible(false);
         exitbutton0.setVisible(false);
         pausa(1);
         Setroute sr = new Setroute();
