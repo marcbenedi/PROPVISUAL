@@ -5,6 +5,7 @@
  */
 package com.prop45.searchtacp;
 
+import static com.prop45.Graph.Graph.existsNode;
 import java.awt.Color;
 import static com.prop45.searchtacp.Busqueda.pathpublic;
 import static com.prop45.searchtacp.Busquedauser.pathuser;
@@ -117,6 +118,10 @@ public class escribir_term extends javax.swing.JFrame {
         if (seleccion == 0) {
             if (nombreterm.getText().equals("")) {
                 wa.setVisible(true);
+            }
+            else if (!existsNode(nombreterm.getText(),"Term")) {
+                wa.setVisible(true);
+                wa.setText("El Term no existe");
             }
             else {
                 if (isUser()) {

@@ -302,10 +302,14 @@ public class Graph {
         }
         return null;
     }
+    
+    public boolean existsAresta(Node n1, Node n2) {
+        return !(getAresta(n1,n2)==null);
+    }
 
-    public void afegirAresta(Node n1, Node n2){
+    public void afegirAresta(Node n1, Node n2, boolean b1){
         if (!(getAresta(n1,n2)==null)){
-            System.out.println("LA ARESTA JA EXISTEIX");
+            b1 = true;
             return;
         }
 
@@ -332,10 +336,10 @@ public class Graph {
         adj.get(ids2).add(n1);
 
     }
-    public void eliminarAresta(Node n1, Node n2){
+    public void eliminarAresta(Node n1, Node n2, boolean b2){
         Aresta a = getAresta(n1,n2);
         if(a.equals(null)){
-            System.out.println("L'aresta no existeix");
+            b2 = true;
             return;
         }
         n1.setGrado(n1.getGrado()-1);

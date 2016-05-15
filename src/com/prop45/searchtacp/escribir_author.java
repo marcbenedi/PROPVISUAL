@@ -5,6 +5,7 @@
  */
 package com.prop45.searchtacp;
 
+import static com.prop45.Graph.Graph.existsNode;
 import java.awt.Color;
 import static com.prop45.searchtacp.Busqueda.pathpublic;
 import static com.prop45.searchtacp.Busquedauser.pathuser;
@@ -70,22 +71,20 @@ public class escribir_author extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(50, 50, 50)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(79, 79, 79)
-                        .addComponent(wa)
-                        .addGap(156, 156, 156))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(nombreauthor)
-                        .addGap(38, 38, 38)
-                        .addComponent(escoge, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(75, 75, 75))))
+                .addComponent(nombreauthor)
+                .addGap(38, 38, 38)
+                .addComponent(escoge, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(75, 75, 75))
             .addGroup(layout.createSequentialGroup()
                 .addGap(98, 98, 98)
                 .addComponent(jButton1)
                 .addGap(33, 33, 33)
                 .addComponent(jButton2)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 112, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(115, 115, 115)
+                .addComponent(wa)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -94,9 +93,9 @@ public class escribir_author extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nombreauthor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(escoge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(wa, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
@@ -112,6 +111,10 @@ public class escribir_author extends javax.swing.JFrame {
         if (seleccion == 0) {
             if (nombreauthor.getText().equals("")) {
                 wa.setVisible(true);
+            }
+            else if (!existsNode(nombreauthor.getText(),"Author")) {
+                wa.setVisible(true);
+                wa.setText("El Author no existe");
             }
             else {
                 if (isUser()) {

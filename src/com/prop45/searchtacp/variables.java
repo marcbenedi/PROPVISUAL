@@ -24,8 +24,21 @@ public class variables {
     public static Graph grafo;
     public static GraphDataBase gdb;
     public static RelacionDataBase rdb;
+    public static RelacionDataBase userrdb;
     private static int id = 0;
+    private static boolean guardat = true;
     
+    public static boolean isNumeric(String str)  {  
+      try  
+      {  
+        int d = Integer.parseInt(str);  
+      }  
+      catch(NumberFormatException nfe)  
+      {  
+        return false;  
+      }  
+      return true;  
+    }    
     public static void setAdmin() {
         admin = true;
     }
@@ -64,5 +77,14 @@ public class variables {
     } 
     public static int getNextid() {
     return id;
+    }
+    public static void Cambisnoguardats() {
+        guardat = false;
+    }
+    public static void Guardat() {
+        guardat = true;
+    }
+    public static boolean isGuardat() {
+        return guardat;
     }
 }

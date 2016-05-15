@@ -5,6 +5,7 @@
  */
 package com.prop45.searchtacp;
 
+import static com.prop45.Graph.Graph.existsNode;
 import java.awt.Color;
 import static com.prop45.searchtacp.Busqueda.pathpublic;
 import static com.prop45.searchtacp.Busquedauser.pathuser;
@@ -112,6 +113,10 @@ public class escribir_paper extends javax.swing.JFrame {
         if (seleccion == 0) {
             if (nombrepaper.getText().equals("")) {
                 wa.setVisible(true);
+            }
+            else if (!existsNode(nombrepaper.getText(),"Paper")) {
+                wa.setVisible(true);
+                wa.setText("El Paper no existe");
             }
             else {
                 if (isUser()) {

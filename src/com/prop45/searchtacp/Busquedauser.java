@@ -339,6 +339,8 @@ public class Busquedauser extends javax.swing.JPanel {
 
     private void pathbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pathbuttonActionPerformed
         // TODO add your handling code here:
+        ViewPredPathuser vppu = new ViewPredPathuser();
+        vppu.setVisible(true);
     }//GEN-LAST:event_pathbuttonActionPerformed
 
     private void AuthorbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AuthorbuttonActionPerformed

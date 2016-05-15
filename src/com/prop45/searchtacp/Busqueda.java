@@ -272,9 +272,6 @@ public class Busqueda extends javax.swing.JPanel {
                                 .addComponent(pathpublic, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(52, 52, 52)
-                                .addComponent(pathbutton))
-                            .addGroup(layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
                                 .addComponent(c1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
@@ -282,7 +279,10 @@ public class Busqueda extends javax.swing.JPanel {
                                 .addGap(18, 18, 18)
                                 .addComponent(c3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(justi))))
+                                .addComponent(justi))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(62, 62, 62)
+                                .addComponent(pathbutton))))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(Logo, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(138, 138, 138)
@@ -369,6 +369,8 @@ public class Busqueda extends javax.swing.JPanel {
 
     private void pathbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pathbuttonActionPerformed
         // TODO add your handling code here:
+        ViewPredPath vpp = new ViewPredPath();
+        vpp.setVisible(true);
     }//GEN-LAST:event_pathbuttonActionPerformed
 
     private void Instructionsbutton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Instructionsbutton1ActionPerformed

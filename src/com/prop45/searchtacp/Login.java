@@ -5,6 +5,7 @@
  */
 package com.prop45.searchtacp;
 
+import com.prop45.DataBase.RelacionDataBase;
 import static com.prop45.User.Persistencia.DadesUsuari.ExisteixUsuari_contrasenya;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -19,6 +20,7 @@ import static com.prop45.searchtacp.variables.getUsuario;
 import static com.prop45.searchtacp.variables.setAdmin;
 import static com.prop45.searchtacp.variables.setUser;
 import static com.prop45.searchtacp.variables.setUsuario;
+import static com.prop45.searchtacp.variables.userrdb;
 import java.awt.Image;
 import java.io.File;
 import javax.swing.Icon;
@@ -196,7 +198,13 @@ public class Login extends javax.swing.JPanel {
                 File faux = new File(getPath() + "\\recursos\\ficheros\\historial_" + getUsuario() + ".txt");
                 if (!faux.exists()) {
                     faux.createNewFile();
-                }               
+                } 
+                faux = new File(getPath() + "\\recursos\\ficheros\\relacion_" + getUsuario() + ".txt");
+                if (!faux.exists()) {
+                    faux.createNewFile();
+                }
+                userrdb = new RelacionDataBase();
+                userrdb.loaduser();
                 Prebusquedauser p = new Prebusquedauser();
                 p.setSize(738,513);
                 p.setLocation(0,0);

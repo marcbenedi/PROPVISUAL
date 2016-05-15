@@ -30,11 +30,14 @@ import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import static com.prop45.searchtacp.Cargando.panelmegadinamico;
+import static com.prop45.searchtacp.variables.Cambisnoguardats;
+import static com.prop45.searchtacp.variables.Guardat;
 import static com.prop45.searchtacp.variables.gdb;
 import static com.prop45.searchtacp.variables.getNextid;
 import static com.prop45.searchtacp.variables.getPath;
 import static com.prop45.searchtacp.variables.getUsuario;
 import static com.prop45.searchtacp.variables.grafo;
+import static com.prop45.searchtacp.variables.isGuardat;
 import static com.prop45.searchtacp.variables.rdb;
 import static com.prop45.searchtacp.variables.setAdmin;
 import static com.prop45.searchtacp.variables.setNextid;
@@ -52,6 +55,7 @@ public class GestionAdmin extends javax.swing.JFrame {
      */
     public GestionAdmin() throws FileNotFoundException, IOException {
         initComponents(); 
+        Exitbutton.setVisible(false);
         userlabel.setText(getUsuario());
         error.setVisible(false);
         Cambios.setEditable(false);
@@ -91,7 +95,7 @@ public class GestionAdmin extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        Exitbutton = new javax.swing.JButton();
+        Exitbutton1 = new javax.swing.JButton();
         userlabel = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         addusername = new javax.swing.JTextField();
@@ -136,6 +140,7 @@ public class GestionAdmin extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
+        Exitbutton = new javax.swing.JButton();
 
         setTitle("Gestion de Administrador");
 
@@ -145,11 +150,11 @@ public class GestionAdmin extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel2.setText("Gestion usuarios:");
 
-        Exitbutton.setMnemonic('X');
-        Exitbutton.setText("Exit without Saving");
-        Exitbutton.addActionListener(new java.awt.event.ActionListener() {
+        Exitbutton1.setMnemonic('X');
+        Exitbutton1.setText("Exit");
+        Exitbutton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ExitbuttonActionPerformed(evt);
+                Exitbutton1ActionPerformed(evt);
             }
         });
 
@@ -455,10 +460,17 @@ public class GestionAdmin extends javax.swing.JFrame {
         jLabel18.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel18.setText("Eliminar relación:");
 
-        jButton3.setText("Save & Exit");
+        jButton3.setText("Save");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
+            }
+        });
+
+        Exitbutton.setText("Exit");
+        Exitbutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExitbuttonActionPerformed(evt);
             }
         });
 
@@ -541,21 +553,21 @@ public class GestionAdmin extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGap(96, 96, 96)
                                 .addComponent(jLabel12)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(120, 120, 120)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 456, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(jLabel28)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jButton1)))
-                                .addContainerGap())
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(jLabel17)
+                                        .addGap(258, 258, 258))
+                                    .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(188, 188, 188)
+                                                .addComponent(jLabel13))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(205, 205, 205)
+                                                .addComponent(jLabel18))
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                                     .addComponent(anp, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -565,39 +577,36 @@ public class GestionAdmin extends javax.swing.JFrame {
                                                     .addComponent(selare, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addGap(18, 18, 18)
                                                     .addComponent(añadirrelacion, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addGroup(layout.createSequentialGroup()
-                                                            .addGap(188, 188, 188)
-                                                            .addComponent(jLabel13))
-                                                        .addGroup(layout.createSequentialGroup()
-                                                            .addGap(205, 205, 205)
-                                                            .addComponent(jLabel18)))
-                                                    .addGap(122, 122, 122))
                                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                                     .addComponent(dnp, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                     .addComponent(d2n, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addGap(18, 18, 18)
-                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addGroup(layout.createSequentialGroup()
-                                                            .addComponent(seldre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                            .addGap(18, 18, 18)
-                                                            .addComponent(eliminarrelacion, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                .addComponent(jLabel17)
-                                                .addGap(170, 170, 170)))
-                                        .addGap(88, 88, 88))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addContainerGap())))))))
+                                                    .addComponent(seldre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGap(18, 18, 18)
+                                                    .addComponent(eliminarrelacion, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addGap(88, 88, 88)))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 456, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                            .addComponent(jLabel28)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jButton1)))
+                                    .addContainerGap()))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(Exitbutton)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(32, 32, 32))))))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(error, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(207, 207, 207)
-                .addComponent(Exitbutton)
-                .addContainerGap())
+                .addGap(68, 68, 68)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44)
+                .addComponent(Exitbutton1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -652,16 +661,16 @@ public class GestionAdmin extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(37, 37, 37)
                                 .addComponent(jLabel1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(userlabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(61, 61, 61)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel28)
-                                    .addComponent(jButton1))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(userlabel)
+                                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(Exitbutton)))
+                        .addGap(24, 24, 24)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel28)
+                            .addComponent(jButton1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -710,7 +719,7 @@ public class GestionAdmin extends javax.swing.JFrame {
                             .addComponent(seldre, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(48, 48, 48)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Exitbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Exitbutton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(error)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
@@ -719,10 +728,16 @@ public class GestionAdmin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ExitbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitbuttonActionPerformed
+    private void Exitbutton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Exitbutton1ActionPerformed
         // TODO add your handling code here:
-        this.setVisible(false);
-    }//GEN-LAST:event_ExitbuttonActionPerformed
+        if (isGuardat()) {
+            this.setVisible(false);
+        }
+        else {
+            Asegurar_guardar_salir ags = new Asegurar_guardar_salir();
+            ags.setVisible(true);
+        }
+    }//GEN-LAST:event_Exitbutton1ActionPerformed
 
     private void addusernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addusernameActionPerformed
         // TODO add your handling code here:
@@ -883,6 +898,8 @@ public class GestionAdmin extends javax.swing.JFrame {
         else {
             File file = new File(getPath() + "\\recursos\\ficheros\\historial_" + deleteuser.getText() + ".txt");
             file.delete();
+            file = new File(getPath() + "\\recursos\\ficheros\\relacion_" + deleteuser.getText() + ".txt");
+            file.delete();
             String password = consultar_password(usuario);
             borrarlinea(usuario,password);
             deleteuser.setForeground(Color.gray);
@@ -1003,6 +1020,7 @@ public class GestionAdmin extends javax.swing.JFrame {
                             break;
                         }
                 }
+                Cambisnoguardats();
                 String num_id = "";
                 File f = new File(getPath() + "\\recursos\\ficheros\\seg_id.txt");
                 f.delete();
@@ -1058,6 +1076,20 @@ public class GestionAdmin extends javax.swing.JFrame {
         String paper = anp.getText();
         String node2 = an2.getText();
         String selected = (String) selare.getSelectedItem();
+        String tipo = "";
+        switch (selected) {
+            case "Paper-Term":
+                tipo = "Term";
+                break;
+            case "Paper-Author":
+                tipo = "Author";
+                break;
+            default:
+                tipo = "Conference";
+                break;
+        }
+        Node n1 = grafo.getNode(paper,"Paper");
+        Node n2 = grafo.getNode(node2,tipo);
         if (paper.equals("") || paper.equals("Paper name")) {
             error.setVisible(true);
             error.setForeground(Color.red);
@@ -1071,21 +1103,41 @@ public class GestionAdmin extends javax.swing.JFrame {
         else if (node2.equals("") || node2.equals("Node 2 name")) {
             error.setVisible(true);
             error.setForeground(Color.red);
-            error.setText("Error: Seleccione un nombe para el segundo nodo correcto");
+            error.setText("Error: Seleccione un nombe de " + selected + " correcto");
+        }
+        else if (!existsNode(paper,"Paper")) {
+            error.setVisible(true);
+            error.setForeground(Color.red);
+            error.setText("Error: El paper con nombre " + paper + " no existe");
+        }
+        else if (!existsNode(node2,tipo)) {
+            error.setVisible(true);
+            error.setForeground(Color.red);
+            error.setText("Error: El/la " + tipo + " con nombre " + node2 + " no existe");
         }
         else {
-            String cambiosrealizados;
-            cambiosrealizados = Cambios.getText();
-            cambiosrealizados += "Añadio la relacion " + selected + ": " + paper + "-" + node2 + "\n";
-            Cambios.setText(cambiosrealizados);
-            an2.setForeground(Color.gray);
-            an2.setText("Node 2 name");
-            anp.setForeground(Color.gray);
-            anp.setText("Paper name");
-            error.setVisible(true);
-            error.setForeground(Color.green);
-            error.setText("Añadió la relación correctamente");
-            selare.setSelectedIndex(0);
+            boolean error_aux = false;
+            grafo.afegirAresta(n1,n2,error_aux);
+            if (error_aux) {
+                error.setVisible(true);
+                error.setForeground(Color.red);
+                error.setText("Error: La relacion " + selected + " con Paper: " + paper + " y " + tipo + ": " + node2 + " ya existe");
+            }
+            else {
+                Cambisnoguardats();
+                String cambiosrealizados;
+                cambiosrealizados = Cambios.getText();
+                cambiosrealizados += "Añadio la relacion " + selected + ": " + paper + "-" + node2 + "\n";
+                Cambios.setText(cambiosrealizados);
+                an2.setForeground(Color.gray);
+                an2.setText("Node 2 name");
+                anp.setForeground(Color.gray);
+                anp.setText("Paper name");
+                error.setVisible(true);
+                error.setForeground(Color.green);
+                error.setText("Añadió la relación correctamente");
+                selare.setSelectedIndex(0);
+            }
         }
     }//GEN-LAST:event_añadirrelacionMouseClicked
 
@@ -1136,6 +1188,7 @@ public class GestionAdmin extends javax.swing.JFrame {
         }
         else {
             grafo.eliminarNode(username, tipo);
+            Cambisnoguardats();
             String cambiosrealizados;
             cambiosrealizados = Cambios.getText();
             cambiosrealizados += "Eliminó el/la " + tipo + "con nombre: " + username + "\n";
@@ -1178,6 +1231,20 @@ public class GestionAdmin extends javax.swing.JFrame {
         String paper = dnp.getText();
         String node2 = d2n.getText();
         String selected = (String) seldre.getSelectedItem();
+        String tipo = "";
+        switch (selected) {
+            case "Paper-Term":
+                tipo = "Term";
+                break;
+            case "Paper-Author":
+                tipo = "Author";
+                break;
+            default:
+                tipo = "Conference";
+                break;
+        }
+        Node n1 = grafo.getNode(paper,"Paper");
+        Node n2 = grafo.getNode(node2,tipo);
         if (paper.equals("") || paper.equals("Paper name")) {
             error.setVisible(true);
             error.setForeground(Color.red);
@@ -1193,19 +1260,39 @@ public class GestionAdmin extends javax.swing.JFrame {
             error.setForeground(Color.red);
             error.setText("Error: Seleccione un nombe para el segundo nodo correcto");
         }
-        else {
-            String cambiosrealizados;
-            cambiosrealizados = Cambios.getText();
-            cambiosrealizados += "Eliminó la relacion " + selected + ": " + paper + "-" + node2 + "\n";
-            Cambios.setText(cambiosrealizados);
-            d2n.setForeground(Color.gray);
-            d2n.setText("Node 2 name");
-            dnp.setForeground(Color.gray);
-            dnp.setText("Paper name");
+        else if (!existsNode(paper,"Paper")) {
             error.setVisible(true);
-            error.setForeground(Color.green);
-            error.setText("Eliminó la relación correctamente");
-            seldre.setSelectedIndex(0);
+            error.setForeground(Color.red);
+            error.setText("Error: El paper con nombre " + paper + " no existe");
+        }
+        else if (!existsNode(node2,tipo)) {
+            error.setVisible(true);
+            error.setForeground(Color.red);
+            error.setText("Error: El/la " + tipo + " con nombre " + node2 + " no existe");
+        }
+        else {
+            boolean error_aux = false;
+            grafo.eliminarAresta(n1,n2,error_aux);
+            if (error_aux) {
+                error.setVisible(true);
+                error.setForeground(Color.red);
+                error.setText("Error: La relacion " + selected + " con Paper: " + paper + " y " + tipo + ": " + node2 + " no existe");
+            }
+            else {
+                Cambisnoguardats();
+                String cambiosrealizados;
+                cambiosrealizados = Cambios.getText();
+                cambiosrealizados += "Eliminó la relacion " + selected + ": " + paper + "-" + node2 + "\n";
+                Cambios.setText(cambiosrealizados);
+                d2n.setForeground(Color.gray);
+                d2n.setText("Node 2 name");
+                dnp.setForeground(Color.gray);
+                dnp.setText("Paper name");
+                error.setVisible(true);
+                error.setForeground(Color.green);
+                error.setText("Eliminó la relación correctamente");
+                seldre.setSelectedIndex(0);
+            }
         }
     }//GEN-LAST:event_eliminarrelacionMouseClicked
 
@@ -1219,8 +1306,13 @@ public class GestionAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
         gdb.safe(grafo);
         rdb.safe(rdb.getRelacions());
-        this.setVisible(false);
+        Guardat();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void ExitbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitbuttonActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+    }//GEN-LAST:event_ExitbuttonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1263,7 +1355,8 @@ public class GestionAdmin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea Cambios;
-    private javax.swing.JButton Exitbutton;
+    public static javax.swing.JButton Exitbutton;
+    private javax.swing.JButton Exitbutton1;
     private javax.swing.JTextField a1;
     private javax.swing.JTextField a3;
     private javax.swing.JTextField addpassword;

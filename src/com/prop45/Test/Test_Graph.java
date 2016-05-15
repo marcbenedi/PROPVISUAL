@@ -105,10 +105,10 @@ public class Test_Graph {
                     break;
                 case 7:
                     String a1, a2,t1,t2;
-                    System.out.println("Inesta nom del primer node HA DE SER UN PAPER");
+                    System.out.println("Inserta nom del primer node HA DE SER UN PAPER");
                     in.nextLine();
                     a1 = in.nextLine();
-                    System.out.println("Inesta tipus del primer node HA DE SER PAPER");
+                    System.out.println("Inserta tipus del primer node HA DE SER PAPER");
                     t1 = in.next();
                     System.out.println("Inserta nom del segon node HA DE SER DIFERENT D'UN PAPER");
                     in.nextLine();
@@ -117,14 +117,18 @@ public class Test_Graph {
                     t2 = in.next();
                     Node n1 = g.getNode(a1,t1);
                     Node n2 = g.getNode(a2,t2);
-                    g.afegirAresta(n1,n2);
+                    boolean b1 = false;
+                    g.afegirAresta(n1,n2, b1);
+                    if (b1) {
+                        System.out.println("LA ARESTA JA EXISTEIX");
+                    }
                     break;
                 case 8:
                     String a14, a24,t14,t24;
-                    System.out.println("Inesta nom del primer node HA DE SER UN PAPER");
+                    System.out.println("Inserta nom del primer node HA DE SER UN PAPER");
                     in.nextLine();
                     a14 = in.nextLine();
-                    System.out.println("Inesta tipus del primer node, HA DE SER PAPER");
+                    System.out.println("Inserta tipus del primer node, HA DE SER PAPER");
                     t14 = in.next();
                     System.out.println("Inserta nom del segon node HA DE SER DIFERENT D'UN PAPER");
                     in.nextLine();
@@ -133,7 +137,11 @@ public class Test_Graph {
                     t24 = in.next();
                     Node n14 = g.getNode(a14,t14);
                     Node n24 = g.getNode(a24,t24);
-                    g.eliminarAresta(n14,n24);
+                    boolean b2 = false;
+                    g.eliminarAresta(n14,n24,b2);
+                    if (b2) {
+                        System.out.println("LA ARESTA NO EXISTEIX");
+                    }
                     break;
                 case 9:
                     g.actualitzarRelevanciaGraph();
