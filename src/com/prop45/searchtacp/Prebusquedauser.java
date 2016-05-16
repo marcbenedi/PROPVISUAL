@@ -64,6 +64,7 @@ public class Prebusquedauser extends javax.swing.JPanel {
 
         modeadmin.setMnemonic('A');
         modeadmin.setText("Modo Administrador");
+        modeadmin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         modeadmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 modeadminActionPerformed(evt);
@@ -72,6 +73,7 @@ public class Prebusquedauser extends javax.swing.JPanel {
 
         jButton2.setMnemonic('B');
         jButton2.setText("Realizar Busqueda");
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -80,6 +82,7 @@ public class Prebusquedauser extends javax.swing.JPanel {
 
         jButton3.setMnemonic('P');
         jButton3.setText("Crear Predefined Path");
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -88,6 +91,7 @@ public class Prebusquedauser extends javax.swing.JPanel {
 
         jButton4.setMnemonic('H');
         jButton4.setText("Revisar Historial");
+        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -96,6 +100,7 @@ public class Prebusquedauser extends javax.swing.JPanel {
 
         Returnbutton.setMnemonic('L');
         Returnbutton.setText("Log out");
+        Returnbutton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Returnbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ReturnbuttonActionPerformed(evt);
@@ -104,6 +109,7 @@ public class Prebusquedauser extends javax.swing.JPanel {
 
         Exitbutton.setMnemonic('E');
         Exitbutton.setText("Exit");
+        Exitbutton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Exitbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ExitbuttonActionPerformed(evt);

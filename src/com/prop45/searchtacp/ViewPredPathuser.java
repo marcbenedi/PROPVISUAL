@@ -216,6 +216,7 @@ public class ViewPredPathuser extends javax.swing.JFrame {
 
         dmppnbotton.setMnemonic('D');
         dmppnbotton.setText("Eliminar Pred Path");
+        dmppnbotton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         dmppnbotton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dmppnbottonActionPerformed(evt);
@@ -237,6 +238,7 @@ public class ViewPredPathuser extends javax.swing.JFrame {
 
         emppnbutton.setMnemonic('D');
         emppnbutton.setText("Escoge path");
+        emppnbutton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         emppnbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 emppnbuttonActionPerformed(evt);
@@ -274,6 +276,7 @@ public class ViewPredPathuser extends javax.swing.JFrame {
 
         duppnbutton.setMnemonic('D');
         duppnbutton.setText("Eliminar Pred Path");
+        duppnbutton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         duppnbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 duppnbuttonActionPerformed(evt);
@@ -295,6 +298,7 @@ public class ViewPredPathuser extends javax.swing.JFrame {
 
         euppnbutton.setMnemonic('D');
         euppnbutton.setText("Escoge path");
+        euppnbutton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         euppnbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 euppnbuttonActionPerformed(evt);
@@ -321,9 +325,11 @@ public class ViewPredPathuser extends javax.swing.JFrame {
         selectedpredpath.setText("Seleccione un path predeterminado");
 
         continuepredpath.setText("Continuar");
+        continuepredpath.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         helppredpath.setMnemonic('H');
         helppredpath.setText("Help");
+        helppredpath.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         helppredpath.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 helppredpathActionPerformed(evt);
@@ -332,6 +338,7 @@ public class ViewPredPathuser extends javax.swing.JFrame {
 
         Instructionsbutton3.setMnemonic('H');
         Instructionsbutton3.setText("Exit");
+        Instructionsbutton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Instructionsbutton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Instructionsbutton3ActionPerformed(evt);

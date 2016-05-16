@@ -44,6 +44,7 @@ public class Registrarse_Login extends javax.swing.JPanel {
         busquedabutton.setMnemonic('B');
         busquedabutton.setText("Realiza búsqueda sin iniciar sesión");
         busquedabutton.setBorder(null);
+        busquedabutton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         busquedabutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 busquedabuttonActionPerformed(evt);
@@ -52,6 +53,7 @@ public class Registrarse_Login extends javax.swing.JPanel {
 
         loginbutton.setMnemonic('L');
         loginbutton.setText("Iniciar sesión");
+        loginbutton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         loginbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loginbuttonActionPerformed(evt);
@@ -60,6 +62,7 @@ public class Registrarse_Login extends javax.swing.JPanel {
 
         Exitbutton.setMnemonic('E');
         Exitbutton.setText("Exit");
+        Exitbutton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Exitbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ExitbuttonActionPerformed(evt);

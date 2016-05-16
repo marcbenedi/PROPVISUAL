@@ -90,6 +90,7 @@ public class Login extends javax.swing.JPanel {
 
         Loginbutton.setMnemonic('L');
         Loginbutton.setText("Login");
+        Loginbutton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Loginbutton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 LoginbuttonMouseClicked(evt);
@@ -103,6 +104,7 @@ public class Login extends javax.swing.JPanel {
 
         Returnbutton.setMnemonic('R');
         Returnbutton.setText("Return");
+        Returnbutton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Returnbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ReturnbuttonActionPerformed(evt);
@@ -111,6 +113,7 @@ public class Login extends javax.swing.JPanel {
 
         Exitbutton.setMnemonic('E');
         Exitbutton.setText("Exit");
+        Exitbutton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Exitbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ExitbuttonActionPerformed(evt);

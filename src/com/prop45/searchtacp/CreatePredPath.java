@@ -142,6 +142,7 @@ public class CreatePredPath extends javax.swing.JPanel {
 
         jButton1.setMnemonic('S');
         jButton1.setText("Submit");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -150,6 +151,7 @@ public class CreatePredPath extends javax.swing.JPanel {
 
         Instructionsbutton1.setMnemonic('H');
         Instructionsbutton1.setText("Help");
+        Instructionsbutton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Instructionsbutton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Instructionsbutton1ActionPerformed(evt);
@@ -159,6 +161,7 @@ public class CreatePredPath extends javax.swing.JPanel {
         term.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         term.setMnemonic('T');
         term.setText("Term");
+        term.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         term.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 termActionPerformed(evt);
@@ -168,6 +171,7 @@ public class CreatePredPath extends javax.swing.JPanel {
         Confbutton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Confbutton.setMnemonic('C');
         Confbutton.setText("Conference");
+        Confbutton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Confbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ConfbuttonActionPerformed(evt);
@@ -177,6 +181,7 @@ public class CreatePredPath extends javax.swing.JPanel {
         Authorbutton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Authorbutton.setMnemonic('A');
         Authorbutton.setText("Author");
+        Authorbutton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Authorbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AuthorbuttonActionPerformed(evt);
@@ -186,6 +191,7 @@ public class CreatePredPath extends javax.swing.JPanel {
         Paperbutton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Paperbutton.setMnemonic('P');
         Paperbutton.setText("Paper");
+        Paperbutton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Paperbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PaperbuttonActionPerformed(evt);
@@ -196,6 +202,7 @@ public class CreatePredPath extends javax.swing.JPanel {
 
         jButton3.setMnemonic('R');
         jButton3.setText("Return");
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -204,6 +211,7 @@ public class CreatePredPath extends javax.swing.JPanel {
 
         jButton4.setMnemonic('E');
         jButton4.setText("Exit");
+        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -216,6 +224,7 @@ public class CreatePredPath extends javax.swing.JPanel {
         jScrollPane1.setViewportView(text);
 
         jButton2.setText("Ver mas detalles");
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -224,6 +233,7 @@ public class CreatePredPath extends javax.swing.JPanel {
 
         jButton8.setMnemonic('D');
         jButton8.setText("Elimnar Clausula");
+        jButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton8ActionPerformed(evt);
@@ -249,6 +259,7 @@ public class CreatePredPath extends javax.swing.JPanel {
         });
 
         jButton9.setText("Añadir mas clausulas");
+        jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton9ActionPerformed(evt);
@@ -269,6 +280,7 @@ public class CreatePredPath extends javax.swing.JPanel {
         c3.setForeground(new java.awt.Color(153, 153, 153));
 
         jButton10.setText("Borrar");
+        jButton10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -284,10 +296,6 @@ public class CreatePredPath extends javax.swing.JPanel {
                         .addGap(139, 139, 139)
                         .addComponent(Instructionsbutton1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addGap(608, 608, 608)
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jButton10, javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -329,7 +337,12 @@ public class CreatePredPath extends javax.swing.JPanel {
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jLabel1)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(pathpred, javax.swing.GroupLayout.PREFERRED_SIZE, 644, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(pathpred, javax.swing.GroupLayout.PREFERRED_SIZE, 644, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addGap(608, 608, 608)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jButton10, javax.swing.GroupLayout.Alignment.TRAILING)))))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -353,13 +366,13 @@ public class CreatePredPath extends javax.swing.JPanel {
                 .addGap(3, 3, 3)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Paperbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(term, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(Authorbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(Confbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(Paperbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(Confbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1))
                     .addGroup(layout.createSequentialGroup()
@@ -377,7 +390,7 @@ public class CreatePredPath extends javax.swing.JPanel {
                     .addComponent(numdelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -542,9 +555,6 @@ public class CreatePredPath extends javax.swing.JPanel {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;

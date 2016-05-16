@@ -374,6 +374,9 @@
       <Properties>
         <Property name="mnemonic" type="int" value="88"/>
         <Property name="text" type="java.lang.String" value="Exit"/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Cursor de Mano"/>
+        </Property>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Exitbutton1ActionPerformed"/>
@@ -414,6 +417,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="jLabel4"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Cursor de Mano"/>
+        </Property>
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="a&#xf1;adeuserMouseClicked"/>
@@ -446,6 +452,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="jLabel4"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Cursor de Mano"/>
+        </Property>
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cambiapassMouseClicked"/>
@@ -492,6 +501,9 @@
     <Component class="javax.swing.JLabel" name="eliminaruser">
       <Properties>
         <Property name="text" type="java.lang.String" value="jLabel4"/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Cursor de Mano"/>
+        </Property>
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="eliminaruserMouseClicked"/>
@@ -523,6 +535,9 @@
     <Component class="javax.swing.JLabel" name="chmod">
       <Properties>
         <Property name="text" type="java.lang.String" value="jLabel4"/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Cursor de Mano"/>
+        </Property>
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="chmodMouseClicked"/>
@@ -570,6 +585,9 @@
     <Component class="javax.swing.JLabel" name="a&#xf1;adenode">
       <Properties>
         <Property name="text" type="java.lang.String" value="jLabel4"/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Cursor de Mano"/>
+        </Property>
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="a&#xf1;adenodeMouseClicked"/>
@@ -608,6 +626,9 @@
     <Component class="javax.swing.JLabel" name="a&#xf1;adirrelacion">
       <Properties>
         <Property name="text" type="java.lang.String" value="jLabel4"/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Cursor de Mano"/>
+        </Property>
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="a&#xf1;adirrelacionMouseClicked"/>
@@ -640,6 +661,9 @@
       <Properties>
         <Property name="mnemonic" type="int" value="66"/>
         <Property name="text" type="java.lang.String" value="Borrar"/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Cursor de Mano"/>
+        </Property>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
@@ -698,6 +722,9 @@
       <Properties>
         <Property name="mnemonic" type="int" value="72"/>
         <Property name="text" type="java.lang.String" value="Help"/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Cursor de Mano"/>
+        </Property>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
@@ -772,6 +799,9 @@
     <Component class="javax.swing.JLabel" name="deletenode">
       <Properties>
         <Property name="text" type="java.lang.String" value="jLabel4"/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Cursor de Mano"/>
+        </Property>
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deletenodeMouseClicked"/>
@@ -846,6 +876,9 @@
     <Component class="javax.swing.JLabel" name="eliminarrelacion">
       <Properties>
         <Property name="text" type="java.lang.String" value="jLabel4"/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Cursor de Mano"/>
+        </Property>
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="eliminarrelacionMouseClicked"/>
@@ -870,6 +903,9 @@
     <Component class="javax.swing.JButton" name="jButton3">
       <Properties>
         <Property name="text" type="java.lang.String" value="Save"/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Cursor de Mano"/>
+        </Property>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
@@ -878,6 +914,9 @@
     <Component class="javax.swing.JButton" name="Exitbutton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Exit"/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Cursor de Mano"/>
+        </Property>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ExitbuttonActionPerformed"/>

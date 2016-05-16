@@ -49,6 +49,7 @@ public class Asegurar_guardar_salir extends javax.swing.JFrame {
 
         jButton1.setMnemonic('y');
         jButton1.setText("Guardar & Salir");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -57,6 +58,7 @@ public class Asegurar_guardar_salir extends javax.swing.JFrame {
 
         jButton3.setMnemonic('y');
         jButton3.setText("Salir sin guardar");
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -65,6 +67,7 @@ public class Asegurar_guardar_salir extends javax.swing.JFrame {
 
         jButton4.setMnemonic('y');
         jButton4.setText("Cancelar");
+        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);

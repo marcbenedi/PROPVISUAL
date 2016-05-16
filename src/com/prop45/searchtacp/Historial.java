@@ -72,6 +72,7 @@ public class Historial extends javax.swing.JFrame {
 
         jButton1.setMnemonic('E');
         jButton1.setText("Exit");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -80,6 +81,7 @@ public class Historial extends javax.swing.JFrame {
 
         jButton2.setMnemonic('L');
         jButton2.setText("Limpiar Historial");
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);

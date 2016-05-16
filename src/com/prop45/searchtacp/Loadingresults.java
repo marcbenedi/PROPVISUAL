@@ -53,6 +53,7 @@ public class Loadingresults extends javax.swing.JPanel {
 
         exitbutton.setMnemonic('E');
         exitbutton.setText("Exit");
+        exitbutton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         exitbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 exitbuttonActionPerformed(evt);
@@ -61,6 +62,7 @@ public class Loadingresults extends javax.swing.JPanel {
 
         jButton1.setMnemonic('A');
         jButton1.setText("Abandonar busqueda");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);

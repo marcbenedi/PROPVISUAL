@@ -49,6 +49,7 @@ public class Asegurar_salir extends javax.swing.JFrame {
 
         jButton1.setMnemonic('y');
         jButton1.setText("Si");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -57,6 +58,7 @@ public class Asegurar_salir extends javax.swing.JFrame {
 
         jButton2.setMnemonic('n');
         jButton2.setText("No");
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);

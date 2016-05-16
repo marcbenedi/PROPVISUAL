@@ -143,6 +143,7 @@ public class ViewPredPath extends javax.swing.JFrame {
 
         Instructionsbutton2.setMnemonic('H');
         Instructionsbutton2.setText("Help");
+        Instructionsbutton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Instructionsbutton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Instructionsbutton2ActionPerformed(evt);
@@ -168,9 +169,11 @@ public class ViewPredPath extends javax.swing.JFrame {
         userlabel.setText("username");
 
         jButton1.setText("Continuar");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jButton3.setMnemonic('D');
         jButton3.setText("Escoge path");
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -192,6 +195,7 @@ public class ViewPredPath extends javax.swing.JFrame {
 
         Instructionsbutton4.setMnemonic('H');
         Instructionsbutton4.setText("Exit");
+        Instructionsbutton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Instructionsbutton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Instructionsbutton4ActionPerformed(evt);
@@ -214,13 +218,12 @@ public class ViewPredPath extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(259, 259, 259)
-                                    .addComponent(jLabel1))
-                                .addComponent(jLabel2))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(259, 259, 259)
+                                        .addComponent(jLabel1))
+                                    .addComponent(jLabel2)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jButton3)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)

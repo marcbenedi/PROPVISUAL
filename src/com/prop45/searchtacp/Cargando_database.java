@@ -11,6 +11,7 @@ import com.prop45.DataBase.RelacionDataBase;
 import com.prop45.Graph.Graph;
 import com.prop45.Paths.Relacion;
 import static com.prop45.searchtacp.Historial.text;
+import static com.prop45.searchtacp.Portadaylogins.Logo;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Image;
@@ -46,7 +47,10 @@ public class Cargando_database extends javax.swing.JPanel {
      * Creates new form Cargando_database
      */
     public Cargando_database() {
-        initComponents();       
+        initComponents();      
+        ImageIcon Logo_loading = new ImageIcon(getPath() + "\\recursos\\Images\\loading.gif");
+        Icon icono_loading = new ImageIcon(Logo_loading.getImage().getScaledInstance(60, 60, Image.SCALE_DEFAULT));
+        Loading.setIcon(icono_loading);
     }
 
     /**
@@ -60,13 +64,12 @@ public class Cargando_database extends javax.swing.JPanel {
 
         exitbutton0 = new javax.swing.JButton();
         bienvenidohoracio = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        Loading = new javax.swing.JLabel();
 
         exitbutton0.setMnemonic('E');
         exitbutton0.setText("Exit");
+        exitbutton0.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         exitbutton0.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 exitbutton0ActionPerformed(evt);
@@ -74,13 +77,13 @@ public class Cargando_database extends javax.swing.JPanel {
         });
 
         bienvenidohoracio.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
-        bienvenidohoracio.setForeground(new java.awt.Color(255, 102, 0));
+        bienvenidohoracio.setForeground(new java.awt.Color(204, 0, 0));
         bienvenidohoracio.setText("Cargando Data Base...");
         bienvenidohoracio.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
                 bienvenidohoracioInputMethodTextChanged(evt);
-            }
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
         });
         bienvenidohoracio.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
@@ -89,65 +92,38 @@ public class Cargando_database extends javax.swing.JPanel {
             }
         });
 
-        jLabel4.addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentHidden(java.awt.event.ComponentEvent evt) {
-                jLabel4ComponentHidden(evt);
-            }
-        });
-        jLabel4.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                jLabel4PropertyChange(evt);
-            }
-        });
-
-        jLabel5.addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentHidden(java.awt.event.ComponentEvent evt) {
-                jLabel5ComponentHidden(evt);
-            }
-        });
-        jLabel5.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                jLabel5PropertyChange(evt);
-            }
-        });
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 30)); // NOI18N
+        jLabel1.setText("Cargando");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 539, Short.MAX_VALUE)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(23, 23, 23))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(exitbutton0, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(exitbutton0, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(248, 248, 248)
+                .addGap(259, 259, 259)
                 .addComponent(bienvenidohoracio)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(225, 225, 225)
+                .addComponent(jLabel1)
+                .addGap(62, 62, 62)
+                .addComponent(Loading, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(258, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
+                .addContainerGap(63, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Loading, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(56, 56, 56)
                 .addComponent(bienvenidohoracio, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(96, 96, 96)
+                .addGap(55, 55, 55)
                 .addComponent(exitbutton0, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -167,73 +143,11 @@ public class Cargando_database extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_bienvenidohoracioPropertyChange
 
-    private void jLabel4PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jLabel4PropertyChange
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel4PropertyChange
-
-    private void jLabel5PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jLabel5PropertyChange
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel5PropertyChange
-
-    private void jLabel4ComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jLabel4ComponentHidden
-        FileReader file = null;
-        try {
-            // TODO add your handling code here:
-            file = new FileReader(getPath() + "\\recursos\\ficheros\\seg_id.txt");
-            BufferedReader reader = new BufferedReader(file);
-            String line =  reader.readLine();
-            String num_id = "";
-            int numero;
-            if (line != null) {
-                num_id = line.substring(0, line.length());
-            }   
-            file.close();
-            numero = Integer.parseInt(num_id);
-            setNextid(numero);
-            File f = new File(getPath() + "\\recursos\\ficheros\\seg_id.txt");
-            f = new File(getPath() + "\\recursos\\ficheros");
-            gdb = new GraphDataBase();
-            rdb = new RelacionDataBase();
-            grafo = new Graph();
-            gdb.setRoute(f);
-            rdb.setRoute(f);
-            grafo = gdb.load();
-            rdb.load();
-            jLabel5.setVisible(false);
-            bienvenidohoracio.setText("Calculando Base Rank...");
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Cargando_database.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(Cargando_database.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-                file.close();
-            } catch (IOException ex) {
-                Logger.getLogger(Cargando_database.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    }//GEN-LAST:event_jLabel4ComponentHidden
-
-    private void jLabel5ComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jLabel5ComponentHidden
-        // TODO add your handling code here:
-        grafo.actualitzarRelevanciaGraph();
-        Registrarse_Login p1 = new Registrarse_Login();
-        p1.setSize(737,323);
-        p1.setLocation(0,0);
-        p1.setBackground(Color.WHITE);
-        paneldinamico.removeAll();
-        paneldinamico.add(p1, BorderLayout.CENTER);
-        paneldinamico.revalidate();
-        paneldinamico.repaint();
-    }//GEN-LAST:event_jLabel5ComponentHidden
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Loading;
     public static javax.swing.JLabel bienvenidohoracio;
     public static javax.swing.JButton exitbutton0;
-    public static javax.swing.JLabel jLabel4;
-    public static javax.swing.JLabel jLabel5;
-    public static javax.swing.JLabel jLabel6;
-    public static javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

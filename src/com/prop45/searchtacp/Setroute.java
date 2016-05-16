@@ -7,7 +7,6 @@ package com.prop45.searchtacp;
 
 import static com.prop45.searchtacp.Cargando_database.bienvenidohoracio;
 import static com.prop45.searchtacp.Cargando_database.exitbutton0;
-import static com.prop45.searchtacp.Cargando_database.jLabel4;
 import static com.prop45.searchtacp.Portadaylogins.Logo;
 import static com.prop45.searchtacp.Portadaylogins.paneldinamico;
 import static com.prop45.searchtacp.SearchTACP.pausa;
@@ -66,6 +65,7 @@ public class Setroute extends javax.swing.JFrame {
         wrong.setText("La ruta es incorrecta");
 
         jButton1.setText("Aceptar");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -122,7 +122,6 @@ public class Setroute extends javax.swing.JFrame {
             this.setVisible(false);
             bienvenidohoracio.setVisible(true);
             exitbutton0.setVisible(true);
-            jLabel4.setVisible(false);
         }
         else {
             wrong.setVisible(true);

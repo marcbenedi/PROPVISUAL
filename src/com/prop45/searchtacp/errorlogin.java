@@ -41,6 +41,7 @@ public class errorlogin extends javax.swing.JPanel {
 
         Exitbutton.setMnemonic('E');
         Exitbutton.setText("Exit");
+        Exitbutton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Exitbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ExitbuttonActionPerformed(evt);
@@ -49,6 +50,7 @@ public class errorlogin extends javax.swing.JPanel {
 
         loginbutton.setMnemonic('R');
         loginbutton.setText("Return to login");
+        loginbutton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         loginbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loginbuttonActionPerformed(evt);
