@@ -11,6 +11,7 @@ import static com.prop45.searchtacp.Cargando.panelmegadinamico;
 import static com.prop45.searchtacp.Portadaylogins.paneldinamico;
 import static com.prop45.searchtacp.variables.getUsuario;
 import static com.prop45.searchtacp.variables.setUsuario;
+import static com.prop45.searchtacp.variables.setfalseAdmin;
 
 /**
  *
@@ -98,6 +99,7 @@ public class Asegurar_salir extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         setUsuario("");
+        setfalseAdmin();
         Portadaylogins panel1 = new Portadaylogins();
         panel1.setSize(738,513);
         panel1.setLocation(0,0);

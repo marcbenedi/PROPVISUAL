@@ -18,7 +18,6 @@ import static com.prop45.searchtacp.Portadaylogins.paneldinamico;
 import static com.prop45.searchtacp.variables.gdb;
 import static com.prop45.searchtacp.variables.getPath;
 import static com.prop45.searchtacp.variables.grafo;
-import static com.prop45.searchtacp.variables.isSurt;
 import static com.prop45.searchtacp.variables.rdb;
 import static com.prop45.searchtacp.variables.setNextid;
 import static com.prop45.searchtacp.variables.setPath;
@@ -27,7 +26,6 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.nio.file.Files;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Icon;
@@ -40,7 +38,6 @@ import javax.swing.ImageIcon;
 public class SearchTACP {
 
     /**
-     * @param args the command line arguments
      */
     
     public static boolean surt = false;

@@ -16,6 +16,8 @@ import static com.prop45.User.Persistencia.DadesUsuari.GuardarUsuari;
 import static com.prop45.User.Persistencia.DadesUsuari.borrarlinea;
 import static com.prop45.User.Persistencia.DadesUsuari.consultar_password;
 import static com.prop45.User.Persistencia.DadesUsuari.modificar_password;
+import static com.prop45.searchtacp.Cargando.panelmegadinamico;
+import static com.prop45.searchtacp.Portadaylogins.paneldinamico;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Image;
@@ -29,7 +31,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import static com.prop45.searchtacp.Cargando.panelmegadinamico;
+import static com.prop45.searchtacp.Prebusquedauser.modeadmin;
 import static com.prop45.searchtacp.variables.Cambisnoguardats;
 import static com.prop45.searchtacp.variables.Guardat;
 import static com.prop45.searchtacp.variables.gdb;
@@ -37,10 +39,13 @@ import static com.prop45.searchtacp.variables.getNextid;
 import static com.prop45.searchtacp.variables.getPath;
 import static com.prop45.searchtacp.variables.getUsuario;
 import static com.prop45.searchtacp.variables.grafo;
+import static com.prop45.searchtacp.variables.isAdmin;
 import static com.prop45.searchtacp.variables.isGuardat;
 import static com.prop45.searchtacp.variables.rdb;
 import static com.prop45.searchtacp.variables.setAdmin;
 import static com.prop45.searchtacp.variables.setNextid;
+import static com.prop45.searchtacp.variables.setUsuario;
+import static com.prop45.searchtacp.variables.setfalseAdmin;
 import java.io.BufferedWriter;
 import java.io.PrintWriter;
 
@@ -790,6 +795,17 @@ public class GestionAdmin extends javax.swing.JFrame {
         }
         else {
             GuardarUsuari(usuario,password);
+            if (selected.equals("admin")) {
+                try {
+                    FileWriter filew =  null;
+                    filew = new FileWriter(getPath() + "\\recursos\\ficheros\\admins.txt",true);
+                    PrintWriter pw = new PrintWriter(filew);
+                    pw.println(usuario);
+                    filew.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(GestionAdmin.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
             addusername.setForeground(Color.gray);
             addpassword.setForeground(Color.gray);
             addusername.setText("username");
@@ -909,23 +925,83 @@ public class GestionAdmin extends javax.swing.JFrame {
             error.setText(texterror);
         }
         else {
-            File file = new File(getPath() + "\\recursos\\ficheros\\historial_" + deleteuser.getText() + ".txt");
-            file.delete();
-            file = new File(getPath() + "\\recursos\\ficheros\\relacion_" + deleteuser.getText() + ".txt");
-            file.delete();
-            String password = consultar_password(usuario);
-            borrarlinea(usuario,password);
-            deleteuser.setForeground(Color.gray);
-            deleteuser.setText("username");
-            String cambiosrealizados;
-            cambiosrealizados = Cambios.getText();
-            cambiosrealizados += "Añadio el usuario con username: ";
-            cambiosrealizados += usuario;
-            cambiosrealizados += "\n";
-            Cambios.setText(cambiosrealizados);
-            error.setVisible(true);
-            error.setForeground(Color.green);
-            error.setText("Usuario eliminado correctamente");
+            FileReader filer = null;
+            try {
+                boolean es_admin = false;
+                filer = new FileReader(getPath() + "\\recursos\\ficheros\\admins.txt");
+                BufferedReader reader = new BufferedReader(filer);
+                String line =  reader.readLine();
+                while (line!=null && !es_admin) {
+                    if (line.equals(usuario)) {
+                        es_admin=true;
+                    }
+                    line = reader.readLine();
+                }   filer.close();
+                if (es_admin) {
+                    File inFile = new File(getPath() + "\\recursos\\ficheros\\admins.txt");
+                    File tempFile = new File(inFile.getAbsolutePath() + ".tmp");
+                    BufferedReader br = new BufferedReader(new FileReader(getPath() + "\\recursos\\ficheros\\admins.txt"));
+                    PrintWriter pw = new PrintWriter(new FileWriter(tempFile));
+                    line = null;
+                    while ((line = br.readLine()) != null) {
+                        if (!line.trim().equals(usuario)) {
+                            pw.println(line);
+                            pw.flush();
+                        }
+                    }
+                    pw.close();
+                    br.close();
+                    inFile.delete();
+                    tempFile.renameTo(inFile);
+                }   File file = new File(getPath() + "\\recursos\\ficheros\\historial_" + deleteuser.getText() + ".txt");
+                file.delete();
+                file = new File(getPath() + "\\recursos\\ficheros\\relacion_" + deleteuser.getText() + ".txt");
+                file.delete();
+                String password = consultar_password(usuario);
+                borrarlinea(usuario,password);
+                deleteuser.setForeground(Color.gray);
+                deleteuser.setText("username");
+                String cambiosrealizados;
+                cambiosrealizados = Cambios.getText();
+                cambiosrealizados += "Eliminó el usuario con username: ";
+                cambiosrealizados += usuario;
+                cambiosrealizados += "\n";
+                Cambios.setText(cambiosrealizados);
+                error.setVisible(true);
+                error.setForeground(Color.green);
+                error.setText("Usuario eliminado correctamente");
+                if (usuario.equals(getUsuario())) {                 
+                    this.setVisible(false);
+                    setUsuario("");
+                    setfalseAdmin();
+                    Portadaylogins panel1 = new Portadaylogins();
+                    panel1.setSize(738,513);
+                    panel1.setLocation(0,0);
+                    panel1.setBackground(Color.WHITE);
+                    panelmegadinamico.removeAll();
+                    panelmegadinamico.add(panel1, BorderLayout.CENTER);
+                    panelmegadinamico.revalidate();
+                    panelmegadinamico.repaint();
+                    Registrarse_Login p2 = new Registrarse_Login();
+                    p2.setSize(737,323);
+                    p2.setLocation(0,0);
+                    p2.setBackground(Color.WHITE);
+                    paneldinamico.removeAll();
+                    paneldinamico.add(p2, BorderLayout.CENTER);
+                    paneldinamico.revalidate();
+        paneldinamico.repaint();
+                }
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(GestionAdmin.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(GestionAdmin.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+                try {
+                    filer.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(GestionAdmin.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
         }
         
     }//GEN-LAST:event_eliminaruserMouseClicked
@@ -957,16 +1033,117 @@ public class GestionAdmin extends javax.swing.JFrame {
             error.setText("Error: Seleccione un tipo de usuario correcto");
         }
         else {
-            chuser.setForeground(Color.gray);
-            chuser.setText("username");
-            String cambiosrealizados;
-            cambiosrealizados = Cambios.getText();
-            cambiosrealizados += "Cambio los permisos del usuario " + chuser.getText() + " a " + selected + "\n";
-            Cambios.setText(cambiosrealizados);
-            jComboBox2.setSelectedIndex(0);
-            error.setVisible(true);
-            error.setForeground(Color.green);
-            error.setText("Ha cambiado el tipo usuario con exito");
+            FileReader filer = null;
+            try {
+                filer = new FileReader(getPath() + "\\recursos\\ficheros\\admins.txt");
+                BufferedReader reader = new BufferedReader(filer);
+                String line =  reader.readLine();
+                boolean es_administrador = false;
+                while (line!=null && !es_administrador) {
+                    if (line.equals(username)) {
+                        es_administrador = true;
+                    }
+                    line = reader.readLine();
+                }
+                reader.close();
+                filer.close();
+                if (selected.equals("admin")) {
+                    if (es_administrador) {
+                        error.setVisible(true);
+                        error.setForeground(Color.red);
+                        error.setText("Error: El usuario seleccionado ya es administrador");
+                    }
+                    else {
+                        FileWriter filew =  null;
+                        try {
+                            filew = new FileWriter(getPath() + "\\recursos\\ficheros\\admins.txt",true);
+                            PrintWriter pw = new PrintWriter(filew);
+                            pw.println(username);
+                            filew.close();
+                            chuser.setForeground(Color.gray);
+                            chuser.setText("username");
+                            String cambiosrealizados;
+                            cambiosrealizados = Cambios.getText();
+                            cambiosrealizados += "Cambio los permisos del usuario " + username + " a " + selected + "\n";
+                            Cambios.setText(cambiosrealizados);
+                            jComboBox2.setSelectedIndex(0);
+                            error.setVisible(true);
+                            error.setForeground(Color.green);
+                            error.setText("Ha cambiado el tipo usuario con exito");
+                        } catch (IOException ex) {
+                            Logger.getLogger(GestionAdmin.class.getName()).log(Level.SEVERE, null, ex);
+                        } finally {
+                            try {
+                                filew.close();
+                            } catch (IOException ex) {
+                                Logger.getLogger(GestionAdmin.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                        }
+                    }
+                }
+                else {
+                    if (!es_administrador) {
+                        error.setVisible(true);
+                        error.setForeground(Color.red);
+                        error.setText("Error: El usuario seleccionado ya es normal");
+                    }
+                    else {
+                        BufferedReader br = null;
+                        try {
+                            File inFile = new File(getPath() + "\\recursos\\ficheros\\admins.txt");
+                            File tempFile = new File(getPath() + "\\recursos\\ficheros\\admins1.txt");
+                            br = new BufferedReader(new FileReader(getPath() + "\\recursos\\ficheros\\admins.txt"));
+                            PrintWriter pw = new PrintWriter(new FileWriter(tempFile));
+                            line = null;
+                            while ((line = br.readLine()) != null) {
+                                if (!line.trim().equals(username)) {
+                                    pw.println(line);
+                                    pw.flush();
+                                }
+                            }   
+                            pw.close();
+                            br.close();
+                            inFile.delete();
+                            tempFile.renameTo(inFile);
+                            chuser.setForeground(Color.gray);
+                            chuser.setText("username");
+                            String cambiosrealizados;
+                            cambiosrealizados = Cambios.getText();
+                            cambiosrealizados += "Cambio los permisos del usuario " + username + " a " + selected + "\n";
+                            Cambios.setText(cambiosrealizados);
+                            jComboBox2.setSelectedIndex(0);
+                            error.setVisible(true);
+                            error.setForeground(Color.green);
+                            error.setText("Ha cambiado el tipo usuario con exito");
+                            if (username.equals(getUsuario())) {
+                                setfalseAdmin();
+                                this.setVisible(false);
+                                modeadmin.setVisible(false);
+                            }
+                        } catch (FileNotFoundException ex) {
+                            Logger.getLogger(GestionAdmin.class.getName()).log(Level.SEVERE, null, ex);
+                        } catch (IOException ex) {
+                            Logger.getLogger(GestionAdmin.class.getName()).log(Level.SEVERE, null, ex);
+                        } finally {
+                            try {
+                                br.close();
+                            } catch (IOException ex) {
+                                Logger.getLogger(GestionAdmin.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                        }
+                    }
+                }
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(GestionAdmin.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(GestionAdmin.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+                try {
+                    filer.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(GestionAdmin.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
         }
     }//GEN-LAST:event_chmodMouseClicked
 

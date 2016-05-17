@@ -15,7 +15,7 @@ import com.prop45.Graph.Graph;
  * @author Miquel Baena
  */
 public class variables {
-    private static boolean admin = true;
+    private static boolean admin = false;
     private static String usuario = "";
     private static boolean user = false;
     private static boolean surt = false;
@@ -43,7 +43,7 @@ public class variables {
         admin = true;
     }
     public static void setfalseAdmin() {
-        admin = true;
+        admin = false;
     }
     public static boolean isAdmin() {
         return admin;

@@ -5,37 +5,10 @@
  */
 package com.prop45.searchtacp;
 
-import com.prop45.Consulta.Consulta;
-import com.prop45.DataBase.GraphDataBase;
-import com.prop45.DataBase.RelacionDataBase;
-import com.prop45.Graph.Graph;
-import com.prop45.Paths.Relacion;
-import static com.prop45.searchtacp.Historial.text;
-import static com.prop45.searchtacp.Portadaylogins.Logo;
-import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import static com.prop45.searchtacp.Portadaylogins.paneldinamico;
-import static com.prop45.searchtacp.SearchTACP.pausa;
-import static com.prop45.searchtacp.variables.gdb;
-import static com.prop45.searchtacp.variables.getNextid;
 import static com.prop45.searchtacp.variables.getPath;
-import static com.prop45.searchtacp.variables.grafo;
-import static com.prop45.searchtacp.variables.rdb;
-import static com.prop45.searchtacp.variables.setNextid;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.SwingUtilities;
 
 /**
  *

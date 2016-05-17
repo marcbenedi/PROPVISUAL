@@ -35,6 +35,9 @@ public class Prebusquedauser extends javax.swing.JPanel {
      */
     public Prebusquedauser() throws FileNotFoundException, IOException {
         initComponents();
+        if (!isAdmin()) {
+            modeadmin.setVisible(false);
+        }
         userlabel.setText(getUsuario());
         ImageIcon Logo_image = new ImageIcon(getPath() + "\\recursos\\Images\\descarga.png");
         Icon icono_logo = new ImageIcon(Logo_image.getImage().getScaledInstance(266, 157, Image.SCALE_DEFAULT));
@@ -248,7 +251,7 @@ public class Prebusquedauser extends javax.swing.JPanel {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton modeadmin;
+    public static javax.swing.JButton modeadmin;
     private javax.swing.JLabel userlabel;
     // End of variables declaration//GEN-END:variables
 }

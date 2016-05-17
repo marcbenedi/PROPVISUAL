@@ -204,8 +204,6 @@ public class ViewPredPathuser extends javax.swing.JFrame {
             }
         });
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Mis Predefined Path:");
 

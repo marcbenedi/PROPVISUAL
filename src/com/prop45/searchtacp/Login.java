@@ -17,12 +17,15 @@ import static com.prop45.searchtacp.Portadaylogins.Logo;
 import static com.prop45.searchtacp.Portadaylogins.paneldinamico;
 import static com.prop45.searchtacp.variables.getPath;
 import static com.prop45.searchtacp.variables.getUsuario;
+import static com.prop45.searchtacp.variables.isAdmin;
 import static com.prop45.searchtacp.variables.setAdmin;
 import static com.prop45.searchtacp.variables.setUser;
 import static com.prop45.searchtacp.variables.setUsuario;
 import static com.prop45.searchtacp.variables.userrdb;
 import java.awt.Image;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
@@ -38,8 +41,8 @@ public class Login extends javax.swing.JPanel {
     public Login() {
         initComponents();
         ImageIcon Logo_image = new ImageIcon(getPath() + "\\recursos\\Images\\descarga.png");
-            Icon icono_logo = new ImageIcon(Logo_image.getImage().getScaledInstance(266, 157, Image.SCALE_DEFAULT));
-            Logo.setIcon(icono_logo);
+        Icon icono_logo = new ImageIcon(Logo_image.getImage().getScaledInstance(266, 157, Image.SCALE_DEFAULT));
+        Logo.setIcon(icono_logo);
     }
 
     /**
@@ -206,6 +209,16 @@ public class Login extends javax.swing.JPanel {
                 if (!faux.exists()) {
                     faux.createNewFile();
                 }
+                FileReader filer = new FileReader(getPath() + "\\recursos\\ficheros\\admins.txt");
+                BufferedReader reader = new BufferedReader(filer);
+                String line =  reader.readLine();
+                while (line!=null && !isAdmin()) {
+                    if (line.equals(user)) {
+                        setAdmin();
+                    }
+                    line = reader.readLine();
+                }
+                filer.close();
                 userrdb = new RelacionDataBase();
                 userrdb.loaduser();
                 Prebusquedauser p = new Prebusquedauser();
