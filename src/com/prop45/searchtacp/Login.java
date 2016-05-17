@@ -209,16 +209,16 @@ public class Login extends javax.swing.JPanel {
                 if (!faux.exists()) {
                     faux.createNewFile();
                 }
-                FileReader filer = new FileReader(getPath() + "\\recursos\\ficheros\\admins.txt");
-                BufferedReader reader = new BufferedReader(filer);
-                String line =  reader.readLine();
-                while (line!=null && !isAdmin()) {
-                    if (line.equals(user)) {
-                        setAdmin();
+                try (FileReader filer = new FileReader(getPath() + "\\recursos\\ficheros\\admins.txt")) {
+                    BufferedReader reader = new BufferedReader(filer);
+                    String line =  reader.readLine();
+                    while (line!=null && !isAdmin()) {
+                        if (line.equals(user)) {
+                            setAdmin();
+                        }
+                        line = reader.readLine();
                     }
-                    line = reader.readLine();
                 }
-                filer.close();
                 userrdb = new RelacionDataBase();
                 userrdb.loaduser();
                 Prebusquedauser p = new Prebusquedauser();

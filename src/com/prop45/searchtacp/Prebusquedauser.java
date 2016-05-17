@@ -8,18 +8,13 @@ package com.prop45.searchtacp;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Image;
-import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import static com.prop45.searchtacp.Cargando.panelmegadinamico;
-import static com.prop45.searchtacp.Portadaylogins.Logo;
-import static com.prop45.searchtacp.Portadaylogins.paneldinamico;
 import static com.prop45.searchtacp.variables.getPath;
 import static com.prop45.searchtacp.variables.getUsuario;
 import static com.prop45.searchtacp.variables.isAdmin;
@@ -32,6 +27,7 @@ public class Prebusquedauser extends javax.swing.JPanel {
 
     /**
      * Creates new form Prebusquedauser
+     * @throws java.io.FileNotFoundException
      */
     public Prebusquedauser() throws FileNotFoundException, IOException {
         initComponents();

@@ -9,6 +9,8 @@ import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import static com.prop45.searchtacp.variables.getPath;
+import java.awt.Color;
+import javax.swing.JScrollPane;
 
 /**
  *
@@ -24,6 +26,9 @@ public class Cargando_database extends javax.swing.JPanel {
         ImageIcon Logo_loading = new ImageIcon(getPath() + "\\recursos\\Images\\loading.gif");
         Icon icono_loading = new ImageIcon(Logo_loading.getImage().getScaledInstance(60, 60, Image.SCALE_DEFAULT));
         Loading.setIcon(icono_loading);
+        terminal.setForeground(Color.white);
+        terminal.setBackground(Color.black);
+        terminal.setEditable(false);
     }
 
     /**
@@ -39,6 +44,8 @@ public class Cargando_database extends javax.swing.JPanel {
         bienvenidohoracio = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         Loading = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        terminal = new javax.swing.JTextArea();
 
         exitbutton0.setMnemonic('E');
         exitbutton0.setText("Exit");
@@ -68,36 +75,50 @@ public class Cargando_database extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Arial", 0, 30)); // NOI18N
         jLabel1.setText("Cargando");
 
+        terminal.setColumns(20);
+        terminal.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        terminal.setRows(5);
+        jScrollPane1.setViewportView(terminal);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jLabel1))
+                    .addComponent(bienvenidohoracio))
+                .addGap(18, 18, 18)
+                .addComponent(Loading, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(116, 116, 116)
                 .addComponent(exitbutton0, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(259, 259, 259)
-                .addComponent(bienvenidohoracio)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(225, 225, 225)
-                .addComponent(jLabel1)
-                .addGap(62, 62, 62)
-                .addComponent(Loading, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(258, Short.MAX_VALUE))
+                .addGap(82, 82, 82)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 578, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(76, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(63, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Loading, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(56, 56, 56)
-                .addComponent(bienvenidohoracio, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(55, 55, 55)
-                .addComponent(exitbutton0, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(2, 2, 2)
+                                .addComponent(bienvenidohoracio, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(exitbutton0, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(Loading, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -122,5 +143,7 @@ public class Cargando_database extends javax.swing.JPanel {
     public static javax.swing.JLabel bienvenidohoracio;
     public static javax.swing.JButton exitbutton0;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    public static javax.swing.JTextArea terminal;
     // End of variables declaration//GEN-END:variables
 }

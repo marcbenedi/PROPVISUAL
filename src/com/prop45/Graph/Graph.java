@@ -1,5 +1,6 @@
 package com.prop45.Graph;
 
+import static com.prop45.searchtacp.Cargando_database.terminal;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Map;
@@ -28,16 +29,57 @@ public class Graph {
     public Graph(){}
     public void actualitzarRelevanciaGraph() {
         for(int i=0;i<10;i++){
-            System.out.print("Ronda "+ String.valueOf(i+1)+"\n");
+            String salida = terminal.getText();
+            terminal.setText(salida + "Ronda "+ String.valueOf(i+1)+"\n\n");
+            int indice_ultima_linea = terminal.getDocument().getLength();
+            terminal.setCaretPosition(indice_ultima_linea);
+            salida = terminal.getText();
+            terminal.setText(salida + "S'estan actualitzant els Papers\n\n");
+            indice_ultima_linea = terminal.getDocument().getLength();
+            terminal.setCaretPosition(indice_ultima_linea);
             for (Node n1 : datPaper) actualizarRelevancia(n1);
-            System.out.print("S'han actualitzat els Paper\n");
+            salida = terminal.getText();
+            terminal.setText(salida + "S'han actualitzat els Papers\n\n");
+            indice_ultima_linea = terminal.getDocument().getLength();
+            terminal.setCaretPosition(indice_ultima_linea);
+            salida = terminal.getText();
+            terminal.setText(salida + "S'estan actualitzant els Authors\n\n");
+            indice_ultima_linea = terminal.getDocument().getLength();
+            terminal.setCaretPosition(indice_ultima_linea);
             for (Node n1 : datAuthor) actualizarRelevancia(n1);
-            System.out.print("S'han actualitzat els Author\n");
+            salida = terminal.getText();
+            terminal.setText(salida + "S'han actualitzat els Authors\n\n");
+            indice_ultima_linea = terminal.getDocument().getLength();
+            terminal.setCaretPosition(indice_ultima_linea);
+            salida = terminal.getText();
+            terminal.setText(salida + "S'estan actualitzant les Conferences\n\n");
+            indice_ultima_linea = terminal.getDocument().getLength();
+            terminal.setCaretPosition(indice_ultima_linea);
             for (Node n1 : datConference) actualizarRelevancia(n1);
-            System.out.print("S'han actualitzat els Conference\n");
+            salida = terminal.getText();
+            terminal.setText(salida + "S'han actualitzat les Conferences\n\n");
+            indice_ultima_linea = terminal.getDocument().getLength();
+            terminal.setCaretPosition(indice_ultima_linea);
+            salida = terminal.getText();
+            terminal.setText(salida + "S'estan actualitzant els Terms\n\n");
+            indice_ultima_linea = terminal.getDocument().getLength();
+            terminal.setCaretPosition(indice_ultima_linea);
             for (Node n1 : datTerm) actualizarRelevancia(n1);
-            System.out.print("S'han actualitzat els Term\n");
+            salida = terminal.getText();
+            terminal.setText(salida + "S'han actualitzat els Terms\n\n");
+            indice_ultima_linea = terminal.getDocument().getLength();
+            terminal.setCaretPosition(indice_ultima_linea);
+            salida = terminal.getText();
+            int eresante = 9 - i;
+            terminal.setText(salida + "La Ronda "+ String.valueOf(i+1)+" s'ha acabat (queden " + eresante +"\n\n");
+            indice_ultima_linea = terminal.getDocument().getLength();
+            terminal.setCaretPosition(indice_ultima_linea);
         }
+        String salida = terminal.getText();
+        terminal.setText(salida + "S'ha completat el calcul del Page Rank amb exit\n\n");
+        int indice_ultima_linea = terminal.getDocument().getLength();
+        terminal.setCaretPosition(indice_ultima_linea);
+        
     }
     public void printAdj(){
         int pos = 0;

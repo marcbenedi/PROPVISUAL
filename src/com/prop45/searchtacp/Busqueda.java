@@ -11,9 +11,11 @@ import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import static com.prop45.searchtacp.Cargando.panelmegadinamico;
-import static com.prop45.searchtacp.Portadaylogins.Logo;
 import static com.prop45.searchtacp.Portadaylogins.paneldinamico;
 import static com.prop45.searchtacp.variables.getPath;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -321,7 +323,7 @@ public class Busqueda extends javax.swing.JPanel {
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jButton4)
                                     .addGap(18, 18, 18)
-                                    .addComponent(numdelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(numdelete, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(129, 129, 129)
                                 .addComponent(Exitbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -365,7 +367,7 @@ public class Busqueda extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(numdelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(numdelete, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton4))
                         .addGap(31, 31, 31)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -386,8 +388,8 @@ public class Busqueda extends javax.swing.JPanel {
 
     private void Instructionsbutton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Instructionsbutton1ActionPerformed
         // TODO add your handling code here:
-        Instrucciones i = new Instrucciones();
-        i.setVisible(true);
+        Instrucciones ins = new Instrucciones();
+        ins.setVisible(true);
     }//GEN-LAST:event_Instructionsbutton1ActionPerformed
 
     private void ReturnbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReturnbuttonActionPerformed
@@ -417,27 +419,43 @@ public class Busqueda extends javax.swing.JPanel {
     }//GEN-LAST:event_ExitbuttonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        escribir_term et = new escribir_term();
-        et.setVisible(true);
+        try {
+            // TODO add your handling code here:
+            escribir_term et = new escribir_term();
+            et.setVisible(true);
+        } catch (IOException ex) {
+            Logger.getLogger(Busqueda.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void ConfbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfbuttonActionPerformed
-        // TODO add your handling code here:
-        escribir_conference ec = new escribir_conference();
-        ec.setVisible(true);
+        try {
+            // TODO add your handling code here:
+            escribir_conference ec = new escribir_conference();
+            ec.setVisible(true);
+        } catch (IOException ex) {
+            Logger.getLogger(Busqueda.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_ConfbuttonActionPerformed
 
     private void AuthorbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AuthorbuttonActionPerformed
-        // TODO add your handling code here:
-        escribir_author ea = new escribir_author();
-        ea.setVisible(true);
+        try {
+            // TODO add your handling code here:
+            escribir_author ea = new escribir_author();
+            ea.setVisible(true);
+        } catch (IOException ex) {
+            Logger.getLogger(Busqueda.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_AuthorbuttonActionPerformed
 
     private void PaperbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PaperbuttonActionPerformed
-        // TODO add your handling code here:
-        escribir_paper ep = new escribir_paper();
-        ep.setVisible(true);
+        try {
+            // TODO add your handling code here:
+            escribir_paper ep = new escribir_paper();
+            ep.setVisible(true);
+        } catch (IOException ex) {
+            Logger.getLogger(Busqueda.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_PaperbuttonActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

@@ -5,11 +5,18 @@
  */
 package com.prop45.searchtacp;
 
-import static com.prop45.Graph.Graph.existsNode;
 import java.awt.Color;
 import static com.prop45.searchtacp.Busqueda.pathpublic;
 import static com.prop45.searchtacp.Busquedauser.pathuser;
+import static com.prop45.searchtacp.variables.getPath;
 import static com.prop45.searchtacp.variables.isUser;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -20,11 +27,35 @@ public class escribir_term extends javax.swing.JFrame {
     /**
      * Creates new form escribir_term
      */
-    public escribir_term() {
+    
+    DefaultTableModel model;
+    int filas = 0;
+    
+    public escribir_term() throws FileNotFoundException, IOException {
         initComponents();
         this.getContentPane().setBackground(Color.BLACK);
         this.setLocationRelativeTo(null);
-        wa.setVisible(false);
+        nombreterm.setEditable(false);
+        FileReader ftxt = new FileReader(getPath() + "\\recursos\\ficheros\\term.txt");
+        BufferedReader readertxt = new BufferedReader(ftxt);
+        String lineatxt =  "";
+        model=(DefaultTableModel)this.tablaterm.getModel();
+        while ((lineatxt = readertxt.readLine()) != null) {
+            String n = "";
+            int i=0;
+            while (lineatxt.charAt(i)!='\t') {
+                ++i;
+            }
+            ++i;
+            while (lineatxt.charAt(i)!='\t') {
+                n += lineatxt.charAt(i);
+                ++i;
+            } 
+            model.addRow(new Object[filas]);
+            model.setValueAt(n, filas, 0);
+            filas++;
+        }
+        filas = 0;
     }
 
     /**
@@ -36,15 +67,35 @@ public class escribir_term extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton3 = new javax.swing.JButton();
+        buscador = new javax.swing.JTextField();
         escoge = new javax.swing.JComboBox<>();
+        jButton4 = new javax.swing.JButton();
         nombreterm = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        wa = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tablaterm = new javax.swing.JTable();
 
         setTitle("Añadir Term");
 
-        escoge.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Definir", "No Definir" }));
+        jButton3.setMnemonic('A');
+        jButton3.setText("Seleccionar");
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        escoge.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione tipo", "Definir", "No Definir" }));
+
+        jButton4.setText("Buscar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton1.setMnemonic('A');
         jButton1.setText("Añadir");
@@ -55,9 +106,6 @@ public class escribir_term extends javax.swing.JFrame {
             }
         });
 
-        wa.setForeground(new java.awt.Color(255, 0, 0));
-        wa.setText("Wrong Argument!");
-
         jButton2.setMnemonic('C');
         jButton2.setText("Cancel");
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -67,130 +115,237 @@ public class escribir_term extends javax.swing.JFrame {
             }
         });
 
+        tablaterm.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Name Term"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tablaterm.setShowVerticalLines(false);
+        jScrollPane1.setViewportView(tablaterm);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(50, 50, 50)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(79, 79, 79)
-                        .addComponent(wa)
-                        .addGap(156, 156, 156))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(nombreterm)
-                        .addGap(38, 38, 38)
-                        .addComponent(escoge, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(75, 75, 75))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(98, 98, 98)
-                .addComponent(jButton1)
-                .addGap(33, 33, 33)
-                .addComponent(jButton2)
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(jButton3)
+                        .addGap(199, 199, 199)
+                        .addComponent(jButton2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(buscador)
+                            .addComponent(nombreterm))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(escoge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addComponent(jButton1))
+                            .addComponent(jButton4))))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
+                .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nombreterm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(escoge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(wa, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                    .addComponent(escoge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(buscador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton3)
                     .addComponent(jButton2))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        String dato=String.valueOf(model.getValueAt(tablaterm.getSelectedRow(),0));
+        nombreterm.setText(dato);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        String busquedatxt = buscador.getText();
+        while(model.getRowCount()>0)model.removeRow(0);
+        if (!"".equals(busquedatxt)) {
+            try {
+                FileReader ftxt = null;
+                ftxt = new FileReader(getPath() + "\\recursos\\ficheros\\term.txt");
+                BufferedReader readertxt = new BufferedReader(ftxt);
+                String lineatxt =  "";
+                model=(DefaultTableModel)this.tablaterm.getModel();
+                int tamaño_b = busquedatxt.length();
+                while ((lineatxt = readertxt.readLine()) != null) {
+                    String n = "";
+                    int i=0;
+                    while (lineatxt.charAt(i)!='\t') {
+                        ++i;
+                    }
+                    ++i;
+                    while (lineatxt.charAt(i)!='\t') {
+                        n += lineatxt.charAt(i);
+                        ++i;
+                    }
+                    if (n.length()>= tamaño_b && busquedatxt.equals(n.substring(0,tamaño_b))) {
+                        model.addRow(new Object[filas]);
+                        model.setValueAt(n, filas, 0);
+                        filas++;
+                    }
+                }
+                filas = 0;
+                ftxt.close();
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(escribir_term.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(escribir_term.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            } 
+        else {
+            FileReader ftxt = null;
+            try {
+                ftxt = new FileReader(getPath() + "\\recursos\\ficheros\\term.txt");
+                BufferedReader readertxt = new BufferedReader(ftxt);
+                String lineatxt =  "";
+                model=(DefaultTableModel)this.tablaterm.getModel();
+                while ((lineatxt = readertxt.readLine()) != null) {
+                    String n = "";
+                    int i=0;
+                    while (lineatxt.charAt(i)!='\t') {
+                        ++i;
+                    }
+                    ++i;
+                    while (lineatxt.charAt(i)!='\t') {
+                        n += lineatxt.charAt(i);
+                        ++i;
+                    }
+                    model.addRow(new Object[filas]);
+                    model.setValueAt(n, filas, 0);
+                    filas++;
+                }   filas = 0;
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(escribir_term.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(escribir_term.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+                try {
+                    ftxt.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(escribir_term.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        int seleccion = escoge.getSelectedIndex();
+        if (seleccion != 0) {
+            if (seleccion == 1) {
+                if (!nombreterm.getText().equals("")) {
+                    if (isUser()) {
+                        pathuser.setForeground(Color.BLACK);
+                        if (pathuser.getText().equals("Escribe tu path")){
+                            String p;
+                            p = "TERM:";
+                            p += nombreterm.getText();
+                            pathuser.setText(p);
+                        }
+                        else {
+                            String p = pathuser.getText();
+                            p += " - ";
+                            p += "TERM:";
+                            p += nombreterm.getText();
+                            pathuser.setText(p);
+                        }
+                    }
+                    else {
+                        pathpublic.setForeground(Color.BLACK);
+                        if (pathpublic.getText().equals("Escribe tu path")){
+                            String p;
+                            p = "TERM:";
+                            p += nombreterm.getText();
+                            pathpublic.setText(p);
+                        }
+                        else {
+                            String p = pathpublic.getText();
+                            p += " - ";
+                            p += "TERM:";
+                            p += nombreterm.getText();
+                            pathpublic.setText(p);
+                        }
+                    }
+                    this.setVisible(false);
+                }
+            }
+            else  {
+                if (nombreterm.getText().equals("")) {
+                    if (isUser()) {
+                        pathuser.setForeground(Color.BLACK);
+                        if (pathuser.getText().equals("Escribe tu path")){
+                            pathuser.setText("TERM:(not_defined)");
+                        }
+                        else {
+                            String p = pathuser.getText();
+                            p += " - ";
+                            p += "TERM:(not_defined)";
+                            pathuser.setText(p);
+                        }
+                    }
+                    else {
+                        pathpublic.setForeground(Color.BLACK);
+                        if (pathpublic.getText().equals("Escribe tu path")){
+                            pathpublic.setText("TERM:(not_defined)");
+                        }
+                        else {
+                            String p = pathpublic.getText();
+                            p += " - ";
+                            p += "TERM:(not_defined)";
+                            pathpublic.setText(p);
+                        }
+                    }
+                    this.setVisible(false);
+                }
+            }
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        int seleccion = escoge.getSelectedIndex();        
-        if (seleccion == 0) {
-            if (nombreterm.getText().equals("")) {
-                wa.setVisible(true);
-            }
-            else if (!existsNode(nombreterm.getText(),"Term")) {
-                wa.setVisible(true);
-                wa.setText("El Term no existe");
-            }
-            else {
-                if (isUser()) {
-                    pathuser.setForeground(Color.BLACK);
-                    if (pathuser.getText().equals("Escribe tu path")){
-                        String p;
-                        p = "TERM:";
-                        p += nombreterm.getText();
-                        pathuser.setText(p);
-                    }
-                    else {
-                        String p = pathuser.getText();
-                        p += " - ";
-                        p += "TERM:";
-                        p += nombreterm.getText();
-                        pathuser.setText(p);
-                    }
-                }
-                else {
-                    pathpublic.setForeground(Color.BLACK);
-                    if (pathpublic.getText().equals("Escribe tu path")){
-                        String p;
-                        p = "TERM:";
-                        p += nombreterm.getText();
-                        pathpublic.setText(p);
-                    }
-                    else {
-                        String p = pathpublic.getText();
-                        p += " - ";
-                        p += "TERM:";
-                        p += nombreterm.getText();
-                        pathpublic.setText(p);
-                    }
-                }
-                this.setVisible(false);
-            }
-        }
-        else {
-            if (nombreterm.getText().equals("")) {
-                if (isUser()) {
-                    pathuser.setForeground(Color.BLACK);
-                    if (pathuser.getText().equals("Escribe tu path")){
-                        pathuser.setText("TERM:(not_defined)");
-                    }
-                    else {
-                        String p = pathuser.getText();
-                        p += " - ";
-                        p += "TERM:(not_defined)";
-                        pathuser.setText(p);
-                    }
-                }
-                else {
-                    pathpublic.setForeground(Color.BLACK);
-                    if (pathpublic.getText().equals("Escribe tu path")){
-                        pathpublic.setText("TERM:(not_defined)");
-                    }
-                    else {
-                        String p = pathpublic.getText();
-                        p += " - ";
-                        p += "TERM:(not_defined)";
-                        pathpublic.setText(p);
-                    }
-                }
-                this.setVisible(false);
-            }
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -208,30 +363,32 @@ public class escribir_term extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(escribir_term.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(escribir_term.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(escribir_term.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(escribir_term.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        
+        //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+        java.awt.EventQueue.invokeLater(() -> {
+            try {
                 new escribir_term().setVisible(true);
+            } catch (IOException ex) {
+                Logger.getLogger(escribir_term.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField buscador;
     private javax.swing.JComboBox<String> escoge;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField nombreterm;
-    private javax.swing.JLabel wa;
+    private javax.swing.JTable tablaterm;
     // End of variables declaration//GEN-END:variables
 }

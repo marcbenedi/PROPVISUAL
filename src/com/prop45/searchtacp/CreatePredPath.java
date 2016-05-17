@@ -9,10 +9,8 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Image;
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -33,8 +31,6 @@ import static com.prop45.searchtacp.ViewPredPathuser.selectedpredpath;
 import static com.prop45.searchtacp.ViewPredPathuser.titolpredpath;
 import static com.prop45.searchtacp.variables.getPath;
 import static com.prop45.searchtacp.variables.getUsuario;
-import static com.prop45.searchtacp.variables.setAdmin;
-import static com.prop45.searchtacp.variables.setUser;
 
 /**
  *
@@ -44,6 +40,7 @@ public class CreatePredPath extends javax.swing.JPanel {
 
     /**
      * Creates new form CreatePredPath
+     * @throws java.io.FileNotFoundException
      */
     public CreatePredPath() throws FileNotFoundException, IOException {
         initComponents();

@@ -39,10 +39,8 @@ import static com.prop45.searchtacp.variables.getNextid;
 import static com.prop45.searchtacp.variables.getPath;
 import static com.prop45.searchtacp.variables.getUsuario;
 import static com.prop45.searchtacp.variables.grafo;
-import static com.prop45.searchtacp.variables.isAdmin;
 import static com.prop45.searchtacp.variables.isGuardat;
 import static com.prop45.searchtacp.variables.rdb;
-import static com.prop45.searchtacp.variables.setAdmin;
 import static com.prop45.searchtacp.variables.setNextid;
 import static com.prop45.searchtacp.variables.setUsuario;
 import static com.prop45.searchtacp.variables.setfalseAdmin;
@@ -57,6 +55,7 @@ public class GestionAdmin extends javax.swing.JFrame {
 
     /**
      * Creates new form GestionAdmin
+     * @throws java.io.FileNotFoundException
      */
     public GestionAdmin() throws FileNotFoundException, IOException {
         initComponents(); 
@@ -66,16 +65,6 @@ public class GestionAdmin extends javax.swing.JFrame {
         Cambios.setEditable(false);
         this.setLocationRelativeTo(null);
         this.getContentPane().setBackground(Color.white);
-        /*FileReader file = new FileReader("src/com/prop45/ficheros/actualuser.txt");
-        BufferedReader reader = new BufferedReader(file);
-        String usuario;
-        String line =  reader.readLine();
-        int i = 0;
-        if (line != null) {
-            while (line.charAt(i) != ' ') i++;
-            usuario = line.substring(0,i);
-            userlabel.setText(usuario);
-        }*/
         añadeuser.setText(null);
         ImageIcon guardarimage = new ImageIcon(getPath() + "\\recursos\\Images\\guardar.jpg");
         Icon icono_guardar = new ImageIcon(guardarimage.getImage().getScaledInstance(52, 52, Image.SCALE_DEFAULT));
@@ -940,17 +929,15 @@ public class GestionAdmin extends javax.swing.JFrame {
                 if (es_admin) {
                     File inFile = new File(getPath() + "\\recursos\\ficheros\\admins.txt");
                     File tempFile = new File(inFile.getAbsolutePath() + ".tmp");
-                    BufferedReader br = new BufferedReader(new FileReader(getPath() + "\\recursos\\ficheros\\admins.txt"));
-                    PrintWriter pw = new PrintWriter(new FileWriter(tempFile));
-                    line = null;
-                    while ((line = br.readLine()) != null) {
-                        if (!line.trim().equals(usuario)) {
-                            pw.println(line);
-                            pw.flush();
+                    try (BufferedReader br = new BufferedReader(new FileReader(getPath() + "\\recursos\\ficheros\\admins.txt")); PrintWriter pw = new PrintWriter(new FileWriter(tempFile))) {
+                        line = null;
+                        while ((line = br.readLine()) != null) {
+                            if (!line.trim().equals(usuario)) {
+                                pw.println(line);
+                                pw.flush();
+                            }
                         }
                     }
-                    pw.close();
-                    br.close();
                     inFile.delete();
                     tempFile.renameTo(inFile);
                 }   File file = new File(getPath() + "\\recursos\\ficheros\\historial_" + deleteuser.getText() + ".txt");
@@ -1036,16 +1023,18 @@ public class GestionAdmin extends javax.swing.JFrame {
             FileReader filer = null;
             try {
                 filer = new FileReader(getPath() + "\\recursos\\ficheros\\admins.txt");
-                BufferedReader reader = new BufferedReader(filer);
-                String line =  reader.readLine();
-                boolean es_administrador = false;
-                while (line!=null && !es_administrador) {
-                    if (line.equals(username)) {
-                        es_administrador = true;
-                    }
+                String line;
+                boolean es_administrador;
+                try (BufferedReader reader = new BufferedReader(filer)) {
                     line = reader.readLine();
+                    es_administrador = false;
+                    while (line!=null && !es_administrador) {
+                        if (line.equals(username)) {
+                            es_administrador = true;
+                        }
+                        line = reader.readLine();
+                    }
                 }
-                reader.close();
                 filer.close();
                 if (selected.equals("admin")) {
                     if (es_administrador) {
@@ -1093,15 +1082,15 @@ public class GestionAdmin extends javax.swing.JFrame {
                             File inFile = new File(getPath() + "\\recursos\\ficheros\\admins.txt");
                             File tempFile = new File(getPath() + "\\recursos\\ficheros\\admins1.txt");
                             br = new BufferedReader(new FileReader(getPath() + "\\recursos\\ficheros\\admins.txt"));
-                            PrintWriter pw = new PrintWriter(new FileWriter(tempFile));
-                            line = null;
-                            while ((line = br.readLine()) != null) {
-                                if (!line.trim().equals(username)) {
-                                    pw.println(line);
-                                    pw.flush();
+                            try (PrintWriter pw = new PrintWriter(new FileWriter(tempFile))) {
+                                line = null;
+                                while ((line = br.readLine()) != null) {
+                                    if (!line.trim().equals(username)) {
+                                        pw.println(line);
+                                        pw.flush();
+                                    }
                                 }
-                            }   
-                            pw.close();
+                            }
                             br.close();
                             inFile.delete();
                             tempFile.renameTo(inFile);
@@ -1218,9 +1207,9 @@ public class GestionAdmin extends javax.swing.JFrame {
                 ++numero;
                 setNextid(numero);
                 num_id = Integer.toString(numero);
-                BufferedWriter bw =  new BufferedWriter(new FileWriter(getPath() + "\\recursos\\ficheros\\seg_id.txt"));
-                bw.write(num_id);
-                bw.close();
+                try (BufferedWriter bw = new BufferedWriter(new FileWriter(getPath() + "\\recursos\\ficheros\\seg_id.txt"))) {
+                    bw.write(num_id);
+                }
                 String cambiosrealizados;
                 cambiosrealizados = Cambios.getText();
                 cambiosrealizados += "Añadio el/la " + tipo + " con nombre: " + username + "\n";
@@ -1520,25 +1509,19 @@ public class GestionAdmin extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GestionAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GestionAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GestionAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(GestionAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        
+        //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    new GestionAdmin().setVisible(true);
-                } catch (IOException ex) {
-                    Logger.getLogger(GestionAdmin.class.getName()).log(Level.SEVERE, null, ex);
-                }
+        java.awt.EventQueue.invokeLater(() -> {
+            try {
+                new GestionAdmin().setVisible(true);
+            } catch (IOException ex) {
+                Logger.getLogger(GestionAdmin.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
     }

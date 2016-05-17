@@ -10,6 +10,7 @@ import com.prop45.DataBase.RelacionDataBase;
 import com.prop45.Graph.Graph;
 import static com.prop45.searchtacp.Cargando_database.bienvenidohoracio;
 import static com.prop45.searchtacp.Cargando_database.exitbutton0;
+import static com.prop45.searchtacp.Cargando_database.terminal;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.io.File;
@@ -49,7 +50,7 @@ public class SearchTACP {
             } catch (Exception ignored) {} 
     }
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException, IOException {
         // TODO code application logic here:
         File file1 = new File("").getAbsoluteFile();
         String route = file1.toString();
@@ -61,7 +62,6 @@ public class SearchTACP {
         Logo.setIcon(icono_logo);
         bienvenidohoracio.setVisible(true);
         exitbutton0.setVisible(true);
-        
         FileReader file = null;
         try {
             // TODO add your handling code here:
@@ -81,11 +81,23 @@ public class SearchTACP {
             gdb = new GraphDataBase();
             rdb = new RelacionDataBase();
             grafo = new Graph();
-            gdb.setRoute(f);
+            gdb.setRoute(f);            
             rdb.setRoute(f);
             grafo = gdb.load();
+            String salida = terminal.getText();
+            terminal.setText(salida + "Cargando paths predeterminados\n\n");
+            int indice_ultima_linea = terminal.getDocument().getLength();
+            terminal.setCaretPosition(indice_ultima_linea);
             rdb.load();
-            bienvenidohoracio.setText("Calculando Base Rank...");
+            salida = terminal.getText();
+            terminal.setText(salida + "Paths predeterminados cargados con exito\n\n");
+            indice_ultima_linea = terminal.getDocument().getLength();
+            terminal.setCaretPosition(indice_ultima_linea);
+            bienvenidohoracio.setText("Calculando Page Rank...");
+            salida = terminal.getText();
+            terminal.setText(salida + "Calculando Page Rank\n\n");
+            indice_ultima_linea = terminal.getDocument().getLength();
+            terminal.setCaretPosition(indice_ultima_linea);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Cargando_database.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -97,8 +109,20 @@ public class SearchTACP {
                 Logger.getLogger(Cargando_database.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        
         grafo.actualitzarRelevanciaGraph();
+        String salida = terminal.getText();
+        terminal.setText(salida + "Disfruti de la Aplicació (SearchTACP)\n\n");
+        int indice_ultima_linea = terminal.getDocument().getLength();
+        terminal.setCaretPosition(indice_ultima_linea);
+        salida = terminal.getText();
+        terminal.setText(salida + "Disfrute de la Aplicación (SearchTACP)\n\n");
+        indice_ultima_linea = terminal.getDocument().getLength();
+        terminal.setCaretPosition(indice_ultima_linea);
+        salida = terminal.getText();
+        terminal.setText(salida + "Enjoy the application (SearchTACP)\n\n");
+        indice_ultima_linea = terminal.getDocument().getLength();
+        terminal.setCaretPosition(indice_ultima_linea);
+        pausa(2);
         Registrarse_Login p1 = new Registrarse_Login();
         p1.setSize(737,323);
         p1.setLocation(0,0);

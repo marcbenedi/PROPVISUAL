@@ -8,9 +8,7 @@ package com.prop45.searchtacp;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import static com.prop45.searchtacp.Cargando.panelmegadinamico;
-import static com.prop45.searchtacp.Cargando_database.bienvenidohoracio;
 import static com.prop45.searchtacp.Portadaylogins.paneldinamico;
-import static com.prop45.searchtacp.SearchTACP.pausa;
 
 /**
  *

@@ -10,7 +10,6 @@ import static com.prop45.searchtacp.variables.getUsuario;
 import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -26,6 +25,7 @@ public class Historial extends javax.swing.JFrame {
 
     /**
      * Creates new form Historial
+     * @throws java.io.FileNotFoundException
      */
     public Historial() throws FileNotFoundException, IOException {
         initComponents();
@@ -167,25 +167,19 @@ public class Historial extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Historial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Historial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Historial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Historial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        
+        //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    new Historial().setVisible(true);
-                } catch (IOException ex) {
-                    Logger.getLogger(Historial.class.getName()).log(Level.SEVERE, null, ex);
-                }
+        java.awt.EventQueue.invokeLater(() -> {
+            try {
+                new Historial().setVisible(true);
+            } catch (IOException ex) {
+                Logger.getLogger(Historial.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
     }

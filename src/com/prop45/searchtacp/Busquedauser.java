@@ -8,10 +8,7 @@ package com.prop45.searchtacp;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Image;
-import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -19,12 +16,9 @@ import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import static com.prop45.searchtacp.Cargando.panelmegadinamico;
-import static com.prop45.searchtacp.CreatePredPath.pathpred;
-import static com.prop45.searchtacp.Portadaylogins.Logo;
 import static com.prop45.searchtacp.Portadaylogins.paneldinamico;
 import static com.prop45.searchtacp.variables.getPath;
 import static com.prop45.searchtacp.variables.getUsuario;
-import static com.prop45.searchtacp.variables.isAdmin;
 import java.io.BufferedWriter;
 
 /**
@@ -36,6 +30,7 @@ public class Busquedauser extends javax.swing.JPanel {
     public int i;
     /**
      * Creates new form Busquedauser
+     * @throws java.io.FileNotFoundException
      */
     public Busquedauser() throws FileNotFoundException, IOException {
         i = 1;
@@ -344,8 +339,8 @@ public class Busquedauser extends javax.swing.JPanel {
 
     private void Instructionsbutton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Instructionsbutton1ActionPerformed
         // TODO add your handling code here:
-        Instrucciones i = new Instrucciones();
-        i.setVisible(true);
+        Instrucciones ins = new Instrucciones();
+        ins.setVisible(true);
     }//GEN-LAST:event_Instructionsbutton1ActionPerformed
 
     private void pathbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pathbuttonActionPerformed
@@ -355,27 +350,43 @@ public class Busquedauser extends javax.swing.JPanel {
     }//GEN-LAST:event_pathbuttonActionPerformed
 
     private void AuthorbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AuthorbuttonActionPerformed
-        // TODO add your handling code here:
-        escribir_author ea = new escribir_author();
-        ea.setVisible(true);
+        try {
+            // TODO add your handling code here:
+            escribir_author ea = new escribir_author();
+            ea.setVisible(true);
+        } catch (IOException ex) {
+            Logger.getLogger(Busquedauser.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_AuthorbuttonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-         escribir_term et = new escribir_term();
-        et.setVisible(true);
+        try {
+            // TODO add your handling code here:
+            escribir_term et = new escribir_term();
+            et.setVisible(true);
+        } catch (IOException ex) {
+            Logger.getLogger(Busquedauser.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void ConfbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfbuttonActionPerformed
-        // TODO add your handling code here:
-        escribir_conference ec = new escribir_conference();
-        ec.setVisible(true);
+        try {
+            // TODO add your handling code here:
+            escribir_conference ec = new escribir_conference();
+            ec.setVisible(true);
+        } catch (IOException ex) {
+            Logger.getLogger(Busquedauser.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_ConfbuttonActionPerformed
 
     private void PaperbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PaperbuttonActionPerformed
-        // TODO add your handling code here:
-        escribir_paper ep = new escribir_paper();
-        ep.setVisible(true);
+        try {
+            // TODO add your handling code here:
+            escribir_paper ep = new escribir_paper();
+            ep.setVisible(true);
+        } catch (IOException ex) {
+            Logger.getLogger(Busquedauser.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_PaperbuttonActionPerformed
 
     private void ReturnbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReturnbuttonActionPerformed
