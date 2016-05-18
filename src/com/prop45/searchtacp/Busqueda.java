@@ -11,7 +11,9 @@ import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import static com.prop45.searchtacp.Cargando.panelmegadinamico;
+import static com.prop45.searchtacp.Instrucciones.instruccions_guillem;
 import static com.prop45.searchtacp.Portadaylogins.paneldinamico;
+import static com.prop45.searchtacp.variables.getInst_Busquedanormal;
 import static com.prop45.searchtacp.variables.getPath;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -390,6 +392,7 @@ public class Busqueda extends javax.swing.JPanel {
         // TODO add your handling code here:
         Instrucciones ins = new Instrucciones();
         ins.setVisible(true);
+        instruccions_guillem.setText(getInst_Busquedanormal());
     }//GEN-LAST:event_Instructionsbutton1ActionPerformed
 
     private void ReturnbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReturnbuttonActionPerformed

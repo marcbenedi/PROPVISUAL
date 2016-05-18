@@ -71,7 +71,7 @@ public class Graph {
             terminal.setCaretPosition(indice_ultima_linea);
             salida = terminal.getText();
             int eresante = 9 - i;
-            terminal.setText(salida + "La Ronda "+ String.valueOf(i+1)+" s'ha acabat (queden " + eresante +"\n\n");
+            terminal.setText(salida + "La Ronda "+ String.valueOf(i+1)+" s'ha acabat (queden " + eresante +")\n\n");
             indice_ultima_linea = terminal.getDocument().getLength();
             terminal.setCaretPosition(indice_ultima_linea);
         }

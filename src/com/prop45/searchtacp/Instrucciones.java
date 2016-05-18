@@ -18,7 +18,7 @@ public class Instrucciones extends javax.swing.JFrame {
      */
     public Instrucciones() {
         initComponents();
-        jTextArea2.setEditable(false);
+        instruccions_guillem.setEditable(false);
         this.setLocationRelativeTo(null);
         this.getContentPane().setBackground(Color.BLACK);
     }
@@ -34,7 +34,7 @@ public class Instrucciones extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        instruccions_guillem = new javax.swing.JTextArea();
 
         setTitle("Instrucciones");
 
@@ -42,9 +42,9 @@ public class Instrucciones extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Instrucciones");
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane2.setViewportView(jTextArea2);
+        instruccions_guillem.setColumns(20);
+        instruccions_guillem.setRows(5);
+        jScrollPane2.setViewportView(instruccions_guillem);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -103,8 +103,8 @@ public class Instrucciones extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public static javax.swing.JTextArea instruccions_guillem;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea2;
     // End of variables declaration//GEN-END:variables
 }

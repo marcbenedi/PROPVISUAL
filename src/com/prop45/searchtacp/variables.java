@@ -27,6 +27,7 @@ public class variables {
     public static RelacionDataBase userrdb;
     private static int id = 0;
     private static boolean guardat = true;
+    private static String inst_busquedanormal = "Aquestes son les instruccions";
     
     public static boolean isNumeric(String str)  {  
       try  
@@ -86,5 +87,8 @@ public class variables {
     }
     public static boolean isGuardat() {
         return guardat;
+    }
+    public static String getInst_Busquedanormal() {
+        return inst_busquedanormal;
     }
 }
