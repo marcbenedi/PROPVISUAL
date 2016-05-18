@@ -5,6 +5,7 @@
  */
 package com.prop45.searchtacp;
 
+import static com.prop45.searchtacp.Busquedauser.pathuser;
 import static com.prop45.searchtacp.variables.getPath;
 import static com.prop45.searchtacp.variables.getUsuario;
 import static com.prop45.searchtacp.variables.isAdmin;
@@ -324,6 +325,11 @@ public class ViewPredPathuser extends javax.swing.JFrame {
 
         continuepredpath.setText("Continuar");
         continuepredpath.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        continuepredpath.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                continuepredpathActionPerformed(evt);
+            }
+        });
 
         helppredpath.setMnemonic('H');
         helppredpath.setText("Help");
@@ -796,6 +802,13 @@ public class ViewPredPathuser extends javax.swing.JFrame {
             duppn.setForeground(Color.black);
         }
     }//GEN-LAST:event_duppnMouseClicked
+
+    private void continuepredpathActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continuepredpathActionPerformed
+        // TODO add your handling code here:
+        pathuser.setForeground(Color.BLACK); 
+        pathuser.setText(selectedpredpath.getText());
+        this.setVisible(false);
+    }//GEN-LAST:event_continuepredpathActionPerformed
 
     /**
      * @param args the command line arguments

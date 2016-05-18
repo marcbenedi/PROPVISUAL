@@ -5,6 +5,7 @@
  */
 package com.prop45.searchtacp;
 
+import static com.prop45.searchtacp.Busqueda.pathpublic;
 import static com.prop45.searchtacp.variables.getPath;
 import static com.prop45.searchtacp.variables.getUsuario;
 import static com.prop45.searchtacp.variables.isNumeric;
@@ -168,6 +169,11 @@ public class ViewPredPath extends javax.swing.JFrame {
 
         jButton1.setText("Continuar");
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton3.setMnemonic('D');
         jButton3.setText("Escoge path");
@@ -359,6 +365,13 @@ public class ViewPredPath extends javax.swing.JFrame {
             euppn.setForeground(Color.black);
         }
     }//GEN-LAST:event_euppnMouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        pathpublic.setForeground(Color.BLACK); 
+        pathpublic.setText(selectedpredpath.getText());
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
