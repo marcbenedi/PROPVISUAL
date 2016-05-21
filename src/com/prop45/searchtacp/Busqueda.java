@@ -85,6 +85,7 @@ public class Busqueda extends javax.swing.JPanel {
 
         pathpublic.setForeground(new java.awt.Color(153, 153, 153));
         pathpublic.setText("Escribe tu path");
+        pathpublic.setName(""); // NOI18N
         pathpublic.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pathpublicMouseClicked(evt);

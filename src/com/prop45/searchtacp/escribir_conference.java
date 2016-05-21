@@ -56,6 +56,8 @@ public class escribir_conference extends javax.swing.JFrame {
             filas++;
         }
         filas = 0;
+        ftxt.close();
+        readertxt.close();
     }
 
     /**
