@@ -85,17 +85,16 @@ public class SearchTACP {
             rdb.setRoute(f);
             grafo = gdb.load();
             String salida = terminal.getText();
-            terminal.setText(salida + "Cargando paths predeterminados\n\n");
+            terminal.setText(salida + "Cargando paths predeterminados\n");
             int indice_ultima_linea = terminal.getDocument().getLength();
             terminal.setCaretPosition(indice_ultima_linea);
             rdb.load();
             salida = terminal.getText();
-            terminal.setText(salida + "Paths predeterminados cargados con exito\n\n");
+            terminal.setText(salida + "100.00%\n\n");
             indice_ultima_linea = terminal.getDocument().getLength();
             terminal.setCaretPosition(indice_ultima_linea);
             bienvenidohoracio.setText("Calculando Page Rank...");
             salida = terminal.getText();
-            terminal.setText(salida + "Calculando Page Rank\n\n");
             indice_ultima_linea = terminal.getDocument().getLength();
             terminal.setCaretPosition(indice_ultima_linea);
         } catch (FileNotFoundException ex) {
@@ -111,14 +110,8 @@ public class SearchTACP {
         }
         grafo.actualitzarRelevanciaGraph();
         String salida = terminal.getText();
-        terminal.setText(salida + "Disfruti de la Aplicació (SearchTACP)\n\n");
         int indice_ultima_linea = terminal.getDocument().getLength();
         terminal.setCaretPosition(indice_ultima_linea);
-        salida = terminal.getText();
-        terminal.setText(salida + "Disfrute de la Aplicación (SearchTACP)\n\n");
-        indice_ultima_linea = terminal.getDocument().getLength();
-        terminal.setCaretPosition(indice_ultima_linea);
-        salida = terminal.getText();
         terminal.setText(salida + "Enjoy the application (SearchTACP)\n\n");
         indice_ultima_linea = terminal.getDocument().getLength();
         terminal.setCaretPosition(indice_ultima_linea);

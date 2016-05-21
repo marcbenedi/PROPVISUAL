@@ -5,7 +5,10 @@ import static com.prop45.searchtacp.Cargando_database.terminal;
 import com.sun.jmx.snmp.agent.SnmpUserDataFactory;
 
 import java.io.*;
+import static java.lang.Thread.sleep;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class GraphDataBase extends DataBase {
     private ArrayList<Node> datPaper;
@@ -274,105 +277,61 @@ public class GraphDataBase extends DataBase {
         int indice_ultima_linea;
         
         String salida = terminal.getText();
-        terminal.setText(salida + "\n" + "Cargando data base\n\n");
-        indice_ultima_linea = terminal.getDocument().getLength();
-        terminal.setCaretPosition(indice_ultima_linea);
-        salida = terminal.getText();
-        terminal.setText(salida + "Cargando Nodos\n\n");
+        terminal.setText(salida + "\n" + "Cargando data base\n");
         indice_ultima_linea = terminal.getDocument().getLength();
         terminal.setCaretPosition(indice_ultima_linea);
         
         salida = terminal.getText();
-        terminal.setText(salida + "Cargando Authors\n\n");
+        terminal.setText(salida + "14.28%");
         indice_ultima_linea = terminal.getDocument().getLength();
         terminal.setCaretPosition(indice_ultima_linea);
         loadAuthorR();
-        salida = terminal.getText();
-        terminal.setText(salida + "Authors cargados con exito\n\n");
-        indice_ultima_linea = terminal.getDocument().getLength();
-        terminal.setCaretPosition(indice_ultima_linea);
         
-        salida = terminal.getText();
-        terminal.setText(salida + "Cargando Conferences\n\n");
+        //salida = terminal.getText();
+        terminal.setText(salida + "28.57%");
         indice_ultima_linea = terminal.getDocument().getLength();
         terminal.setCaretPosition(indice_ultima_linea);
         loadConferenceR();
-        salida = terminal.getText();
-        terminal.setText(salida + "Conferences cargadas con exito\n");
-        indice_ultima_linea = terminal.getDocument().getLength();
-        terminal.setCaretPosition(indice_ultima_linea);
         
-        salida = terminal.getText();
-        terminal.setText(salida + "Cargando Papers\n\n");
+        //salida = terminal.getText();
+        terminal.setText(salida + "48.84%");
         indice_ultima_linea = terminal.getDocument().getLength();
         terminal.setCaretPosition(indice_ultima_linea);
         loadPaperR();
-        salida = terminal.getText();
-        terminal.setText(salida + "Papers cargados con exito\n\n");
-        indice_ultima_linea = terminal.getDocument().getLength();
-        terminal.setCaretPosition(indice_ultima_linea);
         
-        salida = terminal.getText();
-        terminal.setText(salida + "Cargando Terms\n\n"); 
+        //salida = terminal.getText();
+        terminal.setText(salida + "57.12%"); 
         indice_ultima_linea = terminal.getDocument().getLength();
         terminal.setCaretPosition(indice_ultima_linea); 
         loadTermR();
-        salida = terminal.getText();
-        terminal.setText(salida + "Terms cargados con exito\n\n"); 
-        indice_ultima_linea = terminal.getDocument().getLength();
-        terminal.setCaretPosition(indice_ultima_linea); 
         
-        salida = terminal.getText();
-        terminal.setText(salida + "Nodos cargados con exito\n\n");
-        indice_ultima_linea = terminal.getDocument().getLength();
-        terminal.setCaretPosition(indice_ultima_linea);
 
         int id_aresta = 0;
-        salida = terminal.getText();
-        terminal.setText(salida + "Cargando Arestas\n\n");
-        indice_ultima_linea = terminal.getDocument().getLength();
-        terminal.setCaretPosition(indice_ultima_linea);
         
-        salida = terminal.getText();
-        terminal.setText(salida + "Cargando Aresta Paper-Conference\n\n");
+        //salida = terminal.getText();
+        terminal.setText(salida + "71.40%");
         indice_ultima_linea = terminal.getDocument().getLength();
         terminal.setCaretPosition(indice_ultima_linea);
         loadArestaPaperConference(id_aresta);
-        salida = terminal.getText();
-        terminal.setText(salida + "Aresta Paper - Conference cargada con exito\n\n");
-        indice_ultima_linea = terminal.getDocument().getLength();
-        terminal.setCaretPosition(indice_ultima_linea);
         
-        salida = terminal.getText();
-        terminal.setText(salida + "Cargando Aresta Paper-Author\n\n");
+        //salida = terminal.getText();
+        terminal.setText(salida + "85.68%");
         indice_ultima_linea = terminal.getDocument().getLength();
         terminal.setCaretPosition(indice_ultima_linea);
         loadArestaPaperAuthor(id_aresta);
-        salida = terminal.getText();
-        terminal.setText(salida + "Aresta Paper - Author cargada con exito\n\n");
-        indice_ultima_linea = terminal.getDocument().getLength();
-        terminal.setCaretPosition(indice_ultima_linea);
         
-        salida = terminal.getText();
-        terminal.setText(salida + "Cargando Aresta Paper-Term\n\n");
+        //salida = terminal.getText();
+        terminal.setText(salida + "99.96%");
         indice_ultima_linea = terminal.getDocument().getLength();
         terminal.setCaretPosition(indice_ultima_linea);
         loadArestaPaperTerm(id_aresta);
-        salida = terminal.getText();
-        terminal.setText(salida + "Aresta Paper - Term cargada con exito\n\n");
+
+        
+        //salida = terminal.getText();
+        terminal.setText(salida + "100.00%\n\n");
         indice_ultima_linea = terminal.getDocument().getLength();
         terminal.setCaretPosition(indice_ultima_linea);
-        
-        salida = terminal.getText();
-        terminal.setText(salida + "Arestas cargadas con exito\n\n");
-        indice_ultima_linea = terminal.getDocument().getLength();
-        terminal.setCaretPosition(indice_ultima_linea);
-        
-        salida = terminal.getText();
-        terminal.setText(salida + "Grafo cargado con exito\n\n");
-        indice_ultima_linea = terminal.getDocument().getLength();
-        terminal.setCaretPosition(indice_ultima_linea);
-        
+
 
         return new Graph(datPaper,datAuthor,datTerm,datConference,datPaperConference,
                 datPaperAuthor,datPaperTerm);
