@@ -8,6 +8,7 @@ import com.prop45.Graph.Graph;
 import com.prop45.Graph.Node;
 import com.prop45.Paths.Norma;
 import com.prop45.Paths.Relacion;
+import com.sun.jmx.mbeanserver.NamedObject;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -59,14 +60,19 @@ public class Test_Consulta {
                     System.out.println("Introdueix index de la consulta desitjada");
                     index = in.nextInt();
                     Relacion r = relacions.get(index);
-                    System.out.println("Introdueixi el nom del Autor/Article/Conferencia/Term per on vol començar" +
-                            "la consulta");
-                    in.nextLine();
-                    String nom = in.nextLine();
 
+                    System.out.println("Introdueixi el nom del Autor/Article/Conferencia/Term per on vol començar" +
+                            "la consulta, si no es desitja definir posar NULL");
                     ArrayList<String>valors = new ArrayList<>();
-                    valors.add(nom);
-                    for(int i = 1; i < r.getTags().size();++i)valors.add("NULL");
+                    int numtags = r.getTags().size();
+                    in.nextLine();
+                    for(int i = 0; i < numtags; ++i){
+                        System.out.println("Posicio "+i);
+                        String nom = in.nextLine();
+                        valors.add(nom);
+                        System.out.println("S'ha introduït "+ nom);
+                    }
+
                     ArrayList<Node> resultat = c.consultar(r,valors);
                     System.out.println(r.getName()+"..........");
                     for (Node n:resultat) {
