@@ -33,7 +33,7 @@ public class variables {
             " crearlo al momento usando los tipos básicos(Term, Paper, Conference, Author) para ir definiendo cada nodo " +
             "para el camino que quieres usar. \nTambién podrás añadirle clausulas, donde debes especificar las 3 casillas a la " +
             "derecha de Añadir mas clausulas, en este orden: la posición del 1r nodo, la posición del 2o nodo y su relación.\n" +
-            "Las posibles relaciones son '=' que significa iguales, '!=' que significa diferentes, '>' que significa mayor que (alfabéticamente), y '<' " +
+            "Las posibles relaciones son 'E' que significa iguales, 'D' que significa diferentes, 'L' que significa mayor que (alfabéticamente), y 'M' " +
             "que significa menor que (alfabéticamente). \n"+" Cuando estés listo, clica en Realizar Búsqueda.";
     public static final String escoger_predefined_path="Bienvenido a la pantalla para escoger tu path predefinido, tienes dos opciones: \n"+
             "Escoger un camino predeterminado que hayas definido anteriormente o bien escoger un camino de los predeterminados ofrecidos" +
@@ -44,7 +44,7 @@ public class variables {
             " \nPara definir tu propio path" +
             " clica en los botones de cada tipo de nodo, así se añadirán. También podrás añadirle clausulas, donde debes especificar las 3 casillas a la " +
             "derecha de Añadir mas clausulas, en este orden: la posición del 1r nodo, la posición del 2o nodo y su relación.\n" +
-            "Las posibles relaciones son '=' que significa iguales, '!=' que significa diferentes, '>' que significa mayor que (alfabéticamente), y '<' " +
+            "Las posibles relaciones son 'E' que significa iguales, 'D' que significa diferentes, 'L' que significa mayor que (alfabéticamente), y 'M' " +
             "que significa menor que (alfabéticamente). \n" +
             "Cuando hayas acabado de definir tu camino clica en Submit para que se añada a la base de datos.";
     public static final String modo_administrador="Bienvenido al modo administrador. \nPara cada opción hay una imagen de un disquete a su derecha " +
