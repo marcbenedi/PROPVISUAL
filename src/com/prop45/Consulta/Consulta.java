@@ -20,8 +20,12 @@ public class Consulta {
 
     public ArrayList<Node> consultar(Relacion re, ArrayList<String> valor){
         ArrayList<String> tags = re.getTags();
+
+        //valor.set(1,"Supporting Access Control in an Object-Oriented Database Language.");
         //System.out.println(tags.toString());
-        //System.out.println(valor.get(0));
+        //System.out.println(valor.toString());
+
+
 
         ArrayList<Node> a;
         a = g.buscarAdjecencies(valor.get(0),tags.get(0),tags.get(1));
@@ -40,7 +44,28 @@ public class Consulta {
             // no s'ha de fer res ja que és el resultat
             if(!valor.get(i).equals("NULL")) {
                 //Si és diferent de NULL hem de anar al nodo
-
+                //System.out.println("Valor no null");
+                for (Node n:a) {
+                    if(n.getName().equals(valor.get(i))){
+                        //System.out.println("Es el que estem buscant");
+                        //Si és el node que estem buscant seguim endevant
+                        cami.add(n);
+                        ArrayList<Node> resTemp =g.buscarAdjecencies(n.getName(),n.getTipus(),tags.get(i+1));
+                        //System.out.println("Hem buscar adj de "+n.getName());
+                        passarNormes(re,cami,resTemp,i,a);
+                        midle.addAll(resTemp);
+                        cami.remove(n);
+                    }
+                    //else System.out.println("No es el que estem buscant"+n.getName());
+                }
+                Set abc = new HashSet<>();
+                abc.addAll(midle);
+                midle.clear();
+                midle.addAll(abc);
+                abc.clear();
+                a.clear();
+                a.addAll(midle);
+                midle.clear();
             }
             else{
                 //És null els hem d'agafar tots

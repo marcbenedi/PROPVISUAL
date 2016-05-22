@@ -5,6 +5,7 @@
  */
 package com.prop45.searchtacp;
 
+import static com.prop45.searchtacp.Busqueda.pathpublic;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Image;
@@ -32,6 +33,7 @@ public class Loadingresults extends javax.swing.JPanel {
         ImageIcon Loading_image = new ImageIcon(getPath() + "\\recursos\\Images\\loading.gif");
         Icon icono_loading = new ImageIcon(Loading_image.getImage().getScaledInstance(61 ,61, Image.SCALE_DEFAULT));
         gift.setIcon(icono_loading);
+        //titulo.setText(pathpublic.getText());
     }
 
     /**
