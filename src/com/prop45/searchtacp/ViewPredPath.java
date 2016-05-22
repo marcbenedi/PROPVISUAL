@@ -6,9 +6,9 @@
 package com.prop45.searchtacp;
 
 import static com.prop45.searchtacp.Busqueda.pathpublic;
-import static com.prop45.searchtacp.variables.getPath;
-import static com.prop45.searchtacp.variables.getUsuario;
-import static com.prop45.searchtacp.variables.isNumeric;
+import static com.prop45.searchtacp.Instrucciones.instruccions_guillem;
+import static com.prop45.searchtacp.variables.*;
+
 import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -376,6 +376,13 @@ public class ViewPredPath extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+
+    private void Instructionsbutton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Instructionsbutton1ActionPerformed
+        // TODO add your handling code here:
+        Instrucciones ins = new Instrucciones();
+        ins.setVisible(true);
+        instruccions_guillem.setText("soc viewpredpath");
+    }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

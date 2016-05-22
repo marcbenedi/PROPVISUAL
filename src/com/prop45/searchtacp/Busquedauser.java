@@ -18,6 +18,7 @@ import javax.swing.ImageIcon;
 import static com.prop45.searchtacp.Cargando.panelmegadinamico;
 import static com.prop45.searchtacp.Instrucciones.instruccions_guillem;
 import static com.prop45.searchtacp.Portadaylogins.paneldinamico;
+import static com.prop45.searchtacp.variables.getInst_Realizar_Busqueda;
 import static com.prop45.searchtacp.variables.getPath;
 import static com.prop45.searchtacp.variables.getUsuario;
 import java.io.BufferedWriter;
@@ -342,6 +343,8 @@ public class Busquedauser extends javax.swing.JPanel {
         // TODO add your handling code here:
         Instrucciones ins = new Instrucciones();
         ins.setVisible(true);
+        instruccions_guillem.setText(getInst_Realizar_Busqueda());
+
     }//GEN-LAST:event_Instructionsbutton1ActionPerformed
 
     private void pathbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pathbuttonActionPerformed
