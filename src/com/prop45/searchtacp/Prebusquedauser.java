@@ -15,9 +15,8 @@ import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import static com.prop45.searchtacp.Cargando.panelmegadinamico;
-import static com.prop45.searchtacp.variables.getPath;
-import static com.prop45.searchtacp.variables.getUsuario;
-import static com.prop45.searchtacp.variables.isAdmin;
+import static com.prop45.searchtacp.Instrucciones.instruccions_guillem;
+import static com.prop45.searchtacp.variables.*;
 
 /**
  *
@@ -238,6 +237,12 @@ public class Prebusquedauser extends javax.swing.JPanel {
             Logger.getLogger(Prebusquedauser.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton3ActionPerformed
+    private void Instructionsbutton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Instructionsbutton1ActionPerformed
+        // TODO add your handling code here:
+        Instrucciones ins = new Instrucciones();
+        ins.setVisible(true);
+        instruccions_guillem.setText("soc la clase prebusquedauser");
+    }//GEN-LAST:event_Instructionsbutton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

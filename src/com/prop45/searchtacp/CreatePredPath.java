@@ -17,6 +17,7 @@ import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import static com.prop45.searchtacp.Cargando.panelmegadinamico;
+import static com.prop45.searchtacp.Instrucciones.instruccions_guillem;
 import static com.prop45.searchtacp.ViewPredPathuser.continuepredpath;
 import static com.prop45.searchtacp.ViewPredPathuser.dmppn;
 import static com.prop45.searchtacp.ViewPredPathuser.dmppnbotton;
@@ -29,6 +30,8 @@ import static com.prop45.searchtacp.ViewPredPathuser.euppnbutton;
 import static com.prop45.searchtacp.ViewPredPathuser.helppredpath;
 import static com.prop45.searchtacp.ViewPredPathuser.selectedpredpath;
 import static com.prop45.searchtacp.ViewPredPathuser.titolpredpath;
+import static com.prop45.searchtacp.variables.getInst_Crear_Path_Predefinido;
+import static com.prop45.searchtacp.variables.getInst_Modo_Admin;
 import static com.prop45.searchtacp.variables.getPath;
 import static com.prop45.searchtacp.variables.getUsuario;
 
@@ -490,8 +493,9 @@ public class CreatePredPath extends javax.swing.JPanel {
 
     private void Instructionsbutton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Instructionsbutton1ActionPerformed
         // TODO add your handling code here:
-        Instrucciones i = new Instrucciones();
-        i.setVisible(true);
+        Instrucciones ins = new Instrucciones();
+        ins.setVisible(true);
+        instruccions_guillem.setText(getInst_Crear_Path_Predefinido());
     }//GEN-LAST:event_Instructionsbutton1ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed

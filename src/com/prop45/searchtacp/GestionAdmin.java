@@ -17,6 +17,7 @@ import static com.prop45.User.Persistencia.DadesUsuari.borrarlinea;
 import static com.prop45.User.Persistencia.DadesUsuari.consultar_password;
 import static com.prop45.User.Persistencia.DadesUsuari.modificar_password;
 import static com.prop45.searchtacp.Cargando.panelmegadinamico;
+import static com.prop45.searchtacp.Instrucciones.instruccions_guillem;
 import static com.prop45.searchtacp.Portadaylogins.paneldinamico;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -32,18 +33,8 @@ import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import static com.prop45.searchtacp.Prebusquedauser.modeadmin;
-import static com.prop45.searchtacp.variables.Cambisnoguardats;
-import static com.prop45.searchtacp.variables.Guardat;
-import static com.prop45.searchtacp.variables.gdb;
-import static com.prop45.searchtacp.variables.getNextid;
-import static com.prop45.searchtacp.variables.getPath;
-import static com.prop45.searchtacp.variables.getUsuario;
-import static com.prop45.searchtacp.variables.grafo;
-import static com.prop45.searchtacp.variables.isGuardat;
-import static com.prop45.searchtacp.variables.rdb;
-import static com.prop45.searchtacp.variables.setNextid;
-import static com.prop45.searchtacp.variables.setUsuario;
-import static com.prop45.searchtacp.variables.setfalseAdmin;
+import static com.prop45.searchtacp.variables.*;
+
 import java.io.BufferedWriter;
 import java.io.PrintWriter;
 
@@ -1477,8 +1468,9 @@ public class GestionAdmin extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        Instrucciones i = new Instrucciones();
-        i.setVisible(true);
+        Instrucciones ins = new Instrucciones();
+        ins.setVisible(true);
+        instruccions_guillem.setText(getInst_Modo_Admin());
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

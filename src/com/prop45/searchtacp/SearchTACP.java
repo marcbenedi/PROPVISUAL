@@ -108,7 +108,7 @@ public class SearchTACP {
                 Logger.getLogger(Cargando_database.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        grafo.actualitzarRelevanciaGraph();
+        //grafo.actualitzarRelevanciaGraph();
         String salida = terminal.getText();
         int indice_ultima_linea = terminal.getDocument().getLength();
         terminal.setCaretPosition(indice_ultima_linea);

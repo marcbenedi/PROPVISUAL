@@ -6,6 +6,8 @@
 package com.prop45.searchtacp;
 
 import static com.prop45.searchtacp.Busquedauser.pathuser;
+import static com.prop45.searchtacp.Instrucciones.instruccions_guillem;
+import static com.prop45.searchtacp.variables.getInst_Escoger_Path_Predefinido;
 import static com.prop45.searchtacp.variables.getPath;
 import static com.prop45.searchtacp.variables.getUsuario;
 import static com.prop45.searchtacp.variables.isAdmin;
@@ -159,7 +161,12 @@ public class ViewPredPathuser extends javax.swing.JFrame {
             Logger.getLogger(ViewPredPathuser.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    private void Instructionsbutton1ActionPerformed(java.awt.event.ActionEvent evt) {                                                    
+        // TODO add your handling code here:
+        Instrucciones ins = new Instrucciones();
+        ins.setVisible(true);
+        instruccions_guillem.setText("soc viewpredpathuser");
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -480,16 +487,12 @@ public class ViewPredPathuser extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_euppnActionPerformed
 
-    private void Instructionsbutton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Instructionsbutton1ActionPerformed
-        // TODO add your handling code here:
-        Instrucciones i = new Instrucciones();
-        i.setVisible(true);
-    }//GEN-LAST:event_Instructionsbutton1ActionPerformed
 
     private void helppredpathActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helppredpathActionPerformed
         // TODO add your handling code here:
-        Instrucciones i = new Instrucciones();
-        i.setVisible(true);
+        Instrucciones ins = new Instrucciones();
+        ins.setVisible(true);
+        instruccions_guillem.setText(getInst_Escoger_Path_Predefinido());
     }//GEN-LAST:event_helppredpathActionPerformed
 
     private void Instructionsbutton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Instructionsbutton3ActionPerformed

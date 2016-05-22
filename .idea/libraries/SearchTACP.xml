@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="SearchTACP">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/dist/SearchTACP.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
