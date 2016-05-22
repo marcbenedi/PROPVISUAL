@@ -1468,8 +1468,9 @@ public class GestionAdmin extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        Instrucciones i = new Instrucciones();
-        i.setVisible(true);
+        Instrucciones ins = new Instrucciones();
+        ins.setVisible(true);
+        instruccions_guillem.setText(getInst_Modo_Admin());
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -1479,12 +1480,6 @@ public class GestionAdmin extends javax.swing.JFrame {
         Guardat();
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void Instructionsbutton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Instructionsbutton1ActionPerformed
-        // TODO add your handling code here:
-        Instrucciones ins = new Instrucciones();
-        ins.setVisible(true);
-        instruccions_guillem.setText(getInst_Modo_Admin());
-    }
     private void ExitbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitbuttonActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);

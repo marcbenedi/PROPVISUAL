@@ -287,8 +287,9 @@ public class ViewPredPath extends javax.swing.JFrame {
 
     private void Instructionsbutton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Instructionsbutton2ActionPerformed
         // TODO add your handling code here:
-        Instrucciones i = new Instrucciones();
-        i.setVisible(true);
+        Instrucciones ins = new Instrucciones();
+        ins.setVisible(true);
+        instruccions_guillem.setText(getInst_Escoger_Path_Predefinido());
     }//GEN-LAST:event_Instructionsbutton2ActionPerformed
 
     private void euppnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_euppnActionPerformed
@@ -377,7 +378,7 @@ public class ViewPredPath extends javax.swing.JFrame {
      * @param args the command line arguments
      */
 
-    private void Instructionsbutton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Instructionsbutton1ActionPerformed
+    private void Instructionsbutton1ActionPerformed(java.awt.event.ActionEvent evt) {                                                    
         // TODO add your handling code here:
         Instrucciones ins = new Instrucciones();
         ins.setVisible(true);
