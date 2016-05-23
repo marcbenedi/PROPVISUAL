@@ -5,6 +5,18 @@
  */
 package com.prop45.searchtacp;
 
+import static com.prop45.searchtacp.Cargando.panelmegadinamico;
+import static com.prop45.searchtacp.variables.getPath;
+import static com.prop45.searchtacp.variables.isUser;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Image;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author Marc
@@ -57,7 +69,49 @@ public class ConsultaPanel extends javax.swing.JPanel {
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 513, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+    
+    private void exitbuttonActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        // TODO add your handling code here:
+        Asegurar_exit ae = new Asegurar_exit();
+        ae.setVisible(true);
+    }                                          
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        // TODO add your handling code here:
+        if (isUser()){
+            try {
+            // TODO add your handling code here:
+            Busquedauser p = new Busquedauser();
+            p.setSize(738,513);
+            p.setLocation(0,0);
+            p.setBackground(Color.WHITE);
+            panelmegadinamico.removeAll();
+            panelmegadinamico.add(p, BorderLayout.CENTER);
+            panelmegadinamico.revalidate();
+            panelmegadinamico.repaint();
+        } catch (IOException ex) {
+            Logger.getLogger(Prebusquedauser.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        }
+        else {
+            Busqueda p = new Busqueda();
+            p.setSize(738,513);
+            p.setLocation(0,0);
+            p.setBackground(Color.WHITE);
+            panelmegadinamico.removeAll();
+            panelmegadinamico.add(p, BorderLayout.CENTER);
+            panelmegadinamico.revalidate();
+            panelmegadinamico.repaint();
+        }
+    }                                        
+
+
+    // Variables declaration - do not modify                     
+    private javax.swing.JButton exitbutton;
+    private javax.swing.JLabel gift;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel titulo;
+    // End of variables declaration   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
