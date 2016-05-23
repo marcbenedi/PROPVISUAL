@@ -30,6 +30,7 @@ public class escribir_conference extends javax.swing.JFrame {
     
     DefaultTableModel model;
     int filas = 0;
+    boolean needselect=true;
     
     public escribir_conference() throws FileNotFoundException, IOException {
         initComponents();
@@ -194,6 +195,7 @@ public class escribir_conference extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        if(needselect) return;
         String dato=String.valueOf(model.getValueAt(tablaconference.getSelectedRow(),0));
         nombreconference.setText(dato);
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -322,6 +324,7 @@ public class escribir_conference extends javax.swing.JFrame {
                 }
             }
             else  {
+                needselect =false;
                 if (nombreconference.getText().equals("")) {
                     if (isUser()) {
                         pathuser.setForeground(Color.BLACK);
