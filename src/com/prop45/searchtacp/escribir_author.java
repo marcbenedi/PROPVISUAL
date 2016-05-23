@@ -238,24 +238,24 @@ public class escribir_author extends javax.swing.JFrame {
                     if (isUser()) {
                         pathuser.setForeground(Color.BLACK);
                         if (pathuser.getText().equals("Escribe tu path")){
-                            pathuser.setText("AUTHOR:(not_defined)");
+                            pathuser.setText("AUTHOR:NULL");
                         }
                         else {
                             String p = pathuser.getText();
                             p += " - ";
-                            p += "AUTHOR:(not_defined)";
+                            p += "AUTHOR:NULL";
                             pathuser.setText(p);
                         }
                     }
                     else {
                         pathpublic.setForeground(Color.BLACK);
                         if (pathpublic.getText().equals("Escribe tu path")){
-                            pathpublic.setText("AUTHOR:(not_defined)");
+                            pathpublic.setText("AUTHOR:NULL");
                         }
                         else {
                             String p = pathpublic.getText();
                             p += " - ";
-                            p += "AUTHOR:(not_defined)";
+                            p += "AUTHOR:NULL";
                             pathpublic.setText(p);
                         }
                     }

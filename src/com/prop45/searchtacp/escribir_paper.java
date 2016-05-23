@@ -317,24 +317,24 @@ public class escribir_paper extends javax.swing.JFrame {
                     if (isUser()) {
                         pathuser.setForeground(Color.BLACK);
                         if (pathuser.getText().equals("Escribe tu path")){
-                            pathuser.setText("PAPER:(not_defined)");
+                            pathuser.setText("PAPER:NULL");
                         }
                         else {
                             String p = pathuser.getText();
                             p += " - ";
-                            p += "PAPER:(not_defined)";
+                            p += "PAPER:NULL";
                             pathuser.setText(p);
                         }
                     }
                     else {
                         pathpublic.setForeground(Color.BLACK);
                         if (pathpublic.getText().equals("Escribe tu path")){
-                            pathpublic.setText("PAPER:(not_defined)");
+                            pathpublic.setText("PAPER:NULL");
                         }
                         else {
                             String p = pathpublic.getText();
                             p += " - ";
-                            p += "PAPER:(not_defined)";
+                            p += "PAPER:NULL";
                             pathpublic.setText(p);
                         }
                     }

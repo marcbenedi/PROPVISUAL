@@ -281,14 +281,14 @@ public class escribir_conference extends javax.swing.JFrame {
                         pathuser.setForeground(Color.BLACK);
                         if (pathuser.getText().equals("Escribe tu path")){
                             String p;
-                            p = "AUTHOR:";
+                            p = "Conference:";
                             p += nombreconference.getText();
                             pathuser.setText(p);
                         }
                         else {
                             String p = pathuser.getText();
                             p += " - ";
-                            p += "AUTHOR:";
+                            p += "Conference:";
                             p += nombreconference.getText();
                             pathuser.setText(p);
                         }
@@ -297,14 +297,14 @@ public class escribir_conference extends javax.swing.JFrame {
                         pathpublic.setForeground(Color.BLACK);
                         if (pathpublic.getText().equals("Escribe tu path")){
                             String p;
-                            p = "AUTHOR:";
+                            p = "Conference:";
                             p += nombreconference.getText();
                             pathpublic.setText(p);
                         }
                         else {
                             String p = pathpublic.getText();
                             p += " - ";
-                            p += "AUTHOR:";
+                            p += "Conference:";
                             p += nombreconference.getText();
                             pathpublic.setText(p);
                         }
@@ -317,24 +317,24 @@ public class escribir_conference extends javax.swing.JFrame {
                     if (isUser()) {
                         pathuser.setForeground(Color.BLACK);
                         if (pathuser.getText().equals("Escribe tu path")){
-                            pathuser.setText("AUTHOR:(not_defined)");
+                            pathuser.setText("Conference:NULL");
                         }
                         else {
                             String p = pathuser.getText();
                             p += " - ";
-                            p += "AUTHOR:(not_defined)";
+                            p += "Conference:NULL";
                             pathuser.setText(p);
                         }
                     }
                     else {
                         pathpublic.setForeground(Color.BLACK);
                         if (pathpublic.getText().equals("Escribe tu path")){
-                            pathpublic.setText("AUTHOR:(not_defined)");
+                            pathpublic.setText("Conference:NULL");
                         }
                         else {
                             String p = pathpublic.getText();
                             p += " - ";
-                            p += "AUTHOR:(not_defined)";
+                            p += "Conference:NULL";
                             pathpublic.setText(p);
                         }
                     }

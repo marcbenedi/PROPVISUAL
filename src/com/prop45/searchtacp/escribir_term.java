@@ -317,24 +317,24 @@ public class escribir_term extends javax.swing.JFrame {
                     if (isUser()) {
                         pathuser.setForeground(Color.BLACK);
                         if (pathuser.getText().equals("Escribe tu path")){
-                            pathuser.setText("TERM:(not_defined)");
+                            pathuser.setText("TERM:NULL");
                         }
                         else {
                             String p = pathuser.getText();
                             p += " - ";
-                            p += "TERM:(not_defined)";
+                            p += "TERM:NULL";
                             pathuser.setText(p);
                         }
                     }
                     else {
                         pathpublic.setForeground(Color.BLACK);
                         if (pathpublic.getText().equals("Escribe tu path")){
-                            pathpublic.setText("TERM:(not_defined)");
+                            pathpublic.setText("TERM:NULL");
                         }
                         else {
                             String p = pathpublic.getText();
                             p += " - ";
-                            p += "TERM:(not_defined)";
+                            p += "TERM:NULL";
                             pathpublic.setText(p);
                         }
                     }
