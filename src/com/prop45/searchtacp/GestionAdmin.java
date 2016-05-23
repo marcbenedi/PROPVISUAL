@@ -456,10 +456,10 @@ public class GestionAdmin extends javax.swing.JFrame {
         });
 
         jLabel17.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel17.setText("Añadir aristas:");
+        jLabel17.setText("Añadir arista:");
 
         jLabel18.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel18.setText("Eliminar relación:");
+        jLabel18.setText("Eliminar arista:");
 
         jButton3.setText("Save");
         jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
