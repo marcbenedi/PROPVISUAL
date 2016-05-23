@@ -272,6 +272,13 @@ public class escribir_paper extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        variables.tags.add("Paper");
+        if(nombrepaper.getText().equals("")){
+            variables.valors.add("NULL");
+        }
+        else{
+            variables.valors.add(nombrepaper.getText());
+        }
         // TODO add your handling code here:
         int seleccion = escoge.getSelectedIndex();
         if (seleccion != 0) {
