@@ -30,6 +30,7 @@ public class escribir_paper extends javax.swing.JFrame {
     
     DefaultTableModel model;
     int filas = 0;
+    boolean needselect=true;
     
     public escribir_paper() throws FileNotFoundException, IOException {
         initComponents();
@@ -40,7 +41,7 @@ public class escribir_paper extends javax.swing.JFrame {
         BufferedReader readertxt = new BufferedReader(ftxt);
         String lineatxt =  "";
         model=(DefaultTableModel)this.tablapaper.getModel();
-        while ((lineatxt = readertxt.readLine()) != null) {
+        while ((lineatxt = readertxt.readLine()) != null && filas<100) {
             String n = "";
             int i=0;
             while (lineatxt.charAt(i)!='\t') {
@@ -194,6 +195,7 @@ public class escribir_paper extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        if(needselect) return;
         String dato=String.valueOf(model.getValueAt(tablapaper.getSelectedRow(),0));
         nombrepaper.setText(dato);
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -210,7 +212,7 @@ public class escribir_paper extends javax.swing.JFrame {
                 String lineatxt =  "";
                 model=(DefaultTableModel)this.tablapaper.getModel();
                 int tamaño_b = busquedatxt.length();
-                while ((lineatxt = readertxt.readLine()) != null) {
+                while ((lineatxt = readertxt.readLine()) != null&& filas<100) {
                     String n = "";
                     int i=0;
                     while (lineatxt.charAt(i)!='\t') {
@@ -242,7 +244,7 @@ public class escribir_paper extends javax.swing.JFrame {
                 BufferedReader readertxt = new BufferedReader(ftxt);
                 String lineatxt =  "";
                 model=(DefaultTableModel)this.tablapaper.getModel();
-                while ((lineatxt = readertxt.readLine()) != null) {
+                while ((lineatxt = readertxt.readLine()) != null&& filas<100) {
                     String n = "";
                     int i=0;
                     while (lineatxt.charAt(i)!='\t') {
@@ -272,6 +274,13 @@ public class escribir_paper extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        variables.tags.add("Paper");
+        if(nombrepaper.getText().equals("")){
+            variables.valors.add("NULL");
+        }
+        else{
+            variables.valors.add(nombrepaper.getText());
+        }
         // TODO add your handling code here:
         int seleccion = escoge.getSelectedIndex();
         if (seleccion != 0) {
@@ -313,6 +322,7 @@ public class escribir_paper extends javax.swing.JFrame {
                 }
             }
             else  {
+                needselect =false;
                 if (nombrepaper.getText().equals("")) {
                     if (isUser()) {
                         pathuser.setForeground(Color.BLACK);
