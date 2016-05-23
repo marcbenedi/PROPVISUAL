@@ -9,6 +9,7 @@ import com.prop45.Consulta.Consulta;
 import com.prop45.DataBase.GraphDataBase;
 import com.prop45.DataBase.RelacionDataBase;
 import com.prop45.Graph.Graph;
+import com.prop45.Graph.Node;
 import com.prop45.Paths.Norma;
 import com.prop45.Paths.Relacion;
 import java.util.ArrayList;
@@ -19,10 +20,12 @@ import java.util.ArrayList;
  */
 public class variables {
     
-    public static Relacion r;
-    public static ArrayList<String> valors;
-    public static ArrayList<String> tags;
-    public static ArrayList<Norma> normes;
+    public static Relacion r = new Relacion("nombre_por_defecto");
+    public static ArrayList<String> valors = new ArrayList<>();
+    public static ArrayList<String> tags = new ArrayList<>();
+    public static ArrayList<Norma> normes= new ArrayList<>();
+    
+    public static ArrayList<Node> result = new ArrayList<>();
     
     private static boolean admin = false;
     private static String usuario = "";

@@ -40,7 +40,7 @@ public class escribir_author extends javax.swing.JFrame {
         BufferedReader readertxt = new BufferedReader(ftxt);
         String lineatxt =  "";
         model=(DefaultTableModel)this.tablaauthor.getModel();
-        while ((lineatxt = readertxt.readLine()) != null) {
+        while ((lineatxt = readertxt.readLine()) != null&& filas<100) {
             String n = "";
             int i=0;
             while (lineatxt.charAt(i)!='\t') {
@@ -304,7 +304,7 @@ public class escribir_author extends javax.swing.JFrame {
                 String lineatxt =  "";
                 model=(DefaultTableModel)this.tablaauthor.getModel();
                 int tamaño_b = busquedatxt.length();
-                while ((lineatxt = readertxt.readLine()) != null) {
+                while ((lineatxt = readertxt.readLine()) != null&& filas<100) {
                     String n = "";
                     int i=0;
                     while (lineatxt.charAt(i)!='\t') {
@@ -341,7 +341,7 @@ public class escribir_author extends javax.swing.JFrame {
                 BufferedReader readertxt = new BufferedReader(ftxt);
                 String lineatxt =  "";
                 model=(DefaultTableModel)this.tablaauthor.getModel();
-                while ((lineatxt = readertxt.readLine()) != null) {
+                while ((lineatxt = readertxt.readLine()) != null&& filas<100) {
                     String n = "";
                     int i=0;
                     while (lineatxt.charAt(i)!='\t') {
