@@ -30,6 +30,7 @@ public class escribir_paper extends javax.swing.JFrame {
     
     DefaultTableModel model;
     int filas = 0;
+    boolean needselect=true;
     
     public escribir_paper() throws FileNotFoundException, IOException {
         initComponents();
@@ -194,6 +195,7 @@ public class escribir_paper extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        if(needselect) return;
         String dato=String.valueOf(model.getValueAt(tablapaper.getSelectedRow(),0));
         nombrepaper.setText(dato);
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -320,6 +322,7 @@ public class escribir_paper extends javax.swing.JFrame {
                 }
             }
             else  {
+                needselect =false;
                 if (nombrepaper.getText().equals("")) {
                     if (isUser()) {
                         pathuser.setForeground(Color.BLACK);
