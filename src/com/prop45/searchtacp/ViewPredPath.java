@@ -5,6 +5,7 @@
  */
 package com.prop45.searchtacp;
 
+import static com.prop45.searchtacp.Busqueda.clausulas;
 import static com.prop45.searchtacp.Busqueda.pathpublic;
 import static com.prop45.searchtacp.Instrucciones.instruccions_guillem;
 import static com.prop45.searchtacp.variables.*;
@@ -16,6 +17,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -26,83 +28,35 @@ public class ViewPredPath extends javax.swing.JFrame {
     /**
      * Creates new form ViewPredPath
      */
-    private static int num_max = 0;
-    public ViewPredPath() {
-        FileReader file =null;
-        try {
-            initComponents();
-            wnu.setVisible(false);
-            text.setEditable(false);
-            this.setLocationRelativeTo(null);
-            this.getContentPane().setBackground(Color.BLACK);
-            selectedpredpath.setEditable(false);
-            userlabel.setText(getUsuario());
-            String textoaux ="";
-            file = new FileReader(getPath() + "\\recursos\\ficheros\\relacion.txt");
-            BufferedReader reader = new BufferedReader(file);
-            String line =  reader.readLine();
-            String frase;
-            int iaux = 1;
-            while (line != null) {
-                int i = 0;
-                textoaux += iaux + ".";
-                while (line.charAt(i)!='\t') {
-                    textoaux += line.charAt(i);
-                    ++i;
-                }
+    DefaultTableModel model;
+    int filas = 0;
+    public ViewPredPath() throws FileNotFoundException, IOException {
+        initComponents();
+        text.setEditable(false);
+        this.setLocationRelativeTo(null);
+        this.getContentPane().setBackground(Color.BLACK);
+        selectedpredpath.setEditable(false);
+        userlabel.setText(getUsuario());
+        FileReader ftxt = new FileReader(getPath() + "\\recursos\\ficheros\\relacion.txt");
+        BufferedReader readertxt = new BufferedReader(ftxt);
+        String lineatxt =  "";
+        model=(DefaultTableModel)this.tablarelacion.getModel();
+        while ((lineatxt = readertxt.readLine()) != null) {
+            String n = "";
+            int i=0;
+            while (lineatxt.charAt(i)!='\t') {
                 ++i;
-                textoaux += ": ";
-                while (i<line.length() && line.charAt(i)!='\t') {
-                    if (line.charAt(i)==' ') {
-                        textoaux += " - ";
-                    }
-                    else {
-                        textoaux += line.charAt(i);
-                    }
-                    ++i;
-                }
-                ++i;
-                int iaux2 = 1;
-                if (i<line.length()) {
-                    textoaux += "\n   Clausulas:";
-                }
-                else {
-                    textoaux += "\n   No tiene ninguna clausula definida";
-                }
-                while (i<line.length()) {
-                    textoaux += "\n";
-                    
-                    for (int j=0 ; j<13 ; ++j) {
-                        textoaux += "  ";
-                    }
-                    int iaux3 = i;
-                    if (i<line.length()) {
-                        textoaux += "c" + iaux2 + ": ";
-                    }                    
-                    while (i<line.length() && line.charAt(i)!='\t') {
-                        textoaux += line.charAt(i);
-                        ++i;
-                    }
-                    ++iaux2;
-                    ++i;
-                }
-                textoaux += "\n\n";
-                line = reader.readLine();
-                ++iaux;
-            }   
-            num_max = iaux-1;
-            text.setText(textoaux);
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(ViewPredPath.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ViewPredPath.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-                file.close();
-            } catch (IOException ex) {
-                Logger.getLogger(ViewPredPath.class.getName()).log(Level.SEVERE, null, ex);
             }
+            ++i;
+            while (lineatxt.charAt(i)!='\t') {
+                n += lineatxt.charAt(i);
+                ++i;
+            } 
+            model.addRow(new Object[filas]);
+            model.setValueAt(n, filas, 0);
+            filas++;
         }
+        filas = 0;    
     }
 
     /**
@@ -125,9 +79,10 @@ public class ViewPredPath extends javax.swing.JFrame {
         userlabel = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        euppn = new javax.swing.JTextField();
         Instructionsbutton4 = new javax.swing.JButton();
-        wnu = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tablarelacion = new javax.swing.JTable();
 
         Instructionsbutton3.setMnemonic('H');
         Instructionsbutton3.setText("Exit");
@@ -176,24 +131,11 @@ public class ViewPredPath extends javax.swing.JFrame {
         });
 
         jButton3.setMnemonic('D');
-        jButton3.setText("Escoge path");
+        jButton3.setText("Selecciona");
         jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
-            }
-        });
-
-        euppn.setForeground(new java.awt.Color(153, 153, 153));
-        euppn.setText("num. predpath");
-        euppn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                euppnMouseClicked(evt);
-            }
-        });
-        euppn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                euppnActionPerformed(evt);
             }
         });
 
@@ -206,49 +148,73 @@ public class ViewPredPath extends javax.swing.JFrame {
             }
         });
 
-        wnu.setForeground(new java.awt.Color(255, 0, 0));
-        wnu.setText("Wrong number");
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Clausulas del predefined path seleccionado:");
+
+        tablarelacion.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Caminos predefinidos"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tablarelacion.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_LAST_COLUMN);
+        jScrollPane2.setViewportView(tablarelacion);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(Instructionsbutton4, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(259, 259, 259)
-                                        .addComponent(jLabel1))
-                                    .addComponent(jLabel2)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jButton3)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(euppn, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(98, 98, 98)
-                                        .addComponent(wnu))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                .addComponent(jLabel4)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(selectedpredpath, javax.swing.GroupLayout.PREFERRED_SIZE, 482, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(userlabel)
-                                                .addGap(497, 497, 497)))
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(Instructionsbutton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jButton1))))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addGap(19, 19, 19))
+                                .addGap(259, 259, 259)
+                                .addComponent(jLabel1))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jLabel2)
+                                            .addGap(252, 252, 252))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addComponent(jButton3)
+                                                    .addGap(315, 315, 315))
+                                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel3)
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                            .addComponent(jLabel4)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(selectedpredpath, javax.swing.GroupLayout.PREFERRED_SIZE, 482, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(userlabel)
+                                            .addGap(497, 497, 497)))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(Instructionsbutton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jButton1)))))))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -259,7 +225,7 @@ public class ViewPredPath extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(userlabel)
                             .addComponent(Instructionsbutton2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 351, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(29, 29, 29)
                         .addComponent(jLabel1)
@@ -268,18 +234,19 @@ public class ViewPredPath extends javax.swing.JFrame {
                             .addComponent(jLabel4)
                             .addComponent(selectedpredpath, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton1))
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton3)
-                            .addComponent(euppn, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(wnu))))
+                        .addGap(27, 27, 27)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton3)
                 .addGap(18, 18, 18)
                 .addComponent(Instructionsbutton4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -291,10 +258,6 @@ public class ViewPredPath extends javax.swing.JFrame {
         ins.setVisible(true);
         instruccions_guillem.setText(getInst_Escoger_Path_Predefinido());
     }//GEN-LAST:event_Instructionsbutton2ActionPerformed
-
-    private void euppnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_euppnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_euppnActionPerformed
 
     private void Instructionsbutton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Instructionsbutton3ActionPerformed
         // TODO add your handling code here:
@@ -308,69 +271,15 @@ public class ViewPredPath extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        if (isNumeric(euppn.getText())) {
-            int num = Integer.parseInt(euppn.getText());
-            if (num > num_max) {
-                wnu.setVisible(true);
-            }
-           else {
-                try {
-                    euppn.setForeground(Color.gray);
-                    euppn.setText("num. predpath");
-                    wnu.setVisible(false);
-                    String texto = euppn.getText();
-                    wnu.setVisible(false);
-                    String path_used = "";
-                    FileReader file = null;
-                    file = new FileReader(getPath() + "\\recursos\\ficheros\\relacion.txt");
-                    BufferedReader reader = new BufferedReader(file);
-                    String line =  reader.readLine();
-                    int iaux = 1;
-                    while (line != null || iaux <= (num+1)) {
-                        if (iaux == num) {
-                            int i = 0;
-                            while (line.charAt(i)!='\t') {
-                                ++i;
-                            }
-                            ++i;
-                            while (i<line.length() && line.charAt(i)!='\t') {
-                                if (line.charAt(i)==' ') {
-                                    path_used += " - ";
-                                }
-                                else {
-                                    path_used += line.charAt(i);
-                                }
-                                ++i;
-                            }
-                            selectedpredpath.setText(path_used);
-                        }
-                        line = reader.readLine();
-                        ++iaux;
-                    }
-                } catch (FileNotFoundException ex) {
-                    Logger.getLogger(ViewPredPathuser.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (IOException ex) {
-                    Logger.getLogger(ViewPredPathuser.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
-        else {
-            wnu.setVisible(true);
-        }
+        String dato=String.valueOf(model.getValueAt(tablarelacion.getSelectedRow(),0));
+        selectedpredpath.setText(dato);
     }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void euppnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_euppnMouseClicked
-        // TODO add your handling code here:
-        if (euppn.getText().equals("num. predpath")){
-            euppn.setText(null);
-            euppn.setForeground(Color.black);
-        }
-    }//GEN-LAST:event_euppnMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         pathpublic.setForeground(Color.BLACK); 
         pathpublic.setText(selectedpredpath.getText());
+        clausulas.setText(text.getText());
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -406,7 +315,11 @@ public class ViewPredPath extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            new ViewPredPath().setVisible(true);
+            try {
+                new ViewPredPath().setVisible(true);
+            } catch (IOException ex) {
+                Logger.getLogger(ViewPredPath.class.getName()).log(Level.SEVERE, null, ex);
+            }
         });
     }
 
@@ -414,16 +327,17 @@ public class ViewPredPath extends javax.swing.JFrame {
     private javax.swing.JButton Instructionsbutton2;
     private javax.swing.JButton Instructionsbutton3;
     private javax.swing.JButton Instructionsbutton4;
-    private javax.swing.JTextField euppn;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField selectedpredpath;
+    private javax.swing.JTable tablarelacion;
     private javax.swing.JTextArea text;
     private javax.swing.JLabel userlabel;
-    private javax.swing.JLabel wnu;
     // End of variables declaration//GEN-END:variables
 }

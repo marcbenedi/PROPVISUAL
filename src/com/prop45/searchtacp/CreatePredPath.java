@@ -19,19 +19,10 @@ import javax.swing.ImageIcon;
 import static com.prop45.searchtacp.Cargando.panelmegadinamico;
 import static com.prop45.searchtacp.Instrucciones.instruccions_guillem;
 import static com.prop45.searchtacp.ViewPredPathuser.continuepredpath;
-import static com.prop45.searchtacp.ViewPredPathuser.dmppn;
-import static com.prop45.searchtacp.ViewPredPathuser.dmppnbotton;
-import static com.prop45.searchtacp.ViewPredPathuser.duppn;
-import static com.prop45.searchtacp.ViewPredPathuser.duppnbutton;
-import static com.prop45.searchtacp.ViewPredPathuser.emppn;
-import static com.prop45.searchtacp.ViewPredPathuser.emppnbutton;
-import static com.prop45.searchtacp.ViewPredPathuser.euppn;
-import static com.prop45.searchtacp.ViewPredPathuser.euppnbutton;
 import static com.prop45.searchtacp.ViewPredPathuser.helppredpath;
 import static com.prop45.searchtacp.ViewPredPathuser.selectedpredpath;
 import static com.prop45.searchtacp.ViewPredPathuser.titolpredpath;
 import static com.prop45.searchtacp.variables.getInst_Crear_Path_Predefinido;
-import static com.prop45.searchtacp.variables.getInst_Modo_Admin;
 import static com.prop45.searchtacp.variables.getPath;
 import static com.prop45.searchtacp.variables.getUsuario;
 
@@ -523,21 +514,17 @@ public class CreatePredPath extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        ViewPredPathuser vppu = new ViewPredPathuser();
-        vppu.setVisible(true);
-        emppnbutton.setVisible(false);
-        emppn.setVisible(false);
-        dmppn.setVisible(false);
-        dmppnbotton.setVisible(false);
-        euppn.setVisible(false);
-        euppnbutton.setVisible(false);
-        duppn.setVisible(false);
-        duppnbutton.setVisible(false);
-        helppredpath.setVisible(false);
-        titolpredpath.setVisible(false);
-        selectedpredpath.setVisible(false);
-        continuepredpath.setVisible(false);
+        try {
+            // TODO add your handling code here:
+            ViewPredPathuser vppu = new ViewPredPathuser();
+            vppu.setVisible(true);
+            helppredpath.setVisible(false);
+            titolpredpath.setVisible(false);
+            selectedpredpath.setVisible(false);
+            continuepredpath.setVisible(false);
+        } catch (IOException ex) {
+            Logger.getLogger(CreatePredPath.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
 

@@ -38,7 +38,7 @@ public class Busquedauser extends javax.swing.JPanel {
         i = 1;
         initComponents();
         userlabel.setText(getUsuario());
-        clausulas.setEditable(false);
+        clausulasuser.setEditable(false);
         justi.setVisible(false);
         c1.setForeground(Color.black);
         c3.setForeground(Color.black);
@@ -75,7 +75,7 @@ public class Busquedauser extends javax.swing.JPanel {
         jButton2 = new javax.swing.JButton();
         Logo = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        clausulas = new javax.swing.JTextArea();
+        clausulasuser = new javax.swing.JTextArea();
         jButton4 = new javax.swing.JButton();
         numdelete = new javax.swing.JTextField();
         justi = new javax.swing.JLabel();
@@ -195,9 +195,9 @@ public class Busquedauser extends javax.swing.JPanel {
             }
         });
 
-        clausulas.setColumns(20);
-        clausulas.setRows(5);
-        jScrollPane1.setViewportView(clausulas);
+        clausulasuser.setColumns(20);
+        clausulasuser.setRows(5);
+        jScrollPane1.setViewportView(clausulasuser);
 
         jButton4.setMnemonic('D');
         jButton4.setText("Elimnar Clausula");
@@ -348,9 +348,13 @@ public class Busquedauser extends javax.swing.JPanel {
     }//GEN-LAST:event_Instructionsbutton1ActionPerformed
 
     private void pathbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pathbuttonActionPerformed
-        // TODO add your handling code here:
-        ViewPredPathuser vppu = new ViewPredPathuser();
-        vppu.setVisible(true);
+        try {
+            // TODO add your handling code here:
+            ViewPredPathuser vppu = new ViewPredPathuser();
+            vppu.setVisible(true);
+        } catch (IOException ex) {
+            Logger.getLogger(Busquedauser.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_pathbuttonActionPerformed
 
     private void AuthorbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AuthorbuttonActionPerformed
@@ -460,7 +464,7 @@ public class Busquedauser extends javax.swing.JPanel {
         // TODO add your handling code here:
         if (!numdelete.getText().equals("")) {
             String number_letter = numdelete.getText();
-            String texto = clausulas.getText();
+            String texto = clausulasuser.getText();
             String variable = "";
             texto = texto.replaceAll("\n", "|");
             if (number_letter.length() < 3) {
@@ -480,7 +484,7 @@ public class Busquedauser extends javax.swing.JPanel {
                     }
                     ++cont2;
                 }
-                clausulas.setText(variable);
+                clausulasuser.setText(variable);
             }
             --i;
             numdelete.setText("");
@@ -554,13 +558,13 @@ public class Busquedauser extends javax.swing.JPanel {
                             clausulaux += "[";
                             clausulaux += c3.getText();
                             clausulaux += "]";
-                            clausula = clausulas.getText();
+                            clausula = clausulasuser.getText();
                             clausula += "Clausula ";
                             clausula += i;
                             clausula += ": ";
                             clausula += clausulaux;
                             clausula += "\n";
-                            clausulas.setText(clausula);
+                            clausulasuser.setText(clausula);
                             ++i;
                         }
                         else {
@@ -596,7 +600,7 @@ public class Busquedauser extends javax.swing.JPanel {
     private javax.swing.JTextField c1;
     private javax.swing.JTextField c2;
     private javax.swing.JTextField c3;
-    private javax.swing.JTextArea clausulas;
+    public static javax.swing.JTextArea clausulasuser;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;

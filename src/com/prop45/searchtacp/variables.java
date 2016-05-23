@@ -15,6 +15,8 @@ import com.prop45.Graph.Graph;
  * @author Miquel Baena
  */
 public class variables {
+    public static int num_pred_path_selected = -1;
+    public static int num_pred_path_user_selected = -1;
     private static boolean admin = false;
     private static String usuario = "";
     private static boolean user = false;

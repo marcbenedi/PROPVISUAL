@@ -384,9 +384,13 @@ public class Busqueda extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void pathbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pathbuttonActionPerformed
-        // TODO add your handling code here:
-        ViewPredPath vpp = new ViewPredPath();
-        vpp.setVisible(true);
+        try {
+            // TODO add your handling code here:
+            ViewPredPath vpp = new ViewPredPath();
+            vpp.setVisible(true);
+        } catch (IOException ex) {
+            Logger.getLogger(Busqueda.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_pathbuttonActionPerformed
 
     private void Instructionsbutton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Instructionsbutton1ActionPerformed
@@ -681,7 +685,7 @@ public class Busqueda extends javax.swing.JPanel {
     private javax.swing.JTextField c1;
     private javax.swing.JTextField c2;
     private javax.swing.JTextField c3;
-    private javax.swing.JTextArea clausulas;
+    public static javax.swing.JTextArea clausulas;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
