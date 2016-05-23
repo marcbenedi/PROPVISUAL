@@ -14,7 +14,7 @@ import static com.prop45.searchtacp.Cargando.panelmegadinamico;
 import static com.prop45.searchtacp.Instrucciones.instruccions_guillem;
 import static com.prop45.searchtacp.Portadaylogins.paneldinamico;
 import static com.prop45.searchtacp.variables.getInst_Realizar_Busqueda;
-import static com.prop45.searchtacp.variables.getPath;
+import static com.prop45.searchtacp.variables.*;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -480,6 +480,8 @@ public class Busqueda extends javax.swing.JPanel {
         paneldinamico.add(p2, BorderLayout.CENTER);
         paneldinamico.revalidate();
         paneldinamico.repaint();
+        variables.r.setTags(variables.tags);
+        variables.r.setNormes(variables.normes);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void pathpublicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pathpublicActionPerformed
