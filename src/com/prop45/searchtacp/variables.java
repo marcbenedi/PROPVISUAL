@@ -9,12 +9,21 @@ import com.prop45.Consulta.Consulta;
 import com.prop45.DataBase.GraphDataBase;
 import com.prop45.DataBase.RelacionDataBase;
 import com.prop45.Graph.Graph;
+import com.prop45.Paths.Norma;
+import com.prop45.Paths.Relacion;
+import java.util.ArrayList;
 
 /**
  *
  * @author Miquel Baena
  */
 public class variables {
+    
+    public static Relacion r;
+    public static ArrayList<String> valors;
+    public static ArrayList<String> tags;
+    public static ArrayList<Norma> normes;
+    
     private static boolean admin = false;
     private static String usuario = "";
     private static boolean user = false;

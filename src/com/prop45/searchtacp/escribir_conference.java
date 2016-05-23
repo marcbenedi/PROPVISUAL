@@ -273,6 +273,15 @@ public class escribir_conference extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        
+        variables.tags.add("Conference");
+        if(nombreconference.getText().equals("")){
+            variables.valors.add("NULL");
+        }
+        else{
+            variables.valors.add(nombreconference.getText());
+        }
+        
         int seleccion = escoge.getSelectedIndex();
         if (seleccion != 0) {
             if (seleccion == 1) {

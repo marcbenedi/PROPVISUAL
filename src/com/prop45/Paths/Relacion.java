@@ -16,6 +16,9 @@ public class Relacion {
     public void setTags(ArrayList<String> t){
         this.tags = (ArrayList<String>) t.clone();
     }
+    public void setNormes(ArrayList<Norma> n){
+        this.normes = n;
+    }
     public ArrayList<String> getTags(){return tags;}
     public void afegirNorma(Norma n){
         normes.add(n);

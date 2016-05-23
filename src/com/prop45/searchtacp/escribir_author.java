@@ -30,7 +30,7 @@ public class escribir_author extends javax.swing.JFrame {
     
     DefaultTableModel model;
     int filas = 0;
-    
+    boolean needselect=true;
     public escribir_author() throws FileNotFoundException, IOException {
         initComponents();
         this.getContentPane().setBackground(Color.BLACK);
@@ -82,6 +82,12 @@ public class escribir_author extends javax.swing.JFrame {
         setTitle("Añadir Author");
 
         escoge.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione tipo", "Definir", "No Definir" }));
+
+        nombreauthor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nombreauthorActionPerformed(evt);
+            }
+        });
 
         jButton1.setMnemonic('A');
         jButton1.setText("Añadir");
@@ -195,6 +201,14 @@ public class escribir_author extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         int seleccion = escoge.getSelectedIndex();  
+        variables.tags.add("Author");
+        if(nombreauthor.getText().equals("")){
+            variables.valors.add("NULL");
+        }
+        else{
+            variables.valors.add(nombreauthor.getText());
+        }
+        
         if (seleccion != 0) {
             if (seleccion == 1) {
                 if (!nombreauthor.getText().equals("")) {
@@ -234,6 +248,7 @@ public class escribir_author extends javax.swing.JFrame {
                 }
             }
             else  {
+                needselect =false;
                 if (nombreauthor.getText().equals("")) {
                     if (isUser()) {
                         pathuser.setForeground(Color.BLACK);
@@ -272,6 +287,7 @@ public class escribir_author extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        if(needselect) return;
         String dato=String.valueOf(model.getValueAt(tablaauthor.getSelectedRow(),0));
         nombreauthor.setText(dato);
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -353,6 +369,10 @@ public class escribir_author extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void nombreauthorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreauthorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nombreauthorActionPerformed
 
     /**
      * @param args the command line arguments
