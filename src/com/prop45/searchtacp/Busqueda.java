@@ -5,12 +5,13 @@
  */
 package com.prop45.searchtacp;
 
+import com.prop45.Consulta.Consulta;
+import static com.prop45.searchtacp.Cargando.panelmegadinamico;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import static com.prop45.searchtacp.Cargando.panelmegadinamico;
 import static com.prop45.searchtacp.Instrucciones.instruccions_guillem;
 import static com.prop45.searchtacp.Portadaylogins.paneldinamico;
 import static com.prop45.searchtacp.variables.getInst_Realizar_Busqueda;
@@ -481,7 +482,16 @@ public class Busqueda extends javax.swing.JPanel {
         paneldinamico.revalidate();
         paneldinamico.repaint();
         variables.r.setTags(variables.tags);
-        variables.r.setNormes(variables.normes);
+        variables.r.setNormes(variables.normes);Consulta c = new Consulta(variables.grafo);
+        variables.result=c.consultar(variables.r,variables.valors);
+        ConsultaPanel cp = new ConsultaPanel();
+        cp.setSize(738,513);
+        cp.setLocation(0,0);
+        cp.setBackground(Color.WHITE);
+        panelmegadinamico.removeAll();
+        panelmegadinamico.add(cp, BorderLayout.CENTER);
+        panelmegadinamico.revalidate();
+        panelmegadinamico.repaint();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void pathpublicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pathpublicActionPerformed
