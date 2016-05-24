@@ -5,8 +5,12 @@
  */
 package com.prop45.searchtacp;
 
+import static com.prop45.searchtacp.Busqueda.c2;
+import static com.prop45.searchtacp.Busqueda.c3;
 import java.awt.Color;
 import static com.prop45.searchtacp.Busqueda.pathpublic;
+import static com.prop45.searchtacp.Busquedauser.c2user;
+import static com.prop45.searchtacp.Busquedauser.c3user;
 import static com.prop45.searchtacp.Busquedauser.pathuser;
 import static com.prop45.searchtacp.variables.getPath;
 import static com.prop45.searchtacp.variables.isUser;
@@ -75,7 +79,6 @@ public class escribir_author extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaauthor = new javax.swing.JTable();
-        jButton3 = new javax.swing.JButton();
         buscador = new javax.swing.JTextField();
         jButton4 = new javax.swing.JButton();
 
@@ -125,16 +128,12 @@ public class escribir_author extends javax.swing.JFrame {
             }
         });
         tablaauthor.setShowVerticalLines(false);
-        jScrollPane1.setViewportView(tablaauthor);
-
-        jButton3.setMnemonic('A');
-        jButton3.setText("Seleccionar");
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+        tablaauthor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaauthorMouseClicked(evt);
             }
         });
+        jScrollPane1.setViewportView(tablaauthor);
 
         jButton4.setText("Buscar");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -152,8 +151,7 @@ public class escribir_author extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton3)
-                        .addGap(199, 199, 199)
+                        .addGap(286, 286, 286)
                         .addComponent(jButton2))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -183,9 +181,7 @@ public class escribir_author extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton2))
+                .addComponent(jButton2)
                 .addContainerGap())
         );
 
@@ -198,65 +194,48 @@ public class escribir_author extends javax.swing.JFrame {
         if (seleccion != 0) {
             if (seleccion == 1) {
                 if (!nombreauthor.getText().equals("")) {
+                    ++variables.num_words;
                     if (isUser()) {
                         pathuser.setForeground(Color.BLACK);
                         if (pathuser.getText().equals("Escribe tu path")){
                             String p;
-                            /*------*/
-                            p = "AUTHOR:"; 
-                            variables.g_tags.add("Author");
-                            /*-----*/
+                            p = "author: ";
                             p += nombreauthor.getText();
                             pathuser.setText(p);
-                            
-                            
                         }
                         else {
                             String p = pathuser.getText();
-                            p += " - ";
-                            
-                            
-                            p += "AUTHOR:";
-                            variables.g_tags.add("Author");
-                            
-                            
+                            p += " ";
+                            p += "author: ";
                             p += nombreauthor.getText();
                             pathuser.setText(p);
-                            
-                            
                         }
+                        c2user.addItem(String.valueOf(variables.num_words));
+                        c3user.addItem(String.valueOf(variables.num_words));                        
                     }
                     else {
                         pathpublic.setForeground(Color.BLACK);
                         if (pathpublic.getText().equals("Escribe tu path")){
                             String p;
-                            
-                            
-                            p = "AUTHOR:";  
-                            
-                            
+                            p = "author:";
                             p += nombreauthor.getText();
                             pathpublic.setText(p);
-
                         }
                         else {
                             String p = pathpublic.getText();
-                            p += " - ";
-                            
-                            p += "AUTHOR:"; 
-                            
+                            p += " ";
+                            p += "author:";
                             p += nombreauthor.getText();
                             pathpublic.setText(p);
-                            
-                           
-                            
                         }
+                        c2.addItem(String.valueOf(variables.num_words));
+                        c3.addItem(String.valueOf(variables.num_words));
                     }
                     this.setVisible(false);
                 }
             }
             else  {
-                if (nombreauthor.getText().equals("")) {
+                    ++variables.num_words;
                     if (isUser()) {
                         pathuser.setForeground(Color.BLACK);
                         if (pathuser.getText().equals("Escribe tu path")){
@@ -268,6 +247,8 @@ public class escribir_author extends javax.swing.JFrame {
                             p += "AUTHOR:NULL";
                             pathuser.setText(p);
                         }
+                        c2user.addItem(String.valueOf(variables.num_words));
+                        c3user.addItem(String.valueOf(variables.num_words));
                     }
                     else {
                         pathpublic.setForeground(Color.BLACK);
@@ -280,9 +261,10 @@ public class escribir_author extends javax.swing.JFrame {
                             p += "AUTHOR:NULL";
                             pathpublic.setText(p);
                         }
+                        c2.addItem(String.valueOf(variables.num_words));
+                        c3.addItem(String.valueOf(variables.num_words));
                     }
                     this.setVisible(false);
-                }
             }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -291,12 +273,6 @@ public class escribir_author extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-        String dato=String.valueOf(model.getValueAt(tablaauthor.getSelectedRow(),0));
-        nombreauthor.setText(dato);
-    }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
@@ -376,6 +352,13 @@ public class escribir_author extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void tablaauthorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaauthorMouseClicked
+        // TODO add your handling code here:
+        String dato=String.valueOf(model.getValueAt(tablaauthor.getSelectedRow(),0));
+        nombreauthor.setText(dato);
+        escoge.setSelectedIndex(1);
+    }//GEN-LAST:event_tablaauthorMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -414,7 +397,6 @@ public class escribir_author extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> escoge;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField nombreauthor;

@@ -188,7 +188,7 @@ public class DadesUsuari {
             //Construct the new file that will later be renamed to the original filename. 
             File tempFile = new File(inFile.getAbsolutePath() + ".tmp");
 
-            br = new BufferedReader(new FileReader("BD_users.txt"));
+            br = new BufferedReader(new FileReader(getPath() + nom_BD));
             pw = new PrintWriter(new FileWriter(tempFile));
 
             String line = null;
