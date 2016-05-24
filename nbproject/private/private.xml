@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/Miquel%20Baena/Documents/NetBeansProjects/SearchTACP/src/com/prop45/searchtacp/escribir_author.java</file>
             <file>file:/C:/Users/Miquel%20Baena/Documents/NetBeansProjects/SearchTACP/src/com/prop45/searchtacp/Busquedauser.java</file>
             <file>file:/C:/Users/Miquel%20Baena/Documents/NetBeansProjects/SearchTACP/src/com/prop45/searchtacp/escribir_conference.java</file>
@@ -13,6 +14,9 @@
             <file>file:/C:/Users/Miquel%20Baena/Documents/NetBeansProjects/SearchTACP/src/com/prop45/searchtacp/ViewPredPathuser.java</file>
             <file>file:/C:/Users/Miquel%20Baena/Documents/NetBeansProjects/SearchTACP/src/com/prop45/searchtacp/Busqueda.java</file>
             <file>file:/C:/Users/Miquel%20Baena/Documents/NetBeansProjects/SearchTACP/src/com/prop45/searchtacp/escribir_paper.java</file>
+=======
+            <file>file:/C:/Users/Marc/Desktop/PROPVISUAL/src/com/prop45/searchtacp/ConsultaPanel.java</file>
+>>>>>>> 3c4422fbbac3d0d2300a264a899cd5de938cedf8
         </group>
     </open-files>
 </project-private>
