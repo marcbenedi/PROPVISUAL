@@ -348,6 +348,7 @@ public class Busqueda extends javax.swing.JPanel {
 
     private void ReturnbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReturnbuttonActionPerformed
         // TODO add your handling code here:
+        variables.num_words = 0;
         Portadaylogins panel1 = new Portadaylogins();
         panel1.setSize(738,513);
         panel1.setLocation(0,0);

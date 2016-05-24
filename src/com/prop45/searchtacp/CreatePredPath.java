@@ -5,6 +5,7 @@
  */
 package com.prop45.searchtacp;
 
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Image;
@@ -38,6 +39,7 @@ public class CreatePredPath extends javax.swing.JPanel {
      */
     public CreatePredPath() throws FileNotFoundException, IOException {
         initComponents();
+        justi.setVisible(false);
         pathpred.setEditable(false);
         userlabel.setText(getUsuario());
         String textoaux ="--Universal--\n";
@@ -100,15 +102,15 @@ public class CreatePredPath extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         text = new javax.swing.JTextArea();
         jButton2 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        numdelete = new javax.swing.JTextField();
-        jButton9 = new javax.swing.JButton();
-        c2 = new javax.swing.JTextField();
-        c1 = new javax.swing.JTextField();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        clausulas = new javax.swing.JTextArea();
-        c3 = new javax.swing.JTextField();
         jButton10 = new javax.swing.JButton();
+        c1 = new javax.swing.JComboBox<>();
+        c2 = new javax.swing.JComboBox<>();
+        jButton5 = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        clausulas = new javax.swing.JTextArea();
+        jButton6 = new javax.swing.JButton();
+        justi = new javax.swing.JLabel();
+        c3 = new javax.swing.JComboBox<>();
 
         userlabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         userlabel.setText("username");
@@ -222,56 +224,50 @@ public class CreatePredPath extends javax.swing.JPanel {
             }
         });
 
-        jButton8.setMnemonic('D');
-        jButton8.setText("Elimnar Clausula");
-        jButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
-            }
-        });
-
-        numdelete.setForeground(new java.awt.Color(153, 153, 153));
-        numdelete.setText("num. clausula");
-        numdelete.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                numdeleteMouseClicked(evt);
-            }
-        });
-        numdelete.addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentResized(java.awt.event.ComponentEvent evt) {
-                numdeleteComponentResized(evt);
-            }
-        });
-        numdelete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                numdeleteActionPerformed(evt);
-            }
-        });
-
-        jButton9.setText("Añadir mas clausulas");
-        jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
-            }
-        });
-
-        c2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        c2.setForeground(new java.awt.Color(153, 153, 153));
-
-        c1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        c1.setForeground(new java.awt.Color(153, 153, 153));
-
-        clausulas.setColumns(20);
-        clausulas.setRows(5);
-        jScrollPane2.setViewportView(clausulas);
-
-        c3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        c3.setForeground(new java.awt.Color(153, 153, 153));
-
         jButton10.setText("Borrar");
         jButton10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
+
+        c1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "D", "E", "L", "M" }));
+
+        c2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-" }));
+
+        jButton5.setMnemonic('C');
+        jButton5.setText("Añadir mas clausulas");
+        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        clausulas.setColumns(1);
+        clausulas.setFont(new java.awt.Font("Monospaced", 0, 20)); // NOI18N
+        clausulas.setRows(1);
+        jScrollPane3.setViewportView(clausulas);
+
+        jButton6.setMnemonic('D');
+        jButton6.setText("Borrar");
+        jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton6MouseClicked(evt);
+            }
+        });
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
+        justi.setForeground(new java.awt.Color(255, 0, 0));
+        justi.setText("Wrong!");
+
+        c3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -298,26 +294,24 @@ public class CreatePredPath extends javax.swing.JPanel {
                                         .addComponent(Paperbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(Authorbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(42, 42, 42)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGap(58, 58, 58)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addComponent(jButton6)
+                                                    .addGap(66, 66, 66)
+                                                    .addComponent(justi)))
                                             .addGroup(layout.createSequentialGroup()
-                                                .addGap(61, 61, 61)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addGroup(layout.createSequentialGroup()
-                                                        .addComponent(jButton8)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                        .addComponent(numdelete, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jButton9)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(c1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(35, 35, 35)
-                                                .addComponent(c2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(38, 38, 38)
-                                                .addComponent(c3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(jButton5)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(c1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(c2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(c3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
@@ -329,11 +323,8 @@ public class CreatePredPath extends javax.swing.JPanel {
                                     .addComponent(jLabel1)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addComponent(pathpred, javax.swing.GroupLayout.PREFERRED_SIZE, 644, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addGap(608, 608, 608)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jButton10, javax.swing.GroupLayout.Alignment.TRAILING)))))
+                        .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton10, javax.swing.GroupLayout.Alignment.TRAILING)))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -355,36 +346,37 @@ public class CreatePredPath extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
                 .addGap(3, 3, 3)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Paperbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(term, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Authorbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Confbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel2)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Paperbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(term, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(Authorbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(Confbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
+                        .addGap(19, 19, 19)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(c1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(c2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(c3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton9))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jButton5)
+                            .addComponent(c1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(c2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(c3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane3)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton8)
-                    .addComponent(numdelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2))
+                    .addComponent(jButton2)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton6)
+                        .addComponent(justi)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -415,6 +407,9 @@ public class CreatePredPath extends javax.swing.JPanel {
             p += " - TERM";
             pathpred.setText(p);
         }
+        c2.addItem(String.valueOf(variables.num_words));
+        c3.addItem(String.valueOf(variables.num_words));
+        ++variables.num_words;
     }//GEN-LAST:event_termActionPerformed
 
     private void ConfbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfbuttonActionPerformed
@@ -428,6 +423,9 @@ public class CreatePredPath extends javax.swing.JPanel {
             p += " - CONFERENCE";
             pathpred.setText(p);
         }
+        c2.addItem(String.valueOf(variables.num_words));
+        c3.addItem(String.valueOf(variables.num_words));
+        ++variables.num_words;
     }//GEN-LAST:event_ConfbuttonActionPerformed
 
     private void AuthorbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AuthorbuttonActionPerformed
@@ -441,6 +439,9 @@ public class CreatePredPath extends javax.swing.JPanel {
             p += " - AUTHOR";
             pathpred.setText(p);
         }
+        c2.addItem(String.valueOf(variables.num_words));
+        c3.addItem(String.valueOf(variables.num_words));
+        ++variables.num_words;
     }//GEN-LAST:event_AuthorbuttonActionPerformed
 
     private void PaperbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PaperbuttonActionPerformed
@@ -454,11 +455,15 @@ public class CreatePredPath extends javax.swing.JPanel {
             p += " - PAPER";
             pathpred.setText(p);
         }
+        c2.addItem(String.valueOf(variables.num_words));
+        c3.addItem(String.valueOf(variables.num_words));
+        ++variables.num_words;
     }//GEN-LAST:event_PaperbuttonActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         try {
             // TODO add your handling code here:
+            variables.num_words = 0;
             Prebusquedauser p = new Prebusquedauser();
             p.setSize(738,513);
             p.setLocation(0,0);
@@ -489,30 +494,6 @@ public class CreatePredPath extends javax.swing.JPanel {
         instruccions_guillem.setText(getInst_Crear_Path_Predefinido());
     }//GEN-LAST:event_Instructionsbutton1ActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
-
-    private void numdeleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_numdeleteMouseClicked
-        // TODO add your handling code here:
-        numdelete.setForeground(Color.BLACK);
-        if (numdelete.getText().equals("num. clausula")) {
-            numdelete.setText(null);
-        }
-    }//GEN-LAST:event_numdeleteMouseClicked
-
-    private void numdeleteComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_numdeleteComponentResized
-        // TODO add your handling code here:
-    }//GEN-LAST:event_numdeleteComponentResized
-
-    private void numdeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numdeleteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_numdeleteActionPerformed
-
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton9ActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         try {
             // TODO add your handling code here:
@@ -527,6 +508,60 @@ public class CreatePredPath extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        if (c1.getSelectedItem().equals("")){
+            if (!c2.getSelectedItem().equals("")) {
+                justi.setText("Error!");
+                justi.setForeground(Color.red);
+                justi.setVisible(true);
+            }
+            else if (!c3.getSelectedItem().equals("")) {
+                justi.setText("Error!");
+                justi.setForeground(Color.red);
+                justi.setVisible(true);
+            }
+            else {
+                justi.setVisible(false);
+            }
+        }
+        else {
+            if (c2.getSelectedItem().equals("")) {
+                justi.setText("Error!");
+                justi.setForeground(Color.red);
+                justi.setVisible(true);
+            }
+            else if (c3.getSelectedItem().equals("")) {
+                justi.setText("Error!");
+                justi.setForeground(Color.red);
+                justi.setVisible(true);
+            }
+            else {
+                clausulas.setText(c1.getSelectedItem() + " " + c2.getSelectedItem() + " " + c3.getSelectedItem() + "\n");
+            }
+        }
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton6MouseClicked
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        clausulas.setText(null);
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        // TODO add your handling code here:
+        variables.num_words = 0;
+        c2.removeAllItems();
+        c2.addItem("-");
+        c3.removeAllItems();
+        c3.addItem("-");
+        pathpred.setForeground(Color.gray);
+        pathpred.setText("Escribe tu path");
+    }//GEN-LAST:event_jButton10ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Authorbutton;
@@ -534,22 +569,22 @@ public class CreatePredPath extends javax.swing.JPanel {
     private javax.swing.JButton Instructionsbutton1;
     private javax.swing.JLabel Logo;
     private javax.swing.JButton Paperbutton;
-    private javax.swing.JTextField c1;
-    private javax.swing.JTextField c2;
-    private javax.swing.JTextField c3;
-    private javax.swing.JTextArea clausulas;
+    private javax.swing.JComboBox<String> c1;
+    public static javax.swing.JComboBox<String> c2;
+    public static javax.swing.JComboBox<String> c3;
+    public static javax.swing.JTextArea clausulas;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField numdelete;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JLabel justi;
     public static javax.swing.JTextField pathpred;
     private javax.swing.JButton term;
     private javax.swing.JTextArea text;

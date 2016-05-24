@@ -321,6 +321,7 @@ public class ViewPredPathuser extends javax.swing.JFrame {
 
     private void continuepredpathActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continuepredpathActionPerformed
         // TODO add your handling code here:
+        if (text.getText().equals("No te\nclausules")) text.setText("");
         pathuser.setForeground(Color.BLACK); 
         pathuser.setText(selectedpredpath.getText());
         clausulasuser.setText(text.getText());
@@ -374,6 +375,7 @@ public class ViewPredPathuser extends javax.swing.JFrame {
                 }
                 ++linea;
             }
+            if (text.getText().equals("")) text.setText("No te\nclausules");
         } catch (FileNotFoundException ex) {
             Logger.getLogger(ViewPredPathuser.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -434,6 +436,7 @@ public class ViewPredPathuser extends javax.swing.JFrame {
                 }
                 ++linea;
             }
+            if (text.getText().equals("")) text.setText("No te\nclausules");
         } catch (FileNotFoundException ex) {
             Logger.getLogger(ViewPredPath.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {

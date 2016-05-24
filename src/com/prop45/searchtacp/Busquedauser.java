@@ -399,6 +399,7 @@ public class Busquedauser extends javax.swing.JPanel {
     private void ReturnbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReturnbuttonActionPerformed
         try {
             // TODO add your handling code here:
+            variables.num_words = 0;
             Prebusquedauser p = new Prebusquedauser();
             p.setSize(738,513);
             p.setLocation(0,0);
