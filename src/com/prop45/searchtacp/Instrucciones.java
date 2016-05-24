@@ -18,6 +18,7 @@ public class Instrucciones extends javax.swing.JFrame {
      */
     public Instrucciones() {
         initComponents();
+        instruccions_guillem.setLineWrap(true);
         instruccions_guillem.setEditable(false);
         this.setLocationRelativeTo(null);
         this.getContentPane().setBackground(Color.BLACK);

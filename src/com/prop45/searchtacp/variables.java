@@ -9,29 +9,14 @@ import com.prop45.Consulta.Consulta;
 import com.prop45.DataBase.GraphDataBase;
 import com.prop45.DataBase.RelacionDataBase;
 import com.prop45.Graph.Graph;
-import com.prop45.Graph.Node;
-import com.prop45.Paths.Norma;
-import com.prop45.Paths.Relacion;
-import java.util.ArrayList;
 
 /**
  *
  * @author Miquel Baena
  */
 public class variables {
-<<<<<<< HEAD
     public static int num_pred_path_selected = -1;
     public static int num_pred_path_user_selected = -1;
-=======
-    
-    public static Relacion r = new Relacion("nombre_por_defecto");
-    public static ArrayList<String> valors = new ArrayList<>();
-    public static ArrayList<String> tags = new ArrayList<>();
-    public static ArrayList<Norma> normes= new ArrayList<>();
-    
-    public static ArrayList<Node> result = new ArrayList<>();
-    
->>>>>>> 301579b87d865f1abb6fdac07ba0bbe129224a25
     private static boolean admin = false;
     private static String usuario = "";
     private static boolean user = false;

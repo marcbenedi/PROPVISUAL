@@ -267,7 +267,7 @@ public class GestionAdmin extends javax.swing.JFrame {
         jLabel12.setText("Gestión node:");
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
-        jLabel13.setText("Gestión aristas:");
+        jLabel13.setText("Gestión relación:");
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel15.setText("Añadir nodo:");
@@ -410,11 +410,6 @@ public class GestionAdmin extends javax.swing.JFrame {
 
         selare.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         selare.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione el tipo", "Paper-Term", "Paper-Author", "Paper-Conference" }));
-        selare.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                selareActionPerformed(evt);
-            }
-        });
 
         seldre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         seldre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione el tipo", "Paper-Term", "Paper-Author", "Paper-Conference" }));
@@ -456,10 +451,10 @@ public class GestionAdmin extends javax.swing.JFrame {
         });
 
         jLabel17.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel17.setText("Añadir arista:");
+        jLabel17.setText("Añadir relación:");
 
         jLabel18.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel18.setText("Eliminar arista:");
+        jLabel18.setText("Eliminar relación:");
 
         jButton3.setText("Save");
         jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -1489,10 +1484,6 @@ public class GestionAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.setVisible(false);
     }//GEN-LAST:event_ExitbuttonActionPerformed
-
-    private void selareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selareActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_selareActionPerformed
 
     /**
      * @param args the command line arguments

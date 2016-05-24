@@ -34,6 +34,7 @@ public class ViewPredPathuser extends javax.swing.JFrame {
     int filas = 0;
     public ViewPredPathuser() throws FileNotFoundException, IOException {
         initComponents();
+        userlabel.setText(getUsuario());
         this.setLocationRelativeTo(null);
         this.getContentPane().setBackground(Color.BLACK);
         FileReader ftxt = new FileReader(getPath() + "\\recursos\\ficheros\\relacion.txt");
@@ -177,7 +178,8 @@ public class ViewPredPathuser extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Predefined Path:");
 
-        text.setColumns(20);
+        text.setColumns(1);
+        text.setFont(new java.awt.Font("Monospaced", 0, 20)); // NOI18N
         text.setRows(5);
         jScrollPane1.setViewportView(text);
 
@@ -255,9 +257,7 @@ public class ViewPredPathuser extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(continuepredpath)
                                         .addGap(0, 1, Short.MAX_VALUE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(helppredpath, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(helppredpath, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -289,8 +289,7 @@ public class ViewPredPathuser extends javax.swing.JFrame {
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(userlabel)
-                            .addComponent(helppredpath))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(helppredpath)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(47, 47, 47)
                         .addComponent(jLabel1)
@@ -298,8 +297,8 @@ public class ViewPredPathuser extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(titolpredpath)
                             .addComponent(selectedpredpath, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(continuepredpath))
-                        .addGap(30, 30, 30)))
+                            .addComponent(continuepredpath))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
@@ -321,7 +320,7 @@ public class ViewPredPathuser extends javax.swing.JFrame {
                                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                         .addComponent(jButton5)
-                        .addGap(0, 22, Short.MAX_VALUE))
+                        .addGap(0, 40, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(Instructionsbutton3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
@@ -358,8 +357,7 @@ public class ViewPredPathuser extends javax.swing.JFrame {
             String dato=String.valueOf(model1.getValueAt(tablarelacion.getSelectedRow(),0));
             selectedpredpath.setText(dato);
             text.setText(null);
-            //FileReader ftxt = new FileReader(getPath() + "\\recursos\\ficheros\\relacion.txt");
-            ftxt = new FileReader("C:\\Users\\Miquel Baena\\Documents\\NetBeansProjects\\SearchTACP\\recursos\\ficheros\\relacion.txt");
+            ftxt = new FileReader(getPath() + "\\recursos\\ficheros\\relacion.txt");
             BufferedReader readertxt = new BufferedReader(ftxt);
             String lineatxt =  "";
             boolean primer = true;

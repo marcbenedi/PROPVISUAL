@@ -5,17 +5,16 @@
  */
 package com.prop45.searchtacp;
 
-import com.prop45.Consulta.Consulta;
-import static com.prop45.searchtacp.Cargando.panelmegadinamico;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import static com.prop45.searchtacp.Cargando.panelmegadinamico;
 import static com.prop45.searchtacp.Instrucciones.instruccions_guillem;
 import static com.prop45.searchtacp.Portadaylogins.paneldinamico;
 import static com.prop45.searchtacp.variables.getInst_Realizar_Busqueda;
-import static com.prop45.searchtacp.variables.*;
+import static com.prop45.searchtacp.variables.getPath;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -32,11 +31,12 @@ public class Busqueda extends javax.swing.JPanel {
     public Busqueda() {
         i = 1;
         initComponents();
+        pathpublic.setEditable(false);
         clausulas.setEditable(false);
         justi.setVisible(false);
         c1.setForeground(Color.black);
-        c3.setForeground(Color.black);
-        c2.setForeground(Color.black);
+        jComboBox3.setForeground(Color.black);
+        jComboBox2.setForeground(Color.black);
         ImageIcon Logo_image = new ImageIcon(getPath() + "\\recursos\\Images\\descarga.png");
         Icon icono_logo = new ImageIcon(Logo_image.getImage().getScaledInstance(191, 129, Image.SCALE_DEFAULT));
         Logo.setIcon(icono_logo);
@@ -62,16 +62,16 @@ public class Busqueda extends javax.swing.JPanel {
         Confbutton = new javax.swing.JButton();
         Authorbutton = new javax.swing.JButton();
         Paperbutton = new javax.swing.JButton();
-        c1 = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        c2 = new javax.swing.JTextField();
-        c3 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         clausulas = new javax.swing.JTextArea();
         jButton4 = new javax.swing.JButton();
-        numdelete = new javax.swing.JTextField();
         justi = new javax.swing.JLabel();
+        jButton5 = new javax.swing.JButton();
+        c1 = new javax.swing.JComboBox<>();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jComboBox3 = new javax.swing.JComboBox<>();
 
         pathbutton.setMnemonic('P');
         pathbutton.setText("Predefined Paths");
@@ -84,6 +84,7 @@ public class Busqueda extends javax.swing.JPanel {
 
         jLabel1.setText("Path:");
 
+        pathpublic.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         pathpublic.setForeground(new java.awt.Color(153, 153, 153));
         pathpublic.setText("Escribe tu path");
         pathpublic.setName(""); // NOI18N
@@ -168,22 +169,6 @@ public class Busqueda extends javax.swing.JPanel {
             }
         });
 
-        c1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        c1.setForeground(new java.awt.Color(153, 153, 153));
-        c1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                c1MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                c1MouseEntered(evt);
-            }
-        });
-        c1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                c1ActionPerformed(evt);
-            }
-        });
-
         jButton2.setMnemonic('C');
         jButton2.setText("Añadir mas clausulas");
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -202,44 +187,13 @@ public class Busqueda extends javax.swing.JPanel {
             }
         });
 
-        c2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        c2.setForeground(new java.awt.Color(153, 153, 153));
-        c2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                c2MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                c2MouseEntered(evt);
-            }
-        });
-        c2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                c2ActionPerformed(evt);
-            }
-        });
-
-        c3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        c3.setForeground(new java.awt.Color(153, 153, 153));
-        c3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                c3MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                c3MouseEntered(evt);
-            }
-        });
-        c3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                c3ActionPerformed(evt);
-            }
-        });
-
-        clausulas.setColumns(20);
+        clausulas.setColumns(1);
+        clausulas.setFont(new java.awt.Font("Monospaced", 0, 20)); // NOI18N
         clausulas.setRows(5);
         jScrollPane1.setViewportView(clausulas);
 
         jButton4.setMnemonic('D');
-        jButton4.setText("Eliminar Clausula");
+        jButton4.setText("Borrar");
         jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -252,87 +206,80 @@ public class Busqueda extends javax.swing.JPanel {
             }
         });
 
-        numdelete.setForeground(new java.awt.Color(153, 153, 153));
-        numdelete.setText("num. clausula");
-        numdelete.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                numdeleteMouseClicked(evt);
-            }
-        });
-        numdelete.addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentResized(java.awt.event.ComponentEvent evt) {
-                numdeleteComponentResized(evt);
-            }
-        });
-        numdelete.addActionListener(new java.awt.event.ActionListener() {
+        justi.setText("Wrong!");
+
+        jButton5.setText("Borrar");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                numdeleteActionPerformed(evt);
+                jButton5ActionPerformed(evt);
             }
         });
 
-        justi.setText("Wrong!");
+        c1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "D", "E", "L", "M" }));
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1" }));
+
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(Returnbutton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton2)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(pathpublic, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(c1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(c2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(c3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(justi))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(62, 62, 62)
-                                .addComponent(pathbutton))))
+                .addContainerGap(25, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(Logo, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(138, 138, 138)
-                        .addComponent(Instructionsbutton1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(13, 13, 13))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(57, 57, 57)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Confbutton))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(57, 57, 57)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(Confbutton))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(Paperbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Authorbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(Authorbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(101, 101, 101)))
-                        .addGap(35, 35, 35)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jScrollPane1)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jButton4)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(numdelete, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jButton2))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(129, 129, 129)
-                                .addComponent(Exitbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(11, 11, 11)))
-                .addContainerGap(29, Short.MAX_VALUE))
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButton5)
+                                    .addComponent(pathpublic, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(49, 49, 49)
+                                .addComponent(pathbutton))
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(c1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(Logo, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(138, 138, 138)
+                            .addComponent(Instructionsbutton1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(Returnbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(136, 136, 136)
+                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(183, 183, 183)
+                                    .addComponent(Exitbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(67, 67, 67)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jButton4)
+                                                .addGap(66, 66, 66)
+                                                .addComponent(justi)))))))))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -341,46 +288,47 @@ public class Busqueda extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(Instructionsbutton1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(Logo, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Logo, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton5, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(pathbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pathpublic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pathbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pathpublic, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
+                        .addGap(29, 29, 29)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton2)
+                            .addComponent(c1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Authorbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Confbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Paperbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(c1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(c2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(c3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2)
-                            .addComponent(justi))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(Paperbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton4)
+                    .addComponent(justi))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(numdelete, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton4))
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(31, 31, 31)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Exitbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Returnbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38))))
+                        .addGap(36, 36, 36))))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -485,17 +433,6 @@ public class Busqueda extends javax.swing.JPanel {
         paneldinamico.add(p2, BorderLayout.CENTER);
         paneldinamico.revalidate();
         paneldinamico.repaint();
-        variables.r.setTags(variables.tags);
-        variables.r.setNormes(variables.normes);Consulta c = new Consulta(variables.grafo);
-        variables.result=c.consultar(variables.r,variables.valors);
-        ConsultaPanel cp = new ConsultaPanel();
-        cp.setSize(738,513);
-        cp.setLocation(0,0);
-        cp.setBackground(Color.WHITE);
-        panelmegadinamico.removeAll();
-        panelmegadinamico.add(cp, BorderLayout.CENTER);
-        panelmegadinamico.revalidate();
-        panelmegadinamico.repaint();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void pathpublicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pathpublicActionPerformed
@@ -508,104 +445,22 @@ public class Busqueda extends javax.swing.JPanel {
 
     private void pathpublicMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pathpublicMouseClicked
         // TODO add your handling code here:
-        pathpublic.setForeground(Color.BLACK);
-        if (pathpublic.getText().equals("Escribe tu path")){
-            pathpublic.setText(null);
-        }
     }//GEN-LAST:event_pathpublicMouseClicked
-
-    private void c1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_c1MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_c1MouseEntered
-
-    private void c1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_c1ActionPerformed
-
-    private void c1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_c1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_c1MouseClicked
-
-    private void c2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_c2MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_c2MouseClicked
-
-    private void c2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_c2MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_c2MouseEntered
-
-    private void c2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_c2ActionPerformed
-
-    private void c3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_c3MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_c3MouseClicked
-
-    private void c3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_c3MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_c3MouseEntered
-
-    private void c3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_c3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        if (!numdelete.getText().equals("")) {
-            String number_letter = numdelete.getText();
-            String texto = clausulas.getText();
-            String variable = "";
-            texto = texto.replaceAll("\n", "|");
-            if (number_letter.length() < 3) {
-                int longitud = texto.length();
-                int number = Integer.parseInt(number_letter);
-                int cont1 = 1;
-                int cont2 = 0;
-                while (cont2 < longitud) {
-                    if (texto.charAt(cont2) == '|') {
-                        ++cont1;
-                        if (cont1!=number) {
-                            variable += "\n";
-                        }
-                    }
-                    else if (cont1!=number) {
-                        variable += texto.charAt(cont2);
-                    }
-                    ++cont2;
-                }
-                clausulas.setText(variable);
-            }
-            --i;
-            numdelete.setText("");
-        }
+        clausulas.setText(null);
     }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void numdeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numdeleteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_numdeleteActionPerformed
-
-    private void numdeleteComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_numdeleteComponentResized
-        // TODO add your handling code here:
-    }//GEN-LAST:event_numdeleteComponentResized
-
-    private void numdeleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_numdeleteMouseClicked
-        // TODO add your handling code here:
-        numdelete.setForeground(Color.BLACK);
-        if (numdelete.getText().equals("num. clausula")) {
-            numdelete.setText(null);
-        }
-    }//GEN-LAST:event_numdeleteMouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        if (c1.getText().equals("")){
-            if (!c2.getText().equals("")) {
+        if (c1.getSelectedItem().equals("")){
+            if (!jComboBox2.getSelectedItem().equals("")) {
                 justi.setText("Error!");
                 justi.setForeground(Color.red);
                 justi.setVisible(true);
             }
-            else if (!c3.getText().equals("")) {
+            else if (!jComboBox3.getSelectedItem().equals("")) {
                 justi.setText("Error!");
                 justi.setForeground(Color.red);
                 justi.setVisible(true);
@@ -615,68 +470,18 @@ public class Busqueda extends javax.swing.JPanel {
             }
         }
         else {
-            if (c2.getText().equals("")) {
+            if (jComboBox2.getSelectedItem().equals("")) {
                 justi.setText("Error!");
                 justi.setForeground(Color.red);
                 justi.setVisible(true);
             }
-            else if (c3.getText().equals("")) {
+            else if (jComboBox3.getSelectedItem().equals("")) {
                 justi.setText("Error!");
                 justi.setForeground(Color.red);
                 justi.setVisible(true);
             }
             else {
-                String c1aux = c1.getText();
-                if (c1aux.length()<3) {
-                    String c2aux = c2.getText();
-                    if (c2aux.length()<3){
-                        String c3aux = c3.getText();
-                        if (c3aux.length()<3) {
-                            justi.setText("Good!");
-                            justi.setForeground(Color.green);
-                            justi.setVisible(true);
-                            String clausula;
-                            String clausulaux;
-                            clausulaux = "[";
-                            clausulaux += c1.getText();
-                            clausulaux += "]";
-                            clausulaux += " -> ";
-                            clausulaux += "[";
-                            clausulaux += c2.getText();
-                            clausulaux += "]";
-                            clausulaux += " -> ";
-                            clausulaux += "[";
-                            clausulaux += c3.getText();
-                            clausulaux += "]";
-                            clausula = clausulas.getText();
-                            clausula += "Clausula ";
-                            clausula += i;
-                            clausula += ": ";
-                            clausula += clausulaux;
-                            clausula += "\n";
-                            clausulas.setText(clausula);
-                            ++i;
-                            c1.setText("");
-                            c2.setText("");
-                            c3.setText("");
-                        }
-                        else {
-                            justi.setText("Error!");
-                            justi.setForeground(Color.red);
-                            justi.setVisible(true);
-                        }
-                    }
-                    else {
-                        justi.setText("Error!");
-                        justi.setForeground(Color.red);
-                        justi.setVisible(true);
-                    }
-                }
-                else {
-                    justi.setText("Error!");
-                    justi.setForeground(Color.red);
-                    justi.setVisible(true);
-                }
+                 clausulas.setText(c1.getSelectedItem() + " " + jComboBox2.getSelectedItem() + " " + jComboBox3.getSelectedItem() + "\n");
             }
         }
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -684,6 +489,12 @@ public class Busqueda extends javax.swing.JPanel {
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4MouseClicked
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        pathpublic.setText("Escribe tu path");
+        pathpublic.setForeground(Color.gray);
+    }//GEN-LAST:event_jButton5ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -694,18 +505,18 @@ public class Busqueda extends javax.swing.JPanel {
     private javax.swing.JLabel Logo;
     private javax.swing.JButton Paperbutton;
     private javax.swing.JButton Returnbutton;
-    private javax.swing.JTextField c1;
-    private javax.swing.JTextField c2;
-    private javax.swing.JTextField c3;
+    private javax.swing.JComboBox<String> c1;
     public static javax.swing.JTextArea clausulas;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel justi;
-    private javax.swing.JTextField numdelete;
     private javax.swing.JButton pathbutton;
     public static javax.swing.JTextField pathpublic;
     // End of variables declaration//GEN-END:variables

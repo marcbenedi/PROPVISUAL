@@ -8,6 +8,7 @@ package com.prop45.searchtacp;
 import static com.prop45.searchtacp.Busqueda.clausulas;
 import static com.prop45.searchtacp.Busqueda.pathpublic;
 import static com.prop45.searchtacp.Instrucciones.instruccions_guillem;
+import static com.prop45.searchtacp.ViewPredPathuser.selectedpredpath;
 import static com.prop45.searchtacp.variables.*;
 
 import java.awt.Color;
@@ -111,7 +112,8 @@ public class ViewPredPath extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Predefined Path");
 
-        text.setColumns(20);
+        text.setColumns(1);
+        text.setFont(new java.awt.Font("Monospaced", 0, 20)); // NOI18N
         text.setRows(5);
         jScrollPane1.setViewportView(text);
 
@@ -271,8 +273,61 @@ public class ViewPredPath extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        String dato=String.valueOf(model.getValueAt(tablarelacion.getSelectedRow(),0));
-        selectedpredpath.setText(dato);
+        FileReader ftxt=null;
+        try {
+            String dato=String.valueOf(model.getValueAt(tablarelacion.getSelectedRow(),0));
+            selectedpredpath.setText(dato);
+            text.setText(null);
+            ftxt = new FileReader(getPath() + "\\recursos\\ficheros\\relacion.txt");
+            BufferedReader readertxt = new BufferedReader(ftxt);
+            String lineatxt =  "";
+            boolean primer = true;
+            int linea = 0;
+            while ((lineatxt = readertxt.readLine()) != null) {
+                String camino = "";
+                String n = "";
+                int i=0;
+                while (lineatxt.charAt(i)!='\t') {
+                    ++i;
+                }
+                ++i;
+                while (i < lineatxt.length() && lineatxt.charAt(i)!='\t') {
+                    camino += lineatxt.charAt(i);
+                    ++i;
+                }
+                ++i;
+                int dat = tablarelacion.getSelectedRow();
+                if (linea == dat) {
+                    while (i < lineatxt.length()) {
+                        n = "";
+                        while (i < lineatxt.length() && lineatxt.charAt(i) != '\t') {
+                            n += lineatxt.charAt(i);
+                            ++i;
+                        }
+                        ++i;
+                        if (primer) {
+                            text.setText(n);
+                            primer = false;
+                        }
+                        else {
+                            String auxiliar = text.getText();
+                            text.setText(auxiliar + "\n" + n);
+                        }
+                    }          
+                }
+                ++linea;
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(ViewPredPathuser.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(ViewPredPathuser.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                ftxt.close();
+            } catch (IOException ex) {
+                Logger.getLogger(ViewPredPathuser.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

@@ -5,7 +5,6 @@
  */
 package com.prop45.searchtacp;
 
-import com.prop45.Consulta.Consulta;
 import static com.prop45.searchtacp.Busqueda.pathpublic;
 import java.awt.BorderLayout;
 import java.awt.Color;
