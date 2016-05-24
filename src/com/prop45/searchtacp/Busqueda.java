@@ -5,9 +5,6 @@
  */
 package com.prop45.searchtacp;
 
-import com.prop45.Consulta.Consulta;
-import com.prop45.Paths.Norma;
-import com.prop45.Paths.Relacion;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Image;
@@ -19,7 +16,6 @@ import static com.prop45.searchtacp.Portadaylogins.paneldinamico;
 import static com.prop45.searchtacp.variables.getInst_Realizar_Busqueda;
 import static com.prop45.searchtacp.variables.getPath;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -28,9 +24,7 @@ import java.util.logging.Logger;
  * @author Miquel Baena
  */
 public class Busqueda extends javax.swing.JPanel {
-
     public int i;
-
     /**
      * Creates new form Busqueda
      */
@@ -41,8 +35,8 @@ public class Busqueda extends javax.swing.JPanel {
         clausulas.setEditable(false);
         justi.setVisible(false);
         c1.setForeground(Color.black);
-        jComboBox3.setForeground(Color.black);
-        jComboBox2.setForeground(Color.black);
+        c3.setForeground(Color.black);
+        c2.setForeground(Color.black);
         ImageIcon Logo_image = new ImageIcon(getPath() + "\\recursos\\Images\\descarga.png");
         Icon icono_logo = new ImageIcon(Logo_image.getImage().getScaledInstance(191, 129, Image.SCALE_DEFAULT));
         Logo.setIcon(icono_logo);
@@ -76,12 +70,12 @@ public class Busqueda extends javax.swing.JPanel {
         justi = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
         c1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        c2 = new javax.swing.JComboBox<>();
+        c3 = new javax.swing.JComboBox<>();
 
         pathbutton.setMnemonic('P');
         pathbutton.setText("Predefined Paths");
-        pathbutton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        pathbutton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pathbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pathbuttonActionPerformed(evt);
@@ -110,7 +104,7 @@ public class Busqueda extends javax.swing.JPanel {
 
         Instructionsbutton1.setMnemonic('H');
         Instructionsbutton1.setText("Help");
-        Instructionsbutton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Instructionsbutton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Instructionsbutton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Instructionsbutton1ActionPerformed(evt);
@@ -119,7 +113,7 @@ public class Busqueda extends javax.swing.JPanel {
 
         Returnbutton.setMnemonic('R');
         Returnbutton.setText("Return");
-        Returnbutton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Returnbutton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Returnbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ReturnbuttonActionPerformed(evt);
@@ -128,7 +122,7 @@ public class Busqueda extends javax.swing.JPanel {
 
         Exitbutton.setMnemonic('E');
         Exitbutton.setText("Exit");
-        Exitbutton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Exitbutton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Exitbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ExitbuttonActionPerformed(evt);
@@ -138,7 +132,7 @@ public class Busqueda extends javax.swing.JPanel {
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton1.setMnemonic('T');
         jButton1.setText("Term");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -148,7 +142,7 @@ public class Busqueda extends javax.swing.JPanel {
         Confbutton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Confbutton.setMnemonic('C');
         Confbutton.setText("Conference");
-        Confbutton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Confbutton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Confbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ConfbuttonActionPerformed(evt);
@@ -158,7 +152,7 @@ public class Busqueda extends javax.swing.JPanel {
         Authorbutton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Authorbutton.setMnemonic('A');
         Authorbutton.setText("Author");
-        Authorbutton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Authorbutton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Authorbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AuthorbuttonActionPerformed(evt);
@@ -168,7 +162,7 @@ public class Busqueda extends javax.swing.JPanel {
         Paperbutton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Paperbutton.setMnemonic('P');
         Paperbutton.setText("Paper");
-        Paperbutton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Paperbutton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Paperbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PaperbuttonActionPerformed(evt);
@@ -177,7 +171,7 @@ public class Busqueda extends javax.swing.JPanel {
 
         jButton2.setMnemonic('C');
         jButton2.setText("Añadir mas clausulas");
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -186,7 +180,7 @@ public class Busqueda extends javax.swing.JPanel {
 
         jButton3.setMnemonic('B');
         jButton3.setText("Realiza búsqueda");
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -200,7 +194,7 @@ public class Busqueda extends javax.swing.JPanel {
 
         jButton4.setMnemonic('D');
         jButton4.setText("Borrar");
-        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton4MouseClicked(evt);
@@ -221,11 +215,11 @@ public class Busqueda extends javax.swing.JPanel {
             }
         });
 
-        c1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "D", "E", "L", "M" }));
+        c1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "D", "E", "L", "M" }));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1" }));
+        c2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-" }));
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1" }));
+        c3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -235,8 +229,8 @@ public class Busqueda extends javax.swing.JPanel {
                 .addContainerGap(25, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGap(57, 57, 57)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -244,24 +238,15 @@ public class Busqueda extends javax.swing.JPanel {
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(Paperbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Authorbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton2))
+                                    .addComponent(Authorbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jButton5)
                                     .addComponent(pathpublic, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(49, 49, 49)
-                                .addComponent(pathbutton))
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(c1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(49, 49, 49)
+                        .addComponent(pathbutton))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(Logo, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -277,14 +262,21 @@ public class Busqueda extends javax.swing.JPanel {
                                     .addComponent(Exitbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(layout.createSequentialGroup()
                                     .addGap(67, 67, 67)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jButton4)
-                                                .addGap(66, 66, 66)
-                                                .addComponent(justi)))))))))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jButton4)
+                                            .addGap(66, 66, 66)
+                                            .addComponent(justi))))))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jButton2)
+                            .addGap(18, 18, 18)
+                            .addComponent(c1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(c2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(c3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(33, 33, 33))))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -301,18 +293,17 @@ public class Busqueda extends javax.swing.JPanel {
                     .addComponent(pathbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pathpublic, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton2)
                             .addComponent(c1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(c2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(c3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Authorbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -358,16 +349,16 @@ public class Busqueda extends javax.swing.JPanel {
     private void ReturnbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReturnbuttonActionPerformed
         // TODO add your handling code here:
         Portadaylogins panel1 = new Portadaylogins();
-        panel1.setSize(738, 513);
-        panel1.setLocation(0, 0);
+        panel1.setSize(738,513);
+        panel1.setLocation(0,0);
         panel1.setBackground(Color.WHITE);
         panelmegadinamico.removeAll();
         panelmegadinamico.add(panel1, BorderLayout.CENTER);
         panelmegadinamico.revalidate();
         panelmegadinamico.repaint();
         Registrarse_Login p2 = new Registrarse_Login();
-        p2.setSize(737, 323);
-        p2.setLocation(0, 0);
+        p2.setSize(737,323);
+        p2.setLocation(0,0);
         p2.setBackground(Color.WHITE);
         paneldinamico.removeAll();
         paneldinamico.add(p2, BorderLayout.CENTER);
@@ -424,36 +415,21 @@ public class Busqueda extends javax.swing.JPanel {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         Portadaylogins panel1 = new Portadaylogins();
-        panel1.setSize(738, 513);
-        panel1.setLocation(0, 0);
+        panel1.setSize(738,513);
+        panel1.setLocation(0,0);
         panel1.setBackground(Color.WHITE);
         panelmegadinamico.removeAll();
         panelmegadinamico.add(panel1, BorderLayout.CENTER);
         panelmegadinamico.revalidate();
         panelmegadinamico.repaint();
-
-        Loadingresults p2 = new Loadingresults(); //LOADING
-        p2.setSize(737, 323);
-        p2.setLocation(0, 0);
+        Loadingresults p2 = new Loadingresults();
+        p2.setSize(737,323);
+        p2.setLocation(0,0);
         p2.setBackground(Color.WHITE);
-
-        paneldinamico.removeAll();                 //REMOVE OLD PANEL
-        paneldinamico.add(p2, BorderLayout.CENTER); //ADD NUEW PANEL
+        paneldinamico.removeAll();
+        paneldinamico.add(p2, BorderLayout.CENTER);
         paneldinamico.revalidate();
-        paneldinamico.repaint();                    //REPAINT
-
-        Consulta c = new Consulta(variables.grafo);
-        Relacion r = new Relacion("default");
-        
-        r.setTags(variables.g_tags);     
-        r.setNormas(variables.g_normes);
-       
-        c.consultar(r, variables.g_valors);
-        
-        
-        
-
-
+        paneldinamico.repaint();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void pathpublicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pathpublicActionPerformed
@@ -475,28 +451,35 @@ public class Busqueda extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        if (c1.getSelectedItem().equals("")) {
-            if (!jComboBox2.getSelectedItem().equals("")) {
+        if (c1.getSelectedItem().equals("")){
+            if (!c2.getSelectedItem().equals("")) {
                 justi.setText("Error!");
                 justi.setForeground(Color.red);
                 justi.setVisible(true);
-            } else if (!jComboBox3.getSelectedItem().equals("")) {
+            }
+            else if (!c3.getSelectedItem().equals("")) {
                 justi.setText("Error!");
                 justi.setForeground(Color.red);
                 justi.setVisible(true);
-            } else {
+            }
+            else {
                 justi.setVisible(false);
             }
-        } else if (jComboBox2.getSelectedItem().equals("")) {
-            justi.setText("Error!");
-            justi.setForeground(Color.red);
-            justi.setVisible(true);
-        } else if (jComboBox3.getSelectedItem().equals("")) {
-            justi.setText("Error!");
-            justi.setForeground(Color.red);
-            justi.setVisible(true);
-        } else {
-            clausulas.setText(c1.getSelectedItem() + " " + jComboBox2.getSelectedItem() + " " + jComboBox3.getSelectedItem() + "\n");
+        }
+        else {
+            if (c2.getSelectedItem().equals("")) {
+                justi.setText("Error!");
+                justi.setForeground(Color.red);
+                justi.setVisible(true);
+            }
+            else if (c3.getSelectedItem().equals("")) {
+                justi.setText("Error!");
+                justi.setForeground(Color.red);
+                justi.setVisible(true);
+            }
+            else {
+                 clausulas.setText(c1.getSelectedItem() + " " + c2.getSelectedItem() + " " + c3.getSelectedItem() + "\n");
+            }
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -506,14 +489,13 @@ public class Busqueda extends javax.swing.JPanel {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
+        variables.num_words = 0;
+        c2.removeAllItems();
+        c2.addItem("-");
+        c3.removeAllItems();
+        c3.addItem("-");
         pathpublic.setText("Escribe tu path");
         pathpublic.setForeground(Color.gray);
-
-        variables.g_name = "";
-        variables.g_tags.clear();
-        variables.g_normes.clear();
-        variables.g_valors.clear();
-
     }//GEN-LAST:event_jButton5ActionPerformed
 
 
@@ -526,14 +508,14 @@ public class Busqueda extends javax.swing.JPanel {
     private javax.swing.JButton Paperbutton;
     private javax.swing.JButton Returnbutton;
     private javax.swing.JComboBox<String> c1;
+    public static javax.swing.JComboBox<String> c2;
+    public static javax.swing.JComboBox<String> c3;
     public static javax.swing.JTextArea clausulas;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel justi;

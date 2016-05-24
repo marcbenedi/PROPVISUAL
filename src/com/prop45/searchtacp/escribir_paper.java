@@ -5,8 +5,12 @@
  */
 package com.prop45.searchtacp;
 
+import static com.prop45.searchtacp.Busqueda.c2;
+import static com.prop45.searchtacp.Busqueda.c3;
 import java.awt.Color;
 import static com.prop45.searchtacp.Busqueda.pathpublic;
+import static com.prop45.searchtacp.Busquedauser.c2user;
+import static com.prop45.searchtacp.Busquedauser.c3user;
 import static com.prop45.searchtacp.Busquedauser.pathuser;
 import static com.prop45.searchtacp.variables.getPath;
 import static com.prop45.searchtacp.variables.isUser;
@@ -69,7 +73,6 @@ public class escribir_paper extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton3 = new javax.swing.JButton();
         buscador = new javax.swing.JTextField();
         escoge = new javax.swing.JComboBox<>();
         jButton4 = new javax.swing.JButton();
@@ -80,15 +83,6 @@ public class escribir_paper extends javax.swing.JFrame {
         tablapaper = new javax.swing.JTable();
 
         setTitle("Añadir Paper");
-
-        jButton3.setMnemonic('A');
-        jButton3.setText("Seleccionar");
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
 
         escoge.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione tipo", "Definir", "No Definir" }));
 
@@ -141,6 +135,11 @@ public class escribir_paper extends javax.swing.JFrame {
             }
         });
         tablapaper.setShowVerticalLines(false);
+        tablapaper.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablapaperMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tablapaper);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -152,8 +151,7 @@ public class escribir_paper extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton3)
-                        .addGap(199, 199, 199)
+                        .addGap(286, 286, 286)
                         .addComponent(jButton2))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -183,20 +181,12 @@ public class escribir_paper extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton2))
+                .addComponent(jButton2)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-        String dato=String.valueOf(model.getValueAt(tablapaper.getSelectedRow(),0));
-        nombrepaper.setText(dato);
-    }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
@@ -274,64 +264,51 @@ public class escribir_paper extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         int seleccion = escoge.getSelectedIndex();
-        
-       
-        
         if (seleccion != 0) {
-            
-             variables.g_tags.add("PAPER");
-             
             if (seleccion == 1) {
                 if (!nombrepaper.getText().equals("")) {
+                    ++variables.num_words;
                     if (isUser()) {
                         pathuser.setForeground(Color.BLACK);
                         if (pathuser.getText().equals("Escribe tu path")){
                             String p;
-                            
                             p = "PAPER:";
-                          
-                            
                             p += nombrepaper.getText();
                             pathuser.setText(p);
                         }
                         else {
                             String p = pathuser.getText();
                             p += " - ";
-                            
                             p += "PAPER:";
-                          
-                            
                             p += nombrepaper.getText();
                             pathuser.setText(p);
                         }
+                        c2user.addItem(String.valueOf(variables.num_words));
+                        c3user.addItem(String.valueOf(variables.num_words));
                     }
                     else {
                         pathpublic.setForeground(Color.BLACK);
                         if (pathpublic.getText().equals("Escribe tu path")){
                             String p;
-                            
                             p = "PAPER:";
-                     
-                            
                             p += nombrepaper.getText();
                             pathpublic.setText(p);
                         }
                         else {
                             String p = pathpublic.getText();
                             p += " - ";
-                            
                             p += "PAPER:";
-                            
-                            
                             p += nombrepaper.getText();
                             pathpublic.setText(p);
                         }
+                        c2.addItem(String.valueOf(variables.num_words));
+                        c3.addItem(String.valueOf(variables.num_words));
                     }
                     this.setVisible(false);
                 }
             }
             else  {
-                if (nombrepaper.getText().equals("")) {
+                    ++variables.num_words;
                     if (isUser()) {
                         pathuser.setForeground(Color.BLACK);
                         if (pathuser.getText().equals("Escribe tu path")){
@@ -343,6 +320,8 @@ public class escribir_paper extends javax.swing.JFrame {
                             p += "PAPER:NULL";
                             pathuser.setText(p);
                         }
+                        c2user.addItem(String.valueOf(variables.num_words));
+                        c3user.addItem(String.valueOf(variables.num_words));
                     }
                     else {
                         pathpublic.setForeground(Color.BLACK);
@@ -355,9 +334,10 @@ public class escribir_paper extends javax.swing.JFrame {
                             p += "PAPER:NULL";
                             pathpublic.setText(p);
                         }
+                        c2.addItem(String.valueOf(variables.num_words));
+                        c3.addItem(String.valueOf(variables.num_words));
                     }
                     this.setVisible(false);
-                }
             }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -367,6 +347,13 @@ public class escribir_paper extends javax.swing.JFrame {
         this.setVisible(false);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void tablapaperMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablapaperMouseClicked
+        // TODO add your handling code here:
+        String dato=String.valueOf(model.getValueAt(tablapaper.getSelectedRow(),0));
+        nombrepaper.setText(dato);
+        escoge.setSelectedIndex(1);
+    }//GEN-LAST:event_tablapaperMouseClicked
 
     /**
      * @param args the command line arguments
@@ -406,7 +393,6 @@ public class escribir_paper extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> escoge;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField nombrepaper;

@@ -79,7 +79,6 @@ public class ViewPredPath extends javax.swing.JFrame {
         selectedpredpath = new javax.swing.JTextField();
         userlabel = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         Instructionsbutton4 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -132,15 +131,6 @@ public class ViewPredPath extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setMnemonic('D');
-        jButton3.setText("Selecciona");
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-
         Instructionsbutton4.setMnemonic('H');
         Instructionsbutton4.setText("Exit");
         Instructionsbutton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -170,6 +160,11 @@ public class ViewPredPath extends javax.swing.JFrame {
             }
         });
         tablarelacion.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_LAST_COLUMN);
+        tablarelacion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablarelacionMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tablarelacion);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -194,11 +189,7 @@ public class ViewPredPath extends javax.swing.JFrame {
                                             .addComponent(jLabel2)
                                             .addGap(252, 252, 252))
                                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addComponent(jButton3)
-                                                    .addGap(315, 315, 315))
-                                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jLabel3)
@@ -244,9 +235,7 @@ public class ViewPredPath extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3)
-                .addGap(18, 18, 18)
+                .addGap(47, 47, 47)
                 .addComponent(Instructionsbutton4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -271,7 +260,15 @@ public class ViewPredPath extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_Instructionsbutton4ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        pathpublic.setForeground(Color.BLACK); 
+        pathpublic.setText(selectedpredpath.getText());
+        clausulas.setText(text.getText());
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void tablarelacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablarelacionMouseClicked
         // TODO add your handling code here:
         FileReader ftxt=null;
         try {
@@ -328,15 +325,7 @@ public class ViewPredPath extends javax.swing.JFrame {
                 Logger.getLogger(ViewPredPathuser.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        pathpublic.setForeground(Color.BLACK); 
-        pathpublic.setText(selectedpredpath.getText());
-        clausulas.setText(text.getText());
-        this.setVisible(false);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_tablarelacionMouseClicked
 
     /**
      * @param args the command line arguments
@@ -383,7 +372,6 @@ public class ViewPredPath extends javax.swing.JFrame {
     private javax.swing.JButton Instructionsbutton3;
     private javax.swing.JButton Instructionsbutton4;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
