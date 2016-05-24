@@ -274,21 +274,33 @@ public class escribir_paper extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         int seleccion = escoge.getSelectedIndex();
+        
+       
+        
         if (seleccion != 0) {
+            
+             variables.g_tags.add("PAPER");
+             
             if (seleccion == 1) {
                 if (!nombrepaper.getText().equals("")) {
                     if (isUser()) {
                         pathuser.setForeground(Color.BLACK);
                         if (pathuser.getText().equals("Escribe tu path")){
                             String p;
+                            
                             p = "PAPER:";
+                          
+                            
                             p += nombrepaper.getText();
                             pathuser.setText(p);
                         }
                         else {
                             String p = pathuser.getText();
                             p += " - ";
+                            
                             p += "PAPER:";
+                          
+                            
                             p += nombrepaper.getText();
                             pathuser.setText(p);
                         }
@@ -297,14 +309,20 @@ public class escribir_paper extends javax.swing.JFrame {
                         pathpublic.setForeground(Color.BLACK);
                         if (pathpublic.getText().equals("Escribe tu path")){
                             String p;
+                            
                             p = "PAPER:";
+                     
+                            
                             p += nombrepaper.getText();
                             pathpublic.setText(p);
                         }
                         else {
                             String p = pathpublic.getText();
                             p += " - ";
+                            
                             p += "PAPER:";
+                            
+                            
                             p += nombrepaper.getText();
                             pathpublic.setText(p);
                         }

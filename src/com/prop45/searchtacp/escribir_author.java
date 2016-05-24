@@ -202,32 +202,54 @@ public class escribir_author extends javax.swing.JFrame {
                         pathuser.setForeground(Color.BLACK);
                         if (pathuser.getText().equals("Escribe tu path")){
                             String p;
-                            p = "AUTHOR:";
+                            /*------*/
+                            p = "AUTHOR:"; 
+                            variables.g_tags.add("Author");
+                            /*-----*/
                             p += nombreauthor.getText();
                             pathuser.setText(p);
+                            
+                            
                         }
                         else {
                             String p = pathuser.getText();
                             p += " - ";
+                            
+                            
                             p += "AUTHOR:";
+                            variables.g_tags.add("Author");
+                            
+                            
                             p += nombreauthor.getText();
                             pathuser.setText(p);
+                            
+                            
                         }
                     }
                     else {
                         pathpublic.setForeground(Color.BLACK);
                         if (pathpublic.getText().equals("Escribe tu path")){
                             String p;
-                            p = "AUTHOR:";
+                            
+                            
+                            p = "AUTHOR:";  
+                            
+                            
                             p += nombreauthor.getText();
                             pathpublic.setText(p);
+
                         }
                         else {
                             String p = pathpublic.getText();
                             p += " - ";
-                            p += "AUTHOR:";
+                            
+                            p += "AUTHOR:"; 
+                            
                             p += nombreauthor.getText();
                             pathpublic.setText(p);
+                            
+                           
+                            
                         }
                     }
                     this.setVisible(false);

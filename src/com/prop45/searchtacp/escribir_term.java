@@ -274,7 +274,13 @@ public class escribir_term extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         int seleccion = escoge.getSelectedIndex();
+
+       
+
         if (seleccion != 0) {
+            
+             variables.g_tags.add("TERM");
+             
             if (seleccion == 1) {
                 if (!nombreterm.getText().equals("")) {
                     if (isUser()) {

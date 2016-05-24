@@ -275,20 +275,27 @@ public class escribir_conference extends javax.swing.JFrame {
         // TODO add your handling code here:
         int seleccion = escoge.getSelectedIndex();
         if (seleccion != 0) {
+              variables.g_tags.add("Conference");
             if (seleccion == 1) {
                 if (!nombreconference.getText().equals("")) {
                     if (isUser()) {
                         pathuser.setForeground(Color.BLACK);
                         if (pathuser.getText().equals("Escribe tu path")){
                             String p;
+                            
                             p = "Conference:";
+                          
+                            
                             p += nombreconference.getText();
                             pathuser.setText(p);
                         }
                         else {
                             String p = pathuser.getText();
                             p += " - ";
+                            
                             p += "Conference:";
+                   
+                            
                             p += nombreconference.getText();
                             pathuser.setText(p);
                         }
@@ -297,14 +304,20 @@ public class escribir_conference extends javax.swing.JFrame {
                         pathpublic.setForeground(Color.BLACK);
                         if (pathpublic.getText().equals("Escribe tu path")){
                             String p;
+                            
                             p = "Conference:";
+                         
+                            
                             p += nombreconference.getText();
                             pathpublic.setText(p);
                         }
                         else {
                             String p = pathpublic.getText();
                             p += " - ";
+                            
                             p += "Conference:";
+                          
+                            
                             p += nombreconference.getText();
                             pathpublic.setText(p);
                         }
