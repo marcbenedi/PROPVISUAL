@@ -190,7 +190,14 @@ public class escribir_author extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        int seleccion = escoge.getSelectedIndex();  
+        int seleccion = escoge.getSelectedIndex(); 
+        variables.tags.add("Author");
+        if(nombreauthor.getText().equals("")){
+            variables.valors.add("NULL");
+        }
+        else{
+            variables.valors.add(nombreauthor.getText());
+        }
         if (seleccion != 0) {
             if (seleccion == 1) {
                 if (!nombreauthor.getText().equals("")) {

@@ -9,12 +9,25 @@ import com.prop45.Consulta.Consulta;
 import com.prop45.DataBase.GraphDataBase;
 import com.prop45.DataBase.RelacionDataBase;
 import com.prop45.Graph.Graph;
+import com.prop45.Graph.Node;
+import com.prop45.Paths.Norma;
+import com.prop45.Paths.Relacion;
+import java.util.ArrayList;
 
 /**
  *
  * @author Miquel Baena
  */
 public class variables {
+    
+    public static Relacion r = new Relacion("nombre_por_defecto");
+    public static ArrayList<String> valors = new ArrayList<>();
+    public static ArrayList<String> tags = new ArrayList<>();
+    public static ArrayList<Norma> normes= new ArrayList<>();
+    
+    public static ArrayList<Node> result = new ArrayList<>();
+    
+    
     public static boolean primer_del_cami = false;
     public static boolean ultim_es_paper = false;
     public static int num_words = 0;

@@ -35,4 +35,8 @@ public class Relacion {
     public int getNormasSize(){
         return normes.size();
     }
+
+    public void setNormes(ArrayList<Norma> normes) {
+        this.normes = normes;
+    }
 }

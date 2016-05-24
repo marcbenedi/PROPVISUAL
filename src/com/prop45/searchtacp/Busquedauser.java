@@ -5,6 +5,7 @@
  */
 package com.prop45.searchtacp;
 
+import com.prop45.Consulta.Consulta;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Image;
@@ -434,6 +435,18 @@ public class Busquedauser extends javax.swing.JPanel {
             paneldinamico.add(p2, BorderLayout.CENTER);
             paneldinamico.revalidate();
             paneldinamico.repaint();
+            variables.r.setTags(variables.tags);
+            variables.r.setNormes(variables.normes);
+            Consulta c = new Consulta(variables.grafo);
+            variables.result=c.consultar(variables.r,variables.valors);
+            ConsultaPanel cp = new ConsultaPanel();
+            cp.setSize(738,513);
+            cp.setLocation(0,0);
+            cp.setBackground(Color.WHITE);
+            panelmegadinamico.removeAll();
+            panelmegadinamico.add(cp, BorderLayout.CENTER);
+            panelmegadinamico.revalidate();
+            panelmegadinamico.repaint();
         } catch (IOException ex) {
             Logger.getLogger(Busquedauser.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
