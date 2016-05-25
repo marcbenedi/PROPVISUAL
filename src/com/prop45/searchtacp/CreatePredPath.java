@@ -21,11 +21,11 @@ import static com.prop45.searchtacp.Cargando.panelmegadinamico;
 import static com.prop45.searchtacp.Instrucciones.instruccions_guillem;
 import static com.prop45.searchtacp.ViewPredPathuser.continuepredpath;
 import static com.prop45.searchtacp.ViewPredPathuser.helppredpath;
-import static com.prop45.searchtacp.ViewPredPathuser.selectedpredpath;
 import static com.prop45.searchtacp.ViewPredPathuser.titolpredpath;
 import static com.prop45.searchtacp.variables.getInst_Crear_Path_Predefinido;
 import static com.prop45.searchtacp.variables.getPath;
 import static com.prop45.searchtacp.variables.getUsuario;
+import static com.prop45.searchtacp.ViewPredPathuser.selectedpredpathuser;
 
 /**
  *
@@ -367,11 +367,11 @@ public class CreatePredPath extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane3)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jButton6)
-                        .addComponent(justi)))
+                        .addComponent(justi))
+                    .addComponent(jButton2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -501,7 +501,7 @@ public class CreatePredPath extends javax.swing.JPanel {
             vppu.setVisible(true);
             helppredpath.setVisible(false);
             titolpredpath.setVisible(false);
-            selectedpredpath.setVisible(false);
+            selectedpredpathuser.setVisible(false);
             continuepredpath.setVisible(false);
         } catch (IOException ex) {
             Logger.getLogger(CreatePredPath.class.getName()).log(Level.SEVERE, null, ex);
@@ -510,35 +510,27 @@ public class CreatePredPath extends javax.swing.JPanel {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        if (c1.getSelectedItem().equals("")){
-            if (!c2.getSelectedItem().equals("")) {
-                justi.setText("Error!");
-                justi.setForeground(Color.red);
-                justi.setVisible(true);
-            }
-            else if (!c3.getSelectedItem().equals("")) {
-                justi.setText("Error!");
-                justi.setForeground(Color.red);
-                justi.setVisible(true);
-            }
-            else {
-                justi.setVisible(false);
-            }
+        if (c1.getSelectedItem().equals("-")){
+            justi.setText("Error!");
+            justi.setForeground(Color.red);
+            justi.setVisible(true);
+        }
+        else if (c2.getSelectedItem().equals("-")) {
+            justi.setText("Error!");
+            justi.setForeground(Color.red);
+            justi.setVisible(true);
+        }
+        else if (c3.getSelectedItem().equals("-")) {
+            justi.setText("Error!");
+            justi.setForeground(Color.red);
+            justi.setVisible(true);
         }
         else {
-            if (c2.getSelectedItem().equals("")) {
-                justi.setText("Error!");
-                justi.setForeground(Color.red);
-                justi.setVisible(true);
-            }
-            else if (c3.getSelectedItem().equals("")) {
-                justi.setText("Error!");
-                justi.setForeground(Color.red);
-                justi.setVisible(true);
-            }
-            else {
-                clausulas.setText(c1.getSelectedItem() + " " + c2.getSelectedItem() + " " + c3.getSelectedItem() + "\n");
-            }
+            justi.setText("");
+            clausulas.setText(clausulas.getText() + c1.getSelectedItem() + " " + c2.getSelectedItem() + " " + c3.getSelectedItem() + "\n");
+            c1.setSelectedIndex(0);
+            c2.setSelectedIndex(0);
+            c3.setSelectedIndex(0); 
         }
     }//GEN-LAST:event_jButton5ActionPerformed
 

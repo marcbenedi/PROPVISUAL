@@ -12,6 +12,8 @@ import static com.prop45.searchtacp.Busqueda.pathpublic;
 import static com.prop45.searchtacp.Busquedauser.c2user;
 import static com.prop45.searchtacp.Busquedauser.c3user;
 import static com.prop45.searchtacp.Busquedauser.pathuser;
+import static com.prop45.searchtacp.ViewPredPath.selectedpredpath;
+import static com.prop45.searchtacp.ViewPredPathuser.selectedpredpathuser;
 import static com.prop45.searchtacp.variables.getPath;
 import static com.prop45.searchtacp.variables.isUser;
 import java.io.BufferedReader;
@@ -37,6 +39,10 @@ public class escribir_conference extends javax.swing.JFrame {
     
     public escribir_conference() throws FileNotFoundException, IOException {
         initComponents();
+        if (variables.primer_del_cami) {
+            escoge.removeAllItems();
+            escoge.addItem("Definir");
+        }
         this.getContentPane().setBackground(Color.BLACK);
         this.setLocationRelativeTo(null);
         nombreconference.setEditable(false);
@@ -81,10 +87,21 @@ public class escribir_conference extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaconference = new javax.swing.JTable();
+        error = new javax.swing.JLabel();
 
         setTitle("Añadir Conference");
 
-        escoge.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione tipo", "Definir", "No Definir" }));
+        escoge.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No Definir", "Definir" }));
+        escoge.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                escogeItemStateChanged(evt);
+            }
+        });
+        escoge.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                escogeActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Buscar");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -142,6 +159,8 @@ public class escribir_conference extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tablaconference);
 
+        error.setForeground(new java.awt.Color(255, 0, 0));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -151,11 +170,12 @@ public class escribir_conference extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(286, 286, 286)
+                        .addComponent(error, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton2))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(buscador)
+                            .addComponent(buscador, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                             .addComponent(nombreconference))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,7 +201,9 @@ public class escribir_conference extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton2)
+                    .addComponent(error, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -263,89 +285,273 @@ public class escribir_conference extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        variables.tags.add("Conference");
-        if(nombreconference.getText().equals("")){
-            variables.valors.add("NULL");
-        }
-        else{
-            variables.valors.add(nombreconference.getText());
-        }
         int seleccion = escoge.getSelectedIndex();
-        if (seleccion != 0) {
-            if (seleccion == 1) {
+        if (!variables.definiendo_pred_path) {
+            if (variables.primer_del_cami) {
                 if (!nombreconference.getText().equals("")) {
-                    ++variables.num_words;
-                    if (isUser()) {
-                        pathuser.setForeground(Color.BLACK);
-                        if (pathuser.getText().equals("Escribe tu path")){
-                            String p;
-                            p = "Conference:";
-                            p += nombreconference.getText();
-                            pathuser.setText(p);
+                        if (isUser()) {
+                            pathuser.setForeground(Color.BLACK);
+                            if (pathuser.getText().equals("Escribe tu path")){
+                                String p;
+                                p = "Conference~";
+                                p += nombreconference.getText();
+                                pathuser.setText(p);
+                            }
+                            else {
+                                String p = pathuser.getText();
+                                p += "  ";
+                                p += "Conference~";
+                                p += nombreconference.getText();
+                                pathuser.setText(p);
+                            }
+                            c2user.addItem(String.valueOf(variables.num_words));
+                            c3user.addItem(String.valueOf(variables.num_words));
                         }
                         else {
-                            String p = pathuser.getText();
-                            p += " - ";
-                            p += "Conference:";
-                            p += nombreconference.getText();
-                            pathuser.setText(p);
+                            pathpublic.setForeground(Color.BLACK);
+                            if (pathpublic.getText().equals("Escribe tu path")){
+                                String p;
+                                p = "Conference~";
+                                p += nombreconference.getText();
+                                pathpublic.setText(p);
+                            }
+                            else {
+                                String p = pathpublic.getText();
+                                p += "  ";
+                                p += "Conference~";
+                                p += nombreconference.getText();
+                                pathpublic.setText(p);
+                            }
+                            c2.addItem(String.valueOf(variables.num_words));
+                            c3.addItem(String.valueOf(variables.num_words));
                         }
-                        c2user.addItem(String.valueOf(variables.num_words));
-                        c3user.addItem(String.valueOf(variables.num_words));
+                        this.setVisible(false);
+                        variables.primer_del_cami = false;
+                        variables.ultim_es_paper = false;
+                        ++variables.num_words;
+                        variables.tags.add("Conference");
+                        if(nombreconference.getText().equals("")){
+                            variables.valors.add("NULL");
+                        }
+                        else{
+                            variables.valors.add(nombreconference.getText());
+                        }
                     }
-                    else {
-                        pathpublic.setForeground(Color.BLACK);
-                        if (pathpublic.getText().equals("Escribe tu path")){
-                            String p;
-                            p = "Conference:";
-                            p += nombreconference.getText();
-                            pathpublic.setText(p);
-                        }
-                        else {
-                            String p = pathpublic.getText();
-                            p += " - ";
-                            p += "Conference:";
-                            p += nombreconference.getText();
-                            pathpublic.setText(p);
-                        }
-                        c2.addItem(String.valueOf(variables.num_words));
-                        c3.addItem(String.valueOf(variables.num_words));
-                    }
-                    this.setVisible(false);
+                else {
+                    error.setText("Defina una Conference");
                 }
             }
-            else  {
-                    ++variables.num_words;
-                    if (isUser()) {
-                        pathuser.setForeground(Color.BLACK);
-                        if (pathuser.getText().equals("Escribe tu path")){
-                            pathuser.setText("Conference:NULL");
+            else {
+                if (seleccion == 1) {
+                    if (!nombreconference.getText().equals("")) {
+                        if (isUser()) {
+                            pathuser.setForeground(Color.BLACK);
+                            if (pathuser.getText().equals("Escribe tu path")){
+                                String p;
+                                p = "Conference~";
+                                p += nombreconference.getText();
+                                pathuser.setText(p);
+                            }
+                            else {
+                                String p = pathuser.getText();
+                                p += "  ";
+                                p += "Conference~";
+                                p += nombreconference.getText();
+                                pathuser.setText(p);
+                            }
+                            c2user.addItem(String.valueOf(variables.num_words));
+                            c3user.addItem(String.valueOf(variables.num_words));
                         }
                         else {
-                            String p = pathuser.getText();
-                            p += " - ";
-                            p += "Conference:NULL";
-                            pathuser.setText(p);
+                            pathpublic.setForeground(Color.BLACK);
+                            if (pathpublic.getText().equals("Escribe tu path")){
+                                String p;
+                                p = "Conference~";
+                                p += nombreconference.getText();
+                                pathpublic.setText(p);
+                            }
+                            else {
+                                String p = pathpublic.getText();
+                                p += "  ";
+                                p += "Conference~";
+                                p += nombreconference.getText();
+                                pathpublic.setText(p);
+                            }
+                            c2.addItem(String.valueOf(variables.num_words));
+                            c3.addItem(String.valueOf(variables.num_words));
                         }
-                        c2user.addItem(String.valueOf(variables.num_words));
-                        c3user.addItem(String.valueOf(variables.num_words));
+                        this.setVisible(false);
+                        variables.ultim_es_paper = false;
+                        ++variables.num_words;
+                        variables.tags.add("Conference");
+                        if(nombreconference.getText().equals("")){
+                            variables.valors.add("NULL");
+                        }
+                        else{
+                            variables.valors.add(nombreconference.getText());
+                        }
                     }
-                    else {
-                        pathpublic.setForeground(Color.BLACK);
-                        if (pathpublic.getText().equals("Escribe tu path")){
-                            pathpublic.setText("Conference:NULL");
+                }
+                else  {
+                        if (isUser()) {
+                            pathuser.setForeground(Color.BLACK);
+                            if (pathuser.getText().equals("Escribe tu path")){
+                                pathuser.setText("Conference~NULL");
+                            }
+                            else {
+                                String p = pathuser.getText();
+                                p += "  ";
+                                p += "Conference~NULL";
+                                pathuser.setText(p);
+                            }
+                            c2user.addItem(String.valueOf(variables.num_words));
+                            c3user.addItem(String.valueOf(variables.num_words));
                         }
                         else {
-                            String p = pathpublic.getText();
-                            p += " - ";
-                            p += "Conference:NULL";
-                            pathpublic.setText(p);
+                            pathpublic.setForeground(Color.BLACK);
+                            if (pathpublic.getText().equals("Escribe tu path")){
+                                pathpublic.setText("Conference~NULL");
+                            }
+                            else {
+                                String p = pathpublic.getText();
+                                p += "  ";
+                                p += "Conference~NULL";
+                                pathpublic.setText(p);
+                            }
+                            c2.addItem(String.valueOf(variables.num_words));
+                            c3.addItem(String.valueOf(variables.num_words));
                         }
-                        c2.addItem(String.valueOf(variables.num_words));
-                        c3.addItem(String.valueOf(variables.num_words));
+                        this.setVisible(false);
+                        variables.ultim_es_paper = false;
+                        ++variables.num_words;
+                        variables.tags.add("Conference");
+                        if(nombreconference.getText().equals("")){
+                            variables.valors.add("NULL");
+                        }
+                        else{
+                            variables.valors.add(nombreconference.getText());
+                        }
                     }
-                    this.setVisible(false);
             }
+        }
+        else {
+            String dato = String.valueOf(escoge.getSelectedItem());
+                if (dato.equals("Definir")) {
+                    if (!nombreconference.getText().equals("")) {
+                        if (isUser()) {
+                            String p = selectedpredpathuser.getText();
+                            int inaux = 1;
+                            String inicio = "";
+                            String finali = "";
+                            for (int i=0 ; i<p.length() ; ++i) {
+                                if (p.charAt(i) == ' ') {
+                                    ++inaux;
+                                }
+                                if (inaux == variables.num_del_select) {
+                                    inicio += p.substring(0, i);
+                                    finali += p.substring(i+6, p.length());
+                                }
+                            }
+                            p += "  ";
+                            p += "Conference~";
+                            p += nombreconference.getText();
+                            selectedpredpathuser.setText(inicio + p + finali);                       
+                        }
+                        else {
+                            String p = selectedpredpath.getText();
+                            int inaux = 1;
+                            String inicio = "";
+                            String finali = "";
+                            boolean sal = false;
+                            boolean sal2 = false;
+                            for (int i=0 ; i<p.length() ; ++i) {
+                                if (p.charAt(i) == ' ') {
+                                    if (p.charAt(i+1) == ' ') {
+                                        ++inaux;
+                                        ++i;
+                                        ++i;
+                                    }
+                                }
+                                if (inaux == variables.num_del_select && !sal) {                   
+                                    inicio += p.substring(0, i);
+                                    sal = true;
+                                }
+                                if (inaux == (variables.num_del_select+1) && !sal2) {
+                                    finali = p.substring(i, p.length());
+                                    sal2 = true;
+                                }
+                            }
+                            p = "Conference~";
+                            p += nombreconference.getText();
+                            selectedpredpath.setText(inicio + p + "  " + finali); 
+                        }
+                        this.setVisible(false);
+                        variables.tags.add("Conference");
+                        if(nombreconference.getText().equals("")){
+                            variables.valors.add("NULL");
+                        }
+                        else{
+                            variables.valors.add(nombreconference.getText());
+                        }
+                    }
+                }
+                else {
+                    if (nombreconference.getText().equals("")) {
+                        if (isUser()) {
+                            String p = selectedpredpathuser.getText();
+                            int inaux = 1;
+                            String inicio = "";
+                            String finali = "";
+                            for (int i=0 ; i<p.length() ; ++i) {
+                                if (p.charAt(i) == ' ') {
+                                    ++inaux;
+                                }
+                                if (inaux == variables.num_del_select) {
+                                    inicio += p.substring(0, i);
+                                    finali += p.substring(i+6, p.length());
+                                }
+                            }
+                            p += "  ";
+                            p += "Conference~NULL";
+                            selectedpredpathuser.setText(inicio + p + finali);                       
+                        }
+                        else {
+                            String p = selectedpredpath.getText();
+                            int inaux = 1;
+                            String inicio = "";
+                            String finali = "";
+                            boolean sal = false;
+                            boolean sal2 = false;
+                            for (int i=0 ; i<p.length() ; ++i) {
+                                if (p.charAt(i) == ' ') {
+                                    if (p.charAt(i+1) == ' ') {
+                                        ++inaux;
+                                        ++i;
+                                        ++i;
+                                    }
+                                }
+                                if (inaux == variables.num_del_select && !sal) {                   
+                                    inicio += p.substring(0, i);
+                                    sal = true;
+                                }
+                                if (inaux == (variables.num_del_select+1) && !sal2) {
+                                    finali = p.substring(i, p.length());
+                                    sal2 = true;
+                                }
+                            }
+                            p = "Conference~NULL";
+                            selectedpredpath.setText(inicio + p + "  " + finali); 
+                        }
+                        this.setVisible(false);
+                        variables.tags.add("Conference");
+                        if(nombreconference.getText().equals("")){
+                            variables.valors.add("NULL");
+                        }
+                        else{
+                            variables.valors.add(nombreconference.getText());
+                        }
+                    }                    
+                }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -358,8 +564,19 @@ public class escribir_conference extends javax.swing.JFrame {
         // TODO add your handling code here:
         String dato=String.valueOf(model.getValueAt(tablaconference.getSelectedRow(),0));
         nombreconference.setText(dato);
-        escoge.setSelectedIndex(1);
+        if (!variables.primer_del_cami) {
+            escoge.setSelectedIndex(1);
+        }
     }//GEN-LAST:event_tablaconferenceMouseClicked
+
+    private void escogeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_escogeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_escogeActionPerformed
+
+    private void escogeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_escogeItemStateChanged
+        // TODO add your handling code here:
+        if (!variables.primer_del_cami && escoge.getSelectedItem().equals("No Definir")) nombreconference.setText(null);
+    }//GEN-LAST:event_escogeItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -396,6 +613,7 @@ public class escribir_conference extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField buscador;
+    private javax.swing.JLabel error;
     private javax.swing.JComboBox<String> escoge;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

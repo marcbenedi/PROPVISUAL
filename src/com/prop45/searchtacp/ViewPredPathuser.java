@@ -97,7 +97,7 @@ public class ViewPredPathuser extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         userlabel = new javax.swing.JLabel();
         titolpredpath = new javax.swing.JLabel();
-        selectedpredpath = new javax.swing.JTextField();
+        selectedpredpathuser = new javax.swing.JTextField();
         continuepredpath = new javax.swing.JButton();
         helppredpath = new javax.swing.JButton();
         Instructionsbutton3 = new javax.swing.JButton();
@@ -110,6 +110,9 @@ public class ViewPredPathuser extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tablarelacion1 = new javax.swing.JTable();
+        jLabel6 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        define = new javax.swing.JComboBox<>();
 
         jLabel5.setText("jLabel5");
 
@@ -132,8 +135,8 @@ public class ViewPredPathuser extends javax.swing.JFrame {
         titolpredpath.setForeground(new java.awt.Color(255, 255, 255));
         titolpredpath.setText("Path escogido:");
 
-        selectedpredpath.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        selectedpredpath.setText("Seleccione un path predeterminado");
+        selectedpredpathuser.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        selectedpredpathuser.setText("Seleccione un path predeterminado");
 
         continuepredpath.setText("Continuar");
         continuepredpath.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -221,6 +224,18 @@ public class ViewPredPathuser extends javax.swing.JFrame {
         });
         jScrollPane4.setViewportView(tablarelacion1);
 
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("*Es obligatorio definir el primer nodo");
+
+        jButton2.setText("Defina los nodos ");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        define.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -238,7 +253,7 @@ public class ViewPredPathuser extends javax.swing.JFrame {
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addComponent(titolpredpath)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(selectedpredpath, javax.swing.GroupLayout.PREFERRED_SIZE, 482, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(selectedpredpathuser, javax.swing.GroupLayout.PREFERRED_SIZE, 482, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(userlabel)
@@ -257,9 +272,19 @@ public class ViewPredPathuser extends javax.swing.JFrame {
                             .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4))
-                        .addGap(45, 45, 45))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel6)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jButton2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(define, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(58, 58, 58))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel4))
+                                .addGap(46, 46, 46))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(Instructionsbutton3, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -280,13 +305,13 @@ public class ViewPredPathuser extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(titolpredpath)
-                            .addComponent(selectedpredpath, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(selectedpredpathuser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(continuepredpath))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel7)
@@ -294,7 +319,12 @@ public class ViewPredPathuser extends javax.swing.JFrame {
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(56, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton2)
+                            .addComponent(define, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel6)
+                        .addGap(41, 41, 41)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -323,7 +353,7 @@ public class ViewPredPathuser extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (text.getText().equals("No te\nclausules")) text.setText("");
         pathuser.setForeground(Color.BLACK); 
-        pathuser.setText(selectedpredpath.getText());
+        pathuser.setText(selectedpredpathuser.getText());
         clausulasuser.setText(text.getText());
         this.setVisible(false);
     }//GEN-LAST:event_continuepredpathActionPerformed
@@ -331,10 +361,11 @@ public class ViewPredPathuser extends javax.swing.JFrame {
     private void tablarelacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablarelacionMouseClicked
         // TODO add your handling code here:
         FileReader ftxt=null;
+        int numaux = 0;
         try {
             // TODO add your handling code here:
             String dato=String.valueOf(model1.getValueAt(tablarelacion.getSelectedRow(),0));
-            selectedpredpath.setText(dato);
+            selectedpredpathuser.setText(dato);
             text.setText(null);
             ftxt = new FileReader(getPath() + "\\recursos\\ficheros\\relacion.txt");
             BufferedReader readertxt = new BufferedReader(ftxt);
@@ -349,12 +380,13 @@ public class ViewPredPathuser extends javax.swing.JFrame {
                     ++i;
                 }
                 ++i;
+                int dat = tablarelacion.getSelectedRow();
                 while (i < lineatxt.length() && lineatxt.charAt(i)!='\t') {
+                    if (linea == dat && ' ' == lineatxt.charAt(i) && ' ' == lineatxt.charAt(i+1)) ++numaux;
                     camino += lineatxt.charAt(i);
                     ++i;
                 }
                 ++i;
-                int dat = tablarelacion.getSelectedRow();
                 if (linea == dat) {
                     while (i < lineatxt.length()) {
                         n = "";
@@ -374,6 +406,12 @@ public class ViewPredPathuser extends javax.swing.JFrame {
                     }          
                 }
                 ++linea;
+            }
+            define.removeAllItems();
+            define.addItem("-");
+            for (int i=1 ; i<numaux; ++i) {
+                String aullar = Integer.toString(i);
+                define.addItem(aullar);
             }
             if (text.getText().equals("")) text.setText("No te\nclausules");
         } catch (FileNotFoundException ex) {
@@ -392,8 +430,9 @@ public class ViewPredPathuser extends javax.swing.JFrame {
     private void tablarelacion1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablarelacion1MouseClicked
         // TODO add your handling code here:
         String dato=String.valueOf(model2.getValueAt(tablarelacion1.getSelectedRow(),0));
-        selectedpredpath.setText(dato);
+        selectedpredpathuser.setText(dato);
         FileReader ftxt = null;
+        int numaux = 0;
         text.setText(null);
         try {
             // TODO add your handling code here:
@@ -410,12 +449,13 @@ public class ViewPredPathuser extends javax.swing.JFrame {
                     ++i;
                 }
                 ++i;
+                int dat = tablarelacion1.getSelectedRow();
                 while (i < lineatxt.length() && lineatxt.charAt(i)!='\t') {
+                    if (linea == dat && ' ' == lineatxt.charAt(i) && ' ' == lineatxt.charAt(i+1)) ++numaux;
                     camino += lineatxt.charAt(i);
                     ++i;
                 }
                 ++i;
-                int dat = tablarelacion1.getSelectedRow();
                 if (linea == dat) {
                     while (i < lineatxt.length()) {
                         n = "";
@@ -436,6 +476,12 @@ public class ViewPredPathuser extends javax.swing.JFrame {
                 }
                 ++linea;
             }
+            define.removeAllItems();
+            define.addItem("-");
+            for (int i=1 ; i<numaux; ++i) {
+                String aullar = Integer.toString(i);
+                define.addItem(aullar);
+            }
             if (text.getText().equals("")) text.setText("No te\nclausules");
         } catch (FileNotFoundException ex) {
             Logger.getLogger(ViewPredPath.class.getName()).log(Level.SEVERE, null, ex);
@@ -449,6 +495,61 @@ public class ViewPredPathuser extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_tablarelacion1MouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        variables.definiendo_pred_path = true;
+        if (!define.getSelectedItem().equals("-")) {
+            int num_selected = define.getSelectedIndex();
+            variables.num_del_select = num_selected;
+            String camino_aux = selectedpredpathuser.getText();
+            int inaux = 1;
+            String que_es = "";
+            for (int i=0 ; i<camino_aux.length() ; ++i) {
+                if (camino_aux.charAt(i) == ' ') {
+                    if (camino_aux.charAt(i+1) == ' ') {
+                        ++i;
+                        ++i;
+                        ++inaux;
+                    }
+                }
+                if (inaux == num_selected) {
+                    que_es += camino_aux.charAt(i);
+                }
+            }
+            variables.primer_del_cami = variables.num_del_select == 1;
+            switch (que_es) {
+                case "Author":
+                    try {
+                        escribir_author ea = new escribir_author();
+                        ea.setVisible(true);
+                    } catch (IOException ex) {
+                        Logger.getLogger(ViewPredPath.class.getName()).log(Level.SEVERE, null, ex);
+                    }   break;
+                case "Paper":
+                    try {
+                        escribir_paper ep = new escribir_paper();
+                        ep.setVisible(true);
+                    } catch (IOException ex) {
+                        Logger.getLogger(ViewPredPath.class.getName()).log(Level.SEVERE, null, ex);
+                    }   break;
+                case "Conference":
+                    try {
+                        escribir_conference ec = new escribir_conference();
+                        ec.setVisible(true);
+                    } catch (IOException ex) {
+                        Logger.getLogger(ViewPredPath.class.getName()).log(Level.SEVERE, null, ex);
+                    }   break;
+                default:
+                    try {
+                        escribir_term et = new escribir_term();
+                        et.setVisible(true);
+                    } catch (IOException ex) {
+                        Logger.getLogger(ViewPredPath.class.getName()).log(Level.SEVERE, null, ex);
+                    }   break;
+            }
+        }        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -487,16 +588,19 @@ public class ViewPredPathuser extends javax.swing.JFrame {
     private javax.swing.JButton Instructionsbutton1;
     private javax.swing.JButton Instructionsbutton3;
     public static javax.swing.JButton continuepredpath;
+    private javax.swing.JComboBox<String> define;
     public static javax.swing.JButton helppredpath;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    public static javax.swing.JTextField selectedpredpath;
+    public static javax.swing.JTextField selectedpredpathuser;
     private javax.swing.JTable tablarelacion;
     private javax.swing.JTable tablarelacion1;
     private javax.swing.JTextArea text;
