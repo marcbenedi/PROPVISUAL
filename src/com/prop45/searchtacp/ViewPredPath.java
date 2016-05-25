@@ -9,11 +9,11 @@ import static com.prop45.searchtacp.Busqueda.c2;
 import static com.prop45.searchtacp.Busqueda.c3;
 import static com.prop45.searchtacp.Busqueda.clausulas;
 import static com.prop45.searchtacp.Busqueda.pathpublic;
-import static com.prop45.searchtacp.Busquedauser.clausulasuser;
 import static com.prop45.searchtacp.Instrucciones.instruccions_guillem;
 import static com.prop45.searchtacp.variables.*;
 
 import java.awt.Color;
+import java.awt.Scrollbar;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -280,6 +280,8 @@ public class ViewPredPath extends javax.swing.JFrame {
 
     private void Instructionsbutton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Instructionsbutton4ActionPerformed
         // TODO add your handling code here:
+        variables.primer_del_cami = true;
+        variables.ultim_es_paper = false;
         variables.definiendo_pred_path = false;
         variables.valors = new ArrayList<>();
         this.setVisible(false);

@@ -26,6 +26,11 @@ import static com.prop45.searchtacp.variables.getInst_Crear_Path_Predefinido;
 import static com.prop45.searchtacp.variables.getPath;
 import static com.prop45.searchtacp.variables.getUsuario;
 import static com.prop45.searchtacp.ViewPredPathuser.selectedpredpathuser;
+import static com.prop45.searchtacp.variables.getPath;
+import static com.prop45.searchtacp.variables.isAdmin;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 
 /**
  *
@@ -39,6 +44,10 @@ public class CreatePredPath extends javax.swing.JPanel {
      */
     public CreatePredPath() throws FileNotFoundException, IOException {
         initComponents();
+        triaonguardes.setVisible(false);
+        if (isAdmin()) {
+            triaonguardes.setVisible(true);
+        }
         justi.setVisible(false);
         pathpred.setEditable(false);
         userlabel.setText(getUsuario());
@@ -111,6 +120,9 @@ public class CreatePredPath extends javax.swing.JPanel {
         jButton6 = new javax.swing.JButton();
         justi = new javax.swing.JLabel();
         c3 = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
+        nombrepredpath = new javax.swing.JTextField();
+        triaonguardes = new javax.swing.JComboBox<>();
 
         userlabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         userlabel.setText("username");
@@ -269,6 +281,26 @@ public class CreatePredPath extends javax.swing.JPanel {
 
         c3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-" }));
 
+        jLabel3.setText("Name:");
+
+        nombrepredpath.setForeground(new java.awt.Color(153, 153, 153));
+        nombrepredpath.setText("Escribe el nombre del predpath");
+        nombrepredpath.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                nombrepredpathMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                nombrepredpathMouseEntered(evt);
+            }
+        });
+        nombrepredpath.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nombrepredpathActionPerformed(evt);
+            }
+        });
+
+        triaonguardes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "User", "Admin" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -317,14 +349,22 @@ public class CreatePredPath extends javax.swing.JPanel {
                                     .addComponent(jLabel2)
                                     .addComponent(jButton2)
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(pathpred, javax.swing.GroupLayout.PREFERRED_SIZE, 644, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(nombrepredpath, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton10))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jButton1)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel1)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(pathpred, javax.swing.GroupLayout.PREFERRED_SIZE, 644, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton10, javax.swing.GroupLayout.Alignment.TRAILING)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(triaonguardes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(1, 1, 1)))
+                        .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -338,13 +378,18 @@ public class CreatePredPath extends javax.swing.JPanel {
                             .addComponent(userlabel)
                             .addComponent(Instructionsbutton1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton10)
+                    .addComponent(jLabel3)
+                    .addComponent(nombrepredpath, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(pathpred, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(triaonguardes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(3, 3, 3)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Paperbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -398,71 +443,89 @@ public class CreatePredPath extends javax.swing.JPanel {
 
     private void termActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_termActionPerformed
         // TODO add your handling code here:
-        if (pathpred.getText().equals("Escribe tu path") || pathpred.getText().equals("")) {
-            pathpred.setForeground(Color.BLACK);
-            pathpred.setText("TERM");
+        if (variables.primer_del_cami || variables.ultim_es_paper) {
+            if (pathpred.getText().equals("Escribe tu path") || pathpred.getText().equals("")) {
+                pathpred.setForeground(Color.BLACK);
+                pathpred.setText("Term");
+            }
+            else {
+                String p = pathpred.getText();
+                p += "  Term";
+                pathpred.setText(p);
+            }
+            c2.addItem(String.valueOf(variables.num_words));
+            c3.addItem(String.valueOf(variables.num_words));
+            ++variables.num_words;
+            variables.ultim_es_paper = false;
+            variables.primer_del_cami = false;
         }
-        else {
-            String p = pathpred.getText();
-            p += " - TERM";
-            pathpred.setText(p);
-        }
-        c2.addItem(String.valueOf(variables.num_words));
-        c3.addItem(String.valueOf(variables.num_words));
-        ++variables.num_words;
     }//GEN-LAST:event_termActionPerformed
 
     private void ConfbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfbuttonActionPerformed
         // TODO add your handling code here:
-        if (pathpred.getText().equals("Escribe tu path") || pathpred.getText().equals("")) {
-            pathpred.setForeground(Color.BLACK);
-            pathpred.setText("CONFERENCE");
+        if (variables.primer_del_cami || variables.ultim_es_paper) {
+            if (pathpred.getText().equals("Escribe tu path") || pathpred.getText().equals("")) {
+                pathpred.setForeground(Color.BLACK);
+                pathpred.setText("Conference");
+            }
+            else {
+                String p = pathpred.getText();
+                p += "  Conference";
+                pathpred.setText(p);
+            }
+            c2.addItem(String.valueOf(variables.num_words));
+            c3.addItem(String.valueOf(variables.num_words));
+            ++variables.num_words;
+            variables.ultim_es_paper = false;
+            variables.primer_del_cami = false;
         }
-        else {
-            String p = pathpred.getText();
-            p += " - CONFERENCE";
-            pathpred.setText(p);
-        }
-        c2.addItem(String.valueOf(variables.num_words));
-        c3.addItem(String.valueOf(variables.num_words));
-        ++variables.num_words;
     }//GEN-LAST:event_ConfbuttonActionPerformed
 
     private void AuthorbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AuthorbuttonActionPerformed
-        // TODO add your handling code here:
-        if (pathpred.getText().equals("Escribe tu path") || pathpred.getText().equals("")) {
-            pathpred.setForeground(Color.BLACK);
-            pathpred.setText("AUTHOR");
+        // TODO add your handling code here: 
+        if (variables.primer_del_cami || variables.ultim_es_paper) {
+            if (pathpred.getText().equals("Escribe tu path") || pathpred.getText().equals("")) {
+                pathpred.setForeground(Color.BLACK);
+                pathpred.setText("Author");
+            }
+            else {
+                String p = pathpred.getText();
+                p += "  Author";
+                pathpred.setText(p);
+            }
+            c2.addItem(String.valueOf(variables.num_words));
+            c3.addItem(String.valueOf(variables.num_words));
+            ++variables.num_words;
+            variables.primer_del_cami = false;
+            variables.ultim_es_paper = false;
         }
-        else {
-            String p = pathpred.getText();
-            p += " - AUTHOR";
-            pathpred.setText(p);
-        }
-        c2.addItem(String.valueOf(variables.num_words));
-        c3.addItem(String.valueOf(variables.num_words));
-        ++variables.num_words;
     }//GEN-LAST:event_AuthorbuttonActionPerformed
 
     private void PaperbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PaperbuttonActionPerformed
         // TODO add your handling code here:
-        if (pathpred.getText().equals("Escribe tu path") || pathpred.getText().equals("")) {
-            pathpred.setForeground(Color.BLACK);
-            pathpred.setText("PAPER");
+        if (variables.primer_del_cami || !variables.ultim_es_paper) {
+            if (pathpred.getText().equals("Escribe tu path") || pathpred.getText().equals("")) {
+                pathpred.setForeground(Color.BLACK);
+                pathpred.setText("Paper");
+            }
+            else {
+                String p = pathpred.getText();
+                p += "  Paper";
+                pathpred.setText(p);
+            }
+            c2.addItem(String.valueOf(variables.num_words));
+            c3.addItem(String.valueOf(variables.num_words));
+            ++variables.num_words;
+            variables.primer_del_cami = false;
+            variables.ultim_es_paper = true;            
         }
-        else {
-            String p = pathpred.getText();
-            p += " - PAPER";
-            pathpred.setText(p);
-        }
-        c2.addItem(String.valueOf(variables.num_words));
-        c3.addItem(String.valueOf(variables.num_words));
-        ++variables.num_words;
     }//GEN-LAST:event_PaperbuttonActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         try {
             // TODO add your handling code here:
+            variables.ultim_es_paper = false;
+            variables.primer_del_cami = true;
             variables.num_words = 0;
             Prebusquedauser p = new Prebusquedauser();
             p.setSize(738,513);
@@ -485,6 +548,70 @@ public class CreatePredPath extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        if (!nombrepredpath.getText().equals("Escribe el nombre del predpath") && !nombrepredpath.getText().equals("")
+                && !pathpred.getText().equals("Escribe tu path") && !pathpred.getText().equals("")) {
+            String quepongo = nombrepredpath.getText() + "\t" + pathpred.getText() + "\t" + clausulas.getText();
+            if (isAdmin()) {
+                String dondeguardo = String.valueOf(triaonguardes.getSelectedItem());
+                if (dondeguardo.equals("Admin")) {
+                        FileWriter fichero = null;
+                        PrintWriter pw = null;
+                    try {
+                        fichero = new FileWriter(getPath() + "\\recursos\\ficheros\\relacion.txt",true);
+                        pw = new PrintWriter(fichero);
+                        pw.println(quepongo);
+                    } catch (Exception e) {}
+                    finally {
+                        try {
+                        // Nuevamente aprovechamos el finally para 
+                        // asegurarnos que se cierra el fichero.
+                        if (null != fichero)
+                           fichero.close();
+                        } catch (Exception e2) {}
+                     }
+                }     
+                else {
+                    FileWriter fichero = null;
+                        PrintWriter pw = null;
+                    try {
+                        fichero = new FileWriter(getPath() + "\\recursos\\ficheros\\relacion_"+getUsuario()+".txt",true);
+                        pw = new PrintWriter(fichero);
+                        pw.println(quepongo);
+                    } catch (Exception e) {}
+                    finally {
+                        try {
+                        // Nuevamente aprovechamos el finally para 
+                        // asegurarnos que se cierra el fichero.
+                        if (null != fichero)
+                           fichero.close();
+                        } catch (Exception e2) {}
+                     }
+                }
+            }
+            else {
+                FileWriter fichero = null;
+                        PrintWriter pw = null;
+                    try {
+                        fichero = new FileWriter(getPath() + "\\recursos\\ficheros\\relacion_"+getUsuario()+".txt",true);
+                        pw = new PrintWriter(fichero);
+                        pw.println(quepongo);
+                    } catch (Exception e) {}
+                    finally {
+                        try {
+                        // Nuevamente aprovechamos el finally para 
+                        // asegurarnos que se cierra el fichero.
+                        if (null != fichero)
+                           fichero.close();
+                        } catch (Exception e2) {}
+                     }
+            }
+            nombrepredpath.setText("Escribe el nombre del predpath");
+            nombrepredpath.setForeground(Color.gray);
+            variables.ultim_es_paper = false;
+            variables.primer_del_cami = true;
+            pathpred.setText("Escribe tu path");
+            pathpred.setForeground(Color.gray);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void Instructionsbutton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Instructionsbutton1ActionPerformed
@@ -545,6 +672,8 @@ public class CreatePredPath extends javax.swing.JPanel {
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         // TODO add your handling code here:
+        variables.ultim_es_paper = false;
+        variables.primer_del_cami = true;
         variables.num_words = 0;
         c2.removeAllItems();
         c2.addItem("-");
@@ -552,7 +681,24 @@ public class CreatePredPath extends javax.swing.JPanel {
         c3.addItem("-");
         pathpred.setForeground(Color.gray);
         pathpred.setText("Escribe tu path");
+        clausulas.setText("");
     }//GEN-LAST:event_jButton10ActionPerformed
+
+    private void nombrepredpathActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombrepredpathActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nombrepredpathActionPerformed
+
+    private void nombrepredpathMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombrepredpathMouseClicked
+        // TODO add your handling code here:
+        if (nombrepredpath.getText().equals("Escribe el nombre del predpath")) {
+            nombrepredpath.setText("");
+            nombrepredpath.setForeground(Color.black);
+        }
+    }//GEN-LAST:event_nombrepredpathMouseClicked
+
+    private void nombrepredpathMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombrepredpathMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nombrepredpathMouseEntered
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -574,12 +720,15 @@ public class CreatePredPath extends javax.swing.JPanel {
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel justi;
+    private javax.swing.JTextField nombrepredpath;
     public static javax.swing.JTextField pathpred;
     private javax.swing.JButton term;
     private javax.swing.JTextArea text;
+    private javax.swing.JComboBox<String> triaonguardes;
     private javax.swing.JLabel userlabel;
     // End of variables declaration//GEN-END:variables
 }

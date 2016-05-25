@@ -162,7 +162,7 @@ public class ViewPredPathuser extends javax.swing.JFrame {
         });
 
         Instructionsbutton3.setMnemonic('H');
-        Instructionsbutton3.setText("Exit");
+        Instructionsbutton3.setText("Cancelar");
         Instructionsbutton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Instructionsbutton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -352,6 +352,8 @@ public class ViewPredPathuser extends javax.swing.JFrame {
 
     private void Instructionsbutton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Instructionsbutton3ActionPerformed
         // TODO add your handling code here:
+        variables.primer_del_cami = true;
+        variables.ultim_es_paper = false;
         variables.definiendo_pred_path = false;
         variables.valors = new ArrayList<>();
         this.setVisible(false);
