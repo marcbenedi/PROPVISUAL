@@ -12,7 +12,9 @@ import static com.prop45.searchtacp.Busqueda.pathpublic;
 import static com.prop45.searchtacp.Busquedauser.c2user;
 import static com.prop45.searchtacp.Busquedauser.c3user;
 import static com.prop45.searchtacp.Busquedauser.pathuser;
+import static com.prop45.searchtacp.ViewPredPath.define;
 import static com.prop45.searchtacp.ViewPredPath.selectedpredpath;
+import static com.prop45.searchtacp.ViewPredPathuser.defineuser;
 import static com.prop45.searchtacp.ViewPredPathuser.selectedpredpathuser;
 import static com.prop45.searchtacp.variables.getPath;
 import static com.prop45.searchtacp.variables.isUser;
@@ -438,18 +440,36 @@ public class escribir_paper extends javax.swing.JFrame {
                             int inaux = 1;
                             String inicio = "";
                             String finali = "";
+                            boolean sal = false;
+                            boolean sal2 = false;
                             for (int i=0 ; i<p.length() ; ++i) {
                                 if (p.charAt(i) == ' ') {
-                                    ++inaux;
+                                    if (p.charAt(i+1) == ' ') {
+                                        ++inaux;
+                                        ++i;
+                                        ++i;
+                                    }
                                 }
-                                if (inaux == variables.num_del_select) {
+                                if (inaux == variables.num_del_select && !sal) {                   
                                     inicio += p.substring(0, i);
-                                    finali += p.substring(i+6, p.length());
+                                    sal = true;
+                                }
+                                if (inaux == (variables.num_del_select+1) && !sal2) {
+                                    finali = p.substring(i, p.length());
+                                    sal2 = true;
                                 }
                             }
                             p = "Paper~";
                             p += nombrepaper.getText();
-                            selectedpredpathuser.setText(inicio + p + finali);                       
+                            selectedpredpathuser.setText(inicio + p + "  " + finali);
+                            if (variables.index == defineuser.getItemCount()) {
+                                defineuser.setSelectedIndex(0);
+                                variables.index = 0;
+                            }
+                            else {
+                                defineuser.setSelectedIndex(variables.index);
+                                ++variables.index;
+                            }                       
                         }
                         else {
                             String p = selectedpredpath.getText();
@@ -477,7 +497,15 @@ public class escribir_paper extends javax.swing.JFrame {
                             }
                             p = "Paper~";
                             p += nombrepaper.getText();
-                            selectedpredpath.setText(inicio + p + "  " + finali);  
+                            selectedpredpath.setText(inicio + p + "  " + finali);
+                            if (variables.index == define.getItemCount()) {
+                                define.setSelectedIndex(0);
+                                variables.index = 0;
+                            }
+                            else {
+                                define.setSelectedIndex(variables.index);
+                                ++variables.index;
+                            }  
                         }
                         this.setVisible(false);
                         variables.tags.add("Paper");
@@ -496,17 +524,35 @@ public class escribir_paper extends javax.swing.JFrame {
                             int inaux = 1;
                             String inicio = "";
                             String finali = "";
+                            boolean sal = false;
+                            boolean sal2 = false;
                             for (int i=0 ; i<p.length() ; ++i) {
                                 if (p.charAt(i) == ' ') {
-                                    ++inaux;
+                                    if (p.charAt(i+1) == ' ') {
+                                        ++inaux;
+                                        ++i;
+                                        ++i;
+                                    }
                                 }
-                                if (inaux == variables.num_del_select) {
+                                if (inaux == variables.num_del_select && !sal) {                   
                                     inicio += p.substring(0, i);
-                                    finali += p.substring(i+6, p.length());
+                                    sal = true;
+                                }
+                                if (inaux == (variables.num_del_select+1) && !sal2) {
+                                    finali = p.substring(i, p.length());
+                                    sal2 = true;
                                 }
                             }
                             p = "Paper~NULL";
-                            selectedpredpathuser.setText(inicio + p + finali);                       
+                            selectedpredpathuser.setText(inicio + p + "  " + finali); 
+                            if (variables.index == defineuser.getItemCount()) {
+                                defineuser.setSelectedIndex(0);
+                                variables.index = 0;
+                            }
+                            else {
+                                defineuser.setSelectedIndex(variables.index);
+                                ++variables.index;
+                            }                       
                         }
                         else {
                             String p = selectedpredpath.getText();
@@ -533,7 +579,16 @@ public class escribir_paper extends javax.swing.JFrame {
                                 }
                             }
                             p = "Paper~NULL";
-                            selectedpredpath.setText(inicio + p + "  " + finali);  
+                            selectedpredpath.setText(inicio + p + "  " + finali); 
+                            if (variables.index == define.getItemCount()) {
+                                define.setSelectedIndex(0);
+                                variables.index = 0;
+                            }
+                            else {
+                                System.out.print(define.getItemCount());
+                                define.setSelectedIndex(variables.index);
+                                ++variables.index;
+                            } 
                         }
                         this.setVisible(false);
                         variables.tags.add("Paper");

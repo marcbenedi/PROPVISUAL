@@ -5,8 +5,11 @@
  */
 package com.prop45.searchtacp;
 
+import static com.prop45.searchtacp.Busqueda.c2;
+import static com.prop45.searchtacp.Busqueda.c3;
 import static com.prop45.searchtacp.Busqueda.clausulas;
 import static com.prop45.searchtacp.Busqueda.pathpublic;
+import static com.prop45.searchtacp.Busquedauser.clausulasuser;
 import static com.prop45.searchtacp.Instrucciones.instruccions_guillem;
 import static com.prop45.searchtacp.variables.*;
 
@@ -15,6 +18,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
@@ -134,7 +138,7 @@ public class ViewPredPath extends javax.swing.JFrame {
         });
 
         Instructionsbutton4.setMnemonic('H');
-        Instructionsbutton4.setText("Exit");
+        Instructionsbutton4.setText("Cancelar");
         Instructionsbutton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Instructionsbutton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -195,32 +199,31 @@ public class ViewPredPath extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(259, 259, 259)
                         .addComponent(jLabel1))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel2)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jButton2)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(define, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel3)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(jLabel4)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(selectedpredpath, javax.swing.GroupLayout.PREFERRED_SIZE, 482, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(userlabel)
-                                    .addGap(497, 497, 497)))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(Instructionsbutton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton1)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(define, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(selectedpredpath, javax.swing.GroupLayout.PREFERRED_SIZE, 482, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(userlabel)
+                                .addGap(497, 497, 497)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(Instructionsbutton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton1))))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -277,15 +280,20 @@ public class ViewPredPath extends javax.swing.JFrame {
 
     private void Instructionsbutton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Instructionsbutton4ActionPerformed
         // TODO add your handling code here:
+        variables.definiendo_pred_path = false;
+        variables.valors = new ArrayList<>();
         this.setVisible(false);
     }//GEN-LAST:event_Instructionsbutton4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        if (text.getText().equals("No te\nclausules")) text.setText("");
+        variables.definiendo_pred_path = false;
+        if (text.getText().equals("No te\nclausules")) clausulas.setText("");
+        else {
+            clausulas.setText(text.getText()+"\n");
+        }
         pathpublic.setForeground(Color.BLACK); 
         pathpublic.setText(selectedpredpath.getText());
-        clausulas.setText(text.getText());
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -302,6 +310,7 @@ public class ViewPredPath extends javax.swing.JFrame {
             String lineatxt =  "";
             boolean primer = true;
             int linea = 0;
+            int dat = tablarelacion.getSelectedRow();
             while ((lineatxt = readertxt.readLine()) != null) {
                 String camino = "";
                 String n = "";
@@ -310,7 +319,6 @@ public class ViewPredPath extends javax.swing.JFrame {
                     ++i;
                 }
                 ++i;
-                int dat = tablarelacion.getSelectedRow();
                 while (i < lineatxt.length() && lineatxt.charAt(i)!='\t') {
                     if (linea == dat && ' ' == lineatxt.charAt(i) && ' ' == lineatxt.charAt(i+1)) ++numaux;
                     camino += lineatxt.charAt(i);
@@ -337,12 +345,39 @@ public class ViewPredPath extends javax.swing.JFrame {
                 }
                 ++linea;
             }
+            linea = 0;
+            String provar_una = "";
+            ++variables.numero_items;
+            while (dato.length()>linea) {
+                if (dato.charAt(linea) == ' ') {
+                    if (dato.charAt(linea+1) == ' ') {
+                        provar_una = "";
+                        ++variables.numero_items;
+                    }
+                }
+                else {
+                    provar_una += dato.charAt(linea);
+                }
+                ++linea;
+            }
+            variables.num_words = variables.numero_items;
+            c2.removeAllItems();
+            c2.addItem("-");
+            c3.removeAllItems();
+            c3.addItem("-");
+            for (int i=0; i<variables.numero_items ; ++i) {
+                c2.addItem(String.valueOf(i));
+                c3.addItem(String.valueOf(i));
+            }
+            variables.ultim_es_paper = "Paper".equals(provar_una);
+            variables.valors = new ArrayList<>();
             define.removeAllItems();
             define.addItem("-");
             for (int i=1 ; i<numaux; ++i) {
                 String aullar = Integer.toString(i);
                 define.addItem(aullar);
             }
+            variables.index = 2;
             define.setSelectedIndex(1);
             if (text.getText().equals("")) text.setText("No te\nclausules");
         } catch (FileNotFoundException ex) {
@@ -457,7 +492,7 @@ public class ViewPredPath extends javax.swing.JFrame {
     private javax.swing.JButton Instructionsbutton2;
     private javax.swing.JButton Instructionsbutton3;
     private javax.swing.JButton Instructionsbutton4;
-    private javax.swing.JComboBox<String> define;
+    public static javax.swing.JComboBox<String> define;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;

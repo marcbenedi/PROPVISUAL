@@ -5,9 +5,14 @@
  */
 package com.prop45.searchtacp;
 
+import static com.prop45.searchtacp.Busqueda.c2;
+import static com.prop45.searchtacp.Busqueda.c3;
+import static com.prop45.searchtacp.Busquedauser.c2user;
+import static com.prop45.searchtacp.Busquedauser.c3user;
 import static com.prop45.searchtacp.Busquedauser.clausulasuser;
 import static com.prop45.searchtacp.Busquedauser.pathuser;
 import static com.prop45.searchtacp.Instrucciones.instruccions_guillem;
+import static com.prop45.searchtacp.ViewPredPath.define;
 import static com.prop45.searchtacp.variables.getInst_Escoger_Path_Predefinido;
 import static com.prop45.searchtacp.variables.getPath;
 import static com.prop45.searchtacp.variables.getUsuario;
@@ -16,6 +21,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
@@ -40,7 +46,7 @@ public class ViewPredPathuser extends javax.swing.JFrame {
         FileReader ftxt = new FileReader(getPath() + "\\recursos\\ficheros\\relacion.txt");
         BufferedReader readertxt = new BufferedReader(ftxt);
         String lineatxt =  "";
-        model1=(DefaultTableModel)this.tablarelacion1.getModel();
+        model1=(DefaultTableModel)this.tablarelacion.getModel();
         while ((lineatxt = readertxt.readLine()) != null) {
             String n = "";
             int i=0;
@@ -60,7 +66,7 @@ public class ViewPredPathuser extends javax.swing.JFrame {
         ftxt = new FileReader(getPath() + "\\recursos\\ficheros\\relacion_" + getUsuario() + ".txt");
         readertxt = new BufferedReader(ftxt);
         lineatxt =  "";
-        model2=(DefaultTableModel)this.tablarelacion.getModel();
+        model2=(DefaultTableModel)this.tablarelacion1.getModel();
         while ((lineatxt = readertxt.readLine()) != null) {
             String n = "";
             int i=0;
@@ -112,7 +118,7 @@ public class ViewPredPathuser extends javax.swing.JFrame {
         tablarelacion1 = new javax.swing.JTable();
         jLabel6 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
-        define = new javax.swing.JComboBox<>();
+        defineuser = new javax.swing.JComboBox<>();
 
         jLabel5.setText("jLabel5");
 
@@ -234,7 +240,7 @@ public class ViewPredPathuser extends javax.swing.JFrame {
             }
         });
 
-        define.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-" }));
+        defineuser.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -278,7 +284,7 @@ public class ViewPredPathuser extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jButton2)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(define, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(defineuser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(58, 58, 58))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -321,7 +327,7 @@ public class ViewPredPathuser extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton2)
-                            .addComponent(define, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(defineuser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel6)
                         .addGap(41, 41, 41)
@@ -346,32 +352,37 @@ public class ViewPredPathuser extends javax.swing.JFrame {
 
     private void Instructionsbutton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Instructionsbutton3ActionPerformed
         // TODO add your handling code here:
+        variables.definiendo_pred_path = false;
+        variables.valors = new ArrayList<>();
         this.setVisible(false);
     }//GEN-LAST:event_Instructionsbutton3ActionPerformed
 
     private void continuepredpathActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continuepredpathActionPerformed
         // TODO add your handling code here:
-        if (text.getText().equals("No te\nclausules")) text.setText("");
+        variables.definiendo_pred_path = false;
+        if (text.getText().equals("No te\nclausules")) clausulasuser.setText("");
+        else {
+            clausulasuser.setText(text.getText()+"\n");
+        }
         pathuser.setForeground(Color.BLACK); 
         pathuser.setText(selectedpredpathuser.getText());
-        clausulasuser.setText(text.getText());
         this.setVisible(false);
     }//GEN-LAST:event_continuepredpathActionPerformed
 
     private void tablarelacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablarelacionMouseClicked
         // TODO add your handling code here:
         FileReader ftxt=null;
-        int numaux = 0;
+        int numaux = 1;
         try {
-            // TODO add your handling code here:
             String dato=String.valueOf(model1.getValueAt(tablarelacion.getSelectedRow(),0));
-            selectedpredpathuser.setText(dato);
+            selectedpredpathuser.setText(dato + "~NULL");
             text.setText(null);
             ftxt = new FileReader(getPath() + "\\recursos\\ficheros\\relacion.txt");
             BufferedReader readertxt = new BufferedReader(ftxt);
             String lineatxt =  "";
             boolean primer = true;
             int linea = 0;
+            int dat = tablarelacion.getSelectedRow();
             while ((lineatxt = readertxt.readLine()) != null) {
                 String camino = "";
                 String n = "";
@@ -380,7 +391,6 @@ public class ViewPredPathuser extends javax.swing.JFrame {
                     ++i;
                 }
                 ++i;
-                int dat = tablarelacion.getSelectedRow();
                 while (i < lineatxt.length() && lineatxt.charAt(i)!='\t') {
                     if (linea == dat && ' ' == lineatxt.charAt(i) && ' ' == lineatxt.charAt(i+1)) ++numaux;
                     camino += lineatxt.charAt(i);
@@ -407,12 +417,41 @@ public class ViewPredPathuser extends javax.swing.JFrame {
                 }
                 ++linea;
             }
-            define.removeAllItems();
-            define.addItem("-");
+            linea = 0;
+            String provar_una = "";
+            variables.numero_items = 0;
+            ++variables.numero_items;
+            while (dato.length()>linea) {
+                if (dato.charAt(linea) == ' ') {
+                    if (dato.charAt(linea+1) == ' ') {
+                        provar_una = "";
+                        ++variables.numero_items;
+                    }
+                }
+                else {
+                    provar_una += dato.charAt(linea);
+                }
+                ++linea;
+            }
+            variables.num_words = variables.numero_items;
+            c2user.removeAllItems();
+            c2user.addItem("-");
+            c3user.removeAllItems();
+            c3user.addItem("-");
+            for (int i=0; i<variables.numero_items ; ++i) {
+                c2user.addItem(String.valueOf(i));
+                c3user.addItem(String.valueOf(i));
+            }
+            variables.ultim_es_paper = "Paper".equals(provar_una);
+            variables.valors = new ArrayList<>();
+            defineuser.removeAllItems();
+            defineuser.addItem("-");
             for (int i=1 ; i<numaux; ++i) {
                 String aullar = Integer.toString(i);
-                define.addItem(aullar);
+                defineuser.addItem(aullar);
             }
+            variables.index = 2;
+            defineuser.setSelectedIndex(1);
             if (text.getText().equals("")) text.setText("No te\nclausules");
         } catch (FileNotFoundException ex) {
             Logger.getLogger(ViewPredPathuser.class.getName()).log(Level.SEVERE, null, ex);
@@ -429,18 +468,18 @@ public class ViewPredPathuser extends javax.swing.JFrame {
 
     private void tablarelacion1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablarelacion1MouseClicked
         // TODO add your handling code here:
-        String dato=String.valueOf(model2.getValueAt(tablarelacion1.getSelectedRow(),0));
-        selectedpredpathuser.setText(dato);
-        FileReader ftxt = null;
-        int numaux = 0;
-        text.setText(null);
+        FileReader ftxt=null;
+        int numaux = 1;
         try {
-            // TODO add your handling code here:
-            ftxt = new FileReader(getPath() + "\\recursos\\ficheros\\relacion_" + getUsuario() + ".txt");
+            String dato=String.valueOf(model2.getValueAt(tablarelacion1.getSelectedRow(),0));
+            selectedpredpathuser.setText(dato + "~NULL");
+            text.setText(null);
+            ftxt = new FileReader(getPath() + "\\recursos\\ficheros\\relacion_"+ getUsuario() +".txt");
             BufferedReader readertxt = new BufferedReader(ftxt);
             String lineatxt =  "";
             boolean primer = true;
             int linea = 0;
+            int dat = tablarelacion1.getSelectedRow();
             while ((lineatxt = readertxt.readLine()) != null) {
                 String camino = "";
                 String n = "";
@@ -449,7 +488,6 @@ public class ViewPredPathuser extends javax.swing.JFrame {
                     ++i;
                 }
                 ++i;
-                int dat = tablarelacion1.getSelectedRow();
                 while (i < lineatxt.length() && lineatxt.charAt(i)!='\t') {
                     if (linea == dat && ' ' == lineatxt.charAt(i) && ' ' == lineatxt.charAt(i+1)) ++numaux;
                     camino += lineatxt.charAt(i);
@@ -476,22 +514,51 @@ public class ViewPredPathuser extends javax.swing.JFrame {
                 }
                 ++linea;
             }
-            define.removeAllItems();
-            define.addItem("-");
+            linea = 0;
+            String provar_una = "";
+            variables.numero_items = 0;
+            ++variables.numero_items;
+            while (dato.length()>linea) {
+                if (dato.charAt(linea) == ' ') {
+                    if (dato.charAt(linea+1) == ' ') {
+                        provar_una = "";
+                        ++variables.numero_items;
+                    }
+                }
+                else {
+                    provar_una += dato.charAt(linea);
+                }
+                ++linea;
+            }
+            variables.num_words = variables.numero_items;
+            c2user.removeAllItems();
+            c2user.addItem("-");
+            c3user.removeAllItems();
+            c3user.addItem("-");
+            for (int i=0; i<variables.numero_items ; ++i) {
+                c2user.addItem(String.valueOf(i));
+                c3user.addItem(String.valueOf(i));
+            }
+            variables.ultim_es_paper = "Paper".equals(provar_una);
+            variables.valors = new ArrayList<>();
+            defineuser.removeAllItems();
+            defineuser.addItem("-");
             for (int i=1 ; i<numaux; ++i) {
                 String aullar = Integer.toString(i);
-                define.addItem(aullar);
+                defineuser.addItem(aullar);
             }
+            variables.index = 2;
+            defineuser.setSelectedIndex(1);
             if (text.getText().equals("")) text.setText("No te\nclausules");
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(ViewPredPath.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ViewPredPathuser.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(ViewPredPath.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ViewPredPathuser.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             try {
                 ftxt.close();
             } catch (IOException ex) {
-                Logger.getLogger(ViewPredPath.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ViewPredPathuser.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }//GEN-LAST:event_tablarelacion1MouseClicked
@@ -499,8 +566,8 @@ public class ViewPredPathuser extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         variables.definiendo_pred_path = true;
-        if (!define.getSelectedItem().equals("-")) {
-            int num_selected = define.getSelectedIndex();
+        if (!defineuser.getSelectedItem().equals("-")) {
+            int num_selected = defineuser.getSelectedIndex();
             variables.num_del_select = num_selected;
             String camino_aux = selectedpredpathuser.getText();
             int inaux = 1;
@@ -588,7 +655,7 @@ public class ViewPredPathuser extends javax.swing.JFrame {
     private javax.swing.JButton Instructionsbutton1;
     private javax.swing.JButton Instructionsbutton3;
     public static javax.swing.JButton continuepredpath;
-    private javax.swing.JComboBox<String> define;
+    public static javax.swing.JComboBox<String> defineuser;
     public static javax.swing.JButton helppredpath;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;

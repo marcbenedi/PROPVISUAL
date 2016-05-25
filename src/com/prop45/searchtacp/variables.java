@@ -27,6 +27,8 @@ public class variables {
     
     public static ArrayList<Node> result = new ArrayList<>();
     
+    public static int numero_items = 0;
+    public static int index = 0;
     public static int num_del_select = 0;
     public static boolean definiendo_pred_path = false;
     public static boolean primer_del_cami = true;
