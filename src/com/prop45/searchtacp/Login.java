@@ -74,6 +74,14 @@ public class Login extends javax.swing.JPanel {
 
         userfield.setForeground(new java.awt.Color(153, 153, 153));
         userfield.setText("Escriba su nombre de usuario");
+        userfield.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                userfieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                userfieldFocusLost(evt);
+            }
+        });
         userfield.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 userfieldMouseClicked(evt);
@@ -125,6 +133,14 @@ public class Login extends javax.swing.JPanel {
 
         passwordfield.setForeground(new java.awt.Color(153, 153, 153));
         passwordfield.setText("**********");
+        passwordfield.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                passwordfieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                passwordfieldFocusLost(evt);
+            }
+        });
         passwordfield.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 passwordfieldMouseClicked(evt);
@@ -299,6 +315,38 @@ public class Login extends javax.swing.JPanel {
     private void passwordfieldMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passwordfieldMouseExited
         // TODO add your handling code here:
     }//GEN-LAST:event_passwordfieldMouseExited
+
+    private void passwordfieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordfieldFocusGained
+        // TODO add your handling code here
+        if (passwordfield.getText().equals("**********")) {
+            passwordfield.setText(null);
+            passwordfield.setForeground(Color.black);
+        }
+    }//GEN-LAST:event_passwordfieldFocusGained
+
+    private void userfieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_userfieldFocusGained
+        // TODO add your handling code here:
+        if (userfield.getText().equals("Escriba su nombre de usuari")) {
+            userfield.setText(null);
+        }
+        userfield.setForeground(Color.black);
+    }//GEN-LAST:event_userfieldFocusGained
+
+    private void userfieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_userfieldFocusLost
+        // TODO add your handling code here:
+        if (userfield.getText().equals("")) {
+            userfield.setText("Escriba su nombre de usuari");
+        userfield.setForeground(Color.gray);
+        }
+    }//GEN-LAST:event_userfieldFocusLost
+
+    private void passwordfieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordfieldFocusLost
+        // TODO add your handling code here:
+        if (passwordfield.getText().equals("")) {
+            passwordfield.setText("**********");
+            passwordfield.setForeground(Color.gray);
+        }
+    }//GEN-LAST:event_passwordfieldFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

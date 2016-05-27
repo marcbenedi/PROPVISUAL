@@ -43,6 +43,7 @@ public class escribir_paper extends javax.swing.JFrame {
     
     public escribir_paper() throws FileNotFoundException, IOException {
         initComponents();
+        buscador.requestFocus();
         if (variables.primer_del_cami) {
             escoge.removeAllItems();
             escoge.addItem("Definir");

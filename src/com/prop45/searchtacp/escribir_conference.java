@@ -43,6 +43,7 @@ public class escribir_conference extends javax.swing.JFrame {
     
     public escribir_conference() throws FileNotFoundException, IOException {
         initComponents();
+        buscador.requestFocus();
         if (variables.primer_del_cami) {
             escoge.removeAllItems();
             escoge.addItem("Definir");

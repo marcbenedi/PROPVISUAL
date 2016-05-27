@@ -43,6 +43,7 @@ public class escribir_author extends javax.swing.JFrame {
     
     public escribir_author() throws FileNotFoundException, IOException {
         initComponents();
+        buscador.requestFocus();
         if (variables.primer_del_cami) {
             escoge.removeAllItems();
             escoge.addItem("Definir");
@@ -518,7 +519,7 @@ public class escribir_author extends javax.swing.JFrame {
                                 }
                             }
                             p = "Author~NULL";
-                            selectedpredpath.setText(inicio + p + "  " + finali);
+                            selectedpredpath.setText(inicio + p + "  " + finali);                            
                             if (2 == define.getItemCount()) {
                                 define.setSelectedIndex(0);
                                 variables.index = 0;
