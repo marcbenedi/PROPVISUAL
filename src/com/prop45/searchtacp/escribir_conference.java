@@ -12,8 +12,10 @@ import static com.prop45.searchtacp.Busqueda.pathpublic;
 import static com.prop45.searchtacp.Busquedauser.c2user;
 import static com.prop45.searchtacp.Busquedauser.c3user;
 import static com.prop45.searchtacp.Busquedauser.pathuser;
+import static com.prop45.searchtacp.ViewPredPath.controlerrores;
 import static com.prop45.searchtacp.ViewPredPath.define;
 import static com.prop45.searchtacp.ViewPredPath.selectedpredpath;
+import static com.prop45.searchtacp.ViewPredPathuser.controlerrores1;
 import static com.prop45.searchtacp.ViewPredPathuser.defineuser;
 import static com.prop45.searchtacp.ViewPredPathuser.selectedpredpathuser;
 import static com.prop45.searchtacp.variables.getPath;
@@ -470,6 +472,8 @@ public class escribir_conference extends javax.swing.JFrame {
                             if (2 == defineuser.getItemCount()) {
                                 defineuser.setSelectedIndex(0);
                                 variables.index = 0;
+                                controlerrores1.setText("Todos los nodos estan definidos");
+                                controlerrores1.setForeground(Color.green);
                             }
                             else {
                                 defineuser.setSelectedIndex(variables.index);
@@ -507,6 +511,8 @@ public class escribir_conference extends javax.swing.JFrame {
                             if (2 == define.getItemCount()) {
                                 define.setSelectedIndex(0);
                                 variables.index = 0;
+                                controlerrores.setText("Todos los nodos estan definidos");
+                                controlerrores.setForeground(Color.green);
                             }
                             else {
                                 define.setSelectedIndex(variables.index);
@@ -555,6 +561,8 @@ public class escribir_conference extends javax.swing.JFrame {
                             if (2 == defineuser.getItemCount()) {
                                 defineuser.setSelectedIndex(0);
                                 variables.index = 0;
+                                controlerrores1.setText("Todos los nodos estan definidos");
+                                controlerrores1.setForeground(Color.green);
                             }
                             else {
                                 defineuser.setSelectedIndex(variables.index);
@@ -591,6 +599,8 @@ public class escribir_conference extends javax.swing.JFrame {
                             if (2 == define.getItemCount()) {
                                 define.setSelectedIndex(0);
                                 variables.index = 0;
+                                controlerrores.setText("Todos los nodos estan definidos");
+                                controlerrores.setForeground(Color.green);
                             }
                             else {
                                 define.setSelectedIndex(variables.index);
