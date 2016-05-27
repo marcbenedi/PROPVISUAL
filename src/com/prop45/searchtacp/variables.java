@@ -57,7 +57,9 @@ public class variables {
             "Las posibles relaciones son: \n'E' que significa iguales\n'D' que significa diferentes \n'L' que significa mayor que (alfabéticamente) \n'M' " +
             "que significa menor que (alfabéticamente) \nTambién puedes usarlas en minúscula ('l','d','e' y 'm') " +
             "que hará que en la tercera \ncasilla añadas una cadena de carácteres para compararla con el nodo que \nespecifiques " +
-            "en la 2a casilla. \n"+"Cuando estés listo, clica en \"Realizar Búsqueda\".";
+            "en la 2a casilla. \n" +
+            "El primer nodo debe estar definido y el ultimo indefinido." +
+            ""+"\nCuando estés listo, clica en \"Realizar Búsqueda\".";
     public static final String escoger_predefined_path="Bienvenido a la pantalla para escoger tu path predefinido, tienes dos opciones: \n"+
             "Escoger un camino predeterminado que hayas definido anteriormente o bien \nescoger un camino de los predeterminados ofrecidos" +
             " por el programa. En ambos casos, solo tienes que seleccionar el número identificador del camino a escoger y clicar en \"Escoger Path\". " +
