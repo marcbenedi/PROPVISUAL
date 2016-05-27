@@ -6,6 +6,7 @@
 package com.prop45.searchtacp;
 
 import com.prop45.Consulta.Consulta;
+import com.prop45.Paths.Norma;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Image;
@@ -544,6 +545,13 @@ public class Busqueda extends javax.swing.JPanel {
             else {
                 clausulas.setText(clausulas.getText() + "\n" + c1.getSelectedItem() + " " + c2.getSelectedItem() + " " + c3.getSelectedItem());
             }
+            String n1 = String.valueOf(c1.getSelectedItem());
+            String n2string = String.valueOf(c2.getSelectedItem());
+            String n3string = String.valueOf(c3.getSelectedItem());
+            int n2 = Integer.valueOf(n2string);
+            int n3 = Integer.valueOf(n3string);
+            Norma n = new Norma(n1.charAt(0),n2,n3);
+            variables.normes.add(n);
             c1.setSelectedIndex(0);
             c2.setSelectedIndex(0);
             c3.setSelectedIndex(0);
