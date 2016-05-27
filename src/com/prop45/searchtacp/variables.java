@@ -26,6 +26,7 @@ public class variables {
     public static ArrayList<Norma> normes= new ArrayList<>();
     public static ArrayList<Node> result = new ArrayList<>();
     
+    public static boolean primera_clausula_predpath = true;
     public static int numero_items = 0;
     public static int index = 0;
     public static int num_del_select = 0;

@@ -116,8 +116,8 @@ public class ViewPredPathuser extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tablarelacion1 = new javax.swing.JTable();
-        jLabel6 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        textopredpath = new javax.swing.JLabel();
+        definanodopredpath = new javax.swing.JButton();
         defineuser = new javax.swing.JComboBox<>();
 
         jLabel5.setText("jLabel5");
@@ -230,13 +230,13 @@ public class ViewPredPathuser extends javax.swing.JFrame {
         });
         jScrollPane4.setViewportView(tablarelacion1);
 
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("*Es obligatorio definir el primer nodo");
+        textopredpath.setForeground(new java.awt.Color(255, 255, 255));
+        textopredpath.setText("*Es obligatorio definir el primer nodo");
 
-        jButton2.setText("Defina los nodos ");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        definanodopredpath.setText("Defina los nodos ");
+        definanodopredpath.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                definanodopredpathActionPerformed(evt);
             }
         });
 
@@ -280,9 +280,9 @@ public class ViewPredPathuser extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel6)
+                                    .addComponent(textopredpath)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jButton2)
+                                        .addComponent(definanodopredpath)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(defineuser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(58, 58, 58))
@@ -326,10 +326,10 @@ public class ViewPredPathuser extends javax.swing.JFrame {
                         .addContainerGap(56, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton2)
+                            .addComponent(definanodopredpath)
                             .addComponent(defineuser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel6)
+                        .addComponent(textopredpath)
                         .addGap(41, 41, 41)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -565,7 +565,7 @@ public class ViewPredPathuser extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tablarelacion1MouseClicked
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void definanodopredpathActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_definanodopredpathActionPerformed
         // TODO add your handling code here:
         variables.definiendo_pred_path = true;
         if (!defineuser.getSelectedItem().equals("-")) {
@@ -618,7 +618,7 @@ public class ViewPredPathuser extends javax.swing.JFrame {
                     }   break;
             }
         }        
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_definanodopredpathActionPerformed
 
     /**
      * @param args the command line arguments
@@ -657,14 +657,13 @@ public class ViewPredPathuser extends javax.swing.JFrame {
     private javax.swing.JButton Instructionsbutton1;
     private javax.swing.JButton Instructionsbutton3;
     public static javax.swing.JButton continuepredpath;
+    public static javax.swing.JButton definanodopredpath;
     public static javax.swing.JComboBox<String> defineuser;
     public static javax.swing.JButton helppredpath;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
@@ -673,6 +672,7 @@ public class ViewPredPathuser extends javax.swing.JFrame {
     private javax.swing.JTable tablarelacion;
     private javax.swing.JTable tablarelacion1;
     private javax.swing.JTextArea text;
+    public static javax.swing.JLabel textopredpath;
     public static javax.swing.JLabel titolpredpath;
     private javax.swing.JLabel userlabel;
     // End of variables declaration//GEN-END:variables

@@ -32,6 +32,8 @@ public class Busqueda extends javax.swing.JPanel {
     public Busqueda() {
         i = 1;
         initComponents();
+        jButton3.setText("<html><p>Realizar busqueda</p><p>Page Rank</p></html>"); 
+        jButton6.setText("<html><p>Realizar busqueda</p><p>Grado Nodo</p></html>");
         pathpublic.setEditable(false);
         clausulas.setEditable(false);
         c1.setForeground(Color.black);
@@ -73,7 +75,8 @@ public class Busqueda extends javax.swing.JPanel {
         c1 = new javax.swing.JComboBox<>();
         c2 = new javax.swing.JComboBox<>();
         c3 = new javax.swing.JComboBox<>();
-        jLabel3 = new javax.swing.JLabel();
+        jButton6 = new javax.swing.JButton();
+        controlerrores = new javax.swing.JLabel();
 
         jLabel2.setText("*El ultimo nodo siempre sera No Definido");
 
@@ -223,7 +226,14 @@ public class Busqueda extends javax.swing.JPanel {
 
         c3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-" }));
 
-        jLabel3.setText("*El ultimo nodo siempre sera No Definido");
+        jButton6.setMnemonic('B');
+        jButton6.setText("Realiza búsqueda");
+        jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -232,15 +242,10 @@ public class Busqueda extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(25, Short.MAX_VALUE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(jLabel1)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(pathpublic, javax.swing.GroupLayout.PREFERRED_SIZE, 504, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(57, 57, 57)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -250,28 +255,36 @@ public class Busqueda extends javax.swing.JPanel {
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(Paperbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(Authorbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(49, 49, 49)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(jLabel1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(pathpublic, javax.swing.GroupLayout.PREFERRED_SIZE, 504, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)))
                                 .addComponent(pathbutton))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(Returnbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(136, 136, 136)
-                                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(layout.createSequentialGroup()
-                                            .addGap(183, 183, 183)
-                                            .addComponent(Exitbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGap(347, 347, 347)
+                                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGroup(layout.createSequentialGroup()
-                                            .addGap(67, 67, 67)
+                                            .addGap(61, 61, 61)
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGroup(layout.createSequentialGroup()
+                                                    .addComponent(controlerrores, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGap(88, 88, 88)
+                                                    .addComponent(Exitbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGap(115, 115, 115)
                                                     .addComponent(jButton4)
-                                                    .addGap(66, 66, 66)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                     .addComponent(justi, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                                 .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel3)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jButton2)
                                     .addGap(18, 18, 18)
                                     .addComponent(c1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -287,7 +300,7 @@ public class Busqueda extends javax.swing.JPanel {
                         .addComponent(Logo, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(138, 138, 138)
                         .addComponent(Instructionsbutton1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -303,7 +316,7 @@ public class Busqueda extends javax.swing.JPanel {
                     .addComponent(pathbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pathpublic, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -314,8 +327,6 @@ public class Busqueda extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Authorbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -323,21 +334,25 @@ public class Busqueda extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Confbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Paperbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton4)
-                    .addComponent(justi, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36))
                     .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton4)
+                            .addComponent(justi, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(31, 31, 31)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Exitbutton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Returnbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18))))
+                        .addGap(22, 22, 22))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(controlerrores, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -443,36 +458,49 @@ public class Busqueda extends javax.swing.JPanel {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        variables.ultim_es_paper = false;
-        variables.primer_del_cami = true;
-        Portadaylogins panel1 = new Portadaylogins();
-        panel1.setSize(738,513);
-        panel1.setLocation(0,0);
-        panel1.setBackground(Color.WHITE);
-        panelmegadinamico.removeAll();
-        panelmegadinamico.add(panel1, BorderLayout.CENTER);
-        panelmegadinamico.revalidate();
-        panelmegadinamico.repaint();
-        Loadingresults p2 = new Loadingresults();
-        p2.setSize(737,323);
-        p2.setLocation(0,0);
-        p2.setBackground(Color.WHITE);
-        paneldinamico.removeAll();
-        paneldinamico.add(p2, BorderLayout.CENTER);
-        paneldinamico.revalidate();
-        paneldinamico.repaint();
-        variables.r.setTags(variables.tags);
-        variables.r.setNormes(variables.normes);
-	Consulta c = new Consulta(variables.grafo);
-        variables.result=c.consultar(variables.r,variables.valors);
-        ConsultaPanel cp = new ConsultaPanel();
-        cp.setSize(738,513);
-        cp.setLocation(0,0);
-        cp.setBackground(Color.WHITE);
-        panelmegadinamico.removeAll();
-        panelmegadinamico.add(cp, BorderLayout.CENTER);
-        panelmegadinamico.revalidate();
-        panelmegadinamico.repaint();
+        boolean fallo = true;
+        for (int i=0; i<pathpublic.getText().length(); ++i) {
+            if (pathpublic.getText().charAt(i) == ' ') {
+                fallo = false;
+            }
+        }
+        if (fallo || pathpublic.getText().equals("Escribe tu path")) {
+            controlerrores.setText("Añade 2 o mas nodos a la busqueda");
+            controlerrores.setForeground(Color.red);
+            controlerrores.setVisible(true);
+        }
+        else {
+            variables.ultim_es_paper = false;
+            variables.primer_del_cami = true;
+            Portadaylogins panel1 = new Portadaylogins();
+            panel1.setSize(738,513);
+            panel1.setLocation(0,0);
+            panel1.setBackground(Color.WHITE);
+            panelmegadinamico.removeAll();
+            panelmegadinamico.add(panel1, BorderLayout.CENTER);
+            panelmegadinamico.revalidate();
+            panelmegadinamico.repaint();
+            Loadingresults p2 = new Loadingresults();
+            p2.setSize(737,323);
+            p2.setLocation(0,0);
+            p2.setBackground(Color.WHITE);
+            paneldinamico.removeAll();
+            paneldinamico.add(p2, BorderLayout.CENTER);
+            paneldinamico.revalidate();
+            paneldinamico.repaint();
+            variables.r.setTags(variables.tags);
+            variables.r.setNormes(variables.normes);
+            Consulta c = new Consulta(variables.grafo);
+            variables.result=c.consultar(variables.r,variables.valors);
+            ConsultaPanel cp = new ConsultaPanel();
+            cp.setSize(738,513);
+            cp.setLocation(0,0);
+            cp.setBackground(Color.WHITE);
+            panelmegadinamico.removeAll();
+            panelmegadinamico.add(cp, BorderLayout.CENTER);
+            panelmegadinamico.revalidate();
+            panelmegadinamico.repaint();
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void pathpublicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pathpublicActionPerformed
@@ -496,27 +524,31 @@ public class Busqueda extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        if (c1.getSelectedItem().equals("-")){
-            justi.setText("Error!");
-            justi.setForeground(Color.red);
-            justi.setVisible(true);
+        if (c1.getSelectedItem().equals("-") || c2.getSelectedItem().equals("-") || c3.getSelectedItem().equals("-")){
+            controlerrores.setText("Error al añadir la clausula");
+            controlerrores.setForeground(Color.red);
+            controlerrores.setVisible(true);
         }
-        else if (c2.getSelectedItem().equals("-")) {
-            justi.setText("Error!");
-            justi.setForeground(Color.red);
-            justi.setVisible(true);
-        }
-        else if (c3.getSelectedItem().equals("-")) {
-            justi.setText("Error!");
-            justi.setForeground(Color.red);
-            justi.setVisible(true);
+        else if (c2.getSelectedItem().equals(c3.getSelectedItem())) {
+            controlerrores.setText("Error al añadir la clausula");
+            controlerrores.setForeground(Color.red);
+            controlerrores.setVisible(true);            
         }
         else {
-            justi.setText("");
-            clausulas.setText(clausulas.getText() + c1.getSelectedItem() + " " + c2.getSelectedItem() + " " + c3.getSelectedItem() + "\n");
+            controlerrores.setText("");
+            if (variables.primera_clausula_predpath) {
+                clausulas.setText(clausulas.getText() + c1.getSelectedItem() + " " + c2.getSelectedItem() + " " + c3.getSelectedItem());
+                variables.primera_clausula_predpath = false;
+            }
+            else {
+                clausulas.setText(clausulas.getText() + "\n" + c1.getSelectedItem() + " " + c2.getSelectedItem() + " " + c3.getSelectedItem());
+            }
             c1.setSelectedIndex(0);
             c2.setSelectedIndex(0);
-            c3.setSelectedIndex(0); 
+            c3.setSelectedIndex(0);
+            controlerrores.setText("Añadió la clausula correctamente");
+            controlerrores.setForeground(Color.green);
+            controlerrores.setVisible(true); 
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -540,6 +572,53 @@ public class Busqueda extends javax.swing.JPanel {
         pathpublic.setForeground(Color.gray);
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        boolean fallo = true;
+        for (int i=0; i<pathpublic.getText().length(); ++i) {
+            if (pathpublic.getText().charAt(i) == ' ') {
+                fallo = false;
+            }
+        }
+        if (fallo || pathpublic.getText().equals("Escribe tu path")) {
+            controlerrores.setText("Añade 2 o mas nodos a la busqueda");
+            controlerrores.setForeground(Color.red);
+            controlerrores.setVisible(true);
+        }
+        else {
+            variables.ultim_es_paper = false;
+            variables.primer_del_cami = true;
+            Portadaylogins panel1 = new Portadaylogins();
+            panel1.setSize(738,513);
+            panel1.setLocation(0,0);
+            panel1.setBackground(Color.WHITE);
+            panelmegadinamico.removeAll();
+            panelmegadinamico.add(panel1, BorderLayout.CENTER);
+            panelmegadinamico.revalidate();
+            panelmegadinamico.repaint();
+            Loadingresults p2 = new Loadingresults();
+            p2.setSize(737,323);
+            p2.setLocation(0,0);
+            p2.setBackground(Color.WHITE);
+            paneldinamico.removeAll();
+            paneldinamico.add(p2, BorderLayout.CENTER);
+            paneldinamico.revalidate();
+            paneldinamico.repaint();
+            variables.r.setTags(variables.tags);
+            variables.r.setNormes(variables.normes);
+            Consulta c = new Consulta(variables.grafo);
+            variables.result=c.consultar(variables.r,variables.valors);
+            ConsultaPanel cp = new ConsultaPanel();
+            cp.setSize(738,513);
+            cp.setLocation(0,0);
+            cp.setBackground(Color.WHITE);
+            panelmegadinamico.removeAll();
+            panelmegadinamico.add(cp, BorderLayout.CENTER);
+            panelmegadinamico.revalidate();
+            panelmegadinamico.repaint();
+        }
+    }//GEN-LAST:event_jButton6ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Authorbutton;
@@ -553,14 +632,15 @@ public class Busqueda extends javax.swing.JPanel {
     public static javax.swing.JComboBox<String> c2;
     public static javax.swing.JComboBox<String> c3;
     public static javax.swing.JTextArea clausulas;
+    private javax.swing.JLabel controlerrores;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel justi;
     private javax.swing.JButton pathbutton;
