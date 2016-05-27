@@ -36,6 +36,8 @@
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Group type="102" attributes="0">
                       <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                      <Component id="controlerrores" min="-2" pref="278" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="Instructionsbutton4" min="-2" pref="98" max="-2" attributes="0"/>
                   </Group>
@@ -124,6 +126,7 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="Instructionsbutton4" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                   <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="controlerrores" alignment="1" min="-2" pref="14" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
@@ -301,9 +304,7 @@
     <Component class="javax.swing.JComboBox" name="define">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="1">
-            <StringItem index="0" value="-"/>
-          </StringArray>
+          <StringArray count="0"/>
         </Property>
       </Properties>
       <AuxValues>
@@ -318,6 +319,11 @@
         </Property>
         <Property name="text" type="java.lang.String" value="*Es obligatorio definir el primer nodo"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="controlerrores">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

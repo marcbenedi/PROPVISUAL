@@ -5,14 +5,11 @@
  */
 package com.prop45.searchtacp;
 
-import static com.prop45.searchtacp.Busqueda.c2;
-import static com.prop45.searchtacp.Busqueda.c3;
 import static com.prop45.searchtacp.Busquedauser.c2user;
 import static com.prop45.searchtacp.Busquedauser.c3user;
 import static com.prop45.searchtacp.Busquedauser.clausulasuser;
 import static com.prop45.searchtacp.Busquedauser.pathuser;
 import static com.prop45.searchtacp.Instrucciones.instruccions_guillem;
-import static com.prop45.searchtacp.ViewPredPath.define;
 import static com.prop45.searchtacp.variables.getInst_Escoger_Path_Predefinido;
 import static com.prop45.searchtacp.variables.getPath;
 import static com.prop45.searchtacp.variables.getUsuario;
@@ -119,6 +116,7 @@ public class ViewPredPathuser extends javax.swing.JFrame {
         textopredpath = new javax.swing.JLabel();
         definanodopredpath = new javax.swing.JButton();
         defineuser = new javax.swing.JComboBox<>();
+        controlerrores1 = new javax.swing.JLabel();
 
         jLabel5.setText("jLabel5");
 
@@ -240,8 +238,6 @@ public class ViewPredPathuser extends javax.swing.JFrame {
             }
         });
 
-        defineuser.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-" }));
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -290,7 +286,10 @@ public class ViewPredPathuser extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel4))
-                                .addGap(46, 46, 46))))
+                                .addGap(46, 46, 46))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(controlerrores1, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(Instructionsbutton3, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -330,7 +329,9 @@ public class ViewPredPathuser extends javax.swing.JFrame {
                             .addComponent(defineuser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(textopredpath)
-                        .addGap(41, 41, 41)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(controlerrores1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(16, 16, 16)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -361,18 +362,25 @@ public class ViewPredPathuser extends javax.swing.JFrame {
 
     private void continuepredpathActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continuepredpathActionPerformed
         // TODO add your handling code here:
-        variables.definiendo_pred_path = false;
-        if (text.getText().equals("No te\nclausules")) clausulasuser.setText("");
-        else {
-            clausulasuser.setText(text.getText()+"\n");
+        if (defineuser.getItemCount()==1) {
+            variables.definiendo_pred_path = false;
+            if (text.getText().equals("No te\nclausules")) clausulasuser.setText("");
+            else {
+                clausulasuser.setText(text.getText()+"\n");
+            }
+            pathuser.setForeground(Color.BLACK); 
+            pathuser.setText(selectedpredpathuser.getText());
+            this.setVisible(false);
         }
-        pathuser.setForeground(Color.BLACK); 
-        pathuser.setText(selectedpredpathuser.getText());
-        this.setVisible(false);
+        else {
+            controlerrores1.setText("Falta definir nodos");
+            controlerrores1.setForeground(Color.red);            
+        }
     }//GEN-LAST:event_continuepredpathActionPerformed
 
     private void tablarelacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablarelacionMouseClicked
         // TODO add your handling code here:
+        defineuser.addItem("-");
         FileReader ftxt=null;
         int numaux = 1;
         try {
@@ -470,6 +478,7 @@ public class ViewPredPathuser extends javax.swing.JFrame {
 
     private void tablarelacion1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablarelacion1MouseClicked
         // TODO add your handling code here:
+        defineuser.addItem("-");
         FileReader ftxt=null;
         int numaux = 1;
         try {
@@ -657,6 +666,7 @@ public class ViewPredPathuser extends javax.swing.JFrame {
     private javax.swing.JButton Instructionsbutton1;
     private javax.swing.JButton Instructionsbutton3;
     public static javax.swing.JButton continuepredpath;
+    public static javax.swing.JLabel controlerrores1;
     public static javax.swing.JButton definanodopredpath;
     public static javax.swing.JComboBox<String> defineuser;
     public static javax.swing.JButton helppredpath;

@@ -465,14 +465,15 @@ public class escribir_term extends javax.swing.JFrame {
                             p = "Term~";
                             p += nombreterm.getText();
                             selectedpredpathuser.setText(inicio + p + "  " + finali); 
-                            if (variables.index == defineuser.getItemCount()) {
+                            if (2 == defineuser.getItemCount()) {
                                 defineuser.setSelectedIndex(0);
                                 variables.index = 0;
                             }
                             else {
                                 defineuser.setSelectedIndex(variables.index);
                                 ++variables.index;
-                            }                      
+                            }
+                            defineuser.removeItemAt(1);                      
                         }
                         else {
                             String p = selectedpredpath.getText();
@@ -501,7 +502,7 @@ public class escribir_term extends javax.swing.JFrame {
                             p = "Term~";
                             p += nombreterm.getText();
                             selectedpredpath.setText(inicio + p + "  " + finali); 
-                            if (variables.index == define.getItemCount()) {
+                            if (2 == define.getItemCount()) {
                                 define.setSelectedIndex(0);
                                 variables.index = 0;
                             }
@@ -509,6 +510,7 @@ public class escribir_term extends javax.swing.JFrame {
                                 define.setSelectedIndex(variables.index);
                                 ++variables.index;
                             }
+                            define.removeItemAt(1);
                         }
                         this.setVisible(false);
                         variables.tags.add("Term");
@@ -555,7 +557,8 @@ public class escribir_term extends javax.swing.JFrame {
                             else {
                                 defineuser.setSelectedIndex(variables.index);
                                 ++variables.index;
-                            }                      
+                            }
+                            defineuser.removeItemAt(1);
                         }
                         else {
                             String p = selectedpredpath.getText();
@@ -583,7 +586,7 @@ public class escribir_term extends javax.swing.JFrame {
                             }
                             p = "Term~NULL";
                             selectedpredpath.setText(inicio + p + "  " + finali); 
-                            if (variables.index == define.getItemCount()) {
+                            if (2 == define.getItemCount()) {
                                 define.setSelectedIndex(0);
                                 variables.index = 0;
                             }
@@ -591,6 +594,7 @@ public class escribir_term extends javax.swing.JFrame {
                                 define.setSelectedIndex(variables.index);
                                 ++variables.index;
                             }
+                            define.removeItemAt(1);
                         }
                         this.setVisible(false);
                         variables.tags.add("Term");

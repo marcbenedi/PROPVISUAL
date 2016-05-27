@@ -114,7 +114,7 @@ public class Busquedauser extends javax.swing.JPanel {
             }
         });
 
-        pathbutton.setMnemonic('P');
+        pathbutton.setMnemonic('d');
         pathbutton.setText("Predefined Paths");
         pathbutton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pathbutton.addActionListener(new java.awt.event.ActionListener() {
@@ -433,7 +433,7 @@ public class Busquedauser extends javax.swing.JPanel {
         variables.valors.clear();
         variables.tags.clear();
         variables.normes.clear();
-        
+        variables.primera_clausula_predpath = true;
         try {
             // TODO add your handling code here:
             variables.ultim_es_paper = false;
@@ -465,7 +465,7 @@ public class Busquedauser extends javax.swing.JPanel {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
         variables.normes.clear();
-        
+        variables.primera_clausula_predpath =  true;
         clausulasuser.setText(null);
     }//GEN-LAST:event_jButton4ActionPerformed
 
