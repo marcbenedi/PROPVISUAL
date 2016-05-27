@@ -37,6 +37,6 @@ public class Relacion {
     }
 
     public void setNormes(ArrayList<Norma> normes) {
-        this.normes = normes;
+        this.normes = (ArrayList<Norma>) normes.clone();
     }
 }
