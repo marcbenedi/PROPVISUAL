@@ -4,7 +4,7 @@ import com.prop45.Graph.Node;
 
 import java.util.Comparator;
 
-public class NodoComparador implements Comparator<Node> {
+public class NodoComparadorPageRank implements Comparator<Node> {
     @Override
     public int compare(Node o1, Node o2) {
         if(o1.getRelevancia()>o2.getRelevancia())return 1;

@@ -1,7 +1,8 @@
 package com.prop45.Consulta;
 
 import com.prop45.FuncionsAuxiliars.FuncionsAuxiliars;
-import com.prop45.FuncionsAuxiliars.NodoComparador;
+import com.prop45.FuncionsAuxiliars.NodoComparadorGrado;
+import com.prop45.FuncionsAuxiliars.NodoComparadorPageRank;
 import com.prop45.Graph.Graph;
 import com.prop45.Graph.Node;
 import com.prop45.Paths.Norma;
@@ -18,7 +19,7 @@ public class Consulta {
         this.g=g;
     }
 
-    public ArrayList<Node> consultar(Relacion re, ArrayList<String> valor){
+    public ArrayList<Node> consultar(Relacion re, ArrayList<String> valor, boolean pagerank){
         ArrayList<String> tags = re.getTags();
 
         if(tags.size()<2)return new ArrayList<>();
@@ -26,7 +27,8 @@ public class Consulta {
         ArrayList<Node> a;
         a = g.buscarAdjecencies(valor.get(0),tags.get(0),tags.get(1));
 
-        Collections.sort(a, new NodoComparador().reversed());
+        if(pagerank)Collections.sort(a, new NodoComparadorPageRank().reversed());
+        else Collections.sort(a, new NodoComparadorGrado().reversed());
         //No se si ordena de forma descendente
         //Els ordenem de forma descendent per valor de rellevància per així trobar primer els nodes
         //adjacents més rellevants.
@@ -95,7 +97,8 @@ public class Consulta {
             g.actualizarRelevancia(n);
             //System.out.println(n.getRelevancia());
         }*/
-        Collections.sort(a, new NodoComparador().reversed());
+        if(pagerank)Collections.sort(a, new NodoComparadorPageRank().reversed());
+        else Collections.sort(a, new NodoComparadorGrado().reversed());
         return a;
     }
 

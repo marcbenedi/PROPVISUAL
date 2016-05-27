@@ -6,6 +6,7 @@
 package com.prop45.searchtacp;
 
 import com.prop45.Consulta.Consulta;
+import com.prop45.Paths.Norma;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Image;
@@ -490,6 +491,13 @@ public class Busquedauser extends javax.swing.JPanel {
             else {
                 clausulasuser.setText(clausulasuser.getText() + "\n" + c1user.getSelectedItem() + " " + c2user.getSelectedItem() + " " + c3user.getSelectedItem());
             }
+            String n1 = String.valueOf(c1user.getSelectedItem());
+            String n2string = String.valueOf(c2user.getSelectedItem());
+            String n3string = String.valueOf(c3user.getSelectedItem());
+            int n2 = Integer.valueOf(n2string);
+            int n3 = Integer.valueOf(n3string);
+            Norma n = new Norma(n1.charAt(0),n2,n3);
+            variables.normes.add(n);
             c1user.setSelectedIndex(0);
             c2user.setSelectedIndex(0);
             c3user.setSelectedIndex(0);
@@ -555,7 +563,7 @@ public class Busquedauser extends javax.swing.JPanel {
             variables.r.setTags(variables.tags);
             variables.r.setNormes(variables.normes);
             Consulta c = new Consulta(variables.grafo);
-            variables.result=c.consultar(variables.r,variables.valors);
+            variables.result=c.consultar(variables.r,variables.valors,true);
             ConsultaPanel cp = new ConsultaPanel();
             cp.setSize(738,513);
             cp.setLocation(0,0);
@@ -602,7 +610,7 @@ public class Busquedauser extends javax.swing.JPanel {
             variables.r.setTags(variables.tags);
             variables.r.setNormes(variables.normes);
             Consulta c = new Consulta(variables.grafo);
-            variables.result=c.consultar(variables.r,variables.valors);
+            variables.result=c.consultar(variables.r,variables.valors,false);
             ConsultaPanel cp = new ConsultaPanel();
             cp.setSize(738,513);
             cp.setLocation(0,0);
