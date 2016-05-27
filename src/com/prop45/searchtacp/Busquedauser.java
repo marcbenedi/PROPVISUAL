@@ -555,7 +555,7 @@ public class Busquedauser extends javax.swing.JPanel {
             variables.r.setTags(variables.tags);
             variables.r.setNormes(variables.normes);
             Consulta c = new Consulta(variables.grafo);
-            variables.result=c.consultar(variables.r,variables.valors);
+            variables.result=c.consultar(variables.r,variables.valors,true);
             ConsultaPanel cp = new ConsultaPanel();
             cp.setSize(738,513);
             cp.setLocation(0,0);
@@ -602,7 +602,7 @@ public class Busquedauser extends javax.swing.JPanel {
             variables.r.setTags(variables.tags);
             variables.r.setNormes(variables.normes);
             Consulta c = new Consulta(variables.grafo);
-            variables.result=c.consultar(variables.r,variables.valors);
+            variables.result=c.consultar(variables.r,variables.valors,false);
             ConsultaPanel cp = new ConsultaPanel();
             cp.setSize(738,513);
             cp.setLocation(0,0);

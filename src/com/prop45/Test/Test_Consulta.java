@@ -73,7 +73,7 @@ public class Test_Consulta {
                         System.out.println("S'ha introduït "+ nom);
                     }
 
-                    ArrayList<Node> resultat = c.consultar(r,valors);
+                    ArrayList<Node> resultat = c.consultar(r,valors,false);
                     System.out.println(r.getName()+"..........");
                     for (Node n:resultat) {
                         System.out.println(n.getName());
@@ -119,7 +119,7 @@ public class Test_Consulta {
                     ArrayList<String>valorss = new ArrayList<>();
                     valorss.add(nomb);
                     for(int i = 1; i < r.getTags().size();++i)valorss.add("NULL");
-                    ArrayList<Node> resultatt = c.consultar(r,valorss);
+                    ArrayList<Node> resultatt = c.consultar(r,valorss,false);
                     System.out.println(r.getName()+"..........");
                     for (Node n:resultatt) {
                         System.out.println(n.getName());

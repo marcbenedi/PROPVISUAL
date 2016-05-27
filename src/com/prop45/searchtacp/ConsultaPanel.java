@@ -35,9 +35,9 @@ public class ConsultaPanel extends javax.swing.JPanel {
         String lista=new String(" Se han encontrado "+Integer.toString(result.size())+" resultados.\n\n");
         int indice = 1;
         for(Node n:result){
-            if (indice < 10)lista += "     "+indice+" - "+n.getName()+"\t"+n.getRelevancia()+"\n";
-            else if (indice < 100)lista += "   "+indice+" - "+n.getName()+"\t"+n.getRelevancia()+"\n";
-            else if (indice < 1000)lista += " "+indice+" - "+n.getName()+"\t"+n.getRelevancia()+"\n";
+            if (indice < 10)lista += "     "+indice+" - "+n.getName()+"\t"+n.getGrado()+"\t"+n.getRelevancia()+"\n";
+            else if (indice < 100)lista += "   "+indice+" - "+n.getName()+"\t"+n.getGrado()+"\t"+n.getRelevancia()+"\n";
+            else if (indice < 1000)lista += " "+indice+" - "+n.getName()+"\t"+n.getGrado()+"\t"+n.getRelevancia()+"\n";
             
             ++indice;
         }
