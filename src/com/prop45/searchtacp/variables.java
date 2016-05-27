@@ -49,35 +49,42 @@ public class variables {
     private static int id = 0;
     private static boolean guardat = true;
     private static final String inst_busquedanormal = "Aquestes son les instruccions";
-    private static final String realizar_busqueda= "Bienvenido a la pantalla de búsqueda de caminos, donde puedes escoger qué camino" +
-            "/plantilla quieres buscar. \nCon el botón Predefined Path puedes usar un camino ya definido(sea predeterminado por el programa o por ti) o" +
-            " crearlo al momento usando los tipos básicos(Term, Paper, Conference, Author) para ir definiendo cada nodo " +
-            "para el camino que quieres usar. \nTambién podrás añadirle clausulas, donde debes especificar las 3 casillas a la " +
-            "derecha de Añadir mas clausulas, en este orden: la posición del 1r nodo, la posición del 2o nodo y su relación.\n" +
-            "Las posibles relaciones son 'E' que significa iguales, 'D' que significa diferentes, 'L' que significa mayor que (alfabéticamente), y 'M' " +
-            "que significa menor que (alfabéticamente). \n"+" Cuando estés listo, clica en Realizar Búsqueda.";
+    private static final String realizar_busqueda= "Bienvenido a la pantalla de búsqueda de caminos, donde puedes escoger  \ncamino" +
+            "/plantilla quieres buscar. \nCon el botón \"Predefined Path\" puedes usar un camino ya definido(sea \npredeterminado por el programa o por ti) o" +
+            " crearlo al momento usando los tipos \nbásicos(Term, Paper, Conference, Author) para ir definiendo cada nodo " +
+            "para el \ncamino que quieres usar. \nTambién podrás añadirle clausulas, donde debes especificar las 3 casillas a la " +
+            "\nderecha de \"Añadir mas clausulas\", en este orden: la posición del 1r nodo, la \nposición del 2o nodo y su relación.\n" +
+            "Las posibles relaciones son: \n'E' que significa iguales\n'D' que significa diferentes \n'L' que significa mayor que (alfabéticamente) \n'M' " +
+            "que significa menor que (alfabéticamente) \nTambién puedes usarlas en minúscula ('l','d','e' y 'm') " +
+            "que hará que en la tercera \ncasilla añadas una cadena de carácteres para compararla con el nodo que \nespecifiques " +
+            "en la 2a casilla. \n"+"Cuando estés listo, clica en \"Realizar Búsqueda\".";
     public static final String escoger_predefined_path="Bienvenido a la pantalla para escoger tu path predefinido, tienes dos opciones: \n"+
-            "Escoger un camino predeterminado que hayas definido anteriormente o bien escoger un camino de los predeterminados ofrecidos" +
-            " por el programa. En ambos casos, solo tienes que seleccionar el número identificador del camino a escoger y clicar en Escoger Path. " +
-            " \nAl hacerlo el path escogido quedará actualizado, y en cuando selecciones Continuar el path escogido se cargará en el programa principal." +
-            "\nPuedes también presionar Exit si decides que ya no quieres usar un camino predeterminado.";
-    public static final String  crear_predefined_path="Bienvenido a la pantalla para crear tu path predefinido y ver cuales hay ya definidos." +
+            "Escoger un camino predeterminado que hayas definido anteriormente o bien \nescoger un camino de los predeterminados ofrecidos" +
+            " por el programa. En ambos casos, solo tienes que seleccionar el número identificador del camino a escoger y clicar en \"Escoger Path\". " +
+            " \nAl hacerlo el path escogido quedará actualizado, y en cuando selecciones \n\"Continuar\" el path escogido se cargará en el programa principal." +
+            "\nPuedes también presionar \"Exit\" si decides que ya no quieres usar un camino \npredeterminado.";
+    public static final String  crear_predefined_path="Bienvenido a la pantalla para crear tu path predefinido y ver cuales hay \npredefinidos." +
             " \nPara definir tu propio path" +
-            " clica en los botones de cada tipo de nodo, así se añadirán. También podrás añadirle clausulas, donde debes especificar las 3 casillas a la " +
-            "derecha de Añadir mas clausulas, en este orden: la posición del 1r nodo, la posición del 2o nodo y su relación.\n" +
-            "Las posibles relaciones son 'E' que significa iguales, 'D' que significa diferentes, 'L' que significa mayor que (alfabéticamente), y 'M' " +
-            "que significa menor que (alfabéticamente). \n" +
-            "Cuando hayas acabado de definir tu camino clica en Submit para que se añada a la base de datos.";
-    public static final String modo_administrador="Bienvenido al modo administrador. \nPara cada opción hay una imagen de un disquete a su derecha " +
-            "que se usa para realizar el cambio." +
+            " clica en los botones de cada tipo de nodo, así se \nañadirán. También podrás añadirle clausulas, donde debes especificar las 3 " +
+            "\ncasillas a la " +
+            "derecha de \"Añadir mas clausulas\", en este orden: la posición del 1r \nnodo, la posición del 2o nodo y su relación.\n" +
+            "Las posibles relaciones son: \n'E' que significa iguales \n'D' que significa diferentes \n'L' que significa mayor que (alfabéticamente) \n'M' " +
+            "que significa menor que (alfabéticamente) \n" +
+            "También puedes usarlas en minúscula ('l','d','e' y 'm') " +
+            "que hará que en la tercera \ncasilla añadas una cadena de carácteres para compararla con el nodo que \nespecifiques " +
+            "en la 2a casilla. \n"+
+            "Cuando hayas acabado de definir tu camino clica en \"Submit\" para que se añada ala base de datos.";
+    public static final String modo_administrador="Bienvenido al modo administrador. \nPara cada opción hay una imagen de un disquete a tu derecha " +
+            "que se usa para \nrealizar el cambio." +
             " \nEn la parte superior izquierda podrás gestionar los usuarios: " +
-            "añadir nuevos(sean admin o user), cambiar la contraseña de uno ya existente, eliminar un usuario, o cambiar los permisos (admin o user" +
+            "añadir nuevos(sean admin o user), cambiar la contraseña de uno ya existente, eliminar un usuario, o \ncambiar los permisos (admin o user" +
             ") de un usuario ya existente. \n" +
             "Abajo a la izquierda podrás gestionar los nodos, añadir y eliminarlos, al añadir un nodo no tendrá ninguna arista " +
-            "y al eliminarlo se eliminarán todas las aristas adyacentes a él. \n" +
-            "En la parte superior derecha tenemos un pequeño historial donde tenemos los cambios realizados recientemente. \n" +
-            "Finalmente, en la parte inferior derecha podremos gestionar las aristas de nuestro grafo. Deberemos de seleccionar los dos nodos y el tipo" +
-            "de relación entre ellos, y podemos añadir o eliminar aristas.";
+            "y al eliminarlo se eliminarán todas las aristas \nadyacentes a él. \n" +
+            "En la parte superior derecha tenemos un pequeño historial donde tenemos los \ncambios realizados recientemente. \n" +
+            "Finalmente, en la parte inferior derecha podremos gestionar las aristas de nuestrografo. " +
+            "Deberemos de seleccionar los dos nodos y el tipo" +
+            "de relación entre ellos, y  podemos añadir o eliminar aristas.";
     public static boolean isNumeric(String str)  {
       try  
       {  
