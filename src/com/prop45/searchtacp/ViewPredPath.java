@@ -88,6 +88,7 @@ public class ViewPredPath extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         define = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
+        controlerrores = new javax.swing.JLabel();
 
         Instructionsbutton3.setMnemonic('H');
         Instructionsbutton3.setText("Exit");
@@ -179,8 +180,6 @@ public class ViewPredPath extends javax.swing.JFrame {
             }
         });
 
-        define.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-" }));
-
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("*Es obligatorio definir el primer nodo");
 
@@ -193,6 +192,8 @@ public class ViewPredPath extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel5)
+                        .addGap(32, 32, 32)
+                        .addComponent(controlerrores, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(Instructionsbutton4, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
@@ -258,7 +259,8 @@ public class ViewPredPath extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Instructionsbutton4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
+                    .addComponent(jLabel5)
+                    .addComponent(controlerrores, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -288,18 +290,25 @@ public class ViewPredPath extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        variables.definiendo_pred_path = false;
-        if (text.getText().equals("No te\nclausules")) clausulas.setText("");
-        else {
-            clausulas.setText(text.getText()+"\n");
+        if (define.getItemCount()==1) { 
+            variables.definiendo_pred_path = false;
+            if (text.getText().equals("No te\nclausules")) clausulas.setText("");
+            else {
+                clausulas.setText(text.getText()+"\n");
+            }
+            pathpublic.setForeground(Color.BLACK); 
+            pathpublic.setText(selectedpredpath.getText());
+            this.setVisible(false);
         }
-        pathpublic.setForeground(Color.BLACK); 
-        pathpublic.setText(selectedpredpath.getText());
-        this.setVisible(false);
+        else {
+            controlerrores.setText("Falta definir nodos");
+            controlerrores.setForeground(Color.red);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void tablarelacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablarelacionMouseClicked
         // TODO add your handling code here:
+        define.addItem("-");
         FileReader ftxt=null;
         int numaux = 1;
         try {
@@ -398,7 +407,8 @@ public class ViewPredPath extends javax.swing.JFrame {
         // TODO add your handling code here:
         variables.definiendo_pred_path = true;
         if (!define.getSelectedItem().equals("-")) {
-            int num_selected = define.getSelectedIndex();
+            String au = String.valueOf(define.getSelectedItem());
+            int num_selected = Integer.valueOf(au);
             variables.num_del_select = num_selected;
             String camino_aux = selectedpredpath.getText();
             int inaux = 1;
@@ -493,6 +503,7 @@ public class ViewPredPath extends javax.swing.JFrame {
     private javax.swing.JButton Instructionsbutton2;
     private javax.swing.JButton Instructionsbutton3;
     private javax.swing.JButton Instructionsbutton4;
+    public static javax.swing.JLabel controlerrores;
     public static javax.swing.JComboBox<String> define;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

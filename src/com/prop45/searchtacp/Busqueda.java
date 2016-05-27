@@ -80,7 +80,7 @@ public class Busqueda extends javax.swing.JPanel {
 
         jLabel2.setText("*El ultimo nodo siempre sera No Definido");
 
-        pathbutton.setMnemonic('P');
+        pathbutton.setMnemonic('d');
         pathbutton.setText("Predefined Paths");
         pathbutton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pathbutton.addActionListener(new java.awt.event.ActionListener() {
@@ -380,6 +380,7 @@ public class Busqueda extends javax.swing.JPanel {
         variables.valors.clear();
         variables.tags.clear();
         variables.normes.clear();
+        variables.primera_clausula_predpath = true;
         
         variables.ultim_es_paper = false;
         variables.primer_del_cami = true;
@@ -518,7 +519,7 @@ public class Busqueda extends javax.swing.JPanel {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
         variables.normes.clear();
-        
+        variables.primera_clausula_predpath = true;
         clausulas.setText(null);
     }//GEN-LAST:event_jButton4ActionPerformed
 
