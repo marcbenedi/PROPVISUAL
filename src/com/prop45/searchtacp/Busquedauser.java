@@ -424,6 +424,10 @@ public class Busquedauser extends javax.swing.JPanel {
     }//GEN-LAST:event_PaperbuttonActionPerformed
 
     private void ReturnbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReturnbuttonActionPerformed
+        variables.valors.clear();
+        variables.tags.clear();
+        variables.normes.clear();
+        
         try {
             // TODO add your handling code here:
             variables.ultim_es_paper = false;
@@ -501,6 +505,8 @@ public class Busquedauser extends javax.swing.JPanel {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        variables.normes.clear();
+        
         clausulasuser.setText(null);
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -536,6 +542,10 @@ public class Busquedauser extends javax.swing.JPanel {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
+        variables.valors.clear();
+        variables.tags.clear();
+        
+        
         variables.ultim_es_paper = false;
         variables.primer_del_cami = true;
         variables.num_words = 0;

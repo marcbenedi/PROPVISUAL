@@ -21,11 +21,7 @@ public class Consulta {
     public ArrayList<Node> consultar(Relacion re, ArrayList<String> valor){
         ArrayList<String> tags = re.getTags();
 
-        //valor.set(1,"Supporting Access Control in an Object-Oriented Database Language.");
-        //System.out.println(tags.toString());
-        //System.out.println(valor.toString());
-
-
+        if(tags.size()<2)return new ArrayList<>();
 
         ArrayList<Node> a;
         a = g.buscarAdjecencies(valor.get(0),tags.get(0),tags.get(1));

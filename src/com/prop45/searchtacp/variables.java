@@ -24,7 +24,6 @@ public class variables {
     public static ArrayList<String> valors = new ArrayList<>();
     public static ArrayList<String> tags = new ArrayList<>();
     public static ArrayList<Norma> normes= new ArrayList<>();
-    
     public static ArrayList<Node> result = new ArrayList<>();
     
     public static int numero_items = 0;

@@ -5,9 +5,12 @@
  */
 package com.prop45.searchtacp;
 
+import com.prop45.Graph.Node;
 import static com.prop45.searchtacp.Cargando.panelmegadinamico;
 import static com.prop45.searchtacp.variables.getPath;
+import static com.prop45.searchtacp.variables.getUsuario;
 import static com.prop45.searchtacp.variables.isUser;
+import static com.prop45.searchtacp.variables.result;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Image;
@@ -28,6 +31,23 @@ public class ConsultaPanel extends javax.swing.JPanel {
      */
     public ConsultaPanel() {
         initComponents();
+        jTextArea1.setEditable(false);
+        String lista=new String(" Se han encontrado "+Integer.toString(result.size())+" resultados.\n\n");
+        int indice = 1;
+        for(Node n:result){
+            if (indice < 10)lista += "     "+indice+" - "+n.getName()+"\t"+n.getRelevancia()+"\n";
+            else if (indice < 100)lista += "   "+indice+" - "+n.getName()+"\t"+n.getRelevancia()+"\n";
+            else if (indice < 1000)lista += " "+indice+" - "+n.getName()+"\t"+n.getRelevancia()+"\n";
+            
+            ++indice;
+        }
+        jTextArea1.setText(lista);
+        
+        if(isUser()){
+            userlabel1.setVisible(true);
+            userlabel1.setText(getUsuario());
+        }
+        else userlabel1.setVisible(false);
     }
 
     /**
@@ -41,6 +61,9 @@ public class ConsultaPanel extends javax.swing.JPanel {
 
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        userlabel1 = new javax.swing.JLabel();
 
         jButton2.setText("Exit");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -57,21 +80,38 @@ public class ConsultaPanel extends javax.swing.JPanel {
             }
         });
 
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
+
+        userlabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        userlabel1.setText("username");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 554, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 554, Short.MAX_VALUE)
+                        .addComponent(jButton2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(userlabel1)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(479, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(userlabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(jButton3))
@@ -86,6 +126,10 @@ public class ConsultaPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        variables.result.clear();
+        variables.valors.clear();
+        variables.tags.clear();
+        variables.normes.clear();
         // TODO add your handling code here:
          // TODO add your handling code here:
         if (isUser()){
@@ -126,5 +170,8 @@ public class ConsultaPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JLabel userlabel1;
     // End of variables declaration//GEN-END:variables
 }

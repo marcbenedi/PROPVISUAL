@@ -362,6 +362,10 @@ public class Busqueda extends javax.swing.JPanel {
 
     private void ReturnbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReturnbuttonActionPerformed
         // TODO add your handling code here:
+        variables.valors.clear();
+        variables.tags.clear();
+        variables.normes.clear();
+        
         variables.ultim_es_paper = false;
         variables.primer_del_cami = true;
         variables.num_words = 0;
@@ -485,6 +489,8 @@ public class Busqueda extends javax.swing.JPanel {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        variables.normes.clear();
+        
         clausulas.setText(null);
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -520,6 +526,9 @@ public class Busqueda extends javax.swing.JPanel {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
+        variables.valors.clear();
+        variables.tags.clear();
+        
         variables.ultim_es_paper = false;
         variables.primer_del_cami = true;
         variables.num_words = 0;
