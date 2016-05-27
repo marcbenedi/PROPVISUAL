@@ -20,14 +20,18 @@ import javax.swing.ImageIcon;
 import static com.prop45.searchtacp.Cargando.panelmegadinamico;
 import static com.prop45.searchtacp.Instrucciones.instruccions_guillem;
 import static com.prop45.searchtacp.ViewPredPathuser.continuepredpath;
+import static com.prop45.searchtacp.ViewPredPathuser.definanodopredpath;
+import static com.prop45.searchtacp.ViewPredPathuser.defineuser;
 import static com.prop45.searchtacp.ViewPredPathuser.helppredpath;
 import static com.prop45.searchtacp.ViewPredPathuser.titolpredpath;
 import static com.prop45.searchtacp.variables.getInst_Crear_Path_Predefinido;
 import static com.prop45.searchtacp.variables.getPath;
 import static com.prop45.searchtacp.variables.getUsuario;
 import static com.prop45.searchtacp.ViewPredPathuser.selectedpredpathuser;
+import static com.prop45.searchtacp.ViewPredPathuser.textopredpath;
 import static com.prop45.searchtacp.variables.getPath;
 import static com.prop45.searchtacp.variables.isAdmin;
+import static com.prop45.searchtacp.variables.primera_clausula_predpath;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.PrintWriter;
@@ -48,7 +52,7 @@ public class CreatePredPath extends javax.swing.JPanel {
         if (isAdmin()) {
             triaonguardes.setVisible(true);
         }
-        justi.setVisible(false);
+        controlerrores.setVisible(false);
         pathpred.setEditable(false);
         userlabel.setText(getUsuario());
         String textoaux ="--Universal--\n";
@@ -110,7 +114,6 @@ public class CreatePredPath extends javax.swing.JPanel {
         jButton4 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         text = new javax.swing.JTextArea();
-        jButton2 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
         c1 = new javax.swing.JComboBox<>();
         c2 = new javax.swing.JComboBox<>();
@@ -118,11 +121,11 @@ public class CreatePredPath extends javax.swing.JPanel {
         jScrollPane3 = new javax.swing.JScrollPane();
         clausulas = new javax.swing.JTextArea();
         jButton6 = new javax.swing.JButton();
-        justi = new javax.swing.JLabel();
         c3 = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         nombrepredpath = new javax.swing.JTextField();
         triaonguardes = new javax.swing.JComboBox<>();
+        controlerrores = new javax.swing.JLabel();
 
         userlabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         userlabel.setText("username");
@@ -228,14 +231,6 @@ public class CreatePredPath extends javax.swing.JPanel {
         text.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         jScrollPane1.setViewportView(text);
 
-        jButton2.setText("Ver mas detalles");
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
         jButton10.setText("Borrar");
         jButton10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton10.addActionListener(new java.awt.event.ActionListener() {
@@ -276,9 +271,6 @@ public class CreatePredPath extends javax.swing.JPanel {
             }
         });
 
-        justi.setForeground(new java.awt.Color(255, 0, 0));
-        justi.setText("Wrong!");
-
         c3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-" }));
 
         jLabel3.setText("Name:");
@@ -314,57 +306,54 @@ public class CreatePredPath extends javax.swing.JPanel {
                         .addComponent(Logo, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(139, 139, 139)
                         .addComponent(Instructionsbutton1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(term, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(Confbutton)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(Paperbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(Authorbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(58, 58, 58)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addComponent(jButton6)
-                                                    .addGap(66, 66, 66)
-                                                    .addComponent(justi)))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jButton5)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(c1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(c2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(c3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jButton2)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(pathpred, javax.swing.GroupLayout.PREFERRED_SIZE, 644, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel3)
+                                .addComponent(term, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(nombrepredpath, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton10))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jButton1)
+                                .addComponent(Confbutton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(triaonguardes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(1, 1, 1)))
-                        .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(Paperbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Authorbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(58, 58, 58)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jButton6))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jButton5)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(c1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(c2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(c3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(pathpred, javax.swing.GroupLayout.PREFERRED_SIZE, 644, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(nombrepredpath, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton10))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(triaonguardes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(1, 1, 1))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(controlerrores, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(99, 99, 99)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -387,40 +376,39 @@ public class CreatePredPath extends javax.swing.JPanel {
                     .addComponent(pathpred, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(triaonguardes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(3, 3, 3)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Paperbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(term, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(Authorbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(Confbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel2)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton5)
-                            .addComponent(c1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(c2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(c3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane3)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton1)
+                            .addComponent(triaonguardes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(3, 3, 3)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Paperbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(term, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Authorbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Confbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel2)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(19, 19, 19)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jButton5)
+                                    .addComponent(c1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(c2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(c3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jScrollPane3)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton6)
-                        .addComponent(justi))
-                    .addComponent(jButton2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(controlerrores, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -524,6 +512,7 @@ public class CreatePredPath extends javax.swing.JPanel {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         try {
             // TODO add your handling code here:
+            variables.primera_clausula_predpath = true;
             variables.ultim_es_paper = false;
             variables.primer_del_cami = true;
             variables.num_words = 0;
@@ -550,7 +539,7 @@ public class CreatePredPath extends javax.swing.JPanel {
         // TODO add your handling code here:
         if (!nombrepredpath.getText().equals("Escribe el nombre del predpath") && !nombrepredpath.getText().equals("")
                 && !pathpred.getText().equals("Escribe tu path") && !pathpred.getText().equals("")) {
-            String quepongo = nombrepredpath.getText() + "\t" + pathpred.getText() + "\t" + clausulas.getText();
+            String quepongo = nombrepredpath.getText() + "\t" + pathpred.getText() + "\t" + clausulas.getText().replace('\n', '\t');
             if (isAdmin()) {
                 String dondeguardo = String.valueOf(triaonguardes.getSelectedItem());
                 if (dondeguardo.equals("Admin")) {
@@ -605,12 +594,33 @@ public class CreatePredPath extends javax.swing.JPanel {
                         } catch (Exception e2) {}
                      }
             }
+            variables.primera_clausula_predpath = true;
+            clausulas.setText(null);
+            c2.removeAllItems();
+            c2.addItem("-");
+            c3.removeAllItems();
+            c3.addItem("-");
             nombrepredpath.setText("Escribe el nombre del predpath");
             nombrepredpath.setForeground(Color.gray);
             variables.ultim_es_paper = false;
             variables.primer_del_cami = true;
             pathpred.setText("Escribe tu path");
             pathpred.setForeground(Color.gray);
+            controlerrores.setText("Añadió el predpath correctamente");
+            controlerrores.setForeground(Color.green);
+            controlerrores.setVisible(true);
+        }
+        else {
+            if (nombrepredpath.getText().equals("Escribe el nombre del predpath") || nombrepredpath.getText().equals("")) {
+                controlerrores.setText("Falta el nombre de pred path");
+                controlerrores.setForeground(Color.red);
+                controlerrores.setVisible(true);
+            }
+            else {
+                controlerrores.setText("Falta camino del pred path");
+                controlerrores.setForeground(Color.red);
+                controlerrores.setVisible(true);
+            }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -621,43 +631,33 @@ public class CreatePredPath extends javax.swing.JPanel {
         instruccions_guillem.setText(getInst_Crear_Path_Predefinido());
     }//GEN-LAST:event_Instructionsbutton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        try {
-            // TODO add your handling code here:
-            ViewPredPathuser vppu = new ViewPredPathuser();
-            vppu.setVisible(true);
-            helppredpath.setVisible(false);
-            titolpredpath.setVisible(false);
-            selectedpredpathuser.setVisible(false);
-            continuepredpath.setVisible(false);
-        } catch (IOException ex) {
-            Logger.getLogger(CreatePredPath.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_jButton2ActionPerformed
-
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        if (c1.getSelectedItem().equals("-")){
-            justi.setText("Error!");
-            justi.setForeground(Color.red);
-            justi.setVisible(true);
+        if (c1.getSelectedItem().equals("-") || c2.getSelectedItem().equals("-") || c3.getSelectedItem().equals("-")){
+            controlerrores.setText("Error al añadir la clausula");
+            controlerrores.setForeground(Color.red);
+            controlerrores.setVisible(true);
         }
-        else if (c2.getSelectedItem().equals("-")) {
-            justi.setText("Error!");
-            justi.setForeground(Color.red);
-            justi.setVisible(true);
-        }
-        else if (c3.getSelectedItem().equals("-")) {
-            justi.setText("Error!");
-            justi.setForeground(Color.red);
-            justi.setVisible(true);
+        else if (c2.getSelectedItem().equals(c3.getSelectedItem())) {
+            controlerrores.setText("Error al añadir la clausula");
+            controlerrores.setForeground(Color.red);
+            controlerrores.setVisible(true);            
         }
         else {
-            justi.setText("");
-            clausulas.setText(clausulas.getText() + c1.getSelectedItem() + " " + c2.getSelectedItem() + " " + c3.getSelectedItem() + "\n");
+            controlerrores.setText("");
+            if (variables.primera_clausula_predpath) {
+                clausulas.setText(clausulas.getText() + c1.getSelectedItem() + " " + c2.getSelectedItem() + " " + c3.getSelectedItem());
+                variables.primera_clausula_predpath = false;
+            }
+            else {
+                clausulas.setText(clausulas.getText() + "\n" + c1.getSelectedItem() + " " + c2.getSelectedItem() + " " + c3.getSelectedItem());
+            }
             c1.setSelectedIndex(0);
             c2.setSelectedIndex(0);
-            c3.setSelectedIndex(0); 
+            c3.setSelectedIndex(0);
+            controlerrores.setText("Añadió la clausula correctamente");
+            controlerrores.setForeground(Color.green);
+            controlerrores.setVisible(true); 
         }
     }//GEN-LAST:event_jButton5ActionPerformed
 
@@ -667,11 +667,15 @@ public class CreatePredPath extends javax.swing.JPanel {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
+        controlerrores.setVisible(true);
+        controlerrores.setForeground(Color.green);
+        controlerrores.setText("Ha eliminado las clausulas correctament");
         clausulas.setText(null);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         // TODO add your handling code here:
+        variables.primera_clausula_predpath = true;
         variables.ultim_es_paper = false;
         variables.primer_del_cami = true;
         variables.num_words = 0;
@@ -711,9 +715,9 @@ public class CreatePredPath extends javax.swing.JPanel {
     public static javax.swing.JComboBox<String> c2;
     public static javax.swing.JComboBox<String> c3;
     public static javax.swing.JTextArea clausulas;
+    private javax.swing.JLabel controlerrores;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -723,7 +727,6 @@ public class CreatePredPath extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JLabel justi;
     private javax.swing.JTextField nombrepredpath;
     public static javax.swing.JTextField pathpred;
     private javax.swing.JButton term;

@@ -13,7 +13,6 @@ import static com.prop45.searchtacp.Instrucciones.instruccions_guillem;
 import static com.prop45.searchtacp.variables.*;
 
 import java.awt.Color;
-import java.awt.Scrollbar;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
