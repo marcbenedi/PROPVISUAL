@@ -1,68 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="686fdf98-16a5-4ea8-b406-5a3bda506f3f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/Busqueda.class" afterPath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/Busqueda.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/Busquedauser$1.class" afterPath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/Busquedauser$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/Busquedauser$10.class" afterPath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/Busquedauser$10.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/Busquedauser$11.class" afterPath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/Busquedauser$11.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/Busquedauser$12.class" afterPath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/Busquedauser$12.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/Busquedauser$13.class" afterPath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/Busquedauser$13.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/Busquedauser$14.class" afterPath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/Busquedauser$14.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/Busquedauser$15.class" afterPath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/Busquedauser$15.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/Busquedauser$2.class" afterPath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/Busquedauser$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/Busquedauser$3.class" afterPath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/Busquedauser$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/Busquedauser$4.class" afterPath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/Busquedauser$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/Busquedauser$5.class" afterPath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/Busquedauser$5.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/Busquedauser$6.class" afterPath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/Busquedauser$6.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/Busquedauser$7.class" afterPath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/Busquedauser$7.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/Busquedauser$8.class" afterPath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/Busquedauser$8.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/Busquedauser$9.class" afterPath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/Busquedauser$9.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/Busquedauser.class" afterPath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/Busquedauser.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/CreatePredPath$1.class" afterPath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/CreatePredPath$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/CreatePredPath$10.class" afterPath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/CreatePredPath$10.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/CreatePredPath$11.class" afterPath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/CreatePredPath$11.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/CreatePredPath$12.class" afterPath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/CreatePredPath$12.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/CreatePredPath$13.class" afterPath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/CreatePredPath$13.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/CreatePredPath$14.class" afterPath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/CreatePredPath$14.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/CreatePredPath$15.class" afterPath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/CreatePredPath$15.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/CreatePredPath$16.class" afterPath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/CreatePredPath$16.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/CreatePredPath$2.class" afterPath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/CreatePredPath$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/CreatePredPath$3.class" afterPath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/CreatePredPath$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/CreatePredPath$4.class" afterPath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/CreatePredPath$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/CreatePredPath$5.class" afterPath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/CreatePredPath$5.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/CreatePredPath$6.class" afterPath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/CreatePredPath$6.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/CreatePredPath$7.class" afterPath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/CreatePredPath$7.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/CreatePredPath$8.class" afterPath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/CreatePredPath$8.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/CreatePredPath$9.class" afterPath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/CreatePredPath$9.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/CreatePredPath.class" afterPath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/CreatePredPath.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/Registrarse_Login.class" afterPath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/Registrarse_Login.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/ViewPredPath$1.class" afterPath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/ViewPredPath$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/ViewPredPath$2.class" afterPath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/ViewPredPath$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/ViewPredPath$3.class" afterPath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/ViewPredPath$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/ViewPredPath$4.class" afterPath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/ViewPredPath$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/ViewPredPath$5.class" afterPath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/ViewPredPath$5.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/ViewPredPath$6.class" afterPath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/ViewPredPath$6.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/ViewPredPath$7.class" afterPath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/ViewPredPath$7.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/ViewPredPath.class" afterPath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/ViewPredPath.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/ViewPredPathuser$1.class" afterPath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/ViewPredPathuser$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/ViewPredPathuser$2.class" afterPath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/ViewPredPathuser$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/ViewPredPathuser$3.class" afterPath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/ViewPredPathuser$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/ViewPredPathuser$4.class" afterPath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/ViewPredPathuser$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/ViewPredPathuser$5.class" afterPath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/ViewPredPathuser$5.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/ViewPredPathuser$6.class" afterPath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/ViewPredPathuser$6.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/ViewPredPathuser$7.class" afterPath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/ViewPredPathuser$7.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/ViewPredPathuser$8.class" afterPath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/ViewPredPathuser$8.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/ViewPredPathuser$9.class" afterPath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/ViewPredPathuser$9.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/ViewPredPathuser.class" afterPath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/ViewPredPathuser.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/escribir_author.class" afterPath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/escribir_author.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/escribir_conference.class" afterPath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/escribir_conference.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/escribir_paper.class" afterPath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/escribir_paper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/escribir_term.class" afterPath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/escribir_term.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/variables.class" afterPath="$PROJECT_DIR$/out/production/PROPVISUAL/com/prop45/searchtacp/variables.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/prop45/searchtacp/variables.java" afterPath="$PROJECT_DIR$/src/com/prop45/searchtacp/variables.java" />
-    </list>
+    <list default="true" id="686fdf98-16a5-4ea8-b406-5a3bda506f3f" name="Default" comment="" />
     <ignored path="PROPVISUAL.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -826,7 +765,7 @@
       <workItem from="1463922281486" duration="853000" />
       <workItem from="1464370564563" duration="4186000" />
       <workItem from="1464377874024" duration="1738000" />
-      <workItem from="1464450782361" duration="5098000" />
+      <workItem from="1464450782361" duration="5176000" />
     </task>
     <task id="LOCAL-00001" summary="He afegit Strings de instruccions a la classe variables i n'he fet getters per poderlos fer servir des de les altres classes, intellij no enten forms de netbeans i només carrega el de búsqueda, on el form ja estava modificat">
       <created>1463922697976</created>
@@ -839,7 +778,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19560000" />
+    <option name="totallyTimeSpent" value="19638000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="59" y="-8" width="1315" height="784" extended-state="6" />
