@@ -43,6 +43,7 @@ public class escribir_term extends javax.swing.JFrame {
     
     public escribir_term() throws FileNotFoundException, IOException {
         initComponents();
+        buscador.requestFocus();
         if (variables.primer_del_cami) {
             escoge.removeAllItems();
             escoge.addItem("Definir");
