@@ -393,6 +393,7 @@ public class escribir_author extends javax.swing.JFrame {
                             p = "Author~";
                             p += nombreauthor.getText();
                             selectedpredpathuser.setText(inicio + p + "  " + finali);
+                            int indiceselect = defineuser.getSelectedIndex();
                             if (defineuser.getItemCount() == 2) {
                                 defineuser.setSelectedIndex(0);
                                 variables.index = 0;
@@ -403,7 +404,7 @@ public class escribir_author extends javax.swing.JFrame {
                                 defineuser.setSelectedIndex(variables.index);
                                 ++variables.index;
                             }      
-                            defineuser.removeItemAt(1);                 
+                            defineuser.removeItemAt(indiceselect);                 
                         }
                         else {
                             String p = selectedpredpath.getText();
@@ -432,6 +433,7 @@ public class escribir_author extends javax.swing.JFrame {
                             p = "Author~";
                             p += nombreauthor.getText();
                             selectedpredpath.setText(inicio + p + "  " + finali);
+                            int indiceselect = define.getSelectedIndex();
                             if (define.getItemCount()==2) {
                                 define.setSelectedIndex(0);
                                 variables.index = 0;
@@ -442,7 +444,7 @@ public class escribir_author extends javax.swing.JFrame {
                                 define.setSelectedIndex(variables.index);
                                 ++variables.index;
                             }
-                            define.removeItemAt(1);
+                            define.removeItemAt(indiceselect);
                         }
                         this.setVisible(false);
                         variables.tags.add("Author");
@@ -482,6 +484,7 @@ public class escribir_author extends javax.swing.JFrame {
                             }
                             p = "Author~NULL";
                             selectedpredpathuser.setText(inicio + p + "  " + finali);
+                            int indiceselect = defineuser.getSelectedIndex();
                             if (2 == defineuser.getItemCount()) {
                                 defineuser.setSelectedIndex(0);
                                 variables.index = 0;
@@ -492,7 +495,7 @@ public class escribir_author extends javax.swing.JFrame {
                                 defineuser.setSelectedIndex(variables.index);
                                 ++variables.index;
                             } 
-                            defineuser.removeItemAt(1);                      
+                            defineuser.removeItemAt(indiceselect);                      
                         }
                         else {
                             String p = selectedpredpath.getText();
@@ -519,7 +522,8 @@ public class escribir_author extends javax.swing.JFrame {
                                 }
                             }
                             p = "Author~NULL";
-                            selectedpredpath.setText(inicio + p + "  " + finali);                            
+                            selectedpredpath.setText(inicio + p + "  " + finali); 
+                            int indiceselect = define.getSelectedIndex();                           
                             if (2 == define.getItemCount()) {
                                 define.setSelectedIndex(0);
                                 variables.index = 0;
@@ -530,7 +534,7 @@ public class escribir_author extends javax.swing.JFrame {
                                 define.setSelectedIndex(variables.index);
                                 ++variables.index;
                             } 
-                            define.removeItemAt(1);
+                            define.removeItemAt(indiceselect);
                         }
                         this.setVisible(false);
                         variables.tags.add("Author");

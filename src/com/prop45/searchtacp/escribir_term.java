@@ -468,6 +468,7 @@ public class escribir_term extends javax.swing.JFrame {
                             p = "Term~";
                             p += nombreterm.getText();
                             selectedpredpathuser.setText(inicio + p + "  " + finali); 
+                            int indiceselect = defineuser.getSelectedIndex();
                             if (2 == defineuser.getItemCount()) {
                                 defineuser.setSelectedIndex(0);
                                 variables.index = 0;
@@ -478,7 +479,7 @@ public class escribir_term extends javax.swing.JFrame {
                                 defineuser.setSelectedIndex(variables.index);
                                 ++variables.index;
                             }
-                            defineuser.removeItemAt(1);                      
+                            defineuser.removeItemAt(indiceselect);                      
                         }
                         else {
                             String p = selectedpredpath.getText();
@@ -506,7 +507,8 @@ public class escribir_term extends javax.swing.JFrame {
                             }
                             p = "Term~";
                             p += nombreterm.getText();
-                            selectedpredpath.setText(inicio + p + "  " + finali); 
+                            selectedpredpath.setText(inicio + p + "  " + finali);
+                            int indiceselect = define.getSelectedIndex(); 
                             if (2 == define.getItemCount()) {
                                 define.setSelectedIndex(0);
                                 variables.index = 0;
@@ -517,7 +519,7 @@ public class escribir_term extends javax.swing.JFrame {
                                 define.setSelectedIndex(variables.index);
                                 ++variables.index;
                             }
-                            define.removeItemAt(1);
+                            define.removeItemAt(indiceselect);
                         }
                         this.setVisible(false);
                         variables.tags.add("Term");
@@ -557,6 +559,7 @@ public class escribir_term extends javax.swing.JFrame {
                             }
                             p = "Term~NULL";
                             selectedpredpathuser.setText(inicio + p + "  " + finali);
+                            int indiceselect = defineuser.getSelectedIndex();
                             if (variables.index == defineuser.getItemCount()) {
                                 defineuser.setSelectedIndex(0);
                                 variables.index = 0;
@@ -567,7 +570,7 @@ public class escribir_term extends javax.swing.JFrame {
                                 defineuser.setSelectedIndex(variables.index);
                                 ++variables.index;
                             }
-                            defineuser.removeItemAt(1);
+                            defineuser.removeItemAt(indiceselect);
                         }
                         else {
                             String p = selectedpredpath.getText();
@@ -595,6 +598,7 @@ public class escribir_term extends javax.swing.JFrame {
                             }
                             p = "Term~NULL";
                             selectedpredpath.setText(inicio + p + "  " + finali); 
+                            int indiceselect = define.getSelectedIndex();
                             if (2 == define.getItemCount()) {
                                 define.setSelectedIndex(0);
                                 variables.index = 0;
@@ -605,7 +609,7 @@ public class escribir_term extends javax.swing.JFrame {
                                 define.setSelectedIndex(variables.index);
                                 ++variables.index;
                             }
-                            define.removeItemAt(1);
+                            define.removeItemAt(indiceselect);
                         }
                         this.setVisible(false);
                         variables.tags.add("Term");

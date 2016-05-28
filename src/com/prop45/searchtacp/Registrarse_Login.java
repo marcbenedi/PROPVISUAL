@@ -123,7 +123,6 @@ public class Registrarse_Login extends javax.swing.JPanel {
         panelmegadinamico.add(p, BorderLayout.CENTER);
         panelmegadinamico.revalidate();
         panelmegadinamico.repaint();
-        if (variables.primera_clausula_predpath) System.out.print("hello");
     }//GEN-LAST:event_busquedabuttonActionPerformed
 
 
