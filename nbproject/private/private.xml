@@ -5,15 +5,13 @@
         <group>
             <file>file:/C:/Users/Miquel%20Baena/Documents/NetBeansProjects/SearchTACP/src/com/prop45/searchtacp/escribir_author.java</file>
             <file>file:/C:/Users/Miquel%20Baena/Documents/NetBeansProjects/SearchTACP/src/com/prop45/searchtacp/Busquedauser.java</file>
-            <file>file:/C:/Users/Miquel%20Baena/Documents/NetBeansProjects/SearchTACP/src/com/prop45/searchtacp/escribir_term.java</file>
             <file>file:/C:/Users/Miquel%20Baena/Documents/NetBeansProjects/SearchTACP/src/com/prop45/searchtacp/escribir_conference.java</file>
-            <file>file:/C:/Users/Miquel%20Baena/Documents/NetBeansProjects/SearchTACP/src/com/prop45/searchtacp/Login.java</file>
-            <file>file:/C:/Users/Miquel%20Baena/Documents/NetBeansProjects/SearchTACP/src/com/prop45/Paths/Relacion.java</file>
-            <file>file:/C:/Users/Miquel%20Baena/Documents/NetBeansProjects/SearchTACP/src/com/prop45/searchtacp/ConsultaPanel.java</file>
+            <file>file:/C:/Users/Miquel%20Baena/Documents/NetBeansProjects/SearchTACP/src/com/prop45/searchtacp/escribir_term.java</file>
+            <file>file:/C:/Users/Miquel%20Baena/Documents/NetBeansProjects/SearchTACP/src/com/prop45/searchtacp/CreatePredPath.java</file>
             <file>file:/C:/Users/Miquel%20Baena/Documents/NetBeansProjects/SearchTACP/src/com/prop45/searchtacp/ViewPredPath.java</file>
             <file>file:/C:/Users/Miquel%20Baena/Documents/NetBeansProjects/SearchTACP/src/com/prop45/searchtacp/ViewPredPathuser.java</file>
-            <file>file:/C:/Users/Miquel%20Baena/Documents/NetBeansProjects/SearchTACP/src/com/prop45/searchtacp/escribir_paper.java</file>
             <file>file:/C:/Users/Miquel%20Baena/Documents/NetBeansProjects/SearchTACP/src/com/prop45/searchtacp/Busqueda.java</file>
+            <file>file:/C:/Users/Miquel%20Baena/Documents/NetBeansProjects/SearchTACP/src/com/prop45/searchtacp/escribir_paper.java</file>
         </group>
     </open-files>
 </project-private>

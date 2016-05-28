@@ -5,6 +5,7 @@
  */
 package com.prop45.searchtacp;
 
+import com.prop45.Paths.Norma;
 import static com.prop45.searchtacp.Busquedauser.c2user;
 import static com.prop45.searchtacp.Busquedauser.c3user;
 import static com.prop45.searchtacp.Busquedauser.clausulasuser;
@@ -127,6 +128,8 @@ public class ViewPredPathuser extends javax.swing.JFrame {
                 Instructionsbutton1ActionPerformed(evt);
             }
         });
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -362,19 +365,77 @@ public class ViewPredPathuser extends javax.swing.JFrame {
 
     private void continuepredpathActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continuepredpathActionPerformed
         // TODO add your handling code here:
-        if (defineuser.getItemCount()==1) {
-            variables.definiendo_pred_path = false;
-            if (text.getText().equals("No te\nclausules")) clausulasuser.setText("");
-            else {
-                clausulasuser.setText(text.getText()+"\n");
-            }
-            pathuser.setForeground(Color.BLACK); 
-            pathuser.setText(selectedpredpathuser.getText());
-            this.setVisible(false);
-        }
-        else {
-            controlerrores1.setText("Falta definir nodos");
-            controlerrores1.setForeground(Color.red);            
+        switch (defineuser.getItemCount()) {
+            case 1:
+                variables.definiendo_pred_path = false;
+                if (text.getText().equals("No te\nclausules")) clausulasuser.setText("");
+                else {clausulasuser.setText(text.getText()+"\n");
+                    int inici = 0;
+                    int i = 0;
+                    String clausulafegir = "";
+                    while (i<clausulasuser.getText().length()) {
+                        if (clausulasuser.getText().charAt(i) == '\n') {
+                            clausulafegir = clausulasuser.getText().substring(inici,i);
+                            int iaux = 0;
+                            String stringn2 ="";
+                            String stringn3 = "";
+                            while (clausulafegir.charAt(iaux) != ' ') {
+                                ++iaux;
+                            }
+                            ++iaux;
+                            while (clausulafegir.charAt(iaux) != ' ') {
+                                stringn2 += clausulafegir.charAt(iaux);
+                                ++iaux;
+                            }
+                            ++iaux;
+                            while (iaux < clausulafegir.length()) {
+                                stringn3 += clausulafegir.charAt(iaux);
+                                ++iaux;
+                            }
+                            int n2 = Integer.valueOf(stringn2);
+                            int n3 = Integer.valueOf(stringn3);
+                            Norma n = new Norma(clausulasuser.getText().charAt(inici),n2,n3);
+                            variables.normes.add(n);  
+                            ++i;
+                            inici = i;
+                        }
+                        else {
+                            ++i;
+                        }
+                    }
+                }   pathuser.setForeground(Color.BLACK);
+                pathuser.setText(selectedpredpathuser.getText());String ultimasletras = "";
+                ultimasletras+= selectedpredpathuser.getText().charAt(selectedpredpathuser.getText().length()-7);
+                ultimasletras+= selectedpredpathuser.getText().charAt(selectedpredpathuser.getText().length()-6);  
+                System.out.print(ultimasletras);
+                switch (ultimasletras) {
+                    case "rm":
+                        variables.tags.add("Term");
+                        variables.valors.add("NULL");
+                        break;
+                    case "ce":
+                        variables.tags.add("Conference");
+                        variables.valors.add("NULL");
+                        break;
+                    case "er":
+                        variables.tags.add("Paper");
+                        variables.valors.add("NULL");
+                        break;
+                    default:
+                        variables.tags.add("Author");
+                        variables.valors.add("NULL");
+                        break;
+                }
+                this.setVisible(false);
+                break;
+            case 0:
+                controlerrores1.setText("Seleccione un camino predeterminado");
+                controlerrores1.setForeground(Color.red);
+                break;
+            default:
+                controlerrores1.setText("Falta definir nodos");
+                controlerrores1.setForeground(Color.red);
+                break;
         }
     }//GEN-LAST:event_continuepredpathActionPerformed
 
@@ -578,7 +639,8 @@ public class ViewPredPathuser extends javax.swing.JFrame {
         // TODO add your handling code here:
         variables.definiendo_pred_path = true;
         if (!defineuser.getSelectedItem().equals("-")) {
-            int num_selected = defineuser.getSelectedIndex();
+            String au = String.valueOf(defineuser.getSelectedItem());
+            int num_selected = Integer.valueOf(au);
             variables.num_del_select = num_selected;
             String camino_aux = selectedpredpathuser.getText();
             int inaux = 1;

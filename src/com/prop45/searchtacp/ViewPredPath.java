@@ -5,6 +5,7 @@
  */
 package com.prop45.searchtacp;
 
+import com.prop45.Paths.Norma;
 import static com.prop45.searchtacp.Busqueda.c2;
 import static com.prop45.searchtacp.Busqueda.c3;
 import static com.prop45.searchtacp.Busqueda.clausulas;
@@ -293,19 +294,79 @@ public class ViewPredPath extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        if (define.getItemCount()==1) { 
-            variables.definiendo_pred_path = false;
-            if (text.getText().equals("No te\nclausules")) clausulas.setText("");
-            else {
-                clausulas.setText(text.getText()+"\n");
-            }
-            pathpublic.setForeground(Color.BLACK); 
-            pathpublic.setText(selectedpredpath.getText());
-            this.setVisible(false);
-        }
-        else {
-            controlerrores.setText("Falta definir nodos");
-            controlerrores.setForeground(Color.red);
+        switch (define.getItemCount()) {
+            case 1:
+                variables.definiendo_pred_path = false;
+                if (text.getText().equals("No te\nclausules")) clausulas.setText("");
+                else {
+                    clausulas.setText(text.getText()+"\n");
+                    int inici = 0;
+                    int i = 0;
+                    String clausulafegir = "";
+                    while (i<clausulas.getText().length()) {
+                        if (clausulas.getText().charAt(i) == '\n') {
+                            clausulafegir = clausulas.getText().substring(inici,i);
+                            int iaux = 0;
+                            String stringn2 ="";
+                            String stringn3 = "";
+                            while (clausulafegir.charAt(iaux) != ' ') {
+                                ++iaux;
+                            }
+                            ++iaux;
+                            while (clausulafegir.charAt(iaux) != ' ') {
+                                stringn2 += clausulafegir.charAt(iaux);
+                                ++iaux;
+                            }
+                            ++iaux;
+                            while (iaux < clausulafegir.length()) {
+                                stringn3 += clausulafegir.charAt(iaux);
+                                ++iaux;
+                            }
+                            int n2 = Integer.valueOf(stringn2);
+                            int n3 = Integer.valueOf(stringn3);
+                            Norma n = new Norma(clausulas.getText().charAt(inici),n2,n3);
+                            variables.normes.add(n);  
+                            ++i;
+                            inici = i;
+                        }
+                        else {
+                            ++i;
+                        }
+                    }
+                }   pathpublic.setForeground(Color.BLACK);
+                pathpublic.setText(selectedpredpath.getText());
+                String ultimasletras = "";
+                ultimasletras+= selectedpredpath.getText().charAt(selectedpredpath.getText().length()-7);
+                ultimasletras+= selectedpredpath.getText().charAt(selectedpredpath.getText().length()-6);  
+                System.out.print(ultimasletras);
+                switch (ultimasletras) {
+                    case "rm":
+                        variables.tags.add("Term");
+                        variables.valors.add("NULL");
+                        break;
+                    case "ce":
+                        variables.tags.add("Conference");
+                        variables.valors.add("NULL");
+                        break;
+                    case "er":
+                        variables.tags.add("Paper");
+                        variables.valors.add("NULL");
+                        break;
+                    default:
+                        variables.tags.add("Author");
+                        variables.valors.add("NULL");
+                        break;
+                }
+                this.setVisible(false);
+                break;
+            case 0:
+                controlerrores.setText("Seleccione un camino predeterminado");
+                controlerrores.setForeground(Color.red);
+                break;
+            default:
+                controlerrores.setText("Falta definir nodos");
+                controlerrores.setForeground(Color.red);
+                break;
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

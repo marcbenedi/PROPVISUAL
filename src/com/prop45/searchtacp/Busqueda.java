@@ -476,6 +476,7 @@ public class Busqueda extends javax.swing.JPanel {
         else {
             variables.ultim_es_paper = false;
             variables.primer_del_cami = true;
+            variables.num_words = 0;
             Portadaylogins panel1 = new Portadaylogins();
             panel1.setSize(738,513);
             panel1.setLocation(0,0);
@@ -599,6 +600,7 @@ public class Busqueda extends javax.swing.JPanel {
         else {
             variables.ultim_es_paper = false;
             variables.primer_del_cami = true;
+            variables.num_words = 0;
             Portadaylogins panel1 = new Portadaylogins();
             panel1.setSize(738,513);
             panel1.setLocation(0,0);
