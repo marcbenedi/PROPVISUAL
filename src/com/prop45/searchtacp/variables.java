@@ -58,7 +58,7 @@ public class variables {
             "\n- 'M' que significa mayor que (alfabéticamente) " +
             "\n- 'L' que significa menor que (alfabéticamente) " +
             "\nTambién puedes usarlas en minúscula ('l','d','e' y 'm'), para filtrar en funcion de lacantidad " +
-            "de relaciones que tendrá un nodo con el nodo final:" +
+            "de caminos que tendrá un nodo con el tipo de nodo final:" +
             "\n- 'e' que comparará si el nodo de la 2a casilla tiene la misma cantidad de \ncaminos posibles " +
             "que el que especifiques en la 3a casilla"+
             "\n- 'd' que comparará si el nodo de la 2a casilla tiene una cantidad diferente de \ncaminos posibles " +
