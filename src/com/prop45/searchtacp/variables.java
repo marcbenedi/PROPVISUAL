@@ -87,7 +87,7 @@ public class variables {
     public static final String modo_administrador="Bienvenido al modo administrador. \n\nPara cada opción hay una imagen de un disquete a tu derecha " +
             "que se usa para \nrealizar el cambio." +
             " \n\nEn la parte superior izquierda podrás gestionar los usuarios: " +
-            "añadir nuevos\n(sean admin o user), cambiar la contraseña de uno ya existente, eliminar un usuario,o cambiar los permisos (admin o user" +
+            "añadir nuevos\n(sean admin o user), cambiar la contraseña de uno ya existente, eliminar un \nusuario,o cambiar los permisos (admin o user" +
             ") de un usuario ya existente. \n\n" +
             "Abajo a la izquierda podrás gestionar los nodos, añadir y eliminarlos, al añadir   un nodo no tendrá ninguna arista " +
             "y al eliminarlo se eliminarán todas las aristas \nadyacentes a él. \n\n" +
