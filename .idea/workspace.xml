@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="686fdf98-16a5-4ea8-b406-5a3bda506f3f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/prop45/searchtacp/variables.java" afterPath="$PROJECT_DIR$/src/com/prop45/searchtacp/variables.java" />
-    </list>
+    <list default="true" id="686fdf98-16a5-4ea8-b406-5a3bda506f3f" name="Default" comment="" />
     <ignored path="PROPVISUAL.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -34,7 +31,7 @@
       <file leaf-file-name="variables.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/prop45/searchtacp/variables.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
+            <state relative-caret-position="252">
               <caret line="89" column="106" selection-start-line="89" selection-start-column="106" selection-end-line="89" selection-end-column="106" />
               <folding />
             </state>
@@ -768,7 +765,7 @@
       <workItem from="1463922281486" duration="853000" />
       <workItem from="1464370564563" duration="4186000" />
       <workItem from="1464377874024" duration="1738000" />
-      <workItem from="1464450782361" duration="4632000" />
+      <workItem from="1464450782361" duration="4654000" />
     </task>
     <task id="LOCAL-00001" summary="He afegit Strings de instruccions a la classe variables i n'he fet getters per poderlos fer servir des de les altres classes, intellij no enten forms de netbeans i només carrega el de búsqueda, on el form ja estava modificat">
       <created>1463922697976</created>
@@ -781,10 +778,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19094000" />
+    <option name="totallyTimeSpent" value="19116000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="59" y="-8" width="1315" height="784" extended-state="7" />
+    <frame x="59" y="-8" width="1315" height="784" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1257,7 +1254,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/prop45/searchtacp/variables.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
+        <state relative-caret-position="252">
           <caret line="89" column="106" selection-start-line="89" selection-start-column="106" selection-end-line="89" selection-end-column="106" />
           <folding />
         </state>
