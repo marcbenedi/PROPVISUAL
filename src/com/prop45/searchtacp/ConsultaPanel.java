@@ -6,6 +6,8 @@
 package com.prop45.searchtacp;
 
 import com.prop45.Graph.Node;
+import static com.prop45.searchtacp.Busqueda.pathpublic;
+import static com.prop45.searchtacp.Busquedauser.pathuser;
 import static com.prop45.searchtacp.Cargando.panelmegadinamico;
 import static com.prop45.searchtacp.variables.getPath;
 import static com.prop45.searchtacp.variables.getUsuario;
@@ -46,8 +48,14 @@ public class ConsultaPanel extends javax.swing.JPanel {
         if(isUser()){
             userlabel1.setVisible(true);
             userlabel1.setText(getUsuario());
+            userlabel2.setVisible(true);
+            userlabel2.setText(pathuser.getText());
         }
-        else userlabel1.setVisible(false);
+        else{
+            userlabel1.setVisible(false);
+            userlabel2.setVisible(true);
+            userlabel2.setText(pathpublic.getText());
+        }
     }
 
     /**
@@ -64,6 +72,7 @@ public class ConsultaPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         userlabel1 = new javax.swing.JLabel();
+        userlabel2 = new javax.swing.JLabel();
 
         jButton2.setText("Exit");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -87,6 +96,8 @@ public class ConsultaPanel extends javax.swing.JPanel {
         userlabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         userlabel1.setText("username");
 
+        userlabel2.setText("jLabel1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -101,6 +112,8 @@ public class ConsultaPanel extends javax.swing.JPanel {
                         .addComponent(jButton2))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(userlabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(userlabel2)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -108,7 +121,9 @@ public class ConsultaPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(userlabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(userlabel1)
+                    .addComponent(userlabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -173,5 +188,6 @@ public class ConsultaPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel userlabel1;
+    private javax.swing.JLabel userlabel2;
     // End of variables declaration//GEN-END:variables
 }
