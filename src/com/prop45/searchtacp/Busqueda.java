@@ -6,7 +6,6 @@
 package com.prop45.searchtacp;
 
 import com.prop45.Consulta.Consulta;
-import com.prop45.Paths.Norma;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Image;
@@ -17,6 +16,7 @@ import static com.prop45.searchtacp.Instrucciones.instruccions_guillem;
 import static com.prop45.searchtacp.Portadaylogins.paneldinamico;
 import static com.prop45.searchtacp.variables.getInst_Realizar_Busqueda;
 import static com.prop45.searchtacp.variables.getPath;
+import static com.prop45.searchtacp.variables.isNumeric;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,16 +26,15 @@ import java.util.logging.Logger;
  * @author Miquel Baena
  */
 public class Busqueda extends javax.swing.JPanel {
-    public int i;
     /**
      * Creates new form Busqueda
      */
     public Busqueda() {
-        i = 1;
         initComponents();
-        jTextField1.setVisible(false);
+        num.setVisible(false);
         jButton3.setText("<html><p>Realizar busqueda</p><p>Page Rank</p></html>"); 
         jButton6.setText("<html><p>Realizar busqueda</p><p>Grado Nodo</p></html>");
+        variables.primera_clausula_predpath = true;
         pathpublic.setEditable(false);
         clausulas.setEditable(false);
         c1.setForeground(Color.black);
@@ -78,7 +77,7 @@ public class Busqueda extends javax.swing.JPanel {
         c3 = new javax.swing.JComboBox<>();
         jButton6 = new javax.swing.JButton();
         controlerrores = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        num = new javax.swing.JTextField();
 
         jLabel2.setText("*El ultimo nodo siempre sera No Definido");
 
@@ -223,6 +222,11 @@ public class Busqueda extends javax.swing.JPanel {
         });
 
         c1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "D", "E", "L", "M", "d", "e", "l", "m" }));
+        c1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                c1ItemStateChanged(evt);
+            }
+        });
 
         c2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-" }));
 
@@ -237,7 +241,16 @@ public class Busqueda extends javax.swing.JPanel {
             }
         });
 
-        jTextField1.setText("--------");
+        num.setForeground(new java.awt.Color(153, 153, 153));
+        num.setText("num.");
+        num.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                numFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                numFocusLost(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -279,24 +292,23 @@ public class Busqueda extends javax.swing.JPanel {
                                             .addGroup(layout.createSequentialGroup()
                                                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addGroup(layout.createSequentialGroup()
-                                                        .addComponent(jButton2)
-                                                        .addGap(18, 18, 18)
-                                                        .addComponent(c1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addGap(18, 18, 18)
-                                                        .addComponent(c2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addGap(18, 18, 18)
-                                                        .addComponent(c3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                    .addGroup(layout.createSequentialGroup()
-                                                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addGap(115, 115, 115)
-                                                        .addComponent(jButton4))))))
+                                                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(115, 115, 115)
+                                                .addComponent(jButton4))))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(347, 347, 347)
-                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                        .addGap(221, 221, 221)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jButton2)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(c1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(c2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(c3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(num, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(42, 42, 42)
                         .addComponent(jButton5)
@@ -328,7 +340,7 @@ public class Busqueda extends javax.swing.JPanel {
                             .addComponent(c1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(c2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(c3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(num, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -528,39 +540,60 @@ public class Busqueda extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        if (c1.getSelectedItem().equals("-") || c2.getSelectedItem().equals("-") || c3.getSelectedItem().equals("-")){
-            controlerrores.setText("Error al añadir la clausula");
-            controlerrores.setForeground(Color.red);
-            controlerrores.setVisible(true);
-        }
-        else if (c2.getSelectedItem().equals(c3.getSelectedItem())) {
-            controlerrores.setText("Error al añadir la clausula");
-            controlerrores.setForeground(Color.red);
-            controlerrores.setVisible(true);            
-        }
-        else {
-            controlerrores.setText("");
-            if (variables.primera_clausula_predpath) {
-                clausulas.setText(clausulas.getText() + c1.getSelectedItem() + " " + c2.getSelectedItem() + " " + c3.getSelectedItem());
-                variables.primera_clausula_predpath = false;
+        // TODO add your handling code here: 
+        if (c1.getSelectedIndex() < 5) {
+            if (c1.getSelectedItem().equals("-") || c2.getSelectedItem().equals("-") || c3.getSelectedItem().equals("-")){
+                controlerrores.setText("Error al añadir la clausula");
+                controlerrores.setForeground(Color.red);
+                controlerrores.setVisible(true);
+            }
+            else if (c2.getSelectedItem().equals(c3.getSelectedItem())) {
+                controlerrores.setText("Error al añadir la clausula");
+                controlerrores.setForeground(Color.red);
+                controlerrores.setVisible(true);            
             }
             else {
-                clausulas.setText(clausulas.getText() + "\n" + c1.getSelectedItem() + " " + c2.getSelectedItem() + " " + c3.getSelectedItem());
+                controlerrores.setText("");
+                if (variables.primera_clausula_predpath) {
+                    clausulas.setText(clausulas.getText() + c1.getSelectedItem() + " " + c2.getSelectedItem() + " " + c3.getSelectedItem());
+                    variables.primera_clausula_predpath = false;
+                }
+                else {
+                    clausulas.setText(clausulas.getText() + "\n" + c1.getSelectedItem() + " " + c2.getSelectedItem() + " " + c3.getSelectedItem());
+                }
+                c1.setSelectedIndex(0);
+                c2.setSelectedIndex(0);
+                c3.setSelectedIndex(0);
+                controlerrores.setText("Añadió la clausula correctamente");
+                controlerrores.setForeground(Color.green);
+                controlerrores.setVisible(true); 
             }
-            String n1 = String.valueOf(c1.getSelectedItem());
-            String n2string = String.valueOf(c2.getSelectedItem());
-            String n3string = String.valueOf(c3.getSelectedItem());
-            int n2 = Integer.valueOf(n2string);
-            int n3 = Integer.valueOf(n3string);
-            Norma n = new Norma(n1.charAt(0),n2,n3);
-            variables.normes.add(n);
-            c1.setSelectedIndex(0);
-            c2.setSelectedIndex(0);
-            c3.setSelectedIndex(0);
-            controlerrores.setText("Añadió la clausula correctamente");
-            controlerrores.setForeground(Color.green);
-            controlerrores.setVisible(true); 
+        }
+        else {
+            if (c2.getSelectedItem().equals("-") || !isNumeric(num.getText())){
+                controlerrores.setText("Error al añadir la clausula");
+                controlerrores.setForeground(Color.red);
+                controlerrores.setVisible(true);
+                if (!isNumeric(num.getText())) {
+                    controlerrores.setText("Por favor escriba un numero correcto");
+                }
+            }
+            else {
+                controlerrores.setText("");
+                int numero_comp = Integer.parseInt(num.getText());
+                if (variables.primera_clausula_predpath) {
+                    clausulas.setText(clausulas.getText() + c1.getSelectedItem() + " " + c2.getSelectedItem() + " " + numero_comp);
+                    variables.primera_clausula_predpath = false;
+                }
+                else {
+                    clausulas.setText(clausulas.getText() + "\n" + c1.getSelectedItem() + " " + c2.getSelectedItem() + " " + numero_comp);
+                }
+                c1.setSelectedIndex(0);
+                c2.setSelectedIndex(0);
+                controlerrores.setText("Añadió la clausula correctamente");
+                controlerrores.setForeground(Color.green);
+                controlerrores.setVisible(true); 
+            }
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -632,6 +665,34 @@ public class Busqueda extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jButton6ActionPerformed
 
+    private void numFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_numFocusGained
+        // TODO add your handling code here:
+        if (num.getText().equals("num.")) {
+            num.setForeground(Color.black);
+            num.setText(null);
+        }
+    }//GEN-LAST:event_numFocusGained
+
+    private void numFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_numFocusLost
+        // TODO add your handling code here:
+        if (num.getText().equals("")) {
+            num.setForeground(Color.gray);
+            num.setText("num.");
+        }
+    }//GEN-LAST:event_numFocusLost
+
+    private void c1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_c1ItemStateChanged
+        // TODO add your handling code here:
+        if (c1.getSelectedIndex()>4) {
+            c3.setVisible(false);
+            num.setVisible(true);
+        }
+        else {
+            c3.setVisible(true);
+            num.setVisible(false);            
+        }
+    }//GEN-LAST:event_c1ItemStateChanged
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Authorbutton;
@@ -655,7 +716,7 @@ public class Busqueda extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField num;
     private javax.swing.JButton pathbutton;
     public static javax.swing.JTextField pathpublic;
     // End of variables declaration//GEN-END:variables

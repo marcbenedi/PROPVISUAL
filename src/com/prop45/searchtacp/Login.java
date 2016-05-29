@@ -328,15 +328,15 @@ public class Login extends javax.swing.JPanel {
         // TODO add your handling code here:
         if (userfield.getText().equals("Escriba su nombre de usuari")) {
             userfield.setText(null);
+            userfield.setForeground(Color.black);
         }
-        userfield.setForeground(Color.black);
     }//GEN-LAST:event_userfieldFocusGained
 
     private void userfieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_userfieldFocusLost
         // TODO add your handling code here:
         if (userfield.getText().equals("")) {
             userfield.setText("Escriba su nombre de usuari");
-        userfield.setForeground(Color.gray);
+            userfield.setForeground(Color.gray);
         }
     }//GEN-LAST:event_userfieldFocusLost
 

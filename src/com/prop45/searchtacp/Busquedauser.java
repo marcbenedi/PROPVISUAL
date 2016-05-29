@@ -11,7 +11,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Image;
 import java.io.FileNotFoundException;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,22 +22,25 @@ import static com.prop45.searchtacp.Portadaylogins.paneldinamico;
 import static com.prop45.searchtacp.variables.getInst_Realizar_Busqueda;
 import static com.prop45.searchtacp.variables.getPath;
 import static com.prop45.searchtacp.variables.getUsuario;
-import java.io.BufferedWriter;
+import static com.prop45.searchtacp.variables.isNumeric;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 
 /**
  *
  * @author Miquel Baena
  */
 public class Busquedauser extends javax.swing.JPanel {
-
-    public int i;
     /**
      * Creates new form Busquedauser
      * @throws java.io.FileNotFoundException
      */
     public Busquedauser() throws FileNotFoundException, IOException {
-        i = 1;
         initComponents();
+        num.setVisible(false);
+        jButton3.setText("<html><p>Realizar busqueda</p><p>Page Rank</p></html>"); 
+        jButton7.setText("<html><p>Realizar busqueda</p><p>Grado Nodo</p></html>");
+        variables.primera_clausula_predpath = true;
         pathuser.setEditable(false);
         userlabel.setText(getUsuario());
         clausulasuser.setEditable(false);
@@ -84,7 +86,7 @@ public class Busquedauser extends javax.swing.JPanel {
         jButton3 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         controlerrores1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        num = new javax.swing.JTextField();
 
         jButton5.setText("Borrar");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -212,7 +214,12 @@ public class Busquedauser extends javax.swing.JPanel {
             }
         });
 
-        c1user.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "D", "E", "L", "M" }));
+        c1user.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "D", "E", "L", "M", "d", "e", "l", "m" }));
+        c1user.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                c1userItemStateChanged(evt);
+            }
+        });
 
         c2user.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-" }));
 
@@ -236,7 +243,16 @@ public class Busquedauser extends javax.swing.JPanel {
             }
         });
 
-        jTextField1.setText("--------");
+        num.setForeground(new java.awt.Color(153, 153, 153));
+        num.setText("num.");
+        num.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                numFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                numFocusLost(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -290,6 +306,7 @@ public class Busquedauser extends javax.swing.JPanel {
                                                 .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(119, 119, 119)
                                                 .addComponent(jButton4))
+                                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGroup(layout.createSequentialGroup()
                                                 .addComponent(jButton2)
                                                 .addGap(18, 18, 18)
@@ -299,8 +316,7 @@ public class Busquedauser extends javax.swing.JPanel {
                                                 .addGap(18, 18, 18)
                                                 .addComponent(c3user, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(num, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addGap(71, 71, 71))))))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(22, 22, 22)
@@ -336,7 +352,7 @@ public class Busquedauser extends javax.swing.JPanel {
                             .addComponent(c1user, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(c2user, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(c3user, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(num, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
@@ -479,39 +495,67 @@ public class Busquedauser extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        if (c1user.getSelectedItem().equals("-") || c2user.getSelectedItem().equals("-") || c3user.getSelectedItem().equals("-")){
-            controlerrores.setText("Error al añadir la clausula");
-            controlerrores.setForeground(Color.red);
-            controlerrores.setVisible(true);
-        }
-        else if (c2user.getSelectedItem().equals(c3user.getSelectedItem())) {
-            controlerrores.setText("Error al añadir la clausula");
-            controlerrores.setForeground(Color.red);
-            controlerrores.setVisible(true);            
-        }
-        else {
-            controlerrores.setText("");
-            if (variables.primera_clausula_predpath) {
-                clausulasuser.setText(clausulasuser.getText() + c1user.getSelectedItem() + " " + c2user.getSelectedItem() + " " + c3user.getSelectedItem());
-                variables.primera_clausula_predpath = false;
+        // TODO add your handling code here: 
+        if (c1user.getSelectedIndex() < 5) {
+            if (c1user.getSelectedItem().equals("-") || c2user.getSelectedItem().equals("-") || c3user.getSelectedItem().equals("-")){
+                controlerrores1.setText("Error al añadir la clausula");
+                controlerrores1.setForeground(Color.red);
+                controlerrores1.setVisible(true);
+            }
+            else if (c2user.getSelectedItem().equals(c3user.getSelectedItem())) {
+                controlerrores1.setText("Error al añadir la clausula");
+                controlerrores1.setForeground(Color.red);
+                controlerrores1.setVisible(true);            
             }
             else {
-                clausulasuser.setText(clausulasuser.getText() + "\n" + c1user.getSelectedItem() + " " + c2user.getSelectedItem() + " " + c3user.getSelectedItem());
+                controlerrores1.setText("");
+                if (variables.primera_clausula_predpath) {
+                    clausulasuser.setText(clausulasuser.getText() + c1user.getSelectedItem() + " " + c2user.getSelectedItem() + " " + c3user.getSelectedItem());
+                    variables.primera_clausula_predpath = false;
+                }
+                else {
+                    clausulasuser.setText(clausulasuser.getText() + "\n" + c1user.getSelectedItem() + " " + c2user.getSelectedItem() + " " + c3user.getSelectedItem());
+                }
+                String n1 = String.valueOf(c1user.getSelectedItem());
+                String n2string = String.valueOf(c2user.getSelectedItem());
+                String n3string = String.valueOf(c3user.getSelectedItem());
+                int n2 = Integer.valueOf(n2string);
+                int n3 = Integer.valueOf(n3string);
+                Norma n = new Norma(n1.charAt(0),n2,n3);
+                variables.normes.add(n);
+                c1user.setSelectedIndex(0);
+                c2user.setSelectedIndex(0);
+                c3user.setSelectedIndex(0);
+                controlerrores1.setText("Añadió la clausula correctamente");
+                controlerrores1.setForeground(Color.green);
+                controlerrores1.setVisible(true); 
             }
-            String n1 = String.valueOf(c1user.getSelectedItem());
-            String n2string = String.valueOf(c2user.getSelectedItem());
-            String n3string = String.valueOf(c3user.getSelectedItem());
-            int n2 = Integer.valueOf(n2string);
-            int n3 = Integer.valueOf(n3string);
-            Norma n = new Norma(n1.charAt(0),n2,n3);
-            variables.normes.add(n);
-            c1user.setSelectedIndex(0);
-            c2user.setSelectedIndex(0);
-            c3user.setSelectedIndex(0);
-            controlerrores.setText("Añadió la clausula correctamente");
-            controlerrores.setForeground(Color.green);
-            controlerrores.setVisible(true); 
+        }
+        else {
+            if (c2user.getSelectedItem().equals("-") || !isNumeric(num.getText())){
+                controlerrores1.setText("Error al añadir la clausula");
+                controlerrores1.setForeground(Color.red);
+                controlerrores1.setVisible(true);
+                if (!isNumeric(num.getText())) {
+                    controlerrores1.setText("Por favor escriba un numero correcto");
+                }
+            }
+            else {
+                controlerrores1.setText("");
+                int numero_comp = Integer.parseInt(num.getText());
+                if (variables.primera_clausula_predpath) {
+                    clausulasuser.setText(clausulasuser.getText() + c1user.getSelectedItem() + " " + c2user.getSelectedItem() + " " + numero_comp);
+                    variables.primera_clausula_predpath = false;
+                }
+                else {
+                    clausulasuser.setText(clausulasuser.getText() + "\n" + c1user.getSelectedItem() + " " + c2user.getSelectedItem() + " " + numero_comp);
+                }
+                c1user.setSelectedIndex(0);
+                c2user.setSelectedIndex(0);
+                controlerrores1.setText("Añadió la clausula correctamente");
+                controlerrores1.setForeground(Color.green);
+                controlerrores1.setVisible(true); 
+            }
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -550,6 +594,20 @@ public class Busquedauser extends javax.swing.JPanel {
             controlerrores.setVisible(true);
         }
         else {
+            FileWriter fichero = null;
+            PrintWriter pw = null;
+            try
+            {
+                fichero = new FileWriter(getPath() + "\\recursos\\ficheros\\historial_" + getUsuario() + ".txt",true);
+                pw = new PrintWriter(fichero);
+                pw.println(pathuser.getText());
+            } catch (Exception e){} 
+            finally {
+               try {
+               if (null != fichero)
+                  fichero.close();
+               } catch (Exception e2) {}
+            }
             variables.ultim_es_paper = false;
             variables.primer_del_cami = true;
             variables.num_words = 0;
@@ -632,6 +690,34 @@ public class Busquedauser extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jButton7ActionPerformed
 
+    private void numFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_numFocusGained
+        // TODO add your handling code here:
+        if (num.getText().equals("num.")) {
+            num.setForeground(Color.black);
+            num.setText(null);
+        }
+    }//GEN-LAST:event_numFocusGained
+
+    private void numFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_numFocusLost
+        // TODO add your handling code here:
+        if (num.getText().equals("")) {
+            num.setForeground(Color.gray);
+            num.setText("num.");
+        }
+    }//GEN-LAST:event_numFocusLost
+
+    private void c1userItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_c1userItemStateChanged
+        // TODO add your handling code here:
+        if (c1user.getSelectedIndex()>4) {
+            c3user.setVisible(false);
+            num.setVisible(true);
+        }
+        else {
+            c3user.setVisible(true);
+            num.setVisible(false);            
+        }
+    }//GEN-LAST:event_c1userItemStateChanged
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Authorbutton;
@@ -656,7 +742,7 @@ public class Busquedauser extends javax.swing.JPanel {
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField num;
     private javax.swing.JButton pathbutton;
     public static javax.swing.JTextField pathuser;
     private javax.swing.JLabel userlabel;

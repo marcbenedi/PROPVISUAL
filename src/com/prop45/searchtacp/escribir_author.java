@@ -393,18 +393,16 @@ public class escribir_author extends javax.swing.JFrame {
                             p = "Author~";
                             p += nombreauthor.getText();
                             selectedpredpathuser.setText(inicio + p + "  " + finali);
-                            int indiceselect = defineuser.getSelectedIndex();
                             if (defineuser.getItemCount() == 2) {
                                 defineuser.setSelectedIndex(0);
-                                variables.index = 0;
                                 controlerrores1.setText("Todos los nodos estan definidos");
                                 controlerrores1.setForeground(Color.green);
+                                defineuser.removeItemAt(1);
                             }
                             else {
-                                defineuser.setSelectedIndex(variables.index);
-                                ++variables.index;
-                            }      
-                            defineuser.removeItemAt(indiceselect);                 
+                                defineuser.removeItemAt(1);
+                                defineuser.setSelectedIndex(1);
+                            }                  
                         }
                         else {
                             String p = selectedpredpath.getText();
@@ -433,18 +431,16 @@ public class escribir_author extends javax.swing.JFrame {
                             p = "Author~";
                             p += nombreauthor.getText();
                             selectedpredpath.setText(inicio + p + "  " + finali);
-                            int indiceselect = define.getSelectedIndex();
                             if (define.getItemCount()==2) {
                                 define.setSelectedIndex(0);
-                                variables.index = 0;
                                 controlerrores.setText("Todos los nodos estan definidos");
                                 controlerrores.setForeground(Color.green);
+                                define.removeItemAt(1);
                             }
                             else {
-                                define.setSelectedIndex(variables.index);
-                                ++variables.index;
-                            }
-                            define.removeItemAt(indiceselect);
+                                define.removeItemAt(1);
+                                define.setSelectedIndex(1);
+                            } 
                         }
                         this.setVisible(false);
                         variables.tags.add("Author");
@@ -484,18 +480,16 @@ public class escribir_author extends javax.swing.JFrame {
                             }
                             p = "Author~NULL";
                             selectedpredpathuser.setText(inicio + p + "  " + finali);
-                            int indiceselect = defineuser.getSelectedIndex();
                             if (2 == defineuser.getItemCount()) {
                                 defineuser.setSelectedIndex(0);
-                                variables.index = 0;
                                 controlerrores1.setText("Todos los nodos estan definidos");
                                 controlerrores1.setForeground(Color.green);
+                                defineuser.removeItemAt(1);
                             }
                             else {
-                                defineuser.setSelectedIndex(variables.index);
-                                ++variables.index;
-                            } 
-                            defineuser.removeItemAt(indiceselect);                      
+                                defineuser.removeItemAt(1);
+                                defineuser.setSelectedIndex(1);
+                            }                    
                         }
                         else {
                             String p = selectedpredpath.getText();
@@ -522,19 +516,17 @@ public class escribir_author extends javax.swing.JFrame {
                                 }
                             }
                             p = "Author~NULL";
-                            selectedpredpath.setText(inicio + p + "  " + finali); 
-                            int indiceselect = define.getSelectedIndex();                           
+                            selectedpredpath.setText(inicio + p + "  " + finali);                       
                             if (2 == define.getItemCount()) {
                                 define.setSelectedIndex(0);
-                                variables.index = 0;
                                 controlerrores.setText("Todos los nodos estan definidos");
                                 controlerrores.setForeground(Color.green);
+                                define.removeItemAt(1);
                             }
                             else {
-                                define.setSelectedIndex(variables.index);
-                                ++variables.index;
+                                define.removeItemAt(1);
+                                define.setSelectedIndex(1);
                             } 
-                            define.removeItemAt(indiceselect);
                         }
                         this.setVisible(false);
                         variables.tags.add("Author");
