@@ -21,7 +21,12 @@ public class Consulta {
 
     public ArrayList<Node> consultar(Relacion re, ArrayList<String> valor, boolean pagerank){
         ArrayList<String> tags = re.getTags();
-
+        
+        System.out.println("Debug information form Consulta.java");
+        for (Norma n: re.getNormas()){
+            System.out.println(n.getIndx1()+" "+n.getIndx2()+" "+n.getOperator());
+        }
+        
         if(tags.size()<2)return new ArrayList<>();
 
         ArrayList<Node> a;
