@@ -619,6 +619,10 @@ public class CreatePredPath extends javax.swing.JPanel {
             controlerrores.setText("Añadió el predpath correctamente");
             controlerrores.setForeground(Color.green);
             controlerrores.setVisible(true);
+            
+            //Com que hem fet submit es creara un cami vuit per tan
+            //nombre words serà 0
+            variables.num_words = 0;
         }
         else {
             if (nombrepredpath.getText().equals("Escribe el nombre del predpath") || nombrepredpath.getText().equals("")) {
