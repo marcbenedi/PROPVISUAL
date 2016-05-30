@@ -46,10 +46,11 @@ public class GestionAdmin extends javax.swing.JFrame {
 
     /**
      * Creates new form GestionAdmin
+     *
      * @throws java.io.FileNotFoundException
      */
     public GestionAdmin() throws FileNotFoundException, IOException {
-        initComponents(); 
+        initComponents();
         Exitbutton.setVisible(false);
         userlabel.setText(getUsuario());
         error.setVisible(false);
@@ -726,12 +727,18 @@ public class GestionAdmin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void deleteHistorialRelacionUser() {
+        File file1 = new File(getPath() + "\\recursos\\ficheros\\historial_" + deleteuser.getText() + ".txt");
+        file1.delete();
+        File file2 = new File(getPath() + "\\recursos\\ficheros\\relacion_" + deleteuser.getText() + ".txt");
+        file2.delete();
+    }
+
     private void Exitbutton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Exitbutton1ActionPerformed
         // TODO add your handling code here:
         if (isGuardat()) {
             this.setVisible(false);
-        }
-        else {
+        } else {
             Asegurar_guardar_salir ags = new Asegurar_guardar_salir();
             ags.setVisible(true);
         }
@@ -743,7 +750,7 @@ public class GestionAdmin extends javax.swing.JFrame {
 
     private void addusernameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addusernameMouseClicked
         // TODO add your handling code here:
-        if (addusername.getText().equals("username")){
+        if (addusername.getText().equals("username")) {
             addusername.setText(null);
             addusername.setForeground(Color.black);
         }
@@ -754,7 +761,7 @@ public class GestionAdmin extends javax.swing.JFrame {
         String usuario = addusername.getText();
         String password = addpassword.getText();
         String selected = (String) addusercombox.getSelectedItem();
-        if (ExisteixUsuari(usuario)){
+        if (ExisteixUsuari(usuario)) {
             error.setVisible(true);
             error.setForeground(Color.red);
             String texterror = "";
@@ -762,23 +769,20 @@ public class GestionAdmin extends javax.swing.JFrame {
             texterror += usuario;
             texterror += " ya existe";
             error.setText(texterror);
-        }
-        else if (("".equals(password)) || ("password".equals(password))) {
+        } else if (("".equals(password)) || ("password".equals(password))) {
             error.setVisible(true);
             error.setForeground(Color.red);
-            error.setText("Error: Escriba un password correcto");            
-        }
-        else if (selected.equals("Seleccione tipo")) {
+            error.setText("Error: Escriba un password correcto");
+        } else if (selected.equals("Seleccione tipo")) {
             error.setVisible(true);
             error.setForeground(Color.red);
-            error.setText("Error: Seleccione un tipo de usuario correcto");            
-        }
-        else {
-            GuardarUsuari(usuario,password);
+            error.setText("Error: Seleccione un tipo de usuario correcto");
+        } else {
+            GuardarUsuari(usuario, password);
             if (selected.equals("admin")) {
                 try {
-                    FileWriter filew =  null;
-                    filew = new FileWriter(getPath() + "\\recursos\\ficheros\\admins.txt",true);
+                    FileWriter filew = null;
+                    filew = new FileWriter(getPath() + "\\recursos\\ficheros\\admins.txt", true);
                     PrintWriter pw = new PrintWriter(filew);
                     pw.println(usuario);
                     filew.close();
@@ -795,8 +799,7 @@ public class GestionAdmin extends javax.swing.JFrame {
             cambiosrealizados += "Añadio el usuario ";
             if (selected.equals("Normal")) {
                 cambiosrealizados += "NORMAL ";
-            }
-            else {
+            } else {
                 cambiosrealizados += "ADMINISTRADOR ";
             }
             cambiosrealizados += "con username: ";
@@ -814,7 +817,7 @@ public class GestionAdmin extends javax.swing.JFrame {
 
     private void chmodusernameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chmodusernameMouseClicked
         // TODO add your handling code here:
-        if (chmodusername.getText().equals("username")){
+        if (chmodusername.getText().equals("username")) {
             chmodusername.setText(null);
             chmodusername.setForeground(Color.black);
         }
@@ -829,7 +832,7 @@ public class GestionAdmin extends javax.swing.JFrame {
         String usuario = chmodusername.getText();
         String new_password = chmodpassword.getText();
         String old_password = consultar_password(usuario);
-        if (!ExisteixUsuari(usuario)){
+        if (!ExisteixUsuari(usuario)) {
             error.setVisible(true);
             error.setForeground(Color.red);
             String texterror = "";
@@ -837,19 +840,16 @@ public class GestionAdmin extends javax.swing.JFrame {
             texterror += usuario;
             texterror += " no existe";
             error.setText(texterror);
-        }
-        else if (("".equals(new_password)) || ("password".equals(new_password))) {
+        } else if (("".equals(new_password)) || ("password".equals(new_password))) {
             error.setVisible(true);
             error.setForeground(Color.red);
-            error.setText("Error: Escriba un password correcto");            
-        }
-        else if (new_password.equals(old_password)) {
+            error.setText("Error: Escriba un password correcto");
+        } else if (new_password.equals(old_password)) {
             error.setVisible(true);
             error.setForeground(Color.red);
-            error.setText("Error: El password escrito es el mismo que el antiguo");            
-        }        
-        else {
-            modificar_password(usuario,old_password,new_password);
+            error.setText("Error: El password escrito es el mismo que el antiguo");
+        } else {
+            modificar_password(usuario, old_password, new_password);
             chmodusername.setForeground(Color.gray);
             chmodpassword.setForeground(Color.gray);
             chmodusername.setText("username");
@@ -870,7 +870,7 @@ public class GestionAdmin extends javax.swing.JFrame {
 
     private void chmodpasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chmodpasswordMouseClicked
         // TODO add your handling code here:
-        if (chmodpassword.getText().equals("password(new)")){
+        if (chmodpassword.getText().equals("password(new)")) {
             chmodpassword.setText(null);
             chmodpassword.setForeground(Color.black);
         }
@@ -882,7 +882,7 @@ public class GestionAdmin extends javax.swing.JFrame {
 
     private void deleteuserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteuserMouseClicked
         // TODO add your handling code here:
-        if (deleteuser.getText().equals("username")){
+        if (deleteuser.getText().equals("username")) {
             deleteuser.setText(null);
             deleteuser.setForeground(Color.black);
         }
@@ -903,20 +903,20 @@ public class GestionAdmin extends javax.swing.JFrame {
             texterror += usuario;
             texterror += " no existe";
             error.setText(texterror);
-        }
-        else {
+        } else {
             FileReader filer = null;
             try {
                 boolean es_admin = false;
                 filer = new FileReader(getPath() + "\\recursos\\ficheros\\admins.txt");
                 BufferedReader reader = new BufferedReader(filer);
-                String line =  reader.readLine();
-                while (line!=null && !es_admin) {
+                String line = reader.readLine();
+                while (line != null && !es_admin) {
                     if (line.equals(usuario)) {
-                        es_admin=true;
+                        es_admin = true;
                     }
                     line = reader.readLine();
-                }   filer.close();
+                }
+                filer.close();
                 if (es_admin) {
                     File inFile = new File(getPath() + "\\recursos\\ficheros\\admins.txt");
                     File tempFile = new File(inFile.getAbsolutePath() + ".tmp");
@@ -931,12 +931,13 @@ public class GestionAdmin extends javax.swing.JFrame {
                     }
                     inFile.delete();
                     tempFile.renameTo(inFile);
-                }   File file = new File(getPath() + "\\recursos\\ficheros\\historial_" + deleteuser.getText() + ".txt");
-                file.delete();
-                file = new File(getPath() + "\\recursos\\ficheros\\relacion_" + deleteuser.getText() + ".txt");
-                file.delete();
+                }
+
+                deleteHistorialRelacionUser();
+                
+                
                 String password = consultar_password(usuario);
-                borrarlinea(usuario,password);
+                borrarlinea(usuario, password);
                 deleteuser.setForeground(Color.gray);
                 deleteuser.setText("username");
                 String cambiosrealizados;
@@ -948,26 +949,26 @@ public class GestionAdmin extends javax.swing.JFrame {
                 error.setVisible(true);
                 error.setForeground(Color.green);
                 error.setText("Usuario eliminado correctamente");
-                if (usuario.equals(getUsuario())) {                 
+                if (usuario.equals(getUsuario())) {
                     this.setVisible(false);
                     setUsuario("");
                     setfalseAdmin();
                     Portadaylogins panel1 = new Portadaylogins();
-                    panel1.setSize(738,513);
-                    panel1.setLocation(0,0);
+                    panel1.setSize(738, 513);
+                    panel1.setLocation(0, 0);
                     panel1.setBackground(Color.WHITE);
                     panelmegadinamico.removeAll();
                     panelmegadinamico.add(panel1, BorderLayout.CENTER);
                     panelmegadinamico.revalidate();
                     panelmegadinamico.repaint();
                     Registrarse_Login p2 = new Registrarse_Login();
-                    p2.setSize(737,323);
-                    p2.setLocation(0,0);
+                    p2.setSize(737, 323);
+                    p2.setLocation(0, 0);
                     p2.setBackground(Color.WHITE);
                     paneldinamico.removeAll();
                     paneldinamico.add(p2, BorderLayout.CENTER);
                     paneldinamico.revalidate();
-        paneldinamico.repaint();
+                    paneldinamico.repaint();
                 }
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(GestionAdmin.class.getName()).log(Level.SEVERE, null, ex);
@@ -981,12 +982,12 @@ public class GestionAdmin extends javax.swing.JFrame {
                 }
             }
         }
-        
+
     }//GEN-LAST:event_eliminaruserMouseClicked
 
     private void chuserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chuserMouseClicked
         // TODO add your handling code here:
-        if (chuser.getText().equals("username")){
+        if (chuser.getText().equals("username")) {
             chuser.setText(null);
             chuser.setForeground(Color.black);
         }
@@ -1004,13 +1005,11 @@ public class GestionAdmin extends javax.swing.JFrame {
             error.setVisible(true);
             error.setForeground(Color.red);
             error.setText("Error: El username del usuario es incorrecto");
-        }
-        else if (selected.equals("Seleccione tipo")) {
+        } else if (selected.equals("Seleccione tipo")) {
             error.setVisible(true);
             error.setForeground(Color.red);
             error.setText("Error: Seleccione un tipo de usuario correcto");
-        }
-        else {
+        } else {
             FileReader filer = null;
             try {
                 filer = new FileReader(getPath() + "\\recursos\\ficheros\\admins.txt");
@@ -1019,7 +1018,7 @@ public class GestionAdmin extends javax.swing.JFrame {
                 try (BufferedReader reader = new BufferedReader(filer)) {
                     line = reader.readLine();
                     es_administrador = false;
-                    while (line!=null && !es_administrador) {
+                    while (line != null && !es_administrador) {
                         if (line.equals(username)) {
                             es_administrador = true;
                         }
@@ -1032,11 +1031,10 @@ public class GestionAdmin extends javax.swing.JFrame {
                         error.setVisible(true);
                         error.setForeground(Color.red);
                         error.setText("Error: El usuario seleccionado ya es administrador");
-                    }
-                    else {
-                        FileWriter filew =  null;
+                    } else {
+                        FileWriter filew = null;
                         try {
-                            filew = new FileWriter(getPath() + "\\recursos\\ficheros\\admins.txt",true);
+                            filew = new FileWriter(getPath() + "\\recursos\\ficheros\\admins.txt", true);
                             PrintWriter pw = new PrintWriter(filew);
                             pw.println(username);
                             filew.close();
@@ -1060,56 +1058,52 @@ public class GestionAdmin extends javax.swing.JFrame {
                             }
                         }
                     }
-                }
-                else {
-                    if (!es_administrador) {
-                        error.setVisible(true);
-                        error.setForeground(Color.red);
-                        error.setText("Error: El usuario seleccionado ya es normal");
-                    }
-                    else {
-                        BufferedReader br = null;
-                        try {
-                            File inFile = new File(getPath() + "\\recursos\\ficheros\\admins.txt");
-                            File tempFile = new File(getPath() + "\\recursos\\ficheros\\admins1.txt");
-                            br = new BufferedReader(new FileReader(getPath() + "\\recursos\\ficheros\\admins.txt"));
-                            try (PrintWriter pw = new PrintWriter(new FileWriter(tempFile))) {
-                                line = null;
-                                while ((line = br.readLine()) != null) {
-                                    if (!line.trim().equals(username)) {
-                                        pw.println(line);
-                                        pw.flush();
-                                    }
+                } else if (!es_administrador) {
+                    error.setVisible(true);
+                    error.setForeground(Color.red);
+                    error.setText("Error: El usuario seleccionado ya es normal");
+                } else {
+                    BufferedReader br = null;
+                    try {
+                        File inFile = new File(getPath() + "\\recursos\\ficheros\\admins.txt");
+                        File tempFile = new File(getPath() + "\\recursos\\ficheros\\admins1.txt");
+                        br = new BufferedReader(new FileReader(getPath() + "\\recursos\\ficheros\\admins.txt"));
+                        try (PrintWriter pw = new PrintWriter(new FileWriter(tempFile))) {
+                            line = null;
+                            while ((line = br.readLine()) != null) {
+                                if (!line.trim().equals(username)) {
+                                    pw.println(line);
+                                    pw.flush();
                                 }
                             }
+                        }
+                        br.close();
+                        inFile.delete();
+                        tempFile.renameTo(inFile);
+                        chuser.setForeground(Color.gray);
+                        chuser.setText("username");
+                        String cambiosrealizados;
+                        cambiosrealizados = Cambios.getText();
+                        cambiosrealizados += "Cambio los permisos del usuario " + username + " a " + selected + "\n";
+                        Cambios.setText(cambiosrealizados);
+                        jComboBox2.setSelectedIndex(0);
+                        error.setVisible(true);
+                        error.setForeground(Color.green);
+                        error.setText("Ha cambiado el tipo usuario con exito");
+                        if (username.equals(getUsuario())) {
+                            setfalseAdmin();
+                            this.setVisible(false);
+                            modeadmin.setVisible(false);
+                        }
+                    } catch (FileNotFoundException ex) {
+                        Logger.getLogger(GestionAdmin.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (IOException ex) {
+                        Logger.getLogger(GestionAdmin.class.getName()).log(Level.SEVERE, null, ex);
+                    } finally {
+                        try {
                             br.close();
-                            inFile.delete();
-                            tempFile.renameTo(inFile);
-                            chuser.setForeground(Color.gray);
-                            chuser.setText("username");
-                            String cambiosrealizados;
-                            cambiosrealizados = Cambios.getText();
-                            cambiosrealizados += "Cambio los permisos del usuario " + username + " a " + selected + "\n";
-                            Cambios.setText(cambiosrealizados);
-                            jComboBox2.setSelectedIndex(0);
-                            error.setVisible(true);
-                            error.setForeground(Color.green);
-                            error.setText("Ha cambiado el tipo usuario con exito");
-                            if (username.equals(getUsuario())) {
-                                setfalseAdmin();
-                                this.setVisible(false);
-                                modeadmin.setVisible(false);
-                            }
-                        } catch (FileNotFoundException ex) {
-                            Logger.getLogger(GestionAdmin.class.getName()).log(Level.SEVERE, null, ex);
                         } catch (IOException ex) {
                             Logger.getLogger(GestionAdmin.class.getName()).log(Level.SEVERE, null, ex);
-                        } finally {
-                            try {
-                                br.close();
-                            } catch (IOException ex) {
-                                Logger.getLogger(GestionAdmin.class.getName()).log(Level.SEVERE, null, ex);
-                            }
                         }
                     }
                 }
@@ -1129,7 +1123,7 @@ public class GestionAdmin extends javax.swing.JFrame {
 
     private void a1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_a1MouseClicked
         // TODO add your handling code here:
-        if (a1.getText().equals("Node name")){
+        if (a1.getText().equals("Node name")) {
             a1.setText(null);
             a1.setForeground(Color.black);
         }
@@ -1146,49 +1140,43 @@ public class GestionAdmin extends javax.swing.JFrame {
         if (tipo.equals("Seleccione el tipo")) {
             error.setVisible(true);
             error.setForeground(Color.red);
-            error.setText("Error: Seleccione un tipo de nodo correcto"); 
-        }
-        else if (existsNode(username, tipo)) {
+            error.setText("Error: Seleccione un tipo de nodo correcto");
+        } else if (existsNode(username, tipo)) {
             error.setVisible(true);
             error.setForeground(Color.red);
             error.setText("Error: El/la " + tipo + " con nombre: " + username + " ya existe");
-        }
-        else {
+        } else {
             try {
                 int numero = getNextid();
                 switch (tipo) {
-                    case "Author":
-                        {
-                            NodeAuthor naux = new NodeAuthor(numero, username);
-                            naux.setRelevancia(1.0);
-                            naux.setGrado(0);
-                            grafo.afegirNode(naux);
-                            break;
-                        }
-                    case "Conference":
-                        {
-                            NodeConference naux = new NodeConference(numero, username);
-                            naux.setRelevancia(1.0);
-                            naux.setGrado(0);
-                            grafo.afegirNode(naux);
-                            break;
-                        }
-                    case "Paper":
-                        {
-                            NodePaper naux = new NodePaper(numero, username);
-                            naux.setRelevancia(1.0);
-                            naux.setGrado(0);
-                            grafo.afegirNode(naux);
-                            break;
-                        }
-                    default:
-                        {
-                            NodeTerm naux = new NodeTerm(numero, username);
-                            naux.setRelevancia(1.0);
-                            naux.setGrado(0);
-                            grafo.afegirNode(naux);
-                            break;
-                        }
+                    case "Author": {
+                        NodeAuthor naux = new NodeAuthor(numero, username);
+                        naux.setRelevancia(1.0);
+                        naux.setGrado(0);
+                        grafo.afegirNode(naux);
+                        break;
+                    }
+                    case "Conference": {
+                        NodeConference naux = new NodeConference(numero, username);
+                        naux.setRelevancia(1.0);
+                        naux.setGrado(0);
+                        grafo.afegirNode(naux);
+                        break;
+                    }
+                    case "Paper": {
+                        NodePaper naux = new NodePaper(numero, username);
+                        naux.setRelevancia(1.0);
+                        naux.setGrado(0);
+                        grafo.afegirNode(naux);
+                        break;
+                    }
+                    default: {
+                        NodeTerm naux = new NodeTerm(numero, username);
+                        naux.setRelevancia(1.0);
+                        naux.setGrado(0);
+                        grafo.afegirNode(naux);
+                        break;
+                    }
                 }
                 Cambisnoguardats();
                 String num_id = "";
@@ -1219,7 +1207,7 @@ public class GestionAdmin extends javax.swing.JFrame {
 
     private void anpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_anpMouseClicked
         // TODO add your handling code here:
-        if (anp.getText().equals("Paper name")){
+        if (anp.getText().equals("Paper name")) {
             anp.setText(null);
             anp.setForeground(Color.black);
         }
@@ -1231,7 +1219,7 @@ public class GestionAdmin extends javax.swing.JFrame {
 
     private void an2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_an2MouseClicked
         // TODO add your handling code here:
-        if (an2.getText().equals("Node 2 name")){
+        if (an2.getText().equals("Node 2 name")) {
             an2.setText(null);
             an2.setForeground(Color.black);
         }
@@ -1258,42 +1246,36 @@ public class GestionAdmin extends javax.swing.JFrame {
                 tipo = "Conference";
                 break;
         }
-        Node n1 = grafo.getNode(paper,"Paper");
-        Node n2 = grafo.getNode(node2,tipo);
+        Node n1 = grafo.getNode(paper, "Paper");
+        Node n2 = grafo.getNode(node2, tipo);
         if (paper.equals("") || paper.equals("Paper name")) {
             error.setVisible(true);
             error.setForeground(Color.red);
             error.setText("Error: Seleccione un nombe de Paper correcto");
-        }
-        else if (selected.equals("Seleccione el tipo")) {
+        } else if (selected.equals("Seleccione el tipo")) {
             error.setVisible(true);
             error.setForeground(Color.red);
             error.setText("Error: Seleccione un tipo de relación correcto");
-        }
-        else if (node2.equals("") || node2.equals("Node 2 name")) {
+        } else if (node2.equals("") || node2.equals("Node 2 name")) {
             error.setVisible(true);
             error.setForeground(Color.red);
             error.setText("Error: Seleccione un nombe de " + selected + " correcto");
-        }
-        else if (!existsNode(paper,"Paper")) {
+        } else if (!existsNode(paper, "Paper")) {
             error.setVisible(true);
             error.setForeground(Color.red);
             error.setText("Error: El paper con nombre " + paper + " no existe");
-        }
-        else if (!existsNode(node2,tipo)) {
+        } else if (!existsNode(node2, tipo)) {
             error.setVisible(true);
             error.setForeground(Color.red);
             error.setText("Error: El/la " + tipo + " con nombre " + node2 + " no existe");
-        }
-        else {
+        } else {
             boolean error_aux = false;
-            grafo.afegirAresta(n1,n2,error_aux);
+            grafo.afegirAresta(n1, n2, error_aux);
             if (error_aux) {
                 error.setVisible(true);
                 error.setForeground(Color.red);
                 error.setText("Error: La relacion " + selected + " con Paper: " + paper + " y " + tipo + ": " + node2 + " ya existe");
-            }
-            else {
+            } else {
                 Cambisnoguardats();
                 String cambiosrealizados;
                 cambiosrealizados = Cambios.getText();
@@ -1326,12 +1308,12 @@ public class GestionAdmin extends javax.swing.JFrame {
 
     private void addpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addpasswordActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_addpasswordActionPerformed
 
     private void a3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_a3MouseClicked
         // TODO add your handling code here:
-        if (a3.getText().equals("Node name")){
+        if (a3.getText().equals("Node name")) {
             a3.setText(null);
             a3.setForeground(Color.black);
         }
@@ -1348,15 +1330,13 @@ public class GestionAdmin extends javax.swing.JFrame {
         if (tipo.equals("Seleccione el tipo")) {
             error.setVisible(true);
             error.setForeground(Color.red);
-            error.setText("Error: Seleccione un tipo de nodo correcto"); 
-            
-        }
-        else if (!existsNode(username, tipo)) {
+            error.setText("Error: Seleccione un tipo de nodo correcto");
+
+        } else if (!existsNode(username, tipo)) {
             error.setVisible(true);
             error.setForeground(Color.red);
             error.setText("Error: El/la " + tipo + " con nombre: " + username + " no existe");
-        }
-        else {
+        } else {
             grafo.eliminarNode(username, tipo);
             Cambisnoguardats();
             String cambiosrealizados;
@@ -1374,7 +1354,7 @@ public class GestionAdmin extends javax.swing.JFrame {
 
     private void dnpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dnpMouseClicked
         // TODO add your handling code here:
-        if (dnp.getText().equals("Paper name")){
+        if (dnp.getText().equals("Paper name")) {
             dnp.setText(null);
             dnp.setForeground(Color.black);
         }
@@ -1386,7 +1366,7 @@ public class GestionAdmin extends javax.swing.JFrame {
 
     private void d2nMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_d2nMouseClicked
         // TODO add your handling code here:
-        if (d2n.getText().equals("Node 2 name")){
+        if (d2n.getText().equals("Node 2 name")) {
             d2n.setText(null);
             d2n.setForeground(Color.black);
         }
@@ -1413,42 +1393,36 @@ public class GestionAdmin extends javax.swing.JFrame {
                 tipo = "Conference";
                 break;
         }
-        Node n1 = grafo.getNode(paper,"Paper");
-        Node n2 = grafo.getNode(node2,tipo);
+        Node n1 = grafo.getNode(paper, "Paper");
+        Node n2 = grafo.getNode(node2, tipo);
         if (paper.equals("") || paper.equals("Paper name")) {
             error.setVisible(true);
             error.setForeground(Color.red);
             error.setText("Error: Seleccione un nombe de Paper correcto");
-        }
-        else if (selected.equals("Seleccione el tipo")) {
+        } else if (selected.equals("Seleccione el tipo")) {
             error.setVisible(true);
             error.setForeground(Color.red);
             error.setText("Error: Seleccione un tipo de relación correcto");
-        }
-        else if (node2.equals("") || node2.equals("Node 2 name")) {
+        } else if (node2.equals("") || node2.equals("Node 2 name")) {
             error.setVisible(true);
             error.setForeground(Color.red);
             error.setText("Error: Seleccione un nombe para el segundo nodo correcto");
-        }
-        else if (!existsNode(paper,"Paper")) {
+        } else if (!existsNode(paper, "Paper")) {
             error.setVisible(true);
             error.setForeground(Color.red);
             error.setText("Error: El paper con nombre " + paper + " no existe");
-        }
-        else if (!existsNode(node2,tipo)) {
+        } else if (!existsNode(node2, tipo)) {
             error.setVisible(true);
             error.setForeground(Color.red);
             error.setText("Error: El/la " + tipo + " con nombre " + node2 + " no existe");
-        }
-        else {
+        } else {
             boolean error_aux = false;
-            grafo.eliminarAresta(n1,n2,error_aux);
+            grafo.eliminarAresta(n1, n2, error_aux);
             if (error_aux) {
                 error.setVisible(true);
                 error.setForeground(Color.red);
                 error.setText("Error: La relacion " + selected + " con Paper: " + paper + " y " + tipo + ": " + node2 + " no existe");
-            }
-            else {
+            } else {
                 Cambisnoguardats();
                 String cambiosrealizados;
                 cambiosrealizados = Cambios.getText();
@@ -1505,7 +1479,7 @@ public class GestionAdmin extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(GestionAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        
+
         //</editor-fold>
 
         /* Create and display the form */
