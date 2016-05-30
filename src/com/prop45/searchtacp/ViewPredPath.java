@@ -375,6 +375,9 @@ public class ViewPredPath extends javax.swing.JFrame {
 
     private void tablarelacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablarelacionMouseClicked
         // TODO add your handling code here:
+        variables.num_words=0;
+        variables.numero_items=0;
+        
         define.addItem("-");
         FileReader ftxt=null;
         int numaux = 1;
@@ -468,6 +471,8 @@ public class ViewPredPath extends javax.swing.JFrame {
                 Logger.getLogger(ViewPredPathuser.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        System.out.println(variables.numero_items);
+        
     }//GEN-LAST:event_tablarelacionMouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
