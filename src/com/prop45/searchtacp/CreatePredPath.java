@@ -636,6 +636,8 @@ public class CreatePredPath extends javax.swing.JPanel {
                 controlerrores.setVisible(true);
             }
         }
+        num.setForeground(new java.awt.Color(153, 153, 153));
+        num.setText("num.");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void Instructionsbutton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Instructionsbutton1ActionPerformed
@@ -701,6 +703,8 @@ public class CreatePredPath extends javax.swing.JPanel {
                 controlerrores.setVisible(true); 
             }
         }
+        num.setForeground(new java.awt.Color(153, 153, 153));
+        num.setText("num.");
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
@@ -713,10 +717,14 @@ public class CreatePredPath extends javax.swing.JPanel {
         controlerrores.setForeground(Color.green);
         controlerrores.setText("Ha eliminado las clausulas correctament");
         clausulas.setText(null);
+        num.setForeground(new java.awt.Color(153, 153, 153));
+        num.setText("num.");
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         // TODO add your handling code here:
+        num.setForeground(new java.awt.Color(153, 153, 153));
+        num.setText("num.");
         variables.primera_clausula_predpath = true;
         variables.ultim_es_paper = false;
         variables.primer_del_cami = true;
