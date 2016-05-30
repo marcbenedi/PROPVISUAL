@@ -34,6 +34,7 @@ public class ViewPredPath extends javax.swing.JFrame {
      */
     DefaultTableModel model;
     int filas = 0;
+
     public ViewPredPath() throws FileNotFoundException, IOException {
         initComponents();
         text.setEditable(false);
@@ -43,24 +44,24 @@ public class ViewPredPath extends javax.swing.JFrame {
         userlabel.setText(getUsuario());
         FileReader ftxt = new FileReader(getPath() + "\\recursos\\ficheros\\relacion.txt");
         BufferedReader readertxt = new BufferedReader(ftxt);
-        String lineatxt =  "";
-        model=(DefaultTableModel)this.tablarelacion.getModel();
+        String lineatxt = "";
+        model = (DefaultTableModel) this.tablarelacion.getModel();
         while ((lineatxt = readertxt.readLine()) != null) {
             String n = "";
-            int i=0;
-            while (lineatxt.charAt(i)!='\t') {
+            int i = 0;
+            while (lineatxt.charAt(i) != '\t') {
                 ++i;
             }
             ++i;
-            while (lineatxt.charAt(i)!='\t') {
+            while (lineatxt.charAt(i) != '\t') {
                 n += lineatxt.charAt(i);
                 ++i;
-            } 
+            }
             model.addRow(new Object[filas]);
             model.setValueAt(n, filas, 0);
             filas++;
         }
-        filas = 0;    
+        filas = 0;
     }
 
     /**
@@ -274,6 +275,12 @@ public class ViewPredPath extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void cleanNumWordItem() {
+        variables.num_words = 0;
+        variables.numero_items = 0;
+    }
+
+
     private void Instructionsbutton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Instructionsbutton2ActionPerformed
         // TODO add your handling code here:
         Instrucciones ins = new Instrucciones();
@@ -300,17 +307,18 @@ public class ViewPredPath extends javax.swing.JFrame {
         switch (define.getItemCount()) {
             case 1:
                 variables.definiendo_pred_path = false;
-                if (text.getText().equals("No te\nclausules")) clausulas.setText("");
-                else {
-                    clausulas.setText(text.getText()+"\n");
+                if (text.getText().equals("No te\nclausules")) {
+                    clausulas.setText("");
+                } else {
+                    clausulas.setText(text.getText() + "\n");
                     int inici = 0;
                     int i = 0;
                     String clausulafegir = "";
-                    while (i<clausulas.getText().length()) {
+                    while (i < clausulas.getText().length()) {
                         if (clausulas.getText().charAt(i) == '\n') {
-                            clausulafegir = clausulas.getText().substring(inici,i);
+                            clausulafegir = clausulas.getText().substring(inici, i);
                             int iaux = 0;
-                            String stringn2 ="";
+                            String stringn2 = "";
                             String stringn3 = "";
                             while (clausulafegir.charAt(iaux) != ' ') {
                                 ++iaux;
@@ -327,20 +335,20 @@ public class ViewPredPath extends javax.swing.JFrame {
                             }
                             int n2 = Integer.valueOf(stringn2);
                             int n3 = Integer.valueOf(stringn3);
-                            Norma n = new Norma(clausulas.getText().charAt(inici),n2,n3);
-                            variables.normes.add(n);  
+                            Norma n = new Norma(clausulas.getText().charAt(inici), n2, n3);
+                            variables.normes.add(n);
                             ++i;
                             inici = i;
-                        }
-                        else {
+                        } else {
                             ++i;
                         }
                     }
-                }   pathpublic.setForeground(Color.BLACK);
+                }
+                pathpublic.setForeground(Color.BLACK);
                 pathpublic.setText(selectedpredpath.getText());
                 String ultimasletras = "";
-                ultimasletras+= selectedpredpath.getText().charAt(selectedpredpath.getText().length()-7);
-                ultimasletras+= selectedpredpath.getText().charAt(selectedpredpath.getText().length()-6);  
+                ultimasletras += selectedpredpath.getText().charAt(selectedpredpath.getText().length() - 7);
+                ultimasletras += selectedpredpath.getText().charAt(selectedpredpath.getText().length() - 6);
                 System.out.print(ultimasletras);
                 switch (ultimasletras) {
                     case "rm":
@@ -375,32 +383,34 @@ public class ViewPredPath extends javax.swing.JFrame {
 
     private void tablarelacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablarelacionMouseClicked
         // TODO add your handling code here:
-        variables.num_words=0;
-        variables.numero_items=0;
-        
+
+        cleanNumWordItem();
+
         define.addItem("-");
-        FileReader ftxt=null;
+        FileReader ftxt = null;
         int numaux = 1;
         try {
-            String dato=String.valueOf(model.getValueAt(tablarelacion.getSelectedRow(),0));
+            String dato = String.valueOf(model.getValueAt(tablarelacion.getSelectedRow(), 0));
             selectedpredpath.setText(dato + "~NULL");
             text.setText(null);
             ftxt = new FileReader(getPath() + "\\recursos\\ficheros\\relacion.txt");
             BufferedReader readertxt = new BufferedReader(ftxt);
-            String lineatxt =  "";
+            String lineatxt = "";
             boolean primer = true;
             int linea = 0;
             int dat = tablarelacion.getSelectedRow();
             while ((lineatxt = readertxt.readLine()) != null) {
                 String camino = "";
                 String n = "";
-                int i=0;
-                while (lineatxt.charAt(i)!='\t') {
+                int i = 0;
+                while (lineatxt.charAt(i) != '\t') {
                     ++i;
                 }
                 ++i;
-                while (i < lineatxt.length() && lineatxt.charAt(i)!='\t') {
-                    if (linea == dat && ' ' == lineatxt.charAt(i) && ' ' == lineatxt.charAt(i+1)) ++numaux;
+                while (i < lineatxt.length() && lineatxt.charAt(i) != '\t') {
+                    if (linea == dat && ' ' == lineatxt.charAt(i) && ' ' == lineatxt.charAt(i + 1)) {
+                        ++numaux;
+                    }
                     camino += lineatxt.charAt(i);
                     ++i;
                 }
@@ -416,26 +426,24 @@ public class ViewPredPath extends javax.swing.JFrame {
                         if (primer) {
                             text.setText(n);
                             primer = false;
-                        }
-                        else {
+                        } else {
                             String auxiliar = text.getText();
                             text.setText(auxiliar + "\n" + n);
                         }
-                    }          
+                    }
                 }
                 ++linea;
             }
             linea = 0;
             String provar_una = "";
             ++variables.numero_items;
-            while (dato.length()>linea) {
+            while (dato.length() > linea) {
                 if (dato.charAt(linea) == ' ') {
-                    if (dato.charAt(linea+1) == ' ') {
+                    if (dato.charAt(linea + 1) == ' ') {
                         provar_una = "";
                         ++variables.numero_items;
                     }
-                }
-                else {
+                } else {
                     provar_una += dato.charAt(linea);
                 }
                 ++linea;
@@ -445,7 +453,7 @@ public class ViewPredPath extends javax.swing.JFrame {
             c2.addItem("-");
             c3.removeAllItems();
             c3.addItem("-");
-            for (int i=0; i<variables.numero_items ; ++i) {
+            for (int i = 0; i < variables.numero_items; ++i) {
                 c2.addItem(String.valueOf(i));
                 c3.addItem(String.valueOf(i));
             }
@@ -453,13 +461,15 @@ public class ViewPredPath extends javax.swing.JFrame {
             variables.valors = new ArrayList<>();
             define.removeAllItems();
             define.addItem("-");
-            for (int i=1 ; i<numaux; ++i) {
+            for (int i = 1; i < numaux; ++i) {
                 String aullar = Integer.toString(i);
                 define.addItem(aullar);
             }
             variables.index = 2;
             define.setSelectedIndex(1);
-            if (text.getText().equals("")) text.setText("No te\nclausules");
+            if (text.getText().equals("")) {
+                text.setText("No te\nclausules");
+            }
         } catch (FileNotFoundException ex) {
             Logger.getLogger(ViewPredPathuser.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -472,7 +482,7 @@ public class ViewPredPath extends javax.swing.JFrame {
             }
         }
         System.out.println(variables.numero_items);
-        
+
     }//GEN-LAST:event_tablarelacionMouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -485,9 +495,9 @@ public class ViewPredPath extends javax.swing.JFrame {
             String camino_aux = selectedpredpath.getText();
             int inaux = 1;
             String que_es = "";
-            for (int i=0 ; i<camino_aux.length() ; ++i) {
+            for (int i = 0; i < camino_aux.length(); ++i) {
                 if (camino_aux.charAt(i) == ' ') {
-                    if (camino_aux.charAt(i+1) == ' ') {
+                    if (camino_aux.charAt(i + 1) == ' ') {
                         ++i;
                         ++i;
                         ++inaux;
@@ -505,42 +515,46 @@ public class ViewPredPath extends javax.swing.JFrame {
                         ea.setVisible(true);
                     } catch (IOException ex) {
                         Logger.getLogger(ViewPredPath.class.getName()).log(Level.SEVERE, null, ex);
-                    }   break;
+                    }
+                    break;
                 case "Paper":
                     try {
                         escribir_paper ep = new escribir_paper();
                         ep.setVisible(true);
                     } catch (IOException ex) {
                         Logger.getLogger(ViewPredPath.class.getName()).log(Level.SEVERE, null, ex);
-                    }   break;
+                    }
+                    break;
                 case "Conference":
                     try {
                         escribir_conference ec = new escribir_conference();
                         ec.setVisible(true);
                     } catch (IOException ex) {
                         Logger.getLogger(ViewPredPath.class.getName()).log(Level.SEVERE, null, ex);
-                    }   break;
+                    }
+                    break;
                 default:
                     try {
                         escribir_term et = new escribir_term();
                         et.setVisible(true);
                     } catch (IOException ex) {
                         Logger.getLogger(ViewPredPath.class.getName()).log(Level.SEVERE, null, ex);
-                    }   break;
+                    }
+                    break;
             }
-        }        
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
      */
-
-    private void Instructionsbutton1ActionPerformed(java.awt.event.ActionEvent evt) {                                                    
+    private void Instructionsbutton1ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         Instrucciones ins = new Instrucciones();
         ins.setVisible(true);
         instruccions_guillem.setText("soc viewpredpath");
     }
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -558,7 +572,7 @@ public class ViewPredPath extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(ViewPredPath.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        
+
         //</editor-fold>
 
         /* Create and display the form */
