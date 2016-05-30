@@ -218,17 +218,36 @@ public class RelacionDataBase extends DataBase {
                         op = line.charAt(i);
                         ++i;
                         ++i;
-                        op1 = Character.getNumericValue(line.charAt(i));
+                        int j;
+                        //sirve para mirar indices más grande de 9 (es decir de dos cifras)
+                        for(j=i;j<line.length()&&line.charAt(j)!=' ' && line.charAt(j)!='\t'&&
+                                line.charAt(j)!='\n';++j){
+                            //System.out.println(line.charAt(j));
+                        }
+                        String s = line.substring(i, j);
+                        //++j;//perque l'ultim del for no s'executa
+                        i=j;
+                        op1 = Integer.parseInt(s);
+                        
+                        //op1 = Character.getNumericValue(line.charAt(i));
                         ++i;
-                        ++i;
-                        op2 = Character.getNumericValue(line.charAt(i));
+                        //++i;
+                        //sirve para mirar indices más grande de 9 (es decir de dos cifras)
+                        for(j=i;j<line.length()&&line.charAt(j)!=' ' && line.charAt(j)!='\t'&&
+                                line.charAt(j)!='\n';++j){
+                        }
+                        s = line.substring(i, j);
+                        //++j;//perque l'ultim del for no s'executa
+                        i=j;
+                        //op2 = Character.getNumericValue(line.charAt(i));
+                        op2 = Integer.parseInt(s);
                         n = new Norma(op,op1,op2);
                         r.afegirNorma(n);
                         ++i;
                         //si no hi ha cap tabulador mes vol dir que era la ultima
                         //seria millor comparar amb \n pero no ho detecta
                         if(i>=line.length())normes = false;
-                        if(normes)++i;
+                        //if(normes)++i;
                     }
                     relacions.add(r);
                 }
