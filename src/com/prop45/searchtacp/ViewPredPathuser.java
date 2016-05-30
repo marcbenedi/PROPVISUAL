@@ -17,8 +17,11 @@ import static com.prop45.searchtacp.variables.getUsuario;
 import static com.prop45.searchtacp.variables.isAdmin;
 import java.awt.Color;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -37,6 +40,7 @@ public class ViewPredPathuser extends javax.swing.JFrame {
     DefaultTableModel model1;
     DefaultTableModel model2;
     int filas = 0;
+
     public ViewPredPathuser() throws FileNotFoundException, IOException {
         initComponents();
         if (!isAdmin()) {
@@ -47,50 +51,52 @@ public class ViewPredPathuser extends javax.swing.JFrame {
         this.getContentPane().setBackground(Color.BLACK);
         FileReader ftxt = new FileReader(getPath() + "\\recursos\\ficheros\\relacion.txt");
         BufferedReader readertxt = new BufferedReader(ftxt);
-        String lineatxt =  "";
-        model1=(DefaultTableModel)this.tablarelacion.getModel();
+        String lineatxt = "";
+        model1 = (DefaultTableModel) this.tablarelacion.getModel();
         while ((lineatxt = readertxt.readLine()) != null) {
             String n = "";
-            int i=0;
-            while (lineatxt.charAt(i)!='\t') {
+            int i = 0;
+            while (lineatxt.charAt(i) != '\t') {
                 ++i;
             }
             ++i;
-            while (lineatxt.charAt(i)!='\t') {
+            while (lineatxt.charAt(i) != '\t') {
                 n += lineatxt.charAt(i);
                 ++i;
-            } 
+            }
             model1.addRow(new Object[filas]);
             model1.setValueAt(n, filas, 0);
             filas++;
         }
-        filas = 0; 
+        filas = 0;
         ftxt = new FileReader(getPath() + "\\recursos\\ficheros\\relacion_" + getUsuario() + ".txt");
         readertxt = new BufferedReader(ftxt);
-        lineatxt =  "";
-        model2=(DefaultTableModel)this.tablarelacion1.getModel();
+        lineatxt = "";
+        model2 = (DefaultTableModel) this.tablarelacion1.getModel();
         while ((lineatxt = readertxt.readLine()) != null) {
             String n = "";
-            int i=0;
-            while (lineatxt.charAt(i)!='\t') {
+            int i = 0;
+            while (lineatxt.charAt(i) != '\t') {
                 ++i;
             }
             ++i;
-            while (lineatxt.charAt(i)!='\t') {
+            while (lineatxt.charAt(i) != '\t') {
                 n += lineatxt.charAt(i);
                 ++i;
-            } 
+            }
             model2.addRow(new Object[filas]);
             model2.setValueAt(n, filas, 0);
             filas++;
         }
     }
-    private void Instructionsbutton1ActionPerformed(java.awt.event.ActionEvent evt) {                                                    
+
+    private void Instructionsbutton1ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         Instrucciones ins = new Instrucciones();
         ins.setVisible(true);
         instruccions_guillem.setText("soc viewpredpathuser");
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -152,7 +158,7 @@ public class ViewPredPathuser extends javax.swing.JFrame {
         selectedpredpathuser.setText("Seleccione un path predeterminado");
 
         continuepredpath.setText("Continuar");
-        continuepredpath.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        continuepredpath.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         continuepredpath.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 continuepredpathActionPerformed(evt);
@@ -161,7 +167,7 @@ public class ViewPredPathuser extends javax.swing.JFrame {
 
         helppredpath.setMnemonic('H');
         helppredpath.setText("Help");
-        helppredpath.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        helppredpath.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         helppredpath.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 helppredpathActionPerformed(evt);
@@ -170,7 +176,7 @@ public class ViewPredPathuser extends javax.swing.JFrame {
 
         Instructionsbutton3.setMnemonic('H');
         Instructionsbutton3.setText("Cancelar");
-        Instructionsbutton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Instructionsbutton3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Instructionsbutton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Instructionsbutton3ActionPerformed(evt);
@@ -248,6 +254,11 @@ public class ViewPredPathuser extends javax.swing.JFrame {
         });
 
         jButton3.setText("Borrar user predpath seleccionado");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Borrar predpath seleccionado");
 
@@ -383,17 +394,19 @@ public class ViewPredPathuser extends javax.swing.JFrame {
         switch (defineuser.getItemCount()) {
             case 1:
                 variables.definiendo_pred_path = false;
-                if (text.getText().equals("No te\nclausules")) clausulasuser.setText("");
-                else {clausulasuser.setText(text.getText()+"\n");
+                if (text.getText().equals("No te\nclausules")) {
+                    clausulasuser.setText("");
+                } else {
+                    clausulasuser.setText(text.getText() + "\n");
                     variables.primera_clausula_predpath = false;
                     int inici = 0;
                     int i = 0;
                     String clausulafegir = "";
-                    while (i<clausulasuser.getText().length()) {
+                    while (i < clausulasuser.getText().length()) {
                         if (clausulasuser.getText().charAt(i) == '\n') {
-                            clausulafegir = clausulasuser.getText().substring(inici,i);
+                            clausulafegir = clausulasuser.getText().substring(inici, i);
                             int iaux = 0;
-                            String stringn2 ="";
+                            String stringn2 = "";
                             String stringn3 = "";
                             while (clausulafegir.charAt(iaux) != ' ') {
                                 ++iaux;
@@ -410,19 +423,20 @@ public class ViewPredPathuser extends javax.swing.JFrame {
                             }
                             int n2 = Integer.valueOf(stringn2);
                             int n3 = Integer.valueOf(stringn3);
-                            Norma n = new Norma(clausulasuser.getText().charAt(inici),n2,n3);
-                            variables.normes.add(n);  
+                            Norma n = new Norma(clausulasuser.getText().charAt(inici), n2, n3);
+                            variables.normes.add(n);
                             ++i;
                             inici = i;
-                        }
-                        else {
+                        } else {
                             ++i;
                         }
                     }
-                }   pathuser.setForeground(Color.BLACK);
-                pathuser.setText(selectedpredpathuser.getText());String ultimasletras = "";
-                ultimasletras+= selectedpredpathuser.getText().charAt(selectedpredpathuser.getText().length()-7);
-                ultimasletras+= selectedpredpathuser.getText().charAt(selectedpredpathuser.getText().length()-6);  
+                }
+                pathuser.setForeground(Color.BLACK);
+                pathuser.setText(selectedpredpathuser.getText());
+                String ultimasletras = "";
+                ultimasletras += selectedpredpathuser.getText().charAt(selectedpredpathuser.getText().length() - 7);
+                ultimasletras += selectedpredpathuser.getText().charAt(selectedpredpathuser.getText().length() - 6);
                 System.out.print(ultimasletras);
                 switch (ultimasletras) {
                     case "rm":
@@ -458,28 +472,30 @@ public class ViewPredPathuser extends javax.swing.JFrame {
     private void tablarelacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablarelacionMouseClicked
         // TODO add your handling code here:
         defineuser.addItem("-");
-        FileReader ftxt=null;
+        FileReader ftxt = null;
         int numaux = 1;
         try {
-            String dato=String.valueOf(model1.getValueAt(tablarelacion.getSelectedRow(),0));
+            String dato = String.valueOf(model1.getValueAt(tablarelacion.getSelectedRow(), 0));
             selectedpredpathuser.setText(dato + "~NULL");
             text.setText(null);
             ftxt = new FileReader(getPath() + "\\recursos\\ficheros\\relacion.txt");
             BufferedReader readertxt = new BufferedReader(ftxt);
-            String lineatxt =  "";
+            String lineatxt = "";
             boolean primer = true;
             int linea = 0;
             int dat = tablarelacion.getSelectedRow();
             while ((lineatxt = readertxt.readLine()) != null) {
                 String camino = "";
                 String n = "";
-                int i=0;
-                while (lineatxt.charAt(i)!='\t') {
+                int i = 0;
+                while (lineatxt.charAt(i) != '\t') {
                     ++i;
                 }
                 ++i;
-                while (i < lineatxt.length() && lineatxt.charAt(i)!='\t') {
-                    if (linea == dat && ' ' == lineatxt.charAt(i) && ' ' == lineatxt.charAt(i+1)) ++numaux;
+                while (i < lineatxt.length() && lineatxt.charAt(i) != '\t') {
+                    if (linea == dat && ' ' == lineatxt.charAt(i) && ' ' == lineatxt.charAt(i + 1)) {
+                        ++numaux;
+                    }
                     camino += lineatxt.charAt(i);
                     ++i;
                 }
@@ -495,12 +511,11 @@ public class ViewPredPathuser extends javax.swing.JFrame {
                         if (primer) {
                             text.setText(n);
                             primer = false;
-                        }
-                        else {
+                        } else {
                             String auxiliar = text.getText();
                             text.setText(auxiliar + "\n" + n);
                         }
-                    }          
+                    }
                 }
                 ++linea;
             }
@@ -508,14 +523,13 @@ public class ViewPredPathuser extends javax.swing.JFrame {
             String provar_una = "";
             variables.numero_items = 0;
             ++variables.numero_items;
-            while (dato.length()>linea) {
+            while (dato.length() > linea) {
                 if (dato.charAt(linea) == ' ') {
-                    if (dato.charAt(linea+1) == ' ') {
+                    if (dato.charAt(linea + 1) == ' ') {
                         provar_una = "";
                         ++variables.numero_items;
                     }
-                }
-                else {
+                } else {
                     provar_una += dato.charAt(linea);
                 }
                 ++linea;
@@ -525,7 +539,7 @@ public class ViewPredPathuser extends javax.swing.JFrame {
             c2user.addItem("-");
             c3user.removeAllItems();
             c3user.addItem("-");
-            for (int i=0; i<variables.numero_items ; ++i) {
+            for (int i = 0; i < variables.numero_items; ++i) {
                 c2user.addItem(String.valueOf(i));
                 c3user.addItem(String.valueOf(i));
             }
@@ -533,13 +547,15 @@ public class ViewPredPathuser extends javax.swing.JFrame {
             variables.valors = new ArrayList<>();
             defineuser.removeAllItems();
             defineuser.addItem("-");
-            for (int i=1 ; i<numaux; ++i) {
+            for (int i = 1; i < numaux; ++i) {
                 String aullar = Integer.toString(i);
                 defineuser.addItem(aullar);
             }
             variables.index = 2;
             defineuser.setSelectedIndex(1);
-            if (text.getText().equals("")) text.setText("No te\nclausules");
+            if (text.getText().equals("")) {
+                text.setText("No te\nclausules");
+            }
         } catch (FileNotFoundException ex) {
             Logger.getLogger(ViewPredPathuser.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -556,28 +572,30 @@ public class ViewPredPathuser extends javax.swing.JFrame {
     private void tablarelacion1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablarelacion1MouseClicked
         // TODO add your handling code here:
         defineuser.addItem("-");
-        FileReader ftxt=null;
+        FileReader ftxt = null;
         int numaux = 1;
         try {
-            String dato=String.valueOf(model2.getValueAt(tablarelacion1.getSelectedRow(),0));
+            String dato = String.valueOf(model2.getValueAt(tablarelacion1.getSelectedRow(), 0));
             selectedpredpathuser.setText(dato + "~NULL");
             text.setText(null);
-            ftxt = new FileReader(getPath() + "\\recursos\\ficheros\\relacion_"+ getUsuario() +".txt");
+            ftxt = new FileReader(getPath() + "\\recursos\\ficheros\\relacion_" + getUsuario() + ".txt");
             BufferedReader readertxt = new BufferedReader(ftxt);
-            String lineatxt =  "";
+            String lineatxt = "";
             boolean primer = true;
             int linea = 0;
             int dat = tablarelacion1.getSelectedRow();
             while ((lineatxt = readertxt.readLine()) != null) {
                 String camino = "";
                 String n = "";
-                int i=0;
-                while (lineatxt.charAt(i)!='\t') {
+                int i = 0;
+                while (lineatxt.charAt(i) != '\t') {
                     ++i;
                 }
                 ++i;
-                while (i < lineatxt.length() && lineatxt.charAt(i)!='\t') {
-                    if (linea == dat && ' ' == lineatxt.charAt(i) && ' ' == lineatxt.charAt(i+1)) ++numaux;
+                while (i < lineatxt.length() && lineatxt.charAt(i) != '\t') {
+                    if (linea == dat && ' ' == lineatxt.charAt(i) && ' ' == lineatxt.charAt(i + 1)) {
+                        ++numaux;
+                    }
                     camino += lineatxt.charAt(i);
                     ++i;
                 }
@@ -593,12 +611,11 @@ public class ViewPredPathuser extends javax.swing.JFrame {
                         if (primer) {
                             text.setText(n);
                             primer = false;
-                        }
-                        else {
+                        } else {
                             String auxiliar = text.getText();
                             text.setText(auxiliar + "\n" + n);
                         }
-                    }          
+                    }
                 }
                 ++linea;
             }
@@ -606,14 +623,13 @@ public class ViewPredPathuser extends javax.swing.JFrame {
             String provar_una = "";
             variables.numero_items = 0;
             ++variables.numero_items;
-            while (dato.length()>linea) {
+            while (dato.length() > linea) {
                 if (dato.charAt(linea) == ' ') {
-                    if (dato.charAt(linea+1) == ' ') {
+                    if (dato.charAt(linea + 1) == ' ') {
                         provar_una = "";
                         ++variables.numero_items;
                     }
-                }
-                else {
+                } else {
                     provar_una += dato.charAt(linea);
                 }
                 ++linea;
@@ -623,7 +639,7 @@ public class ViewPredPathuser extends javax.swing.JFrame {
             c2user.addItem("-");
             c3user.removeAllItems();
             c3user.addItem("-");
-            for (int i=0; i<variables.numero_items ; ++i) {
+            for (int i = 0; i < variables.numero_items; ++i) {
                 c2user.addItem(String.valueOf(i));
                 c3user.addItem(String.valueOf(i));
             }
@@ -631,13 +647,15 @@ public class ViewPredPathuser extends javax.swing.JFrame {
             variables.valors = new ArrayList<>();
             defineuser.removeAllItems();
             defineuser.addItem("-");
-            for (int i=1 ; i<numaux; ++i) {
+            for (int i = 1; i < numaux; ++i) {
                 String aullar = Integer.toString(i);
                 defineuser.addItem(aullar);
             }
             variables.index = 2;
             defineuser.setSelectedIndex(1);
-            if (text.getText().equals("")) text.setText("No te\nclausules");
+            if (text.getText().equals("")) {
+                text.setText("No te\nclausules");
+            }
         } catch (FileNotFoundException ex) {
             Logger.getLogger(ViewPredPathuser.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -661,9 +679,9 @@ public class ViewPredPathuser extends javax.swing.JFrame {
             String camino_aux = selectedpredpathuser.getText();
             int inaux = 1;
             String que_es = "";
-            for (int i=0 ; i<camino_aux.length() ; ++i) {
+            for (int i = 0; i < camino_aux.length(); ++i) {
                 if (camino_aux.charAt(i) == ' ') {
-                    if (camino_aux.charAt(i+1) == ' ') {
+                    if (camino_aux.charAt(i + 1) == ' ') {
                         ++i;
                         ++i;
                         ++inaux;
@@ -681,31 +699,135 @@ public class ViewPredPathuser extends javax.swing.JFrame {
                         ea.setVisible(true);
                     } catch (IOException ex) {
                         Logger.getLogger(ViewPredPath.class.getName()).log(Level.SEVERE, null, ex);
-                    }   break;
+                    }
+                    break;
                 case "Paper":
                     try {
                         escribir_paper ep = new escribir_paper();
                         ep.setVisible(true);
                     } catch (IOException ex) {
                         Logger.getLogger(ViewPredPath.class.getName()).log(Level.SEVERE, null, ex);
-                    }   break;
+                    }
+                    break;
                 case "Conference":
                     try {
                         escribir_conference ec = new escribir_conference();
                         ec.setVisible(true);
                     } catch (IOException ex) {
                         Logger.getLogger(ViewPredPath.class.getName()).log(Level.SEVERE, null, ex);
-                    }   break;
+                    }
+                    break;
                 default:
                     try {
                         escribir_term et = new escribir_term();
                         et.setVisible(true);
                     } catch (IOException ex) {
                         Logger.getLogger(ViewPredPath.class.getName()).log(Level.SEVERE, null, ex);
-                    }   break;
+                    }
+                    break;
             }
-        }        
+        }
     }//GEN-LAST:event_definanodopredpathActionPerformed
+
+    private boolean isMathc(String qry, String qry_read) {
+        boolean flag = false;
+
+        int i = 0;
+
+        while (qry_read.charAt(i) != '\t') {
+            i++;
+        }
+        i++;
+        if (qry.equals(qry_read.substring(i, qry_read.length() - 1))) {
+            flag = true;
+        }
+        return flag;
+    }
+    private String deleteName(String val){
+        String q="";
+        
+        int i=0;
+        while(val.charAt(i)!='\t'){
+            
+            i++;
+        }
+        i++;
+        q=val.substring(i,val.length());
+        
+        return q;
+ }
+    
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        final char CR = (char) 0x0D;
+        final char LF = (char) 0x0A;
+
+        FileReader fr = null;
+        FileWriter fw = null;
+        try {
+            String a = tablarelacion1.getModel().getValueAt(tablarelacion1.getSelectedRow(), tablarelacion1.getSelectedColumn()).toString();
+
+            fr = new FileReader(getPath() + "\\recursos\\ficheros\\relacion_" + variables.getUsuario() + ".txt");
+
+            BufferedReader br = new BufferedReader(fr);
+
+            ArrayList<String> tmp = new ArrayList<>();
+
+            String line = br.readLine();
+
+            int i = 0;
+
+            while (line != null) {
+                if (!isMathc(a, line)) {
+                    tmp.add(line);
+                }
+                line = br.readLine();
+                i++;
+
+            }
+
+          
+
+            fr.close();
+            br.close();
+
+            fw = new FileWriter(getPath() + "\\recursos\\ficheros\\relacion_" + variables.getUsuario() + ".txt");
+            BufferedWriter bw = new BufferedWriter(fw);
+
+            for (int j = 0; j < tmp.size(); j++) {
+                bw.write(tmp.get(j) + CR + LF);
+            }
+
+            
+
+
+            DefaultTableModel model3 = new DefaultTableModel(); 
+            model3.addColumn("Predefined User Path");
+            tablarelacion1.setModel(model3);
+
+            // Append a row 
+            if(tmp.size()>0){
+            for (int j = 0; j < tmp.size(); j++) {
+                model3.addRow(new Object[]{deleteName(tmp.get(j).toString())});
+            }
+
+            //filas--;
+            }
+           // fw.close();
+            bw.close();
+
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(ViewPredPathuser.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(ViewPredPathuser.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                fr.close();
+            } catch (IOException ex) {
+                Logger.getLogger(ViewPredPathuser.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -727,7 +849,7 @@ public class ViewPredPathuser extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(ViewPredPathuser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        
+
         //</editor-fold>
 
         /* Create and display the form */

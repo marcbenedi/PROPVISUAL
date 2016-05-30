@@ -1,5 +1,0 @@
-co-autoria	Author  Paper  Author	D 0 2
-persento	Author  Paper  Conference	
-masDe5EnComun	Author  Paper  Author	D 0 2	m 1 5
-co-conferenciantes	Author  Paper  Conference  Paper  Author	D 0 4
-co-termatica	Author  Paper  Term  Paper  Author	D 0 4
