@@ -797,7 +797,7 @@ public class GestionAdmin extends javax.swing.JFrame {
             String cambiosrealizados;
             cambiosrealizados = Cambios.getText();
             cambiosrealizados += "Añadio el usuario ";
-            if (selected.equals("Normal")) {
+            if (selected.equals("normal")) {
                 cambiosrealizados += "NORMAL ";
             } else {
                 cambiosrealizados += "ADMINISTRADOR ";
