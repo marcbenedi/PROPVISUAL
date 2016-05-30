@@ -797,7 +797,7 @@ public class GestionAdmin extends javax.swing.JFrame {
             String cambiosrealizados;
             cambiosrealizados = Cambios.getText();
             cambiosrealizados += "Añadio el usuario ";
-            if (selected.equals("Normal")) {
+            if (selected.equals("normal")) {
                 cambiosrealizados += "NORMAL ";
             } else {
                 cambiosrealizados += "ADMINISTRADOR ";
@@ -1000,6 +1000,12 @@ public class GestionAdmin extends javax.swing.JFrame {
     private void chmodMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chmodMouseClicked
         // TODO add your handling code here:
         String username = chuser.getText();
+        if(!ExisteixUsuari(username)){
+            error.setVisible(true);
+            error.setForeground(Color.red);
+            error.setText("Error: El username no existeix");
+            return;
+        }
         String selected = (String) jComboBox2.getSelectedItem();
         if (username.equals("") || username.equals("username")) {
             error.setVisible(true);

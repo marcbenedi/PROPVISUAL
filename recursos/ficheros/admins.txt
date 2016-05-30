@@ -1,4 +1,7 @@
 miquel
+<<<<<<< HEAD
 admin
 marc
 a
+=======
+>>>>>>> 1bad451c4e1bf4995379d861e18d0bc9620066ad

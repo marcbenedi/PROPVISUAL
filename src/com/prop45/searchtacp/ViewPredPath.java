@@ -487,6 +487,14 @@ public class ViewPredPath extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        if(define.getItemCount()==0){
+            //Comprova que primer s'ha seleccionat un predefined path, si no
+            //com que el define esta vuit peta
+            controlerrores.setText("Seleccione un camino predeterminado");
+            controlerrores.setForeground(Color.red);
+            return;
+        }
+        controlerrores.setVisible(false);
         variables.definiendo_pred_path = true;
         if (!define.getSelectedItem().equals("-")) {
             String au = String.valueOf(define.getSelectedItem());

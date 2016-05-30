@@ -395,6 +395,8 @@ public class Busquedauser extends javax.swing.JPanel {
     }//GEN-LAST:event_Instructionsbutton1ActionPerformed
 
     private void pathbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pathbuttonActionPerformed
+        num.setForeground(new java.awt.Color(153, 153, 153));
+        num.setText("num.");
         try {
             // TODO add your handling code here:
             ViewPredPathuser vppu = new ViewPredPathuser();
@@ -492,6 +494,8 @@ public class Busquedauser extends javax.swing.JPanel {
         variables.normes.clear();
         variables.primera_clausula_predpath =  true;
         clausulasuser.setText(null);
+        num.setForeground(new java.awt.Color(153, 153, 153));
+        num.setText("num.");
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -557,6 +561,8 @@ public class Busquedauser extends javax.swing.JPanel {
                 controlerrores1.setVisible(true); 
             }
         }
+        num.setForeground(new java.awt.Color(153, 153, 153));
+        num.setText("num.");
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -567,7 +573,8 @@ public class Busquedauser extends javax.swing.JPanel {
         // TODO add your handling code here:
         variables.valors.clear();
         variables.tags.clear();
-        
+        num.setForeground(new java.awt.Color(153, 153, 153));
+        num.setText("num.");
         
         variables.ultim_es_paper = false;
         variables.primer_del_cami = true;

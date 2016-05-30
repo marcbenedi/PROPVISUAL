@@ -11,6 +11,8 @@ import static com.prop45.searchtacp.Busquedauser.c3user;
 import static com.prop45.searchtacp.Busquedauser.clausulasuser;
 import static com.prop45.searchtacp.Busquedauser.pathuser;
 import static com.prop45.searchtacp.Instrucciones.instruccions_guillem;
+import static com.prop45.searchtacp.ViewPredPath.controlerrores;
+import static com.prop45.searchtacp.ViewPredPath.define;
 import static com.prop45.searchtacp.variables.getInst_Escoger_Path_Predefinido;
 import static com.prop45.searchtacp.variables.getPath;
 import static com.prop45.searchtacp.variables.getUsuario;
@@ -671,6 +673,14 @@ public class ViewPredPathuser extends javax.swing.JFrame {
 
     private void definanodopredpathActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_definanodopredpathActionPerformed
         // TODO add your handling code here:
+        if(defineuser.getItemCount()==0){
+            //Comprova que primer s'ha seleccionat un predefined path, si no
+            //com que el define esta vuit peta
+            controlerrores1.setText("Seleccione un camino predeterminado");
+            controlerrores1.setForeground(Color.red);
+            return;
+        }
+        controlerrores1.setVisible(false);
         variables.definiendo_pred_path = true;
         if (!defineuser.getSelectedItem().equals("-")) {
             String au = String.valueOf(defineuser.getSelectedItem());
