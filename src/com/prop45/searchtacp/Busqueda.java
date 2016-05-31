@@ -6,6 +6,9 @@
 package com.prop45.searchtacp;
 
 import com.prop45.Consulta.Consulta;
+import com.prop45.Paths.Norma;
+import static com.prop45.searchtacp.Busquedauser.c2user;
+import static com.prop45.searchtacp.Busquedauser.c3user;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Image;
@@ -372,6 +375,24 @@ public class Busqueda extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void pathbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pathbuttonActionPerformed
+        variables.normes.clear();
+        variables.primera_clausula_predpath = true;
+        clausulas.setText(null);
+        num.setForeground(new java.awt.Color(153, 153, 153));
+        num.setText("num.");
+        variables.valors.clear();
+        variables.tags.clear();
+        num.setForeground(new java.awt.Color(153, 153, 153));
+        num.setText("num.");
+        variables.ultim_es_paper = false;
+        variables.primer_del_cami = true;
+        variables.num_words = 0;
+        c2.removeAllItems();
+        c2.addItem("-");
+        c3.removeAllItems();
+        c3.addItem("-");
+        pathpublic.setText("Escribe tu path");
+        pathpublic.setForeground(Color.gray);
         num.setForeground(new java.awt.Color(153, 153, 153));
         num.setText("num.");
         try {
@@ -565,6 +586,13 @@ public class Busqueda extends javax.swing.JPanel {
                 else {
                     clausulas.setText(clausulas.getText() + "\n" + c1.getSelectedItem() + " " + c2.getSelectedItem() + " " + c3.getSelectedItem());
                 }
+                String n1 = String.valueOf(c1.getSelectedItem());
+                String n2string = String.valueOf(c2.getSelectedItem());
+                String n3string = String.valueOf(c3.getSelectedItem());
+                int n2 = Integer.valueOf(n2string);
+                int n3 = Integer.valueOf(n3string);
+                Norma n = new Norma(n1.charAt(0),n2,n3);
+                variables.normes.add(n);
                 c1.setSelectedIndex(0);
                 c2.setSelectedIndex(0);
                 c3.setSelectedIndex(0);
@@ -592,6 +620,13 @@ public class Busqueda extends javax.swing.JPanel {
                 else {
                     clausulas.setText(clausulas.getText() + "\n" + c1.getSelectedItem() + " " + c2.getSelectedItem() + " " + numero_comp);
                 }
+                String n1 = String.valueOf(c1.getSelectedItem());
+                String n2string = String.valueOf(c2.getSelectedItem());
+                String n3string = num.getText();
+                int n2 = Integer.valueOf(n2string);
+                int n3 = Integer.valueOf(n3string);
+                Norma n = new Norma(n1.charAt(0),n2,n3);
+                variables.normes.add(n);
                 c1.setSelectedIndex(0);
                 c2.setSelectedIndex(0);
                 controlerrores.setText("Añadió la clausula correctamente");

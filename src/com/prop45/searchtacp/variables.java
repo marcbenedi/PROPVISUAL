@@ -117,6 +117,9 @@ public class variables {
     }   
     public static void setUser() {
         user = true;
+    }   
+    public static void setfalseUser() {
+        user = false;
     }
     public static boolean isUser() {
         return user;

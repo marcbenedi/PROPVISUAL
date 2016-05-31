@@ -49,12 +49,12 @@ public class CreatePredPath extends javax.swing.JPanel {
         controlerrores.setVisible(false);
         pathpred.setEditable(false);
         userlabel.setText(getUsuario());
-        String textoaux ="--Universal--\n";
         this.setBackground(Color.white);
         text.setEditable(false);
         ImageIcon Logo_image = new ImageIcon(getPath() + "\\recursos\\Images\\descarga.png");
         Icon icono_logo = new ImageIcon(Logo_image.getImage().getScaledInstance(163,116, Image.SCALE_DEFAULT));
         Logo.setIcon(icono_logo);
+        String textoaux ="--Universal--\n";
         FileReader file = new FileReader(getPath() + "\\recursos\\ficheros\\relacion.txt");
         BufferedReader reader = new BufferedReader(file);
         String line =  reader.readLine();
@@ -121,6 +121,7 @@ public class CreatePredPath extends javax.swing.JPanel {
         triaonguardes = new javax.swing.JComboBox<>();
         controlerrores = new javax.swing.JLabel();
         num = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
 
         userlabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         userlabel.setText("username");
@@ -304,6 +305,13 @@ public class CreatePredPath extends javax.swing.JPanel {
             }
         });
 
+        jButton2.setText("Mas detalles");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -347,7 +355,8 @@ public class CreatePredPath extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton2)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -389,40 +398,41 @@ public class CreatePredPath extends javax.swing.JPanel {
                     .addComponent(pathpred, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(triaonguardes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(3, 3, 3)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Paperbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(term, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Authorbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Confbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel2)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1)
-                            .addComponent(triaonguardes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(3, 3, 3)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Paperbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(term, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(Authorbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(Confbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel2)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(19, 19, 19)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jButton5)
-                                    .addComponent(c1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(c2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(c3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(num, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jScrollPane3)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(controlerrores, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jButton5)
+                            .addComponent(c1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(c2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(c3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(num, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane3)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton6)
+                    .addComponent(jButton2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(controlerrores, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -549,29 +559,49 @@ public class CreatePredPath extends javax.swing.JPanel {
         // TODO add your handling code here:
         if (!nombrepredpath.getText().equals("Escribe el nombre del predpath") && !nombrepredpath.getText().equals("")
                 && !pathpred.getText().equals("Escribe tu path") && !pathpred.getText().equals("")) {
-            String quepongo = nombrepredpath.getText() + "\t" + pathpred.getText() + "\t" + clausulas.getText().replace('\n', '\t');
-            if (isAdmin()) {
-                String dondeguardo = String.valueOf(triaonguardes.getSelectedItem());
-                if (dondeguardo.equals("Admin")) {
+            FileReader file = null;
+            try {
+                String quepongo = nombrepredpath.getText() + "\t" + pathpred.getText() + "\t" + clausulas.getText().replace('\n', '\t');                
+                if (isAdmin()) {
+                    String dondeguardo = String.valueOf(triaonguardes.getSelectedItem());
+                    if (dondeguardo.equals("Admin")) {
                         FileWriter fichero = null;
                         PrintWriter pw = null;
-                    try {
-                        fichero = new FileWriter(getPath() + "\\recursos\\ficheros\\relacion.txt",true);
-                        pw = new PrintWriter(fichero);
-                        pw.println(quepongo);
-                    } catch (Exception e) {}
-                    finally {
                         try {
-                        // Nuevamente aprovechamos el finally para 
-                        // asegurarnos que se cierra el fichero.
-                        if (null != fichero)
-                           fichero.close();
-                        } catch (Exception e2) {}
-                     }
-                }     
+                            fichero = new FileWriter(getPath() + "\\recursos\\ficheros\\relacion.txt",true);
+                            pw = new PrintWriter(fichero);
+                            pw.println(quepongo);
+                        } catch (Exception e) {}
+                        finally {
+                            try {
+                                // Nuevamente aprovechamos el finally para
+                                // asegurarnos que se cierra el fichero.
+                                if (null != fichero)
+                                    fichero.close();
+                            } catch (Exception e2) {}
+                        }
+                    }
+                    else {
+                        FileWriter fichero = null;
+                        PrintWriter pw = null;
+                        try {
+                            fichero = new FileWriter(getPath() + "\\recursos\\ficheros\\relacion_"+getUsuario()+".txt",true);
+                            pw = new PrintWriter(fichero);
+                            pw.println(quepongo);
+                        } catch (Exception e) {}
+                        finally {
+                            try {
+                                // Nuevamente aprovechamos el finally para
+                                // asegurarnos que se cierra el fichero.
+                                if (null != fichero)
+                                    fichero.close();
+                            } catch (Exception e2) {}
+                        }
+                    }
+                }
                 else {
                     FileWriter fichero = null;
-                        PrintWriter pw = null;
+                    PrintWriter pw = null;
                     try {
                         fichero = new FileWriter(getPath() + "\\recursos\\ficheros\\relacion_"+getUsuario()+".txt",true);
                         pw = new PrintWriter(fichero);
@@ -579,50 +609,67 @@ public class CreatePredPath extends javax.swing.JPanel {
                     } catch (Exception e) {}
                     finally {
                         try {
-                        // Nuevamente aprovechamos el finally para 
-                        // asegurarnos que se cierra el fichero.
-                        if (null != fichero)
-                           fichero.close();
+                            // Nuevamente aprovechamos el finally para
+                            // asegurarnos que se cierra el fichero.
+                            if (null != fichero)
+                                fichero.close();
                         } catch (Exception e2) {}
-                     }
+                    }
+                }   variables.primera_clausula_predpath = true;
+                clausulas.setText(null);
+                c2.removeAllItems();
+                c2.addItem("-");
+                c3.removeAllItems();
+                c3.addItem("-");
+                nombrepredpath.setText("Escribe el nombre del predpath");
+                nombrepredpath.setForeground(Color.gray);
+                variables.ultim_es_paper = false;
+                variables.primer_del_cami = true;
+                pathpred.setText("Escribe tu path");
+                pathpred.setForeground(Color.gray);
+                controlerrores.setText("Añadió el predpath correctamente");
+                controlerrores.setForeground(Color.green);
+                controlerrores.setVisible(true);
+                String textoaux ="--Universal--\n";
+                file = new FileReader(getPath() + "\\recursos\\ficheros\\relacion.txt");
+                BufferedReader reader = new BufferedReader(file);
+                String line =  reader.readLine();
+                String frase;
+                while (line != null) {
+                    int i = 0;
+                    while (line.charAt(i)!='\t') {
+                        textoaux += line.charAt(i);
+                        ++i;
+                    }
+                    textoaux += "\n";
+                    line = reader.readLine();
+                }   file = new FileReader(getPath() + "\\recursos\\ficheros\\relacion_" + getUsuario() + ".txt");
+                reader = new BufferedReader(file);
+                line =  reader.readLine();
+                textoaux +="--Mios--\n";
+                while (line != null) {
+                    int i = 0;
+                    while (line.charAt(i)!='\t') {
+                        textoaux += line.charAt(i);
+                        ++i;
+                    }
+                    textoaux += "\n";
+                    line = reader.readLine();
+                }   text.setText(textoaux);
+                //Com que hem fet submit es creara un cami vuit per tan
+                //nombre words serà 0
+                variables.num_words = 0;
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(CreatePredPath.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(CreatePredPath.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+                try {
+                    file.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(CreatePredPath.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            else {
-                FileWriter fichero = null;
-                        PrintWriter pw = null;
-                    try {
-                        fichero = new FileWriter(getPath() + "\\recursos\\ficheros\\relacion_"+getUsuario()+".txt",true);
-                        pw = new PrintWriter(fichero);
-                        pw.println(quepongo);
-                    } catch (Exception e) {}
-                    finally {
-                        try {
-                        // Nuevamente aprovechamos el finally para 
-                        // asegurarnos que se cierra el fichero.
-                        if (null != fichero)
-                           fichero.close();
-                        } catch (Exception e2) {}
-                     }
-            }
-            variables.primera_clausula_predpath = true;
-            clausulas.setText(null);
-            c2.removeAllItems();
-            c2.addItem("-");
-            c3.removeAllItems();
-            c3.addItem("-");
-            nombrepredpath.setText("Escribe el nombre del predpath");
-            nombrepredpath.setForeground(Color.gray);
-            variables.ultim_es_paper = false;
-            variables.primer_del_cami = true;
-            pathpred.setText("Escribe tu path");
-            pathpred.setForeground(Color.gray);
-            controlerrores.setText("Añadió el predpath correctamente");
-            controlerrores.setForeground(Color.green);
-            controlerrores.setVisible(true);
-            
-            //Com que hem fet submit es creara un cami vuit per tan
-            //nombre words serà 0
-            variables.num_words = 0;
         }
         else {
             if (nombrepredpath.getText().equals("Escribe el nombre del predpath") || nombrepredpath.getText().equals("")) {
@@ -782,6 +829,16 @@ public class CreatePredPath extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_c1ItemStateChanged
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        try {
+            // TODO add your handling code here:
+            masdetallespredpath md = new masdetallespredpath();
+            md.setVisible(true);
+        } catch (IOException ex) {
+            Logger.getLogger(CreatePredPath.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Authorbutton;
@@ -796,6 +853,7 @@ public class CreatePredPath extends javax.swing.JPanel {
     private javax.swing.JLabel controlerrores;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;

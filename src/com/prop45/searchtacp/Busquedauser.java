@@ -395,6 +395,24 @@ public class Busquedauser extends javax.swing.JPanel {
     }//GEN-LAST:event_Instructionsbutton1ActionPerformed
 
     private void pathbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pathbuttonActionPerformed
+        variables.valors.clear();
+        variables.tags.clear();
+        num.setForeground(new java.awt.Color(153, 153, 153));
+        num.setText("num.");
+        variables.normes.clear();
+        variables.primera_clausula_predpath =  true;
+        clausulasuser.setText(null);
+        num.setForeground(new java.awt.Color(153, 153, 153));
+        num.setText("num.");        
+        variables.ultim_es_paper = false;
+        variables.primer_del_cami = true;
+        variables.num_words = 0;
+        c2user.removeAllItems();
+        c2user.addItem("-");
+        c3user.removeAllItems();
+        c3user.addItem("-");
+        pathuser.setText("Escribe tu path");
+        pathuser.setForeground(Color.gray);
         num.setForeground(new java.awt.Color(153, 153, 153));
         num.setText("num.");
         try {
@@ -554,6 +572,14 @@ public class Busquedauser extends javax.swing.JPanel {
                 else {
                     clausulasuser.setText(clausulasuser.getText() + "\n" + c1user.getSelectedItem() + " " + c2user.getSelectedItem() + " " + numero_comp);
                 }
+                
+                String n1 = String.valueOf(c1user.getSelectedItem());
+                String n2string = String.valueOf(c2user.getSelectedItem());
+                String n3string = num.getText();
+                int n2 = Integer.valueOf(n2string);
+                int n3 = Integer.valueOf(n3string);
+                Norma n = new Norma(n1.charAt(0),n2,n3);
+                variables.normes.add(n);
                 c1user.setSelectedIndex(0);
                 c2user.setSelectedIndex(0);
                 controlerrores1.setText("Añadió la clausula correctamente");

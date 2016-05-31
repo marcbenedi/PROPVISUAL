@@ -25,6 +25,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -45,9 +46,6 @@ public class ViewPredPathuser extends javax.swing.JFrame {
 
     public ViewPredPathuser() throws FileNotFoundException, IOException {
         initComponents();
-        if (!isAdmin()) {
-            jButton4.setVisible(false);
-        }
         userlabel.setText(getUsuario());
         this.setLocationRelativeTo(null);
         this.getContentPane().setBackground(Color.BLACK);
@@ -130,8 +128,6 @@ public class ViewPredPathuser extends javax.swing.JFrame {
         definanodopredpath = new javax.swing.JButton();
         defineuser = new javax.swing.JComboBox<>();
         controlerrores1 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
 
         jLabel5.setText("jLabel5");
 
@@ -255,15 +251,6 @@ public class ViewPredPathuser extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("Borrar user predpath seleccionado");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-
-        jButton4.setText("Borrar predpath seleccionado");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -294,13 +281,10 @@ public class ViewPredPathuser extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel2)
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(jLabel2)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7)
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -345,15 +329,11 @@ public class ViewPredPathuser extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3)
-                        .addGap(4, 4, 4))
+                        .addGap(16, 16, 16))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(definanodopredpath)
@@ -439,7 +419,6 @@ public class ViewPredPathuser extends javax.swing.JFrame {
                 String ultimasletras = "";
                 ultimasletras += selectedpredpathuser.getText().charAt(selectedpredpathuser.getText().length() - 7);
                 ultimasletras += selectedpredpathuser.getText().charAt(selectedpredpathuser.getText().length() - 6);
-                System.out.print(ultimasletras);
                 switch (ultimasletras) {
                     case "rm":
                         variables.tags.add("Term");
@@ -768,77 +747,6 @@ public class ViewPredPathuser extends javax.swing.JFrame {
  }
     
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        final char CR = (char) 0x0D;
-        final char LF = (char) 0x0A;
-
-        FileReader fr = null;
-        FileWriter fw = null;
-        try {
-            String a = tablarelacion1.getModel().getValueAt(tablarelacion1.getSelectedRow(), tablarelacion1.getSelectedColumn()).toString();
-
-            fr = new FileReader(getPath() + "\\recursos\\ficheros\\relacion_" + variables.getUsuario() + ".txt");
-
-            BufferedReader br = new BufferedReader(fr);
-
-            ArrayList<String> tmp = new ArrayList<>();
-
-            String line = br.readLine();
-
-            int i = 0;
-
-            while (line != null) {
-                if (!isMathc(a, line)) {
-                    tmp.add(line);
-                }
-                line = br.readLine();
-                i++;
-
-            }
-
-          
-
-            fr.close();
-            br.close();
-
-            fw = new FileWriter(getPath() + "\\recursos\\ficheros\\relacion_" + variables.getUsuario() + ".txt");
-            BufferedWriter bw = new BufferedWriter(fw);
-
-            for (int j = 0; j < tmp.size(); j++) {
-                bw.write(tmp.get(j) + CR + LF);
-            }
-
-            
-
-
-            DefaultTableModel model3 = new DefaultTableModel(); 
-            model3.addColumn("Predefined User Path");
-            tablarelacion1.setModel(model3);
-
-            // Append a row 
-            if(tmp.size()>0){
-            for (int j = 0; j < tmp.size(); j++) {
-                model3.addRow(new Object[]{deleteName(tmp.get(j).toString())});
-            }
-
-            //filas--;
-            }
-           // fw.close();
-            bw.close();
-
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(ViewPredPathuser.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ViewPredPathuser.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-                fr.close();
-            } catch (IOException ex) {
-                Logger.getLogger(ViewPredPathuser.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    }//GEN-LAST:event_jButton3ActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -880,8 +788,6 @@ public class ViewPredPathuser extends javax.swing.JFrame {
     public static javax.swing.JButton definanodopredpath;
     public static javax.swing.JComboBox<String> defineuser;
     public static javax.swing.JButton helppredpath;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;

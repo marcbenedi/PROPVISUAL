@@ -1,3 +1,5 @@
 Author~Martial Hebert
 Author~Yan Zhang  Paper~NULL  Author~NULL
 Paper~Integrating Description Logics and Action Formalisms: First Results.  Author~NULL  Paper~NULL  Term~NULL
+Author~Yan Zhang  Paper~NULL  Conference~NULL  Paper~NULL  Author~NULL
+Term~acquisition  Paper~NULL  Term~NULL  Paper~NULL  Author~NULL

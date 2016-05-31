@@ -196,6 +196,16 @@ public class Prebusquedauser extends javax.swing.JPanel {
 
     private void ReturnbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReturnbuttonActionPerformed
             // TODO add your handling code here:
+        variables.valors.clear();
+        variables.tags.clear();
+        variables.normes.clear();
+        variables.primera_clausula_predpath = true;
+        
+        variables.ultim_es_paper = false;
+        variables.primer_del_cami = true;
+        variables.num_words = 0;
+        variables.definiendo_pred_path = false;
+        setfalseUser();
             Asegurar_salir as = new Asegurar_salir();
             as.setVisible(true);
     }//GEN-LAST:event_ReturnbuttonActionPerformed
