@@ -1,1 +1,9 @@
 miquel
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+admin
+marc
+=======
+>>>>>>> 1bad451c4e1bf4995379d861e18d0bc9620066ad
+>>>>>>> 0ce0f33fc094385ae8e17e9b78059204de1a6259

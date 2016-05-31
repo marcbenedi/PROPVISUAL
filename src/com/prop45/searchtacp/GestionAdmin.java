@@ -727,11 +727,12 @@ public class GestionAdmin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void deleteHistorialRelacionUser() {
+    private void delete_Historial_Relacion_User() {
         File file1 = new File(getPath() + "\\recursos\\ficheros\\historial_" + deleteuser.getText() + ".txt");
         file1.delete();
         File file2 = new File(getPath() + "\\recursos\\ficheros\\relacion_" + deleteuser.getText() + ".txt");
         file2.delete();
+        
     }
 
     private void Exitbutton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Exitbutton1ActionPerformed
@@ -933,7 +934,7 @@ public class GestionAdmin extends javax.swing.JFrame {
                     tempFile.renameTo(inFile);
                 }
 
-                deleteHistorialRelacionUser();
+                delete_Historial_Relacion_User();
                 
                 
                 String password = consultar_password(usuario);
