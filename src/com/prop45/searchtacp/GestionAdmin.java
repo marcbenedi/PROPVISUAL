@@ -5,6 +5,7 @@
  */
 package com.prop45.searchtacp;
 
+import com.prop45.Graph.Aresta;
 import static com.prop45.Graph.Graph.existsNode;
 import com.prop45.Graph.Node;
 import com.prop45.Graph.NodeAuthor;
@@ -1256,6 +1257,7 @@ public class GestionAdmin extends javax.swing.JFrame {
         }
         Node n1 = grafo.getNode(paper, "Paper");
         Node n2 = grafo.getNode(node2, tipo);
+        
         if (paper.equals("") || paper.equals("Paper name")) {
             error.setVisible(true);
             error.setForeground(Color.red);
@@ -1277,13 +1279,14 @@ public class GestionAdmin extends javax.swing.JFrame {
             error.setForeground(Color.red);
             error.setText("Error: El/la " + tipo + " con nombre " + node2 + " no existe");
         } else {
-            boolean error_aux = false;
-            grafo.afegirAresta(n1, n2, error_aux);
-            if (error_aux) {
+            
+            if (grafo.existsAresta(n1,n2)) {
                 error.setVisible(true);
                 error.setForeground(Color.red);
                 error.setText("Error: La relacion " + selected + " con Paper: " + paper + " y " + tipo + ": " + node2 + " ya existe");
             } else {
+                boolean error_aux = false;
+            grafo.afegirAresta(n1, n2, error_aux);
                 Cambisnoguardats();
                 String cambiosrealizados;
                 cambiosrealizados = Cambios.getText();
@@ -1424,13 +1427,14 @@ public class GestionAdmin extends javax.swing.JFrame {
             error.setForeground(Color.red);
             error.setText("Error: El/la " + tipo + " con nombre " + node2 + " no existe");
         } else {
-            boolean error_aux = false;
-            grafo.eliminarAresta(n1, n2, error_aux);
-            if (error_aux) {
+            
+            if (!grafo.existsAresta(n1,n2)) {
                 error.setVisible(true);
                 error.setForeground(Color.red);
                 error.setText("Error: La relacion " + selected + " con Paper: " + paper + " y " + tipo + ": " + node2 + " no existe");
             } else {
+                boolean error_aux = false;
+            grafo.eliminarAresta(n1, n2, error_aux);
                 Cambisnoguardats();
                 String cambiosrealizados;
                 cambiosrealizados = Cambios.getText();

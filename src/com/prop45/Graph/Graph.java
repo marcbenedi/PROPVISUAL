@@ -243,26 +243,50 @@ public class Graph {
         //de la llista d'adjecències
         Node n = this.buscarNodo(name,tipus);
         int idSistema = 0;
+        ArrayList <Aresta> perEliminar = new ArrayList<>();
         switch (tipus){
             case "Author":
                 idSistema = conAuthor.get(n.getId());
                 conAuthor.remove(n.getId());
                 datAuthor.remove(n);
+                for(Aresta a: datPaperAuthor){
+                    if(a.getNode2().getName()==n.getName()){
+                        perEliminar.add(a);
+                    }
+                }
+                datPaperAuthor.removeAll(perEliminar);
                 break;
             case "Paper":
                 idSistema = conPaper.get(n.getId());
                 conPaper.remove(n.getId());
                 datPaper.remove(n);
+                
                 break;
             case "Conference":
                 idSistema = conConference.get(n.getId());
                 conConference.remove(n.getId());
                 datConference.remove(n);
+                
+                for(Aresta a: datPaperConference){
+                    if(a.getNode2().getName()==n.getName()){
+                        perEliminar.add(a);
+                    }
+                }
+                datPaperConference.removeAll(perEliminar);
+                
                 break;
             case "Term":
                 idSistema = conTerm.get(n.getId());
                 conTerm.remove(n.getId());
                 datTerm.remove(n);
+                
+                for(Aresta a: datPaperTerm){
+                    if(a.getNode2().getName()==n.getName()){
+                        perEliminar.add(a);
+                    }
+                }
+                datPaperTerm.removeAll(perEliminar);
+                
                 break;
         }
         //Eliminar adjecències
@@ -277,15 +301,39 @@ public class Graph {
             switch (no.getTipus()){
                 case "Author":
                     idConvertit = conAuthor.get(no.getId());
+                    
+                    for(Aresta a: datPaperAuthor){
+                    if(a.getNode2().getName()==no.getName()){
+                        perEliminar.add(a);
+                    }
+                }
+                datPaperAuthor.removeAll(perEliminar);
+                    
                     break;
                 case "Paper":
                     idConvertit = conPaper.get(no.getId());
                     break;
                 case "Conference":
                     idConvertit = conConference.get(no.getId());
+                    
+                        for(Aresta a: datPaperConference){
+                    if(a.getNode2().getName()==no.getName()){
+                        perEliminar.add(a);
+                    }
+                }
+                datPaperConference.removeAll(perEliminar);
+                    
                     break;
                 case "Term":
                     idConvertit = conTerm.get(no.getId());
+                    
+                        for(Aresta a: datPaperTerm){
+                    if(a.getNode2().getName()==no.getName()){
+                        perEliminar.add(a);
+                    }
+                }
+                datPaperTerm.removeAll(perEliminar);
+                    
                     break;
             }
             revisar = adj.get(idConvertit);
@@ -330,8 +378,9 @@ public class Graph {
     }
 
     public void afegirAresta(Node n1, Node n2, boolean b1){
-        if (!(getAresta(n1,n2)==null)){
+        if (existsAresta(n1,n2)){
             b1 = true;
+            System.out.println("hola");
             return;
         }
 
@@ -352,7 +401,7 @@ public class Graph {
                 ids2 = conConference.get(n2.getId());
                 break;
             case "Term":
-                datPaperConference.add(new Aresta(0,0,n1,n2));
+                datPaperTerm.add(new Aresta(0,0,n1,n2));
                 ids2 = conTerm.get(n2.getId());
                 break;
         }
