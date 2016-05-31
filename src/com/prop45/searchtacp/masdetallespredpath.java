@@ -445,7 +445,7 @@ public class masdetallespredpath extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         final char CR = (char) 0x0D;
         final char LF = (char) 0x0A;
-
+    if(tablarelacion1.getRowCount()>0){
         try {
             String a = tablarelacion1.getValueAt(tablarelacion1.getSelectedRow(), tablarelacion1.getSelectedColumn()).toString();
 
@@ -496,6 +496,7 @@ public class masdetallespredpath extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(ViewPredPathuser.class.getName()).log(Level.SEVERE, null, ex);
         }
+}
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -503,6 +504,7 @@ public class masdetallespredpath extends javax.swing.JFrame {
  final char CR = (char) 0x0D;
         final char LF = (char) 0x0A;
 
+        if(tablarelacion.getRowCount()>0){
         try {
             String a = tablarelacion.getValueAt(tablarelacion.getSelectedRow(), tablarelacion.getSelectedColumn()).toString();
 
@@ -596,7 +598,7 @@ public class masdetallespredpath extends javax.swing.JFrame {
         }
         
         */
-        
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void tablarelacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablarelacionMouseClicked

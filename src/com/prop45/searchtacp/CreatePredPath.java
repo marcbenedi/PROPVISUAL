@@ -607,9 +607,11 @@ public class CreatePredPath extends javax.swing.JPanel {
     }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
         try {
 
             if (!existPredefinedPath(nombrepredpath.getText() + "\t" + pathpred.getText())) {
+
                 if (!nombrepredpath.getText().equals("Escribe el nombre del predpath") && !nombrepredpath.getText().equals("")
                         && !pathpred.getText().equals("Escribe tu path") && !pathpred.getText().equals("")) {
                     FileReader file = null;
@@ -678,7 +680,6 @@ public class CreatePredPath extends javax.swing.JPanel {
                         c3.removeAllItems();
                         c3.addItem("-");
                         nombrepredpath.setText("Escribe el nombre del predpath");
-                      
                         nombrepredpath.setForeground(Color.gray);
                         variables.ultim_es_paper = false;
                         variables.primer_del_cami = true;
@@ -911,6 +912,8 @@ public class CreatePredPath extends javax.swing.JPanel {
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         // TODO add your handling code here:
+        controlerrores.setText("Borrado");
+
         num.setForeground(new java.awt.Color(153, 153, 153));
         num.setText("num.");
         variables.primera_clausula_predpath = true;
