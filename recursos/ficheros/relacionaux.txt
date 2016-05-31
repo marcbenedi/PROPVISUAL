@@ -1,3 +1,2 @@
-co-autoria	Author  Paper  Author	D 0 2
 persento	Author  Paper  Conference	
 masDe5EnComun	Author  Paper  Author	D 0 2	m 1 5

@@ -429,49 +429,56 @@ public class masdetallespredpath extends javax.swing.JFrame {
 
             fr = new FileReader(getPath() + "\\recursos\\ficheros\\relacion_" + getUsuario() + ".txt");
 
-            ArrayList<String> tmp;
-            try (BufferedReader br = new BufferedReader(fr)) {
-                tmp = new ArrayList<>();
-                String line = br.readLine();
-                int i = 0;
-                while (line != null) {
-                    if (!isMathc(a, line)) {
-                        tmp.add(line);
-                    }
-                    line = br.readLine();
-                    i++;
-                    
-                }   fr.close();
-            }
+            BufferedReader br = new BufferedReader(fr);
 
-            fw = new FileWriter(getPath() + "\\recursos\\ficheros\\relacion_" + variables.getUsuario() + ".txt");
-            try (BufferedWriter bw = new BufferedWriter(fw)) {
-                for (int j = 0; j < tmp.size(); j++) {
-                    bw.write(tmp.get(j) + CR + LF);
-                }   DefaultTableModel model3 = new DefaultTableModel();
-                model3.addColumn("Predefined User Path");
-                tablarelacion1.setModel(model3);
-                // Append a row
-                if (tmp.size()>0) {
-                    for (int j = 0; j < tmp.size(); j++) {
-                        model3.addRow(new Object[]{deleteName(tmp.get(j).toString())});
-                    }
-                    
-                    //filas--;
+            ArrayList<String> tmp = new ArrayList<>();
+
+            String line = br.readLine();
+
+            int i = 0;
+
+            while (line != null) {
+                if (!isMathc(a, line)) {
+                    tmp.add(line);
                 }
-                // fw.close();
+                line = br.readLine();
+                i++;
+
             }
 
+          
+
+            fr.close();
+            br.close();
+
+            fw = new FileWriter(getPath() + "\\recursos\\ficheros\\relacion_" + getUsuario() + ".txt");
+            BufferedWriter bw = new BufferedWriter(fw);
+
+            for (int j = 0; j < tmp.size(); j++) {
+                bw.write(tmp.get(j) + CR + LF);
+            }
+
+            
+
+
+            DefaultTableModel model3 = new DefaultTableModel(); 
+            model3.addColumn("Predefined User Path");
+            tablarelacion1.setModel(model3);
+
+            // Append a row 
+            if(tmp.size()>0){
+            for (int j = 0; j < tmp.size(); j++) {
+                model3.addRow(new Object[]{deleteName(tmp.get(j).toString())});
+            }
+
+            //filas--;
+            }
+            fw.close();
+            bw.close();
         } catch (FileNotFoundException ex) {
             Logger.getLogger(ViewPredPathuser.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(ViewPredPathuser.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-                fr.close();
-            } catch (IOException ex) {
-                Logger.getLogger(ViewPredPathuser.class.getName()).log(Level.SEVERE, null, ex);
-            }
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -508,6 +515,7 @@ public class masdetallespredpath extends javax.swing.JFrame {
                 borrobien.setText("Error al borrar el predpath nº" + ++cualborro + " universal");                
             }
             br.close();
+            inFile.delete();
             tempFile.renameTo(inFile);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(masdetallespredpath.class.getName()).log(Level.SEVERE, null, ex);
@@ -574,12 +582,6 @@ public class masdetallespredpath extends javax.swing.JFrame {
             Logger.getLogger(ViewPredPathuser.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(ViewPredPathuser.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-                ftxt.close();
-            } catch (IOException ex) {
-                Logger.getLogger(ViewPredPathuser.class.getName()).log(Level.SEVERE, null, ex);
-            }
         }
     }//GEN-LAST:event_tablarelacionMouseClicked
 
