@@ -54,7 +54,7 @@ public class CreatePredPath extends javax.swing.JPanel {
         ImageIcon Logo_image = new ImageIcon(getPath() + "\\recursos\\Images\\descarga.png");
         Icon icono_logo = new ImageIcon(Logo_image.getImage().getScaledInstance(163, 116, Image.SCALE_DEFAULT));
         Logo.setIcon(icono_logo);
-        String textoaux ="--Universal--\n";
+        String textoaux = "--Universal--\n";
         FileReader file = new FileReader(getPath() + "\\recursos\\ficheros\\relacion.txt");
         BufferedReader reader = new BufferedReader(file);
         String line = reader.readLine();
@@ -565,7 +565,7 @@ public class CreatePredPath extends javax.swing.JPanel {
             i++;
         }
 
-        return val.substring(0,i);
+        return val.substring(0, i);
     }
 
     boolean existPredefinedPath(String val) throws FileNotFoundException, IOException {
@@ -577,7 +577,7 @@ public class CreatePredPath extends javax.swing.JPanel {
         String line = br.readLine();
 
         while (line != null) {
-         
+
             if (cut(line).equals(val)) {
                 flag = true;
                 break;
@@ -591,7 +591,7 @@ public class CreatePredPath extends javax.swing.JPanel {
         line = brd.readLine();
 
         while (line != null) {
-         
+
             if (cut(line).equals(val)) {
                 flag = true;
                 break;
@@ -608,147 +608,169 @@ public class CreatePredPath extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
-           
-           if(!existPredefinedPath(nombrepredpath.getText() + "\t" + pathpred.getText())){
-               if (!nombrepredpath.getText().equals("Escribe el nombre del predpath") && !nombrepredpath.getText().equals("")
-                && !pathpred.getText().equals("Escribe tu path") && !pathpred.getText().equals("")) {
-            FileReader file = null;
-            try {
-                String quepongo = nombrepredpath.getText() + "\t" + pathpred.getText() + "\t" + clausulas.getText().replace('\n', '\t'); 
-                FileWriter fichero = null;
-                PrintWriter pw = null;               
-                if (isAdmin()) {
-                    String dondeguardo = String.valueOf(triaonguardes.getSelectedItem());
-                    if (dondeguardo.equals("Admin")) {;
-                        try {
-                            fichero = new FileWriter(getPath() + "\\recursos\\ficheros\\relacion.txt",true);
-                            pw = new PrintWriter(fichero);
-                            pw.println(quepongo);
-                        } catch (Exception e) {}
-                        finally {
-                            try {
-                                // Nuevamente aprovechamos el finally para
-                                // asegurarnos que se cierra el fichero.
-                                if (null != fichero)
-                                    fichero.close();
-                            } catch (Exception e2) {}
-                        }
-                    }
-                    else {
-                        try {
-                            fichero = new FileWriter(getPath() + "\\recursos\\ficheros\\relacion_"+getUsuario()+".txt",true);
-                            pw = new PrintWriter(fichero);
-                            pw.println(quepongo);
-                        } catch (Exception e) {}
-                        finally {
-                            try {
-                                // Nuevamente aprovechamos el finally para
-                                // asegurarnos que se cierra el fichero.
-                                if (null != fichero)
-                                    fichero.close();
-                            } catch (Exception e2) {}
-                        }
-                    }
-                }
-                else {
+
+            if (!existPredefinedPath(nombrepredpath.getText() + "\t" + pathpred.getText())) {
+                if (!nombrepredpath.getText().equals("Escribe el nombre del predpath") && !nombrepredpath.getText().equals("")
+                        && !pathpred.getText().equals("Escribe tu path") && !pathpred.getText().equals("")) {
+                    FileReader file = null;
                     try {
-                        fichero = new FileWriter(getPath() + "\\recursos\\ficheros\\relacion_"+getUsuario()+".txt",true);
-                        pw = new PrintWriter(fichero);
-                        pw.println(quepongo);
-                    } catch (Exception e) {}
-                    finally {
-                        try {
-                            // Nuevamente aprovechamos el finally para
-                            // asegurarnos que se cierra el fichero.
-                            if (null != fichero)
-                                fichero.close();
-                        } catch (Exception e2) {}
-                    }
-                }   
-                fichero.close();
-                pw.close();
-                variables.primera_clausula_predpath = true;
-                clausulas.setText(null);
-                c2.removeAllItems();
-                c2.addItem("-");
-                c3.removeAllItems();
-                c3.addItem("-");
-                nombrepredpath.setText("Escribe el nombre del predpath");
-                nombrepredpath.setForeground(Color.gray);
-                variables.ultim_es_paper = false;
-                variables.primer_del_cami = true;
-                pathpred.setText("Escribe tu path");
-                pathpred.setForeground(Color.gray);
-                controlerrores.setText("Añadió el predpath correctamente");
-                controlerrores.setForeground(Color.green);
-                controlerrores.setVisible(true);
-                String textoaux ="--Universal--\n";
-                file = new FileReader(getPath() + "\\recursos\\ficheros\\relacion.txt");
-                BufferedReader reader = new BufferedReader(file);
-                String line =  reader.readLine();
-                String frase;
-                while (line != null) {
-                    int i = 0;
-                    while (line.charAt(i)!='\t') {
-                        textoaux += line.charAt(i);
-                        ++i;
-                    }
-                    textoaux += "\n";
-                    line = reader.readLine();
-                }   file = new FileReader(getPath() + "\\recursos\\ficheros\\relacion_" + getUsuario() + ".txt");
-                reader = new BufferedReader(file);
-                line =  reader.readLine();
-                textoaux +="--Mios--\n";
-                while (line != null) {
-                    int i = 0;
-                    while (line.charAt(i)!='\t') {
-                        textoaux += line.charAt(i);
-                        ++i;
-                    }
-                    textoaux += "\n";
-                    line = reader.readLine();
-                }   text.setText(textoaux);
-                //Com que hem fet submit es creara un cami vuit per tan
-                //nombre words serà 0
-                variables.num_words = 0;
-                file.close();
-                reader.close();
-            } catch (FileNotFoundException ex) {
-                Logger.getLogger(CreatePredPath.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IOException ex) {
-                Logger.getLogger(CreatePredPath.class.getName()).log(Level.SEVERE, null, ex);
-            } 
-               }
-            else {
-                if (nombrepredpath.getText().equals("Escribe el nombre del predpath") || nombrepredpath.getText().equals("")) {
-                    controlerrores.setText("Falta el nombre de pred path");
-                    controlerrores.setForeground(Color.red);
-                    controlerrores.setVisible(true);
-                }
-                else {
-                    controlerrores.setText("Falta camino del pred path");
-                    controlerrores.setForeground(Color.red);
-                    controlerrores.setVisible(true);
-                }
-                String quepongo = nombrepredpath.getText() + "\t" + pathpred.getText() + "\t" + clausulas.getText().replace('\n', '\t');
+                        String quepongo = nombrepredpath.getText() + "\t" + pathpred.getText() + "\t" + clausulas.getText().replace('\n', '\t');
                         FileWriter fichero = null;
                         PrintWriter pw = null;
-                if (isAdmin()) {
-                    String dondeguardo = String.valueOf(triaonguardes.getSelectedItem());
-                    if (dondeguardo.equals("Admin")) {
-                        try {
-                            fichero = new FileWriter(getPath() + "\\recursos\\ficheros\\relacion.txt", true);
-                            pw = new PrintWriter(fichero);
-                            pw.println(quepongo);
-                        } catch (Exception e) {
-                        } finally {
-                            try {
-                                // Nuevamente aprovechamos el finally para 
-                                // asegurarnos que se cierra el fichero.
-                                if (null != fichero) {
-                                    fichero.close();
+                        if (isAdmin()) {
+                            String dondeguardo = String.valueOf(triaonguardes.getSelectedItem());
+                            if (dondeguardo.equals("Admin")) {;
+                                try {
+                                    fichero = new FileWriter(getPath() + "\\recursos\\ficheros\\relacion.txt", true);
+                                    pw = new PrintWriter(fichero);
+                                    pw.println(quepongo);
+                                } catch (Exception e) {
+                                } finally {
+                                    try {
+                                        // Nuevamente aprovechamos el finally para
+                                        // asegurarnos que se cierra el fichero.
+                                        if (null != fichero) {
+                                            fichero.close();
+                                        }
+                                    } catch (Exception e2) {
+                                    }
                                 }
-                            } catch (Exception e2) {
+                            } else {
+                                try {
+                                    fichero = new FileWriter(getPath() + "\\recursos\\ficheros\\relacion_" + getUsuario() + ".txt", true);
+                                    pw = new PrintWriter(fichero);
+                                    pw.println(quepongo);
+                                } catch (Exception e) {
+                                } finally {
+                                    try {
+                                        // Nuevamente aprovechamos el finally para
+                                        // asegurarnos que se cierra el fichero.
+                                        if (null != fichero) {
+                                            fichero.close();
+                                        }
+                                    } catch (Exception e2) {
+                                    }
+                                }
+                            }
+                        } else {
+                            try {
+                                fichero = new FileWriter(getPath() + "\\recursos\\ficheros\\relacion_" + getUsuario() + ".txt", true);
+                                pw = new PrintWriter(fichero);
+                                pw.println(quepongo);
+                            } catch (Exception e) {
+                            } finally {
+                                try {
+                                    // Nuevamente aprovechamos el finally para
+                                    // asegurarnos que se cierra el fichero.
+                                    if (null != fichero) {
+                                        fichero.close();
+                                    }
+                                } catch (Exception e2) {
+                                }
+                            }
+                        }
+                        fichero.close();
+                        pw.close();
+                        variables.primera_clausula_predpath = true;
+                        clausulas.setText(null);
+                        c2.removeAllItems();
+                        c2.addItem("-");
+                        c3.removeAllItems();
+                        c3.addItem("-");
+                        nombrepredpath.setText("Escribe el nombre del predpath");
+                      
+                        nombrepredpath.setForeground(Color.gray);
+                        variables.ultim_es_paper = false;
+                        variables.primer_del_cami = true;
+                        pathpred.setText("Escribe tu path");
+                        pathpred.setForeground(Color.gray);
+                        controlerrores.setText("Añadió el predpath correctamente");
+                        controlerrores.setForeground(Color.green);
+                        controlerrores.setVisible(true);
+                        String textoaux = "--Universal--\n";
+                        file = new FileReader(getPath() + "\\recursos\\ficheros\\relacion.txt");
+                        BufferedReader reader = new BufferedReader(file);
+                        String line = reader.readLine();
+                        String frase;
+                        while (line != null) {
+                            int i = 0;
+                            while (line.charAt(i) != '\t') {
+                                textoaux += line.charAt(i);
+                                ++i;
+                            }
+                            textoaux += "\n";
+                            line = reader.readLine();
+                        }
+                        file = new FileReader(getPath() + "\\recursos\\ficheros\\relacion_" + getUsuario() + ".txt");
+                        reader = new BufferedReader(file);
+                        line = reader.readLine();
+                        textoaux += "--Mios--\n";
+                        while (line != null) {
+                            int i = 0;
+                            while (line.charAt(i) != '\t') {
+                                textoaux += line.charAt(i);
+                                ++i;
+                            }
+                            textoaux += "\n";
+                            line = reader.readLine();
+                        }
+                        text.setText(textoaux);
+                        //Com que hem fet submit es creara un cami vuit per tan
+                        //nombre words serà 0
+                        variables.num_words = 0;
+                        file.close();
+                        reader.close();
+                    } catch (FileNotFoundException ex) {
+                        Logger.getLogger(CreatePredPath.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (IOException ex) {
+                        Logger.getLogger(CreatePredPath.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                } else {
+                    if (nombrepredpath.getText().equals("Escribe el nombre del predpath") || nombrepredpath.getText().equals("")) {
+                        controlerrores.setText("Falta el nombre de pred path");
+                        controlerrores.setForeground(Color.red);
+                        controlerrores.setVisible(true);
+                    } else {
+                        controlerrores.setText("Falta camino del pred path");
+                        controlerrores.setForeground(Color.red);
+                        controlerrores.setVisible(true);
+                    }
+                    String quepongo = nombrepredpath.getText() + "\t" + pathpred.getText() + "\t" + clausulas.getText().replace('\n', '\t');
+                    FileWriter fichero = null;
+                    PrintWriter pw = null;
+                    if (isAdmin()) {
+                        String dondeguardo = String.valueOf(triaonguardes.getSelectedItem());
+                        if (dondeguardo.equals("Admin")) {
+                            try {
+                                fichero = new FileWriter(getPath() + "\\recursos\\ficheros\\relacion.txt", true);
+                                pw = new PrintWriter(fichero);
+                                pw.println(quepongo);
+                            } catch (Exception e) {
+                            } finally {
+                                try {
+                                    // Nuevamente aprovechamos el finally para 
+                                    // asegurarnos que se cierra el fichero.
+                                    if (null != fichero) {
+                                        fichero.close();
+                                    }
+                                } catch (Exception e2) {
+                                }
+                            }
+                        } else {
+                            try {
+                                fichero = new FileWriter(getPath() + "\\recursos\\ficheros\\relacion_" + getUsuario() + ".txt", true);
+                                pw = new PrintWriter(fichero);
+                                pw.println(quepongo);
+                            } catch (Exception e) {
+                            } finally {
+                                try {
+                                    // Nuevamente aprovechamos el finally para 
+                                    // asegurarnos que se cierra el fichero.
+                                    if (null != fichero) {
+                                        fichero.close();
+                                    }
+                                } catch (Exception e2) {
+                                }
                             }
                         }
                     } else {
@@ -768,69 +790,50 @@ public class CreatePredPath extends javax.swing.JPanel {
                             }
                         }
                     }
-                } else {
-                    try {
-                        fichero = new FileWriter(getPath() + "\\recursos\\ficheros\\relacion_" + getUsuario() + ".txt", true);
-                        pw = new PrintWriter(fichero);
-                        pw.println(quepongo);
-                    } catch (Exception e) {
-                    } finally {
-                        try {
-                            // Nuevamente aprovechamos el finally para 
-                            // asegurarnos que se cierra el fichero.
-                            if (null != fichero) {
-                                fichero.close();
-                            }
-                        } catch (Exception e2) {
-                        }
-                    }
-                }
-                fichero.close();
-                pw.close();
-                variables.primera_clausula_predpath = true;
-                clausulas.setText(null);
-                c2.removeAllItems();
-                c2.addItem("-");
-                c3.removeAllItems();
-                c3.addItem("-");
-                nombrepredpath.setText("Escribe el nombre del predpath");
-                nombrepredpath.setForeground(Color.gray);
-                variables.ultim_es_paper = false;
-                variables.primer_del_cami = true;
-                pathpred.setText("Escribe tu path");
-                pathpred.setForeground(Color.gray);
-                controlerrores.setText("Añadió el predpath correctamente");
-                controlerrores.setForeground(Color.green);
-                controlerrores.setVisible(true);
+                    fichero.close();
+                    pw.close();
+                    variables.primera_clausula_predpath = true;
+                    clausulas.setText(null);
+                    c2.removeAllItems();
+                    c2.addItem("-");
+                    c3.removeAllItems();
+                    c3.addItem("-");
+                    nombrepredpath.setText("Escribe el nombre del predpath");
+                    nombrepredpath.setForeground(Color.gray);
+                    variables.ultim_es_paper = false;
+                    variables.primer_del_cami = true;
+                    pathpred.setText("Escribe tu path");
+                    pathpred.setForeground(Color.gray);
+                    controlerrores.setText("Añadió el predpath correctamente");
+                    controlerrores.setForeground(Color.green);
+                    controlerrores.setVisible(true);
 
-                //Com que hem fet submit es creara un cami vuit per tan
-                //nombre words serà 0
-                variables.num_words = 0;
-               }
+                    //Com que hem fet submit es creara un cami vuit per tan
+                    //nombre words serà 0
+                    variables.num_words = 0;
+                }
                 if (nombrepredpath.getText().equals("Escribe el nombre del predpath") || nombrepredpath.getText().equals("")) {
                     controlerrores.setText("Falta el nombre de pred path");
                     controlerrores.setForeground(Color.red);
                     controlerrores.setVisible(true);
-                } 
-                else {
+                } else {
                     controlerrores.setText("Falta camino del pred path");
                     controlerrores.setForeground(Color.red);
                     controlerrores.setVisible(true);
                 }
                 num.setForeground(new java.awt.Color(153, 153, 153));
                 num.setText("num.");
-           }
-           else{
-            controlerrores.setText("Ya existe");
-            controlerrores.setForeground(Color.red);
-            controlerrores.setVisible(true);
-           }
+            } else {
+                controlerrores.setText("Ya existe");
+                controlerrores.setForeground(Color.red);
+                controlerrores.setVisible(true);
+            }
 
         } catch (IOException ex) {
             Logger.getLogger(CreatePredPath.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void Instructionsbutton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Instructionsbutton1ActionPerformed

@@ -33,13 +33,12 @@ public class masdetallespredpath extends javax.swing.JFrame {
     /**
      * Creates new form masdetallespredpath
      */
-    
     DefaultTableModel model1;
     DefaultTableModel model2;
     int filas = 0;
-    
+
     public masdetallespredpath() throws FileNotFoundException, IOException {
-        initComponents(); 
+        initComponents();
         if (!isAdmin()) {
             jButton4.setVisible(false);
         }
@@ -320,6 +319,9 @@ public class masdetallespredpath extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tablarelacion1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablarelacion1MouseClicked
+
+        
+        
         try {
             // TODO add your handling code here:
             FileReader ftxt = null;
@@ -371,13 +373,19 @@ public class masdetallespredpath extends javax.swing.JFrame {
             if (text.getText().equals("")) {
                 text.setText("No te\nclausules");
             }
-            ftxt.close();
-            readertxt.close();
+            
+                
+            ftxt.close();               //CLOSE
+            readertxt.close();          //CLOSE
         } catch (FileNotFoundException ex) {
             Logger.getLogger(masdetallespredpath.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(masdetallespredpath.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        
+         
+
     }//GEN-LAST:event_tablarelacion1MouseClicked
 
     private void helppredpathActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helppredpathActionPerformed
@@ -392,89 +400,97 @@ public class masdetallespredpath extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_Instructionsbutton3ActionPerformed
     private boolean isMathc(String qry, String qry_read) {
-            boolean flag = false;
+        boolean flag = false;
 
-            int i = 0;
+        int i = 0;
+        int j = 0;
 
-            while (qry_read.charAt(i) != '\t') {
-                i++;
-            }
+        while (qry_read.charAt(i) != '\t') {
             i++;
-            if (qry.equals(qry_read.substring(i, qry_read.length() - 1))) {
-                flag = true;
-            }
-            return flag;
         }
-        private String deleteName(String val){
-            String q="";
+        i++;
+        j = i;
 
-            int i=0;
-            while(val.charAt(i)!='\t'){
+        while (qry_read.charAt(j) != '\t') {
+            j++;
+        }
 
-                i++;
-            }
+        if (qry.equals(qry_read.substring(i, j))) {
+            flag = true;
+        }
+
+        return flag;
+    }
+
+    private String delete_Name_Clausole(String val) {
+        String q = "";
+
+        int i = 0;
+        while (val.charAt(i) != '\t') {
+
             i++;
-            q=val.substring(i,val.length());
+        }
+        i++;
+        int j = i;
+        while (val.charAt(j) != '\t') {
 
-            return q;
+            j++;
+        }
+        j++;
+
+        q = val.substring(i, --j);
+
+        return q;
     }
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         final char CR = (char) 0x0D;
         final char LF = (char) 0x0A;
 
-        FileReader fr = null;
-        FileWriter fw = null;
         try {
-            String a = tablarelacion1.getModel().getValueAt(tablarelacion1.getSelectedRow(), tablarelacion1.getSelectedColumn()).toString();
+            String a = tablarelacion1.getValueAt(tablarelacion1.getSelectedRow(), tablarelacion1.getSelectedColumn()).toString();
 
-            fr = new FileReader(getPath() + "\\recursos\\ficheros\\relacion_" + getUsuario() + ".txt");
-
+            FileReader fr = new FileReader(getPath() + "\\recursos\\ficheros\\relacion_" + getUsuario() + ".txt");
             BufferedReader br = new BufferedReader(fr);
-
             ArrayList<String> tmp = new ArrayList<>();
-
             String line = br.readLine();
 
-            int i = 0;
-
             while (line != null) {
-                if (!isMathc(a, line)) {
+                if (!isMathc(a, line)) {    /// get tabella |author paper author| == line
                     tmp.add(line);
                 }
                 line = br.readLine();
-                i++;
 
             }
-
-          
-
-            fr.close();
-            br.close();
-
-            fw = new FileWriter(getPath() + "\\recursos\\ficheros\\relacion_" + getUsuario() + ".txt");
-            BufferedWriter bw = new BufferedWriter(fw);
-
-            for (int j = 0; j < tmp.size(); j++) {
-                bw.write(tmp.get(j) + CR + LF);
-            }
-
             
-
-
-            DefaultTableModel model3 = new DefaultTableModel(); 
+            br.close();
+            fr.close();
+           
+            
+            
+            DefaultTableModel model3 = new DefaultTableModel();
             model3.addColumn("Predefined User Path");
             tablarelacion1.setModel(model3);
 
             // Append a row 
-            if(tmp.size()>0){
-            for (int j = 0; j < tmp.size(); j++) {
-                model3.addRow(new Object[]{deleteName(tmp.get(j).toString())});
-            }
+        
+                for (int j = 0; j < tmp.size(); j++) {
+                    model3.addRow(new Object[]{(delete_Name_Clausole(tmp.get(j).toString()))});
 
-            //filas--;
-            }
-            fw.close();
-            bw.close();
+                }
+                FileWriter fw = new FileWriter(getPath() + "\\recursos\\ficheros\\relacion_" + getUsuario() + ".txt");
+                BufferedWriter bw = new BufferedWriter(fw);
+
+                for (int j = 0; j < tmp.size(); j++) {
+                    bw.write(tmp.get(j).toString()+CR+LF);
+                }
+                
+                bw.close();
+                fw.close();
+                
+                //filas--;
+            
+           
+
         } catch (FileNotFoundException ex) {
             Logger.getLogger(ViewPredPathuser.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -483,6 +499,62 @@ public class masdetallespredpath extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+
+ final char CR = (char) 0x0D;
+        final char LF = (char) 0x0A;
+
+        try {
+            String a = tablarelacion.getValueAt(tablarelacion.getSelectedRow(), tablarelacion.getSelectedColumn()).toString();
+
+            FileReader fr = new FileReader(getPath() + "\\recursos\\ficheros\\relacion.txt");
+            BufferedReader br = new BufferedReader(fr);
+            ArrayList<String> tmp = new ArrayList<>();
+            String line = br.readLine();
+
+            while (line != null) {
+                if (!isMathc(a, line)) {    /// get tabella |author paper author| == line
+                    tmp.add(line);
+                }
+                line = br.readLine();
+
+            }
+            
+            br.close();
+            fr.close();
+           
+            
+            
+            DefaultTableModel model3 = new DefaultTableModel();
+            model3.addColumn("Predefined User Path");
+            tablarelacion.setModel(model3);
+
+            // Append a row 
+        
+                for (int j = 0; j < tmp.size(); j++) {
+                    model3.addRow(new Object[]{(delete_Name_Clausole(tmp.get(j).toString()))});
+
+                }
+                FileWriter fw = new FileWriter(getPath() + "\\recursos\\ficheros\\relacion.txt");
+                BufferedWriter bw = new BufferedWriter(fw);
+
+                for (int j = 0; j < tmp.size(); j++) {
+                    bw.write(tmp.get(j).toString()+CR+LF);
+                }
+                
+                bw.close();
+                fw.close();
+                
+                //filas--;
+            
+           
+
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(ViewPredPathuser.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(ViewPredPathuser.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+/*
         BufferedReader br = null;
         try {
             // TODO add your handling code here:
@@ -499,8 +571,9 @@ public class masdetallespredpath extends javax.swing.JFrame {
                     if (n != cualborro) {
                         pw.println(line);
                         pw.flush();
+                    } else {
+                        noborra = false;
                     }
-                    else noborra = false;
                     ++n;
                 }
             }
@@ -508,11 +581,10 @@ public class masdetallespredpath extends javax.swing.JFrame {
                 borrobien.setVisible(true);
                 borrobien.setForeground(Color.green);
                 borrobien.setText("Borro correctamente el predpath nº " + ++cualborro + " universal");
-            }
-            else {
+            } else {
                 borrobien.setVisible(true);
                 borrobien.setForeground(Color.red);
-                borrobien.setText("Error al borrar el predpath nº" + ++cualborro + " universal");                
+                borrobien.setText("Error al borrar el predpath nº" + ++cualborro + " universal");
             }
             br.close();
             inFile.delete();
@@ -522,6 +594,9 @@ public class masdetallespredpath extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(masdetallespredpath.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        */
+        
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void tablarelacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablarelacionMouseClicked
