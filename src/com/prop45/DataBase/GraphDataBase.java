@@ -210,7 +210,7 @@ public class GraphDataBase extends DataBase {
         try {
             FileReader file = new FileReader(r);
             BufferedReader reader = new BufferedReader(file);
-
+              System.out.println("Debug graphdatabase "+tipus);
             String par1 = "";
             String par2 = "";
             int id1 = 0;

@@ -128,6 +128,7 @@ public class GestionAdmin extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         Exitbutton = new javax.swing.JButton();
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Gestion de Administrador");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -138,7 +139,7 @@ public class GestionAdmin extends javax.swing.JFrame {
 
         Exitbutton1.setMnemonic('X');
         Exitbutton1.setText("Exit");
-        Exitbutton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Exitbutton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Exitbutton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Exitbutton1ActionPerformed(evt);
@@ -167,7 +168,7 @@ public class GestionAdmin extends javax.swing.JFrame {
 
         añadeuser.setText("jLabel4");
         añadeuser.setToolTipText("");
-        añadeuser.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        añadeuser.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         añadeuser.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 añadeuserMouseClicked(evt);
@@ -193,7 +194,7 @@ public class GestionAdmin extends javax.swing.JFrame {
 
         cambiapass.setText("jLabel4");
         cambiapass.setToolTipText("");
-        cambiapass.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cambiapass.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         cambiapass.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 cambiapassMouseClicked(evt);
@@ -232,7 +233,7 @@ public class GestionAdmin extends javax.swing.JFrame {
         });
 
         eliminaruser.setText("jLabel4");
-        eliminaruser.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        eliminaruser.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         eliminaruser.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 eliminaruserMouseClicked(evt);
@@ -257,7 +258,7 @@ public class GestionAdmin extends javax.swing.JFrame {
         });
 
         chmod.setText("jLabel4");
-        chmod.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chmod.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chmod.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 chmodMouseClicked(evt);
@@ -288,7 +289,7 @@ public class GestionAdmin extends javax.swing.JFrame {
         });
 
         añadenode.setText("jLabel4");
-        añadenode.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        añadenode.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         añadenode.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 añadenodeMouseClicked(evt);
@@ -324,7 +325,7 @@ public class GestionAdmin extends javax.swing.JFrame {
         });
 
         añadirrelacion.setText("jLabel4");
-        añadirrelacion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        añadirrelacion.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         añadirrelacion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 añadirrelacionMouseClicked(evt);
@@ -340,7 +341,7 @@ public class GestionAdmin extends javax.swing.JFrame {
 
         jButton1.setMnemonic('B');
         jButton1.setText("Borrar");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -369,7 +370,7 @@ public class GestionAdmin extends javax.swing.JFrame {
 
         jButton2.setMnemonic('H');
         jButton2.setText("Help");
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -402,7 +403,7 @@ public class GestionAdmin extends javax.swing.JFrame {
         });
 
         deletenode.setText("jLabel4");
-        deletenode.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        deletenode.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         deletenode.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 deletenodeMouseClicked(evt);
@@ -444,7 +445,7 @@ public class GestionAdmin extends javax.swing.JFrame {
         });
 
         eliminarrelacion.setText("jLabel4");
-        eliminarrelacion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        eliminarrelacion.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         eliminarrelacion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 eliminarrelacionMouseClicked(evt);
@@ -458,7 +459,7 @@ public class GestionAdmin extends javax.swing.JFrame {
         jLabel18.setText("Eliminar relación:");
 
         jButton3.setText("Save");
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -466,7 +467,7 @@ public class GestionAdmin extends javax.swing.JFrame {
         });
 
         Exitbutton.setText("Exit");
-        Exitbutton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Exitbutton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Exitbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ExitbuttonActionPerformed(evt);

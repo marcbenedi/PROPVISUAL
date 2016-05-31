@@ -211,6 +211,7 @@ public class Graph {
     }
 
     public void afegirNode(Node n){
+        System.out.println("El grado del nuevo nodo es "+n.getGrado());
         String tipus = n.getTipus();
         switch (tipus){
             //S'ha d'afegir a la llista correponent
@@ -265,9 +266,12 @@ public class Graph {
                 break;
         }
         //Eliminar adjecències
+        System.out.println("Este nodo tiene total "+adj.get(idSistema).size());
         for (Node no: adj.get(idSistema)) {
             //Disminuir grado d'adjecencies del nodo
+            System.out.println("grado de "+no.getGrado());
             no.setGrado(no.getGrado()-1);
+            System.out.println("Bajando grado de "+no.getName());
             int idConvertit = 0;
             ArrayList<Node> revisar = new ArrayList<>();
             switch (no.getTipus()){
@@ -285,10 +289,16 @@ public class Graph {
                     break;
             }
             revisar = adj.get(idConvertit);
+            System.out.println("He eliminado de sus adj "+n.getName());
+            System.out.println("El grado del nuevo nodo es "+no.getGrado()+no.getName());
             revisar.remove(n);
         }
         //Eliminar la llista d'adjecències
-        adj.remove(idSistema);
+        //adj.remove(idSistema);
+        //Proba de si funciona la chapuza
+        n.setName("eliminat"+lastIdNode);
+        adj.set(idSistema,new ArrayList<>());
+        //++lastIdNode;
     }
 
     public Aresta getAresta(Node n1, Node n2){
@@ -326,8 +336,10 @@ public class Graph {
         }
 
         //no comprovem si existeix l'aresta
-        n1.setGrado(n1.getGrado()+1);//paper
-        n2.setGrado(n2.getGrado()+1);
+        //n1.setGrado(n1.getGrado()+1);//paper
+        System.out.println("El grado del nuevo nodo es "+n1.getGrado());
+        //n2.setGrado(n2.getGrado()+1);
+        System.out.println("El grado del nuevo nodo es "+n2.getGrado());
         int ids1 = 0,ids2 = 0;
         ids1 = conPaper.get(n1.getId());
         switch (n2.getTipus()){
@@ -354,8 +366,12 @@ public class Graph {
             b2 = true;
             return;
         }
+        System.out.println("¡nodo es "+n1.getGrado());
+        System.out.println("¡nodo es "+n2.getGrado());
         n1.setGrado(n1.getGrado()-1);
+        System.out.println("El grado del nuevo nodo es "+n1.getGrado());
         n2.setGrado(n2.getGrado()-1);
+        System.out.println("El grado del nuevo nodo es "+n2.getGrado());
         int ids1 = conPaper.get(n1.getId());
         int ids2 = 0;
         switch (n2.getTipus()){
