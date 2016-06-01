@@ -3,3 +3,6 @@ Author~Yan Zhang  Paper~NULL  Author~NULL
 Paper~Integrating Description Logics and Action Formalisms: First Results.  Author~NULL  Paper~NULL  Term~NULL
 Author~Yan Zhang  Paper~NULL  Conference~NULL  Paper~NULL  Author~NULL
 Term~acquisition  Paper~NULL  Term~NULL  Paper~NULL  Author~NULL
+Author~Souad Hadjres  Paper~NULL  Author~NULL
+Paper~Some Philosophical Problems with Formal Learning Theory.  Term~NULL
+Paper~Terminological Cycles in KL-ONE-based Knowledge Representation Languages.  Term~NULL

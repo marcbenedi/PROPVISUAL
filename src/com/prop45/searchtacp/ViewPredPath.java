@@ -299,6 +299,8 @@ public class ViewPredPath extends javax.swing.JFrame {
         variables.ultim_es_paper = false;
         variables.definiendo_pred_path = false;
         variables.valors = new ArrayList<>();
+        variables.tags = new ArrayList<>();
+        variables.normes = new ArrayList<>();
         this.setVisible(false);
     }//GEN-LAST:event_Instructionsbutton4ActionPerformed
 
