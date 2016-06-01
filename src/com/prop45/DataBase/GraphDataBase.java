@@ -210,7 +210,6 @@ public class GraphDataBase extends DataBase {
         try {
             FileReader file = new FileReader(r);
             BufferedReader reader = new BufferedReader(file);
-              System.out.println("Debug graphdatabase "+tipus);
             String par1 = "";
             String par2 = "";
             int id1 = 0;
@@ -286,24 +285,28 @@ public class GraphDataBase extends DataBase {
         indice_ultima_linea = terminal.getDocument().getLength();
         terminal.setCaretPosition(indice_ultima_linea);
         loadAuthorR();
+        //loadAuthor();
         
         //salida = terminal.getText();
         terminal.setText(salida + "28.57%");
         indice_ultima_linea = terminal.getDocument().getLength();
         terminal.setCaretPosition(indice_ultima_linea);
         loadConferenceR();
+        //loadConference();
         
         //salida = terminal.getText();
         terminal.setText(salida + "48.84%");
         indice_ultima_linea = terminal.getDocument().getLength();
         terminal.setCaretPosition(indice_ultima_linea);
         loadPaperR();
+        //loadPaper();
         
         //salida = terminal.getText();
         terminal.setText(salida + "57.12%"); 
         indice_ultima_linea = terminal.getDocument().getLength();
         terminal.setCaretPosition(indice_ultima_linea); 
         loadTermR();
+        //loadTerm();
         
 
         int id_aresta = 0;

@@ -22,10 +22,6 @@ public class Consulta {
     public ArrayList<Node> consultar(Relacion re, ArrayList<String> valor, boolean pagerank){
         ArrayList<String> tags = re.getTags();
         
-        System.out.println("Debug information form Consulta.java");
-        for (Norma n: re.getNormas()){
-            System.out.println(n.getIndx1()+" "+n.getIndx2()+" "+n.getOperator());
-        }
         
         if(tags.size()<2)return new ArrayList<>();
 
@@ -47,19 +43,15 @@ public class Consulta {
             // no s'ha de fer res ja que és el resultat
             if(!valor.get(i).equals("NULL")) {
                 //Si és diferent de NULL hem de anar al nodo
-                //System.out.println("Valor no null");
                 for (Node n:a) {
                     if(n.getName().equals(valor.get(i))){
-                        //System.out.println("Es el que estem buscant");
                         //Si és el node que estem buscant seguim endevant
                         cami.add(n);
                         ArrayList<Node> resTemp =g.buscarAdjecencies(n.getName(),n.getTipus(),tags.get(i+1));
-                        //System.out.println("Hem buscar adj de "+n.getName());
                         passarNormes(re,cami,resTemp,i,a);
                         midle.addAll(resTemp);
                         cami.remove(n);
                     }
-                    //else System.out.println("No es el que estem buscant"+n.getName());
                 }
                 Set abc = new HashSet<>();
                 abc.addAll(midle);
@@ -75,7 +67,6 @@ public class Consulta {
                 for (Node n:a) {
                     cami.add(n);
                     ArrayList<Node> resTemp =g.buscarAdjecencies(n.getName(),n.getTipus(),tags.get(i+1));
-                    //System.out.println("Hem buscar adj de "+n.getName());
                     passarNormes(re,cami,resTemp,i,a);
                     midle.addAll(resTemp);
                     cami.remove(n);
@@ -96,11 +87,9 @@ public class Consulta {
         midle.clear();
         midle.addAll(abc);*/
         //un cop son el resultat final s'ha de update page rank dels nodes finals
-        //System.out.println(re.getName());
         /*for (Node n :a
                 ) {
             g.actualizarRelevancia(n);
-            //System.out.println(n.getRelevancia());
         }*/
         if(pagerank)Collections.sort(a, new NodoComparadorPageRank().reversed());
         else Collections.sort(a, new NodoComparadorGrado().reversed());
@@ -121,7 +110,6 @@ public class Consulta {
             //SI la norma va dirigida als nodes actuals
             if(n.getIndx2() == i || (n.getIndx1()==i-1 &&
                     (n.getOperator()=='m'||n.getOperator()=='l'||n.getOperator()=='e'||n.getOperator()=='d'))){
-                //System.out.println("Estem passant normes");
                 for (Node no:comprovar) {
                     //System.out.println(no.getName());
                     int cmp = n.getIndx1();

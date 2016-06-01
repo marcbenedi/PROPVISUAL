@@ -614,6 +614,7 @@ public class CreatePredPath extends javax.swing.JPanel {
 
                 if (!nombrepredpath.getText().equals("Escribe el nombre del predpath") && !nombrepredpath.getText().equals("")
                         && !pathpred.getText().equals("Escribe tu path") && !pathpred.getText().equals("")) {
+                    System.out.println("Añadimos path");
                     FileReader file = null;
                     try {
                         String quepongo = nombrepredpath.getText() + "\t" + pathpred.getText() + "\t" + clausulas.getText().replace('\n', '\t');
@@ -621,7 +622,7 @@ public class CreatePredPath extends javax.swing.JPanel {
                         PrintWriter pw = null;
                         if (isAdmin()) {
                             String dondeguardo = String.valueOf(triaonguardes.getSelectedItem());
-                            if (dondeguardo.equals("Admin")) {;
+                            if (dondeguardo.equals("Admin")) {
                                 try {
                                     fichero = new FileWriter(getPath() + "\\recursos\\ficheros\\relacion.txt", true);
                                     pw = new PrintWriter(fichero);
@@ -731,10 +732,12 @@ public class CreatePredPath extends javax.swing.JPanel {
                         controlerrores.setText("Falta el nombre de pred path");
                         controlerrores.setForeground(Color.red);
                         controlerrores.setVisible(true);
+                        System.out.println("entrem aqui1");
                     } else {
                         controlerrores.setText("Falta camino del pred path");
                         controlerrores.setForeground(Color.red);
                         controlerrores.setVisible(true);
+                        System.out.println("entrem aqui2");
                     }
                     String quepongo = nombrepredpath.getText() + "\t" + pathpred.getText() + "\t" + clausulas.getText().replace('\n', '\t');
                     FileWriter fichero = null;
@@ -817,10 +820,12 @@ public class CreatePredPath extends javax.swing.JPanel {
                     controlerrores.setText("Falta el nombre de pred path");
                     controlerrores.setForeground(Color.red);
                     controlerrores.setVisible(true);
+                    System.out.println("entrem aqui1");
                 } else {
                     controlerrores.setText("Falta camino del pred path");
                     controlerrores.setForeground(Color.red);
                     controlerrores.setVisible(true);
+                    System.out.println("entrem aqui2");
                 }
                 num.setForeground(new java.awt.Color(153, 153, 153));
                 num.setText("num.");
